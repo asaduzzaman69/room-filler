@@ -3,7 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 export default function PageNotFound({ property }) {
-    console.log(property)
     return (
         <Layout>
             <Head>

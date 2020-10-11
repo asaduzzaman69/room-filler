@@ -5,7 +5,6 @@ import {getAllProperties} from "../services/properties";
 
 export default function Properties() {
     const properties = getAllProperties();
-    console.log(properties)
     return (
         <Layout>
             <Head>

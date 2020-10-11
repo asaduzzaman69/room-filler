@@ -26,10 +26,8 @@ function addProperty(e, cb) {
     if (!fieldsCompleted) { return this.setState({ ...this.state, fieldsCompleted: false }); }
     const ref = firebase.firestore().collection('properties').doc();
     addedProperty.id = ref.id;
-    console.log(this.state)
     firebase.firestore().collection('properties').doc(ref.id).set(addedProperty).then((e) => {
         this.setState({ ...this.state, fieldsCompleted: true, managedProperties: [...this.state.managedProperties, addedProperty] });
-        console.log(this.state)
         cb();
     });
 }

@@ -8,7 +8,6 @@ import firebase from "../lib/firebase";
 import {getAllProperties} from "../services/properties";
 
 function getProperties(properties) {
-    console.log(properties)
     return (
         <Row>
             {
@@ -22,7 +21,6 @@ function getProperties(properties) {
 
 export default function Home(props) {
     const [properties] = useState([]);
-    console.log(properties, props)
     return (
         <div className="container">
           <Head>
