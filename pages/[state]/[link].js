@@ -22,18 +22,26 @@ export default function CityInfo({ property }) {
 
 export async function getStaticPaths() {
     // Return a list of possible value for id
-    const paths = getAllProperties();
+    const allProperties = await getAllProperties();
+    const properties = [];
+    allProperties.docs.forEach((doc) => {
+        properties.push({params: doc.data()});
+    });
     return {
-        paths,
+        paths: properties,
         fallback: false
     }
 }
 
 export async function getStaticProps({ params }) {
     // Fetch necessary data for the blog post using current route params
-    const property = getAllProperties().filter((prop) => {
-        return prop.params.link === params.link;
-    })[0];
+    const allProperties = await getAllProperties();
+    let property = {};
+    allProperties.docs.forEach((doc) => {
+        if (doc.data().state === params.state && doc.data().link === params.link) {
+            property = {params: doc.data()};
+        }
+    });
     return {
         props: {
             property
