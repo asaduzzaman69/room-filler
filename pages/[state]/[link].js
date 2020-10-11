@@ -7,7 +7,9 @@ export default function CityInfo({ property }) {
     return (
         <Layout>
             <Head>
-                <title>Create Next App</title>
+                <title>{property.params.title} in {property.params.state}</title>
+                <meta name="description" content={property.params.description} />
+                <meta name="keywords" content={'property, rentals, ' + property.params.state} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <h1>{property.params.title} in {property.params.state} is a great rental!</h1>
