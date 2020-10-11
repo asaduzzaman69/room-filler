@@ -7,12 +7,20 @@ import {useState} from "react";
 import firebase from "../lib/firebase";
 import {getAllProperties} from "../services/properties";
 
+function getPropertyLink(property) {
+    return `/${property.state}/${property.link}`
+}
+
 function getProperties(properties) {
     return (
         <Row>
             {
                 Object.keys(properties).map((prop) => {
-                    return <Col>{properties[prop].title}</Col>
+                    return <Col key={properties[prop].link}>
+                        <Link href={getPropertyLink(properties[prop])}>
+                            <a>{properties[prop].title}</a>
+                        </Link>
+                    </Col>
                 })
             }
         </Row>
