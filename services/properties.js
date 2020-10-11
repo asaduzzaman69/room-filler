@@ -1,21 +1,6 @@
-export function getAllProperties() {
+import firebase from "../lib/firebase";
+
+export function getAllProperties(id = null) {
     // Query firebase for properties and create routes with states/cities.
-    return [
-      {
-        params: {
-          state: 'utah',
-          city: 'hurricane',
-          link: 'huge-hurricane-house',
-          title: 'Huge Hurricane House',
-        }
-      },
-      {
-        params: {
-          state: 'utah',
-          city: 'washington',
-          link: 'zion-villages-6br',
-          title: 'Zion Villages 6BR',
-        }
-      }
-    ]
+    return firebase.firestore().collection('properties').get();
 }

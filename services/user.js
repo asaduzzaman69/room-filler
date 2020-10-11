@@ -1,8 +1,7 @@
 import firebase from "../lib/firebase";
 
-let user = firebase.auth.user;
+let user = firebase.auth.user || null;
 
-export function getUserProfile() {
-    // Query firebase for properties and create routes with states/cities.
+export async function getUser() {
     return user;
 }

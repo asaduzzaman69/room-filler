@@ -3,23 +3,28 @@ import Head from "next/head"
 import Layout from "../components/layout";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "../lib/firebase";
-import {Form, Button} from "react-bootstrap";
+import Router from "next/router";
 
-// Configure FirebaseUI.
 const uiConfig = {
-    // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
-    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    signInSuccessUrl: '/signedIn',
-    // We will display Email as auth providers.
+    callbacks: {
+        signInSuccessWithAuthResult: LoggedIn
+    },
     signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID
     ]
 };
 
-firebase.auth().onAuthStateChanged(
-    (user) => this.setState({isSignedIn: !!user})
-);
+function LoggedIn() {
+    firebase.auth().onAuthStateChanged(
+        (user) => {
+            if (user) {
+                Router.push('/dashboard');
+            }
+        }
+    );
+    return false;
+}
 
 export default function Login({ property }) {
     return (

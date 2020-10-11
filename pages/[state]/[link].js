@@ -4,7 +4,6 @@ import Layout from "../../components/layout";
 import {getAllProperties} from "../../services/properties";
 
 export default function CityInfo({ property }) {
-    console.log(property)
     return (
         <Layout>
             <Head>
@@ -32,9 +31,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     // Fetch necessary data for the blog post using current route params
-    console.log('params', params)
     const property = getAllProperties().filter((prop) => {
-        console.log(prop)
         return prop.params.link === params.link;
     })[0];
     return {
