@@ -7,6 +7,7 @@ import {getUser} from "../services/user";
 import Router from "next/router";
 import {useState} from "react";
 import {Button, Modal, Form, Alert} from "react-bootstrap";
+import Navbar from "../components/navbar";
 
 function addProperty(e, cb) {
     e.preventDefault();
@@ -54,7 +55,7 @@ export function Dashboard(props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Navbar />
+            <Navbar user={user} />
 
             <h1>Welcome {user.displayName}</h1>
 
