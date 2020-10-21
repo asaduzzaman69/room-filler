@@ -2,8 +2,16 @@ import Link from "next/link"
 import Head from "next/head"
 import Layout from "../../components/layout";
 import {getAllProperties} from "../../services/properties";
+import { enGB } from 'date-fns/locale'
+import { DatePickerCalendar } from 'react-nice-dates'
 
 export default function CityInfo({ property }) {
+
+    var daySelected = function(m) {
+        // m is a moment object
+        alert(m.toString());
+    };
+
     return (
         <Layout>
             <Head>
@@ -13,6 +21,9 @@ export default function CityInfo({ property }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <h1>{property.params.title} in {property.params.state} is a great rental!</h1>
+
+            <DatePickerCalendar locale={enGB} />
+
             <h2>
                 <Link href="/">
                     <a>Back to home</a>

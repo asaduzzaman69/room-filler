@@ -4,3 +4,8 @@ export function getAllProperties(id = null) {
     // Query firebase for properties and create routes with states/cities.
     return firebase.firestore().collection('properties').get();
 }
+
+export function getAllProperties(id = null) {
+    // Query firebase for properties and create routes with states/cities.
+    return firebase.firestore().collection('properties').get();
+}
