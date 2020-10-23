@@ -1,7 +1,5 @@
 import firebase from "../lib/firebase";
 
-let user = firebase.auth.user || null;
-
-export async function getUser() {
-    return user;
+export function isUserAdmin(user) {
+    return user.email === 'trawick84@gmail.com';
 }

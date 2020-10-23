@@ -1,40 +1,7 @@
-import Link from "next/link"
 import Head from "next/head"
-import Layout from "../components/layout";
-import {getAllProperties, getUsersProperties, updateProperty} from "../services/properties";
-import firebase from "../lib/firebase";
-import {getUser, isUserAdmin} from "../services/user";
-import Router from "next/router";
-import {useState} from "react";
-import {Button, Modal, Form, Alert, Container, Row, Col, Card, ListGroup} from "react-bootstrap";
-import Navbar from "../components/navbar";
-import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 
-async function addEditProperty(e, property, cb) {
-    e.preventDefault();
-    e.persist();
-    const addedProperty = property || {
-        createdBy: this.state.user.uid,
-        published: false,
-    };
+let autocomplete = null;
 
-    let fieldsCompleted = true;
-    for (var x = 0; x < e.target.length; x++) {
-        const field = e.target[x];
-        if (field.value && field.id) {
-            addedProperty[field.getAttribute('key-data')] = field.value;
-        } else if (!field.value && field.id) { fieldsCompleted = false; }
-    }
-    if (!fieldsCompleted) { return this.setState({ ...this.state, fieldsCompleted: false }); }
-    if (!addedProperty.id) {
-        const ref = firebase.firestore().collection('properties').doc();
-        addedProperty.id = ref.id;
-    }
-
-    await updateProperty(addedProperty);
-    this.setState({ ...this.state, fieldsCompleted: true, managedProperties: [...this.state.managedProperties, addedProperty] });
-    cb();
-}
 
 function selectProperty(self, property) {
     return self.setState({
@@ -65,6 +32,7 @@ export function Dashboard(props) {
             <Head>
                 <title>Dashboard</title>
                 <link rel="icon" href="/favicon.ico" />
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBctVpXpDF7LVk2qGvUmWV3PfK2rCgFaP8&libraries=places&callback=initGoogleMaps"></script>
             </Head>
 
             <Navbar user={user} />
@@ -129,9 +97,8 @@ export function Dashboard(props) {
                             </Form.Text>
                         </Form.Group>
                         <Form.Group controlId="propertyAddress">
-                            <GooglePlacesAutocomplete
-                                apiKey="AIzaSyBctVpXpDF7LVk2qGvUmWV3PfK2rCgFaP8"
-                            />
+                            <Form.Label>Property Address</Form.Label>
+                            <Form.Control type="text" placeholder="123 Address Ave." key-data="address" />
                         </Form.Group>
                         <Form.Group controlId="propertyDescription">
                             <Form.Label>Property Description</Form.Label>
@@ -173,6 +140,14 @@ class DashboardPage extends React.Component {
         }
     }
     componentDidMount() {
+        window.initGoogleMaps = function() {
+            document.addEventListener("DOMContentLoaded", function() {
+                const google = window.google;
+                autocomplete = new google.maps.places.Autocomplete(document.getElementById('propertyAddress'), {})
+                autocomplete.addListener("place_changed", this.handlePlaceSelect)
+            })
+        }
+
         firebase.auth().onAuthStateChanged(authUser => {
             if (authUser) {
                 this.setState({
