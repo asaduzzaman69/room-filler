@@ -9,6 +9,7 @@ import {useState} from "react";
 import {Button, Modal, Form, Alert, Container, Row, Col, Card, ListGroup} from "react-bootstrap";
 import Navbar from "../components/navbar";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import Calendar from "../components/calendar";
 
 async function addEditProperty(e, property, cb) {
     e.preventDefault();
@@ -73,20 +74,20 @@ export function Dashboard(props) {
 
             <p>You have {managedProperties.length} Properties</p>
 
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="primary" onClick={handleShow} className="mb-2">
                 Add Property
             </Button>
 
             <Container>
                 <Row>
-                    <Col xs="12" md="4">
+                    <Col xs="12" md="4" className="pl-0">
                         <ListGroup>
                             { managedProperties.map((property) => {
                                 return <ListGroup.Item onClick={() => { setSelectedProperty(property); }} key={property.id}>{property.title}</ListGroup.Item>
                             }) }
                         </ListGroup>
                     </Col>
-                    <Col xs="12" md="8">
+                    <Col xs="12" md="8" className="pr-0">
                         <Card>
                             <Card.Img variant="top" src={selectedProperty.image || 'https://via.placeholder.com/150'} />
                             <Card.Body>
@@ -99,6 +100,7 @@ export function Dashboard(props) {
                                 <Card.Text>
                                     {selectedProperty.description}
                                 </Card.Text>
+                                <Calendar />
                             </Card.Body>
                         </Card>
                     </Col>
