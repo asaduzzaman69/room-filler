@@ -14,6 +14,7 @@ import Calendar from "../components/calendar";
 async function addEditProperty(e, property, cb) {
     e.preventDefault();
     e.persist();
+    const existingProperty = property.id;
     const addedProperty = property || {
         createdBy: this.state.user.uid,
         published: false,
@@ -22,18 +23,26 @@ async function addEditProperty(e, property, cb) {
     let fieldsCompleted = true;
     for (var x = 0; x < e.target.length; x++) {
         const field = e.target[x];
-        if (field.value && field.id) {
+        if (field.value && field.id && field.getAttribute('key-data')) {
             addedProperty[field.getAttribute('key-data')] = field.value;
-        } else if (!field.value && field.id) { fieldsCompleted = false; }
+        } else if (!field.value && field.id && field.getAttribute('key-data')) { fieldsCompleted = false; }
     }
     if (!fieldsCompleted) { return this.setState({ ...this.state, fieldsCompleted: false }); }
-    if (!addedProperty.id) {
+    if (!existingProperty) {
         const ref = firebase.firestore().collection('properties').doc();
         addedProperty.id = ref.id;
     }
 
     await updateProperty(addedProperty);
-    this.setState({ ...this.state, fieldsCompleted: true, managedProperties: [...this.state.managedProperties, addedProperty] });
+    if (!existingProperty) {
+        this.setState({ ...this.state, fieldsCompleted: true, managedProperties: [...this.state.managedProperties, addedProperty] });
+    } else {
+        const managedProperties = this.state.managedProperties;
+        managedProperties.forEach((element, index) => {
+            if (element.id === addedProperty.id) { addedProperty[index] = addedProperty; }
+        });
+        this.setState({ ...this.state, fieldsCompleted: true, managedProperties: managedProperties });
+    }
     cb();
 }
 
@@ -54,12 +63,33 @@ function IncompleteFieldsError(props) {
 }
 
 export function Dashboard(props) {
+    const propertyPlaceholder = {title: 'None selected', description: 'Select or add a property to continue'};
+    const [addressValue] = useState(null);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setShow(true);
+        setTimeout(() => {
+            if (!selectedProperty.id) return;
+            const formValues = document.querySelectorAll('[key-data]');
+            formValues.forEach(field => {
+                field.value = selectedProperty[field.getAttribute('key-data')];
+            })
+        }, 150);
+    }
 
     const {user, managedProperties, fieldsCompleted} = props;
-    let [selectedProperty, setSelectedProperty] = useState(managedProperties[0] || {title: 'None selected', description: 'Select or add a property to continue'});
+    let [selectedProperty, setSelectedProperty] = useState(managedProperties[0] || propertyPlaceholder);
+    const updatedAddress = (e) => {
+        selectedProperty.address = {
+            city: e.value.structured_formatting.secondary_text.split(',')[0],
+            country: e.value.structured_formatting.secondary_text.split(',')[2].trim(),
+            state: e.value.structured_formatting.secondary_text.split(',')[1],
+            street: e.value.structured_formatting.main_text,
+            stringFormat: e.label
+        }
+        console.log(selectedProperty)
+    };
 
     return (
         <Layout>
@@ -74,7 +104,7 @@ export function Dashboard(props) {
 
             <p>You have {managedProperties.length} Properties</p>
 
-            <Button variant="primary" onClick={handleShow} className="mb-2">
+            <Button variant="primary" onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow() }} className="mb-3">
                 Add Property
             </Button>
 
@@ -93,9 +123,11 @@ export function Dashboard(props) {
                             <Card.Body>
                                 <Card.Title>
                                     {selectedProperty.title}
-                                    <Button variant="primary" className="float-right">
-                                        Edit
-                                    </Button>
+                                    {selectedProperty.id &&
+                                        <Button variant="primary" className="float-right" onClick={handleShow}>
+                                            Edit
+                                        </Button>
+                                    }
                                 </Card.Title>
                                 <Card.Text>
                                     {selectedProperty.description}
@@ -113,12 +145,12 @@ export function Dashboard(props) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Property</Modal.Title>
+                    <Modal.Title>{selectedProperty.id && 'Edit' || 'Add'} Property</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     Woohoo, you're reading this text in a modal!
 
-                    <Form onSubmit={(e) => { addEditProperty(e, selectedProperty.id ? selectedProperty : null, handleClose) }}>
+                    <Form onSubmit={(e) => { addEditProperty(e, selectedProperty, handleClose) }}>
                         <Form.Group controlId="propertyTitle">
                             <Form.Label>Property Title</Form.Label>
                             <Form.Control type="text" placeholder="Title" key-data="title" />
@@ -131,16 +163,24 @@ export function Dashboard(props) {
                             </Form.Text>
                         </Form.Group>
                         <Form.Group controlId="propertyAddress">
+                            <Form.Label>Property Address</Form.Label>
                             <GooglePlacesAutocomplete
                                 apiKey="AIzaSyBctVpXpDF7LVk2qGvUmWV3PfK2rCgFaP8"
+                                selectProps={{
+                                    addressValue,
+                                    onChange: updatedAddress,
+                                }}
                             />
+                            <Form.Text className="text-muted pl-1">
+                                {selectedProperty.address ? '(Currently set to ' + selectedProperty.address.stringFormat + ')' : ''}
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group controlId="propertyDescription">
                             <Form.Label>Property Description</Form.Label>
                             <Form.Control as="textarea" rows="3" key-data="description" />
                         </Form.Group>
                         <Button className="col-12" variant="primary" type="submit">
-                            Add Property
+                            {selectedProperty.id && 'Edit' || 'Add'} Property
                         </Button>
 
                         <IncompleteFieldsError showError={!fieldsCompleted} />
