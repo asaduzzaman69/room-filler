@@ -27,6 +27,10 @@ export function getAllProperties(id = null) {
     return firebase.firestore().collection('properties').get();
 }
 
+export function getSingleProperty(id = null) {
+    return firebase.firestore().collection('properties').doc(id).get();
+}
+
 export function getUsersProperties(user = null) {
     return new Promise((res) => {
         Promise.all([

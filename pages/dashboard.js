@@ -140,7 +140,7 @@ export function Dashboard(props) {
         selectedProperty.address = {
             city: e.value.structured_formatting.secondary_text.split(',')[0],
             country: e.value.structured_formatting.secondary_text.split(',')[2].trim(),
-            state: e.value.structured_formatting.secondary_text.split(',')[1],
+            state: e.value.structured_formatting.secondary_text.split(',')[1].trim(),
             street: e.value.structured_formatting.main_text,
             stringFormat: e.label
         }

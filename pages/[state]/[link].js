@@ -38,7 +38,7 @@ export async function getStaticPaths() {
     const allProperties = await getAllProperties();
     const properties = [];
     allProperties.docs.forEach((doc) => {
-        properties.push({params: doc.data()});
+        properties.push({params: {state: doc.data().address.state, link: doc.data().link} });
     });
     return {
         paths: properties,
@@ -47,11 +47,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+    console.log(params)
     // Fetch necessary data for the blog post using current route params
     const allProperties = await getAllProperties();
     let property = {};
     allProperties.docs.forEach((doc) => {
-        if (doc.data().state === params.state && doc.data().link === params.link) {
+        if (doc.data().address.state === params.state && doc.data().link === params.link) {
             property = {params: doc.data()};
         }
     });

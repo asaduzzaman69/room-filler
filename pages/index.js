@@ -4,11 +4,10 @@ import Link from "next/link";
 import {Container, Row, Col} from "react-bootstrap";
 import Navbar from "../components/navbar";
 import {useState} from "react";
-import firebase from "../lib/firebase";
 import {getAllProperties} from "../services/properties";
 
 function getPropertyLink(property) {
-    return `/${property.state}/${property.link}`
+    return `/${property.address.state}/${property.link}`
 }
 
 function getProperties(properties) {

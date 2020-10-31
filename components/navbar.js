@@ -3,7 +3,7 @@ import firebase from "../lib/firebase";
 import Router from "next/router";
 
 async function logout() {
-    await firebase.auth.signOut();
+    await firebase.auth().signOut();
     return Router.push('/login');
 }
 
