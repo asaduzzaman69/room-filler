@@ -12,6 +12,7 @@ function getPropertyLink(property) {
 }
 
 function getProperties(properties) {
+    console.log(properties)
     return (
         <Row>
             {

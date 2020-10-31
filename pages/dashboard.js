@@ -1,36 +1,51 @@
 import Link from "next/link"
 import Head from "next/head"
 import Layout from "../components/layout";
-import {getAllProperties, getUsersProperties, updateProperty} from "../services/properties";
+import {getAllProperties, getUsersProperties, updateProperty, uploadPropertyImages} from "../services/properties";
 import firebase from "../lib/firebase";
 import {getUser, isUserAdmin} from "../services/user";
 import Router from "next/router";
 import {useState} from "react";
-import {Button, Modal, Form, Alert, Container, Row, Col, Card, ListGroup} from "react-bootstrap";
+import {Button, Modal, Form, Alert, Container, Row, Col, Card, ListGroup, Image} from "react-bootstrap";
 import Navbar from "../components/navbar";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import Calendar from "../components/calendar";
 
-async function addEditProperty(e, property, cb) {
-    e.preventDefault();
-    e.persist();
+async function addEditProperty(e, property, cb, showSuccess = false) {
+    if (e) {
+        e.preventDefault();
+        e.persist();
+    }
     const existingProperty = property.id;
     const addedProperty = property || {
         createdBy: this.state.user.uid,
         published: false,
     };
+    addedProperty.createdBy = addedProperty.createdBy || this.state.user.uid
+    addedProperty.published = addedProperty.published || false;
+    addedProperty.images = addedProperty.images || [];
 
     let fieldsCompleted = true;
-    for (var x = 0; x < e.target.length; x++) {
-        const field = e.target[x];
-        if (field.value && field.id && field.getAttribute('key-data')) {
-            addedProperty[field.getAttribute('key-data')] = field.value;
-        } else if (!field.value && field.id && field.getAttribute('key-data')) { fieldsCompleted = false; }
+    if (e) {
+        for (var x = 0; x < e.target.length; x++) {
+            const field = e.target[x];
+            if (field.value && field.id && field.getAttribute('key-data')) {
+                addedProperty[field.getAttribute('key-data')] = field.value;
+            } else if (!field.value && field.id && field.getAttribute('key-data')) {
+                fieldsCompleted = false;
+            }
+        }
     }
     if (!fieldsCompleted) { return this.setState({ ...this.state, fieldsCompleted: false }); }
     if (!existingProperty) {
         const ref = firebase.firestore().collection('properties').doc();
         addedProperty.id = ref.id;
+    }
+
+    if (addedProperty.images.length) {
+        if (typeof addedProperty.images[0] !== 'string' && !(addedProperty.images[0] instanceof String)) {
+            addedProperty.images = await uploadPropertyImages(addedProperty.images, addedProperty.id)
+        }
     }
 
     await updateProperty(addedProperty);
@@ -44,13 +59,16 @@ async function addEditProperty(e, property, cb) {
         this.setState({ ...this.state, fieldsCompleted: true, managedProperties: managedProperties });
     }
     cb();
+    alert('Successfully Updated!')
 }
 
-function selectProperty(self, property) {
-    return self.setState({
-        ...self.state,
-        selectProperty: property
-    })
+function addOwnerEditor(property) {
+    const email = window.prompt('Enter email of owner/editor:');
+    property.editors = property.editors || [];
+    property.editors.push({
+        email: email
+    });
+    addEditProperty(null, property, () => {}, true)
 }
 
 function IncompleteFieldsError(props) {
@@ -60,6 +78,24 @@ function IncompleteFieldsError(props) {
         </Alert>
     }
     return (null);
+}
+
+function addFileImagePreview(file) {
+    if (!file) return;
+    var reader = new FileReader(file);
+    reader.onload = function(e) {
+        document.getElementById('propertyImagesPreview').innerHTML += `
+            <Image src="${e.target.result}" className="col-4 d-inline-block" style="max-height: 200px"}} thumbnail />
+        `;
+    }
+    reader.readAsDataURL(file); // convert to base64 string
+}
+
+function getPropertyFirstImage(property) {
+    if (property && property.images) {
+        return property.images[0];
+    }
+    return  'https://via.placeholder.com/150';
 }
 
 export function Dashboard(props) {
@@ -78,7 +114,27 @@ export function Dashboard(props) {
         }, 150);
     }
 
-    const {user, managedProperties, fieldsCompleted} = props;
+    // const convert = async (fileLocation) => {
+    //     const icsRes = fetch(fileLocation, {
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*',
+    //             'Content-type': 'application/json; charset=UTF-8'
+    //         },
+    //     }).then(function(data){
+    //         console.log(data);
+    //     }).catch((error) => {
+    //         console.log(error);
+    //     });
+    //     // const icsData = await icsRes.text()
+    //     // // Convert
+    //     // const data = icsToJson(icsData)
+    //     // return data
+    // }
+    //
+    // console.log(convert('http://www.vrbo.com/icalendar/8d5441d8cad54ec0aa986dea0ae5840b.ics?nonTentative'))
+    // console.log(convert('https://www.airbnb.com/calendar/ical/43382883.ics?s=400cca19575bbc8235cda7ae700e9665'))
+
+    const {user, managedProperties, fieldsCompleted, isAdmin} = props;
     let [selectedProperty, setSelectedProperty] = useState(managedProperties[0] || propertyPlaceholder);
     const updatedAddress = (e) => {
         selectedProperty.address = {
@@ -88,8 +144,16 @@ export function Dashboard(props) {
             street: e.value.structured_formatting.main_text,
             stringFormat: e.label
         }
-        console.log(selectedProperty)
     };
+
+    const handleFileImages = (e) => {
+        e.persist();
+        const files = e.target.files;
+        selectedProperty.images = files;
+        for (var x = 0; x < files.length; x++) {
+            addFileImagePreview(files[x]);
+        }
+    }
 
     return (
         <Layout>
@@ -119,13 +183,18 @@ export function Dashboard(props) {
                     </Col>
                     <Col xs="12" md="8" className="pr-0">
                         <Card>
-                            <Card.Img variant="top" src={selectedProperty.image || 'https://via.placeholder.com/150'} />
+                            <Card.Img variant="top" src={getPropertyFirstImage(selectedProperty)} />
                             <Card.Body>
                                 <Card.Title>
                                     {selectedProperty.title}
                                     {selectedProperty.id &&
                                         <Button variant="primary" className="float-right" onClick={handleShow}>
                                             Edit
+                                        </Button>
+                                    }
+                                    {selectedProperty.id && isAdmin &&
+                                        <Button variant="primary" className="float-right" onClick={() => {addOwnerEditor(selectedProperty); }}>
+                                            Add Owner/Editor
                                         </Button>
                                     }
                                 </Card.Title>
@@ -179,6 +248,11 @@ export function Dashboard(props) {
                             <Form.Label>Property Description</Form.Label>
                             <Form.Control as="textarea" rows="3" key-data="description" />
                         </Form.Group>
+                        <Form.Group controlId="propertyImages">
+                            <Form.Label>Property Images</Form.Label>
+                            <Form.Control as="input" type="file" onChange={handleFileImages} multiple></Form.Control>
+                        </Form.Group>
+                        <Row id="propertyImagesPreview" style={{display: 'block', overflowX: 'auto', whiteSpace: 'nowrap'}}></Row>
                         <Button className="col-12" variant="primary" type="submit">
                             {selectedProperty.id && 'Edit' || 'Add'} Property
                         </Button>
@@ -192,14 +266,16 @@ export function Dashboard(props) {
 }
 
 async function loadDashboardData(self, user) {
-    const propertiesResponse = isUserAdmin(user) ? await getAllProperties(user) : await getUsersProperties(user);
+    const isAdmin = await isUserAdmin(user);
+    const propertiesResponse = isAdmin ? await getAllProperties(user) : await getUsersProperties(user);
     const properties = [];
-    propertiesResponse.docs.forEach(doc => {
+    propertiesResponse.forEach(doc => {
         properties.push(doc.data());
     })
     self.setState({
         ...self.state,
         managedProperties: properties,
+        isAdmin: isAdmin
     })
 }
 
