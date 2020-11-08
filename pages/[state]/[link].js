@@ -1,16 +1,30 @@
 import Link from "next/link"
 import Head from "next/head"
 import Layout from "../../components/layout";
-import {getAllProperties} from "../../services/properties";
-import { enGB } from 'date-fns/locale'
-import { DatePickerCalendar } from 'react-nice-dates'
+import {
+    bookedOrPastDates,
+    getAllProperties,
+    getPropertyCalendar,
+    getPropertyFirstImage
+} from "../../services/properties";
+import { format } from 'date-fns';
+import { enGB } from 'date-fns/locale';
+import {DateRangePickerCalendar, START_DATE} from 'react-nice-dates';
+import {Button, Card, Row} from "react-bootstrap";
+import {useState} from "react";
 
-export default function CityInfo({ property }) {
+export default function PropertyPage({ property }) {
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
+    const [focus, setFocus] = useState(START_DATE);
+    const handleFocusChange = newFocus => {
+        setFocus(newFocus || START_DATE)
+    }
+    const calendarModifiers = {
+        disabled: date => bookedOrPastDates(date, property.params.calendar.dates),
+    }
 
-    var daySelected = function(m) {
-        // m is a moment object
-        alert(m.toString());
-    };
+    console.log(property.params.calendar)
 
     return (
         <Layout>
@@ -20,9 +34,40 @@ export default function CityInfo({ property }) {
                 <meta name="keywords" content={'property, rentals, ' + property.params.state} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <h1>{property.params.title} in {property.params.state} is a great rental!</h1>
 
-            <DatePickerCalendar locale={enGB} />
+            <Card className="selected-property">
+                {property.params.id && property.params.images.length > 1 &&
+                <Row style={{overflowX: 'auto'}} className="d-block text-nowrap mb-2 mx-auto">
+                    {
+                        property.params.images.map((image, index) => (
+                            <Card.Img key={'view-only-images-' + index} variant="top" src={image} />
+                        ))
+                    }
+                </Row> || <Card.Img variant="top" src={getPropertyFirstImage(property.params)} />
+                }
+                <Card.Body>
+                    <Card.Title>
+                        {property.params.title}
+                    </Card.Title>
+                    <Card.Text>
+                        {property.params.description}
+                    </Card.Text>
+
+                    <p>Selected start date: {startDate ? format(startDate, 'dd MMM yyyy', { locale: enGB }) : 'none'}.</p>
+                    <p>Selected end date: {endDate ? format(endDate, 'dd MMM yyyy', { locale: enGB }) : 'none'}.</p>
+                    <p>Currently selecting: {focus}.</p>
+                    <DateRangePickerCalendar
+                        modifiers={calendarModifiers}
+                        startDate={startDate}
+                        endDate={endDate}
+                        focus={focus}
+                        onStartDateChange={setStartDate}
+                        onEndDateChange={setEndDate}
+                        onFocusChange={handleFocusChange}
+                        locale={enGB}
+                    />
+                </Card.Body>
+            </Card>
 
             <h2>
                 <Link href="/">
@@ -56,9 +101,10 @@ export async function getStaticProps({ params }) {
             property = {params: doc.data()};
         }
     });
+    property.params.calendar = (await getPropertyCalendar(property.params)).data();
     return {
         props: {
-            property
+            property,
         }
     }
 }

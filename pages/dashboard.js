@@ -1,7 +1,14 @@
 import Link from "next/link"
 import Head from "next/head"
 import Layout from "../components/layout";
-import {getAllProperties, getUsersProperties, updateProperty, uploadPropertyImages} from "../services/properties";
+import {
+    bookedOrPastDates,
+    getAllProperties,
+    getPropertyCalendar, getPropertyFirstImage,
+    getUsersProperties,
+    updateProperty,
+    uploadPropertyImages
+} from "../services/properties";
 import firebase from "../lib/firebase";
 import {getUser, isUserAdmin} from "../services/user";
 import Router from "next/router";
@@ -9,9 +16,11 @@ import {useState} from "react";
 import {Button, Modal, Form, Alert, Container, Row, Col, Card, ListGroup, Image} from "react-bootstrap";
 import Navbar from "../components/navbar";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import Calendar from "../components/calendar";
+import { enGB } from 'date-fns/locale';
+import { Calendar } from 'react-nice-dates';
 
 async function addEditProperty(e, property, cb, showSuccess = false) {
+    console.log(property);
     if (e) {
         e.preventDefault();
         e.persist();
@@ -91,13 +100,6 @@ function addFileImagePreview(file) {
     reader.readAsDataURL(file); // convert to base64 string
 }
 
-function getPropertyFirstImage(property) {
-    if (property && property.images) {
-        return property.images[0];
-    }
-    return  'https://via.placeholder.com/150';
-}
-
 export function Dashboard(props) {
     const propertyPlaceholder = {title: 'None selected', description: 'Select or add a property to continue'};
     const [addressValue] = useState(null);
@@ -105,37 +107,29 @@ export function Dashboard(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => {
         setShow(true);
+        console.log(selectedProperty)
         setTimeout(() => {
             if (!selectedProperty.id) return;
             const formValues = document.querySelectorAll('[key-data]');
             formValues.forEach(field => {
                 field.value = selectedProperty[field.getAttribute('key-data')];
             })
+            console.log(selectedProperty)
         }, 150);
     }
 
-    // const convert = async (fileLocation) => {
-    //     const icsRes = fetch(fileLocation, {
-    //         headers: {
-    //             'Access-Control-Allow-Origin': '*',
-    //             'Content-type': 'application/json; charset=UTF-8'
-    //         },
-    //     }).then(function(data){
-    //         console.log(data);
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     });
-    //     // const icsData = await icsRes.text()
-    //     // // Convert
-    //     // const data = icsToJson(icsData)
-    //     // return data
-    // }
-    //
-    // console.log(convert('http://www.vrbo.com/icalendar/8d5441d8cad54ec0aa986dea0ae5840b.ics?nonTentative'))
-    // console.log(convert('https://www.airbnb.com/calendar/ical/43382883.ics?s=400cca19575bbc8235cda7ae700e9665'))
-
     const {user, managedProperties, fieldsCompleted, isAdmin} = props;
     let [selectedProperty, setSelectedProperty] = useState(managedProperties[0] || propertyPlaceholder);
+    let [calendarModifiers, setCalendarModifiers] = useState({disabled: (date) => { return true; }});
+
+    const loadPropertyCalendar = (property) => {
+        getPropertyCalendar(property).then((calendar) => {
+            setCalendarModifiers({
+                disabled: date => bookedOrPastDates(date, calendar.data().dates),
+            })
+        });
+    }
+
     const updatedAddress = (e) => {
         selectedProperty.address = {
             city: e.value.structured_formatting.secondary_text.split(',')[0],
@@ -148,6 +142,7 @@ export function Dashboard(props) {
 
     const handleFileImages = (e) => {
         e.persist();
+        document.getElementById('propertyImagesPreview').innerHTML = '';
         const files = e.target.files;
         selectedProperty.images = files;
         for (var x = 0; x < files.length; x++) {
@@ -177,13 +172,21 @@ export function Dashboard(props) {
                     <Col xs="12" md="4" className="pl-0">
                         <ListGroup>
                             { managedProperties.map((property) => {
-                                return <ListGroup.Item onClick={() => { setSelectedProperty(property); }} key={property.id}>{property.title}</ListGroup.Item>
+                                return <ListGroup.Item onClick={() => { setSelectedProperty(property); loadPropertyCalendar(property); }} key={property.id}>{property.title}</ListGroup.Item>
                             }) }
                         </ListGroup>
                     </Col>
                     <Col xs="12" md="8" className="pr-0">
-                        <Card>
-                            <Card.Img variant="top" src={getPropertyFirstImage(selectedProperty)} />
+                        <Card className="selected-property">
+                            {selectedProperty.id && selectedProperty.images.length > 1 &&
+                                <Row style={{overflowX: 'auto'}} className="d-block text-nowrap mb-2 mx-auto">
+                                    {
+                                        selectedProperty.images.map((image, index) => (
+                                            <Card.Img key={'view-only-images-' + index} variant="top" src={image} />
+                                        ))
+                                    }
+                                </Row> || <Card.Img variant="top" src={getPropertyFirstImage(selectedProperty)} />
+                            }
                             <Card.Body>
                                 <Card.Title>
                                     {selectedProperty.title}
@@ -201,7 +204,7 @@ export function Dashboard(props) {
                                 <Card.Text>
                                     {selectedProperty.description}
                                 </Card.Text>
-                                <Calendar />
+                                <Calendar modifiers={calendarModifiers} locale={enGB} />
                             </Card.Body>
                         </Card>
                     </Col>
@@ -248,11 +251,45 @@ export function Dashboard(props) {
                             <Form.Label>Property Description</Form.Label>
                             <Form.Control as="textarea" rows="3" key-data="description" />
                         </Form.Group>
+                        <Form.Group controlId="propertyRules">
+                            <Form.Label>Property Rules</Form.Label>
+                            <Form.Control as="textarea" rows="2" key-data="rules" />
+                        </Form.Group>
                         <Form.Group controlId="propertyImages">
                             <Form.Label>Property Images</Form.Label>
+                            {selectedProperty.id &&
+                                <Form.Text className="text-muted pl-1 mb-2 mt-0">
+                                    Uploading images will reset all images for this property {selectedProperty.id && `(${selectedProperty.images.length} existing)`}
+                                </Form.Text>
+                            }
                             <Form.Control as="input" type="file" onChange={handleFileImages} multiple></Form.Control>
                         </Form.Group>
-                        <Row id="propertyImagesPreview" style={{display: 'block', overflowX: 'auto', whiteSpace: 'nowrap'}}></Row>
+                        <Row id="propertyImagesPreview" style={{overflowX: 'auto'}} className="d-block text-nowrap mb-2 mx-auto"></Row>
+                        <Form.Group controlId="propertyAmenities">
+                            <Form.Label>Property Amenities (Ctrl + Click to select multiple)</Form.Label>
+                            <Form.Control as="select" multiple key-data="amenities" style={{minHeight: 300}}>
+                                {
+                                    ['Wifi', 'TV', 'Heater, air conditioning', 'Parking', 'Hair dryer', 'Breakfast', 'Carbon monoxide alarm', 'Smoke alarm', 'Fire extinguisher', 'First-aid kit', 'Accessible bathroom']
+                                    .map((amenity, index) => (
+                                        <option key={'amenities-' + index}>{amenity}</option>
+                                    ))
+                                }
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group controlId="propertyAirbnbCalendarURL">
+                            <Form.Label className="mb-0">Property AirBnB Calendar URL</Form.Label>
+                            <Form.Text className="text-muted pl-1 mb-2 mt-0">
+                                i.e. https://www.airbnb.com/calendar/ical/43828383.ics?s=4009e007ea7adc5328cbb57591acc665
+                            </Form.Text>
+                            <Form.Control type="text" placeholder="Airbnb Calendar URL Link" key-data="airbnbCalendarURL" />
+                        </Form.Group>
+                        <Form.Group controlId="propertyVrboCalendarURL">
+                            <Form.Label className="mb-0">Property Vrbo Calendar URL</Form.Label>
+                            <Form.Text className="text-muted pl-1 mb-2 mt-0">
+                                i.e. http://www.vrbo.com/icalendar/8d585ea0aed689aa0ce45dac8d14440b.ics?nonTentative
+                            </Form.Text>
+                            <Form.Control type="text" placeholder="Vrbo Calendar URL Link" key-data="vrboCalendarURL" />
+                        </Form.Group>
                         <Button className="col-12" variant="primary" type="submit">
                             {selectedProperty.id && 'Edit' || 'Add'} Property
                         </Button>
@@ -267,7 +304,7 @@ export function Dashboard(props) {
 
 async function loadDashboardData(self, user) {
     const isAdmin = await isUserAdmin(user);
-    const propertiesResponse = isAdmin ? await getAllProperties(user) : await getUsersProperties(user);
+    const propertiesResponse = isAdmin ? await getAllProperties() : await getUsersProperties(user);
     const properties = [];
     propertiesResponse.forEach(doc => {
         properties.push(doc.data());
