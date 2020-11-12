@@ -27,6 +27,13 @@ function getProperties(properties) {
     )
 }
 
+function getSearchLink(startDate, endDate) {
+    if (!startDate || !endDate) {
+        return '/search';
+    }
+    return '/search?startDate=' + startDate + '&endDate=' + endDate;
+}
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -53,15 +60,26 @@ class Home extends React.Component {
               <main>
                   <Navbar />
                   <Container className="mt-5 pt-5">
-                      <DateRangePicker
-                          startDateId="startDate"
-                          endDateId="endDate"
-                          startDate={this.state.startDate}
-                          endDate={this.state.endDate}
-                          onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
-                          focusedInput={this.state.focusedInput}
-                          onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
-                      />
+                      <Row className="form-row">
+                          <Col xs="auto">
+                              <DateRangePicker
+                                  startDateId="startDate"
+                                  endDateId="endDate"
+                                  startDate={this.state.startDate}
+                                  endDate={this.state.endDate}
+                                  onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
+                                  focusedInput={this.state.focusedInput}
+                                  onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
+                              />
+                          </Col>
+                          <Col xs="auto">
+                              <Link href={getSearchLink(this.state.startDate, this.state.endDate)}>
+                                  <a className="btn btn-primary py-2 mt-1">
+                                      Search
+                                  </a>
+                              </Link>
+                          </Col>
+                      </Row>
                   </Container>
               </main>
 

@@ -135,7 +135,7 @@ function getAmenitiesList(list, newAmenity) {
 }
 
 function updateCalendars() {
-    // fetch('/api/updatePropertyCalendars');
+    fetch('/api/updatePropertyCalendars');
 }
 
 export function Dashboard(props) {

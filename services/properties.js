@@ -7,7 +7,6 @@ export function updateProperty(property) {
 export function uploadPropertyImages(files, propertyId) {
     return new Promise((res) => {
         const promises = [];
-        console.log(files, propertyId);
         for (var x = 0; x < files.length;) {
             if (typeof files[x] !== 'string' && !(files[x] instanceof String)) {
                 promises.push(firebase.storage().ref().child('properties/' + propertyId + '/' + Date.now() + '.jpg').put(files[x]));
@@ -30,6 +29,10 @@ export function uploadPropertyImages(files, propertyId) {
 
 export function getAllProperties() {
     return firebase.firestore().collection('properties').get();
+}
+
+export function getAvailableProperties(startDate, endDate) {
+    return fetch('http://localhost:3000/api/getAvailableProperties?startDate=' + startDate + '&endDate=' + endDate);
 }
 
 export function getSingleProperty(id = null) {
@@ -72,6 +75,25 @@ export function bookedOrPastDates(date, reservations) {
 
 export function getPropertyCalendar(property) {
     return firebase.firestore().collection('calendar').doc(property.id).get();
+}
+
+export function getPropertyFutureCalendar(property) {
+    const today = (new Date()).toISOString().slice(0,10).replace(/-/g,"/");
+    return new Promise(async (res, rej) => {
+        try {
+            let calendar = await firebase.firestore().collection('calendar').doc(property.id).get();
+            const newDates = [];
+            const dates = (calendar.data()).dates;
+            dates.forEach((date) => {
+                if (date.endDate > today) {
+                    newDates.push(date);
+                }
+            })
+            res(dates)
+        } catch(e) {
+            rej(e);
+        }
+    });
 }
 
 export async function updatePropertyCalendar(property, airbnbData, vrboData) {
