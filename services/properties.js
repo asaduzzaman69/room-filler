@@ -5,11 +5,16 @@ export function updateProperty(property) {
 }
 
 export function uploadPropertyImages(files, propertyId) {
-    console.log(files, files.length)
     return new Promise((res) => {
         const promises = [];
-        for (var x = 0; x < files.length; x++) {
-            promises.push(firebase.storage().ref().child('properties/' + propertyId + '/' + files[x].name).put(files[x]));
+        console.log(files, propertyId);
+        for (var x = 0; x < files.length;) {
+            if (typeof files[x] !== 'string' && !(files[x] instanceof String)) {
+                promises.push(firebase.storage().ref().child('properties/' + propertyId + '/' + Date.now() + '.jpg').put(files[x]));
+            } else if (files[x].includes('data:')) {
+                promises.push(firebase.storage().ref().child('properties/' + propertyId + '/' + Date.now() + '.jpg').putString(files[x], 'data_url'));
+            }
+            x++;
         }
         Promise.all(promises).then((data) => {
             const downloadUrlPromises = [];

@@ -7,11 +7,9 @@ import {
     getPropertyCalendar,
     getPropertyFirstImage
 } from "../../services/properties";
-import { format } from 'date-fns';
-import { enGB } from 'date-fns/locale';
-import {DateRangePickerCalendar, START_DATE} from 'react-nice-dates';
 import {Button, Card, Row} from "react-bootstrap";
 import {useState} from "react";
+import Navbar from "../../components/navbar";
 
 export default function PropertyPage({ property }) {
     const [startDate, setStartDate] = useState();
@@ -24,16 +22,18 @@ export default function PropertyPage({ property }) {
         disabled: date => bookedOrPastDates(date, property.params.calendar.dates),
     }
 
-    console.log(property.params.calendar)
+    console.log(property.params)
 
     return (
         <Layout>
             <Head>
-                <title>{property.params.title} in {property.params.state}</title>
+                <title>{property.params.title} in {property.params.address.state}</title>
                 <meta name="description" content={property.params.description} />
-                <meta name="keywords" content={'property, rentals, ' + property.params.state} />
+                <meta name="keywords" content={'property, rentals, ' + property.params.address.state} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
+            <Navbar />
 
             <Card className="selected-property">
                 {property.params.id && property.params.images.length > 1 &&
@@ -68,12 +68,6 @@ export default function PropertyPage({ property }) {
                     />
                 </Card.Body>
             </Card>
-
-            <h2>
-                <Link href="/">
-                    <a>Back to home</a>
-                </Link>
-            </h2>
         </Layout>
     )
 }

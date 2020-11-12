@@ -5,13 +5,13 @@ import {Container, Row, Col} from "react-bootstrap";
 import Navbar from "../components/navbar";
 import {useState} from "react";
 import {getAllProperties} from "../services/properties";
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 
 function getPropertyLink(property) {
     return `/${property.address.state}/${property.link}`
 }
 
 function getProperties(properties) {
-    console.log(properties)
     return (
         <Row>
             {
@@ -27,27 +27,50 @@ function getProperties(properties) {
     )
 }
 
-export default function Home(props) {
-    const [properties] = useState([]);
-    return (
-        <div className="container">
-          <Head>
-            <title>{getEnvironmentConfig().title}</title>
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
 
-          <main>
-              <Navbar />
-              <Container>
-                  {getProperties(props)}
-              </Container>
-          </main>
+        this.state = {
+            startDate: null,
+            endDate: null,
+            focusedInput: null,
+        };
+    }
 
-          <style jsx global>{`
-            
-          `}</style>
-        </div>
-    )
+    componentDidMount() {
+
+    }
+
+    render() {
+        return (
+            <div className="container">
+              <Head>
+                <title>{getEnvironmentConfig().title}</title>
+                <link rel="icon" href="/favicon.ico" />
+              </Head>
+
+              <main>
+                  <Navbar />
+                  <Container className="mt-5 pt-5">
+                      <DateRangePicker
+                          startDateId="startDate"
+                          endDateId="endDate"
+                          startDate={this.state.startDate}
+                          endDate={this.state.endDate}
+                          onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
+                          focusedInput={this.state.focusedInput}
+                          onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
+                      />
+                  </Container>
+              </main>
+
+              <style jsx global>{`
+                
+              `}</style>
+            </div>
+        )
+    }
 }
 
 export async function getStaticProps({ params }) {
@@ -60,3 +83,5 @@ export async function getStaticProps({ params }) {
         props: {...properties}
     }
 }
+
+export default Home
