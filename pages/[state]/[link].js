@@ -3,6 +3,7 @@ import Head from "next/head"
 import Layout from "../../components/layout";
 import {
     bookedOrPastDates,
+    isDayBlocked,
     getAllProperties,
     getPropertyCalendar,
     getPropertyFirstImage
@@ -10,17 +11,9 @@ import {
 import {Button, Card, Row} from "react-bootstrap";
 import {useState} from "react";
 import Navbar from "../../components/navbar";
+import {DayPickerRangeController} from "react-dates";
 
 export default function PropertyPage({ property }) {
-    const [startDate, setStartDate] = useState();
-    const [endDate, setEndDate] = useState();
-    const [focus, setFocus] = useState(START_DATE);
-    const handleFocusChange = newFocus => {
-        setFocus(newFocus || START_DATE)
-    }
-    const calendarModifiers = {
-        disabled: date => bookedOrPastDates(date, property.params.calendar.dates),
-    }
 
     console.log(property.params)
 
@@ -53,18 +46,9 @@ export default function PropertyPage({ property }) {
                         {property.params.description}
                     </Card.Text>
 
-                    <p>Selected start date: {startDate ? format(startDate, 'dd MMM yyyy', { locale: enGB }) : 'none'}.</p>
-                    <p>Selected end date: {endDate ? format(endDate, 'dd MMM yyyy', { locale: enGB }) : 'none'}.</p>
-                    <p>Currently selecting: {focus}.</p>
-                    <DateRangePickerCalendar
-                        modifiers={calendarModifiers}
-                        startDate={startDate}
-                        endDate={endDate}
-                        focus={focus}
-                        onStartDateChange={setStartDate}
-                        onEndDateChange={setEndDate}
-                        onFocusChange={handleFocusChange}
-                        locale={enGB}
+                    <DayPickerRangeController
+                        onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
+                        isDayBlocked={(day) => {return isDayBlocked(day)}}
                     />
                 </Card.Body>
             </Card>

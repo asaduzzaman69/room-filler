@@ -3,6 +3,7 @@ import Head from "next/head"
 import Layout from "../components/layout";
 import {
     bookedOrPastDates,
+    isDayBlocked,
     getAllProperties,
     getPropertyCalendar, getPropertyFirstImage,
     getUsersProperties,
@@ -17,6 +18,7 @@ import {Button, Modal, Form, Alert, Container, Row, Col, Card, ListGroup, Image}
 import Navbar from "../components/navbar";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { Sortable, MultiDrag, Swap, OnSpill, AutoScroll } from "sortablejs";
+import {DayPickerRangeController} from "react-dates";
 
 async function addEditProperty(e, property, cb, showSuccess = false) {
     console.log(property);
@@ -260,7 +262,10 @@ export function Dashboard(props) {
                                 <Card.Text>
                                     {selectedProperty.description}
                                 </Card.Text>
-                                <Calendar modifiers={calendarModifiers} locale={enGB} />
+                                <DayPickerRangeController
+                                    onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
+                                    isDayBlocked={(day) => {return isDayBlocked(day)}}
+                                />
                             </Card.Body>
                         </Card>
                     </Col>
@@ -322,8 +327,8 @@ export function Dashboard(props) {
                         {
                             ['Wifi', 'TV', 'Heater, air conditioning', 'Parking', 'Hair dryer', 'Breakfast', 'Carbon monoxide alarm', 'Smoke alarm', 'Fire extinguisher', 'First-aid kit', 'Accessible bathroom']
                             .map((amenity, index) => (
-                                <Form.Group className="mb-1 pl-2" controlId={'propertyAmenities' + index} key={'amenities-' + index} onChange={() => { setSelectedProperty({ ...selectedProperty, amenities: getAmenitiesList(selectedProperty.amenities, amenity) }); }}>
-                                    <Form.Check type="checkbox" label={amenity} checked={selectedProperty.amenities.includes(amenity)} />
+                                <Form.Group className="mb-1 pl-2" controlId={'propertyAmenities' + index} key={'amenities-' + index}>
+                                    <Form.Check type="checkbox" label={amenity} checked={selectedProperty.amenities.includes(amenity)} onChange={() => { setSelectedProperty({ ...selectedProperty, amenities: getAmenitiesList(selectedProperty.amenities, amenity) }); }} />
                                 </Form.Group>
                             ))
                         }

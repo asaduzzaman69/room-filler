@@ -73,6 +73,10 @@ export function bookedOrPastDates(date, reservations) {
     return dateBooked;
 }
 
+export function isDayBlocked(day) {
+    return true;
+}
+
 export function getPropertyCalendar(property) {
     return firebase.firestore().collection('calendar').doc(property.id).get();
 }

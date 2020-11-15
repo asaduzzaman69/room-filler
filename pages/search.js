@@ -15,16 +15,18 @@ async function loadProperties(startDate, endDate) {
 }
 
 function getSearchResults(property) {
-    return <Card key={property.id}>
-        <Card.Body>
-            <Card.Title>
-                {property.title}
-            </Card.Title>
-            <Card.Text>
-                {property.description.substring(0, 250) + '...'}
-            </Card.Text>
-        </Card.Body>
-    </Card>
+    return <Link href={`/${property.address.state}/${property.link}`}>
+        <Card key={property.id}>
+            <Card.Body>
+                <Card.Title>
+                    {property.title}
+                </Card.Title>
+                <Card.Text>
+                    {property.description.substring(0, 250) + '...'}
+                </Card.Text>
+            </Card.Body>
+        </Card>
+    </Link>
 }
 
 export default function Search() {
