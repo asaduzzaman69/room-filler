@@ -1,7 +1,7 @@
 import Head from "next/head";
 import getEnvironmentConfig from "../environment";
 import Link from "next/link";
-import {Container, Row, Col} from "react-bootstrap";
+import {Container, Row, Col, Card} from "react-bootstrap";
 import Navbar from "../components/navbar";
 import {useState} from "react";
 import {getAllProperties} from "../services/properties";
@@ -12,19 +12,15 @@ function getPropertyLink(property) {
 }
 
 function getProperties(properties) {
-    return (
-        <Row>
-            {
-                Object.keys(properties).map((prop) => {
-                    return <Col key={properties[prop].link}>
-                        <Link href={getPropertyLink(properties[prop])}>
-                            <a>{properties[prop].title}</a>
-                        </Link>
-                    </Col>
-                })
-            }
-        </Row>
-    )
+    return Object.keys(properties).map((prop) => {
+        return <Col xs="4" key={properties[prop].link}>
+            <Card className="text-center py-3">
+                <Link href={getPropertyLink(properties[prop])}>
+                    <a>{properties[prop].title}</a>
+                </Link>
+            </Card>
+        </Col>
+    })
 }
 
 function getSearchLink(startDate, endDate) {
@@ -42,6 +38,7 @@ class Home extends React.Component {
             startDate: null,
             endDate: null,
             focusedInput: null,
+            properties: props
         };
     }
 
@@ -79,6 +76,9 @@ class Home extends React.Component {
                                   </a>
                               </Link>
                           </Col>
+                      </Row>
+                      <Row className="form-row py-3">
+                          {getProperties(this.state.properties)}
                       </Row>
                   </Container>
               </main>
