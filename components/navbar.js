@@ -17,12 +17,14 @@ function getAuthedNavbarContent(user) {
 export default function Navbar({ user }) {
     return (
         <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">Navbar w/ text</a>
+            <Link href="/">
+                <a className="navbar-brand font-weight-bold ml-md-5 pl-lg-5">Zion Village Resorts</a>
+            </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarText">
+            <div className="collapse navbar-collapse mr-md-5 pr-lg-5" id="navbarText">
                 <ul className="navbar-nav col-12">
                     <li className="nav-item active">
                         <Link href="/">

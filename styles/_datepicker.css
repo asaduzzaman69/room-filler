@@ -750,7 +750,8 @@
 }
 .DateRangePickerInput__withBorder {
     border-radius: 2px;
-    border: 1px solid #dbdbdb
+    border: 1px solid #dbdbdb;
+    border-right: none!important;
 }
 .DateRangePickerInput__rtl {
     direction: rtl

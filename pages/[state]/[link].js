@@ -3,19 +3,17 @@ import Head from "next/head"
 import Layout from "../../components/layout";
 import {
     bookedOrPastDates,
-    isDayBlocked,
     getAllProperties,
     getPropertyCalendar,
-    getPropertyFirstImage
+    getPropertyFirstImage, generateBlockedCalendarDays, isDayBlocked
 } from "../../services/properties";
 import {Button, Card, Row} from "react-bootstrap";
 import {useState} from "react";
 import Navbar from "../../components/navbar";
 import {DayPickerRangeController} from "react-dates";
+import TextExpand from "../../components/text-expand";
 
 export default function PropertyPage({ property }) {
-
-    console.log(property.params)
 
     return (
         <Layout>
@@ -27,6 +25,9 @@ export default function PropertyPage({ property }) {
             </Head>
 
             <Navbar />
+
+            <br />
+            <br />
 
             <Card className="selected-property">
                 {property.params.id && property.params.images.length > 1 &&
@@ -42,14 +43,20 @@ export default function PropertyPage({ property }) {
                     <Card.Title>
                         {property.params.title}
                     </Card.Title>
-                    <Card.Text>
-                        {property.params.description}
-                    </Card.Text>
+
+                    <TextExpand text={property.params.description} />
 
                     <DayPickerRangeController
                         onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
-                        isDayBlocked={(day) => {return isDayBlocked(day)}}
+                        isDayBlocked={(day) => {return isDayBlocked(property.params.calendar, day)}}
+                        className="my-2"
                     />
+
+                    <Card.Title className="pt-4">Amenities</Card.Title>
+                    {property.params.amenities.split(',').map((amenity, index) => <p key={'amenity-list-' + index}>{amenity}</p>)}
+
+                    <a className="btn btn-primary mr-2" href={property.params.airbnbListingURL} target="_blank">View on AirBnB</a>
+                    <a className="btn btn-primary" href={property.params.vrboListingURL} target="_blank">View on VRBO</a>
                 </Card.Body>
             </Card>
         </Layout>
@@ -70,7 +77,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log(params)
     // Fetch necessary data for the blog post using current route params
     const allProperties = await getAllProperties();
     let property = {};
@@ -79,7 +85,8 @@ export async function getStaticProps({ params }) {
             property = {params: doc.data()};
         }
     });
-    property.params.calendar = (await getPropertyCalendar(property.params)).data();
+    let calendar = (await getPropertyCalendar(property.params)).data();
+    property.params.calendar = generateBlockedCalendarDays(calendar);
     return {
         props: {
             property,

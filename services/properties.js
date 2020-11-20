@@ -62,7 +62,11 @@ export function getPropertyFirstImage(property) {
 
 export function dateInFuture(date) {
     return new Date(date) >= new Date().setHours(0,0,0,0)
-};
+}
+
+export function isDayBlocked(calendar, date) {
+    return calendar[date.format('YYYY/MM/DD')];
+}
 
 export function bookedOrPastDates(date, reservations) {
     if (new Date(date) < new Date().setHours(0,0,0,0)) { return true; }
@@ -73,8 +77,20 @@ export function bookedOrPastDates(date, reservations) {
     return dateBooked;
 }
 
-export function isDayBlocked(day) {
-    return true;
+export function generateBlockedCalendarDays(calendar) {
+    const month = {};
+    const currentDate = {};
+    calendar.dates.forEach((date) => {
+        currentDate['date'] = date.startDate;
+        currentDate['editingDate'] = new Date(date.startDate);
+        month[currentDate['date']] = true;
+        while (currentDate['date'] < date.endDate) {
+            currentDate['editingDate'].setDate(currentDate['editingDate'].getDate() + 1);
+            currentDate.date = currentDate['editingDate'].toISOString().split('T')[0].replace(/-/g, '/');
+            month[currentDate.date] = true;
+        }
+    })
+    return month;
 }
 
 export function getPropertyCalendar(property) {
@@ -85,7 +101,7 @@ export function getPropertyFutureCalendar(property) {
     const today = (new Date()).toISOString().slice(0,10).replace(/-/g,"/");
     return new Promise(async (res, rej) => {
         try {
-            let calendar = await firebase.firestore().collection('calendar').doc(property.id).get();
+            let calendar = await getPropertyCalendar(property);
             const newDates = [];
             const dates = (calendar.data()).dates;
             dates.forEach((date) => {

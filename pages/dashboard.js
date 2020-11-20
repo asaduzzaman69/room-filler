@@ -2,23 +2,23 @@ import Link from "next/link"
 import Head from "next/head"
 import Layout from "../components/layout";
 import {
-    bookedOrPastDates,
-    isDayBlocked,
+    generateBlockedCalendarDays,
     getAllProperties,
     getPropertyCalendar, getPropertyFirstImage,
-    getUsersProperties,
+    getUsersProperties, isDayBlocked,
     updateProperty,
     uploadPropertyImages
 } from "../services/properties";
 import firebase from "../lib/firebase";
-import {getUser, isUserAdmin} from "../services/user";
+import {isUserAdmin} from "../services/user";
 import Router from "next/router";
 import {useState} from "react";
-import {Button, Modal, Form, Alert, Container, Row, Col, Card, ListGroup, Image} from "react-bootstrap";
+import {Button, Modal, Form, Alert, Container, Row, Col, Card, ListGroup} from "react-bootstrap";
 import Navbar from "../components/navbar";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import { Sortable, MultiDrag, Swap, OnSpill, AutoScroll } from "sortablejs";
+import { Sortable } from "sortablejs";
 import {DayPickerRangeController} from "react-dates";
+import TextExpand from "../components/text-expand";
 
 async function addEditProperty(e, property, cb, showSuccess = false) {
     console.log(property);
@@ -167,13 +167,11 @@ export function Dashboard(props) {
 
     const {user, managedProperties, fieldsCompleted, isAdmin} = props;
     let [selectedProperty, setSelectedProperty] = useState(managedProperties[0] || propertyPlaceholder);
-    let [calendarModifiers, setCalendarModifiers] = useState({disabled: (date) => { return true; }});
+    let [calendar, setCalendar] = useState({});
 
     const loadPropertyCalendar = (property) => {
         getPropertyCalendar(property).then((calendar) => {
-            setCalendarModifiers({
-                disabled: date => bookedOrPastDates(date, calendar.data().dates),
-            })
+            return setCalendar(generateBlockedCalendarDays(calendar.data()));
         });
     }
 
@@ -215,7 +213,7 @@ export function Dashboard(props) {
 
             <Navbar user={user} />
 
-            <h1>Welcome {user.displayName}</h1>
+            <h1 className="mt-5 pt-5">Welcome {user.displayName}</h1>
 
             <p>You have {managedProperties.length} Properties</p>
 
@@ -259,12 +257,10 @@ export function Dashboard(props) {
                                 <Card.Title>
                                     {selectedProperty.title}
                                 </Card.Title>
-                                <Card.Text>
-                                    {selectedProperty.description}
-                                </Card.Text>
+                                <TextExpand text={selectedProperty.description} />
                                 <DayPickerRangeController
                                     onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
-                                    isDayBlocked={(day) => {return isDayBlocked(day)}}
+                                    isDayBlocked={(day) => {return isDayBlocked(calendar, day)}}
                                 />
                             </Card.Body>
                         </Card>
@@ -325,7 +321,7 @@ export function Dashboard(props) {
                         <Row id="propertyImagesPreview" className="mb-2 mx-auto"></Row>
                         <Form.Label>Property Amenities (Ctrl + Click to select multiple)</Form.Label>
                         {
-                            ['Wifi', 'TV', 'Heater, air conditioning', 'Parking', 'Hair dryer', 'Breakfast', 'Carbon monoxide alarm', 'Smoke alarm', 'Fire extinguisher', 'First-aid kit', 'Accessible bathroom']
+                            ['Wifi', 'TV', 'Heater, Air conditioning', 'Parking', 'Hair dryer', 'Breakfast', 'Carbon monoxide alarm', 'Smoke alarm', 'Fire extinguisher', 'First-aid kit', 'Accessible bathroom']
                             .map((amenity, index) => (
                                 <Form.Group className="mb-1 pl-2" controlId={'propertyAmenities' + index} key={'amenities-' + index}>
                                     <Form.Check type="checkbox" label={amenity} checked={selectedProperty.amenities.includes(amenity)} onChange={() => { setSelectedProperty({ ...selectedProperty, amenities: getAmenitiesList(selectedProperty.amenities, amenity) }); }} />
@@ -355,6 +351,27 @@ export function Dashboard(props) {
                             </Form.Text>
                             <Form.Control type="text" placeholder="Vrbo Calendar URL Link" key-data="vrboCalendarURL" />
                         </Form.Group>
+                        <hr />
+                        <Row>
+                            <Col>
+                                <Form.Group controlId="propertyRooms">
+                                    <Form.Label className="mb-0">Room Count</Form.Label>
+                                    <Form.Control type="number" placeholder="Rooms" key-data="roomCount" />
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group controlId="propertyBathrooms">
+                                    <Form.Label className="mb-0">Bathroom Count</Form.Label>
+                                    <Form.Control type="number" placeholder="Bathrooms" key-data="bathroomCount" />
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group controlId="propertyOccupancy">
+                                    <Form.Label className="mb-0">Max Occupancy</Form.Label>
+                                    <Form.Control type="number" placeholder="Occupancy" key-data="maxOccupancy" />
+                                </Form.Group>
+                            </Col>
+                        </Row>
                         <hr />
                         <Form.Group controlId="ownerName">
                             <Form.Label>Owner Name</Form.Label>
