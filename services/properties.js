@@ -32,7 +32,7 @@ export function getAllProperties() {
 }
 
 export function getAvailableProperties(startDate, endDate) {
-    return fetch('http://localhost:3000/api/getAvailableProperties?startDate=' + startDate + '&endDate=' + endDate);
+    return fetch('/api/getAvailableProperties?startDate=' + startDate + '&endDate=' + endDate);
 }
 
 export function getSingleProperty(id = null) {
