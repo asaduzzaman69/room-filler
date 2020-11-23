@@ -56,50 +56,52 @@ class Home extends React.Component {
 
               <main>
                   <Navbar />
-                  <Container className="mt-5 pt-5">
-                      <Row className="form-row">
-                          <Col xs="auto" className="pr-0 border-right-0">
-                              <DateRangePicker
-                                  startDateId="startDate"
-                                  endDateId="endDate"
-                                  startDate={this.state.startDate}
-                                  endDate={this.state.endDate}
-                                  onDatesChange={({ startDate, endDate }) => { this.setState({ ...this.state, startDate, endDate })}}
-                                  focusedInput={this.state.focusedInput}
-                                  onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
-                              />
-                          </Col>
-                          <Col xs="auto" className="pl-0">
-                              <Form.Group controlId="exampleForm.ControlSelect1">
-                                  <Form.Control as="select" onChange={({ guests }) => { this.setState({ ...this.state, guests: guests })}}
-                                    style={{height: '48px', borderRadius: '0px', borderLeft: 'none!important'}}>
-                                      <option value={1}>1 guest</option>
-                                      <option value={2}>2 guests</option>
-                                      <option value={3}>3 guests</option>
-                                      <option value={4}>4 guests</option>
-                                      <option value={5}>5 guests</option>
-                                      <option value={6}>6 guests</option>
-                                      <option value={7}>7 guests</option>
-                                      <option value={8}>8 guests</option>
-                                      <option value={9}>9 guests</option>
-                                      <option value={10}>10 guests</option>
-                                      <option value={11}>11 guests</option>
-                                      <option value={12}>12+ guests</option>
-                                  </Form.Control>
-                              </Form.Group>
-                          </Col>
-                          <Col xs="auto">
-                              <Link href={getSearchLink(this.state.startDate, this.state.endDate)}>
-                                  <a className="btn btn-primary py-2 mt-1">
-                                      Search
-                                  </a>
-                              </Link>
-                          </Col>
-                      </Row>
-                      <Row className="form-row py-3">
-                          {getProperties(this.state.properties)}
-                      </Row>
-                  </Container>
+                  <div className="main-bg pt-5">
+                      <Container className="mt-5 pt-5">
+                          <Row className="form-row">
+                              <Col xs="auto" className="pr-0 border-right-0">
+                                  <DateRangePicker
+                                      startDateId="startDate"
+                                      endDateId="endDate"
+                                      startDate={this.state.startDate}
+                                      endDate={this.state.endDate}
+                                      onDatesChange={({ startDate, endDate }) => { this.setState({ ...this.state, startDate, endDate })}}
+                                      focusedInput={this.state.focusedInput}
+                                      onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
+                                  />
+                              </Col>
+                              <Col xs="auto" className="pl-0">
+                                  <Form.Group controlId="exampleForm.ControlSelect1">
+                                      <Form.Control as="select" onChange={({ guests }) => { this.setState({ ...this.state, guests: guests })}}
+                                        style={{height: '48px', borderRadius: '0px', borderLeft: '0px', borderTopRightRadius: '2px', borderBottomRightRadius: '2px'}}>
+                                          <option value={1}>1 guest</option>
+                                          <option value={2}>2 guests</option>
+                                          <option value={3}>3 guests</option>
+                                          <option value={4}>4 guests</option>
+                                          <option value={5}>5 guests</option>
+                                          <option value={6}>6 guests</option>
+                                          <option value={7}>7 guests</option>
+                                          <option value={8}>8 guests</option>
+                                          <option value={9}>9 guests</option>
+                                          <option value={10}>10 guests</option>
+                                          <option value={11}>11 guests</option>
+                                          <option value={12}>12+ guests</option>
+                                      </Form.Control>
+                                  </Form.Group>
+                              </Col>
+                              <Col xs="auto">
+                                  <Link href={getSearchLink(this.state.startDate, this.state.endDate)}>
+                                      <a className="btn btn-primary py-2 mt-1">
+                                          Search
+                                      </a>
+                                  </Link>
+                              </Col>
+                          </Row>
+                          <Row className="form-row py-3">
+                              {getProperties(this.state.properties)}
+                          </Row>
+                      </Container>
+                  </div>
               </main>
 
               <style jsx global>{`
