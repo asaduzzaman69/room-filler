@@ -31,8 +31,8 @@ export function getAllProperties() {
     return firebase.firestore().collection('properties').get();
 }
 
-export function getAvailableProperties(startDate, endDate) {
-    return fetch('/api/getAvailableProperties?startDate=' + startDate + '&endDate=' + endDate);
+export function getAvailableProperties(startDate, endDate, guests) {
+    return fetch('/api/getAvailableProperties?startDate=' + startDate + '&endDate=' + endDate + '&guests=' + guests);
 }
 
 export function getSingleProperty(id = null) {
@@ -51,6 +51,13 @@ export function getUsersProperties(user = null) {
             ])
         });
     });
+}
+
+export function getSearchLink(startDate, endDate, guests) {
+    if (!startDate || !endDate) {
+        return '/search';
+    }
+    return '/search?startDate=' + startDate + '&endDate=' + endDate + '&guests=' + guests;
 }
 
 export function getPropertyFirstImage(property) {

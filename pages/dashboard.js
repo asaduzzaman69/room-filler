@@ -21,7 +21,6 @@ import {DayPickerRangeController} from "react-dates";
 import TextExpand from "../components/text-expand";
 
 async function addEditProperty(e, property, cb, showSuccess = false) {
-    console.log(property);
     if (e) {
         e.preventDefault();
         e.persist();
@@ -33,13 +32,11 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
     };
     addedProperty.createdBy = addedProperty.createdBy || this.state.user.uid
     addedProperty.published = addedProperty.published || false;
-    addedProperty.images = resetImages();
-    console.log(addedProperty);
+    addedProperty.images = resetImages(addedProperty);
 
     let fieldsCompleted = true;
     if (e) {
         for (var x = 0; x < e.target.length; x++) {
-            console.log(addedProperty);
             const field = e.target[x];
             if (field.value && field.id && field.getAttribute('key-data')) {
                 addedProperty[field.getAttribute('key-data')] = field.value;
@@ -52,32 +49,24 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
             }
         }
     }
-    console.log(addedProperty);
     if (!fieldsCompleted) { return this.setState({ ...this.state, fieldsCompleted: false }); }
     if (!existingProperty) {
         const ref = firebase.firestore().collection('properties').doc();
         addedProperty.id = ref.id;
     }
-    console.log(addedProperty);
 
     await updateProperty(addedProperty);
-    console.log(addedProperty);
     if (!existingProperty) {
         this.setState({ ...this.state, fieldsCompleted: true, managedProperties: [...this.state.managedProperties, addedProperty] });
-        console.log(addedProperty);
     } else {
         const managedProperties = this.state.managedProperties;
-        console.log(addedProperty);
         let activeIndex = 0;
         managedProperties.forEach((element, index) => {
             if (element.id === addedProperty.id) { activeIndex = index }
         });
         managedProperties[activeIndex] = addedProperty;
-        console.log(addedProperty);
         this.setState({ ...this.state, fieldsCompleted: true, managedProperties: managedProperties });
-        console.log(addedProperty);
     }
-    console.log(addedProperty)
     cb(addedProperty);
     alert('Successfully Updated!')
 }
@@ -122,8 +111,11 @@ function addFileImagePreview(file, selectedProperty) {
     });
 }
 
-function resetImages() {
+function resetImages(property) {
     const newImages = [];
+    if (!document.getElementById("propertyImagesPreview")) {
+        return property.images;
+    }
     const images = document.getElementById("propertyImagesPreview").getElementsByClassName('add-image-preview');
     for (var x = 0; x < images.length; x++) {
         newImages.push(images[x].style.background.replace('url("', '').replace('")', ''));
@@ -178,7 +170,7 @@ export function Dashboard(props) {
     function setupReorder() {
         const  el = document.getElementById("propertyImagesPreview");
         Sortable.create(el, { onUpdate: () => {
-            selectedProperty.images = resetImages();
+            selectedProperty.images = resetImages(selectedProperty);
         } });
     }
 
@@ -249,8 +241,18 @@ export function Dashboard(props) {
                                     </Button>
                                     }
                                     {selectedProperty.id &&
-                                    <Button variant="primary" onClick={handleShow}>
+                                    <Button variant="primary" className="mr-2" onClick={handleShow}>
                                         Edit Property
+                                    </Button>
+                                    }
+                                    {selectedProperty.id && selectedProperty.published &&
+                                    <Button variant="primary" onClick={() => {addEditProperty(null, {...selectedProperty, published: !selectedProperty.published}, () => { setSelectedProperty({...selectedProperty, published: !selectedProperty.published}); }, true)}}>
+                                        Unpublish
+                                    </Button>
+                                    }
+                                    {selectedProperty.id && !selectedProperty.published && isAdmin &&
+                                    <Button variant="primary" onClick={() => {addEditProperty(null, {...selectedProperty, published: !selectedProperty.published}, () => { setSelectedProperty({...selectedProperty, published: !selectedProperty.published}); }, true)}}>
+                                        Publish Live
                                     </Button>
                                     }
                                 </Card.Title>
@@ -356,7 +358,7 @@ export function Dashboard(props) {
                             <Col>
                                 <Form.Group controlId="propertyRooms">
                                     <Form.Label className="mb-0">Room Count</Form.Label>
-                                    <Form.Control type="number" placeholder="Rooms" key-data="roomCount" />
+                                    <Form.Control type="number" placeholder="Rooms" key-data="bedroomCount" />
                                 </Form.Group>
                             </Col>
                             <Col>

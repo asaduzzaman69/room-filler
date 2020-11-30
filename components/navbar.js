@@ -1,14 +1,14 @@
 import Link from "next/link";
 import firebase from "../lib/firebase";
 import Router from "next/router";
+import {useState} from "react";
 
 async function logout() {
     await firebase.auth().signOut();
     return Router.push('/login');
 }
 
-function getAuthedNavbarContent() {
-    let user = firebase.auth().currentUser;
+function getAuthedNavbarContent(user) {
     if (user && user.uid) {
         return (
             <ul className="navbar-nav col-12">
@@ -23,23 +23,39 @@ function getAuthedNavbarContent() {
             </ul>
         )
     }
-    return <Link href="/login">
-        <a className="nav-link ml-auto cursor-pointer">Sign in</a>
-    </Link>
+    return (
+        <ul className="navbar-nav col-12">
+            <li className="nav-item ml-auto">
+                <Link href="/login">
+                    <a className="nav-link ml-auto cursor-pointer">About</a>
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link href="/login">
+                    <a className="nav-link ml-auto cursor-pointer">Sign in</a>
+                </Link>
+            </li>
+        </ul>
+    )
 }
 
-export default function Navbar({ user }) {
+export default function Navbar({ bg }) {
+    const [user, setUser] = useState();
+    firebase.auth().onAuthStateChanged((authUser) => {
+        setUser(authUser);
+    });
+
     return (
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light">
+        <nav className={'navbar fixed-top navbar-expand-lg navbar-light ' + (bg || '')}>
             <Link href="/">
-                <a className="navbar-brand font-weight-bold ml-md-5 pl-lg-5">Zion Village Resorts</a>
+                <a className="navbar-brand font-weight-bold ml-lg-5 pl-lg-5">Zion Village Resorts</a>
             </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse mr-md-5 pr-lg-5" id="navbarText">
-                {getAuthedNavbarContent()}
+            <div className="collapse navbar-collapse mr-lg-5 pr-lg-5" id="navbarText">
+                {getAuthedNavbarContent(user)}
             </div>
         </nav>
     )

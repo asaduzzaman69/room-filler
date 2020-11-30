@@ -3,7 +3,7 @@ import getEnvironmentConfig from "../environment";
 import Link from "next/link";
 import {Container, Row, Col, Card, Form} from "react-bootstrap";
 import Navbar from "../components/navbar";
-import {getAllProperties} from "../services/properties";
+import {getAllProperties, getSearchLink} from "../services/properties";
 import { DateRangePicker } from 'react-dates';
 
 function getPropertyLink(property) {
@@ -12,21 +12,27 @@ function getPropertyLink(property) {
 
 function getProperties(properties) {
     return Object.keys(properties).map((prop) => {
-        return <Col xs="4" key={properties[prop].link}>
-            <Card className="text-center py-3">
-                <Link href={getPropertyLink(properties[prop])}>
-                    <a>{properties[prop].title}</a>
-                </Link>
-            </Card>
+        return <Col xs="12" md="6" key={properties[prop].link}>
+            <Link href={getPropertyLink(properties[prop])}>
+                <Card className="text-center cursor-pointer">
+                    <div className="row no-gutters">
+                        <div className="col-sm-5" style={{background: 'url(\'' + properties[prop].images[0] + '\')', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                        </div>
+                        <div className="col-sm-7">
+                            <div className="card-body py-2">
+                                <h5 className="card-title text-left">{properties[prop].title}</h5>
+                                <p className="card-text text-left mb-2">{properties[prop].description.substring(0, 200)}...</p>
+                                <p className="text-left mb-0">
+                                    <i className="fa fa-bed ml-2" aria-hidden="true"></i> {properties[prop].bedroomCount}
+                                    <i className="fa fa-bath ml-2" aria-hidden="true"></i> {properties[prop].bathroomCount}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </Card>
+            </Link>
         </Col>
     })
-}
-
-function getSearchLink(startDate, endDate) {
-    if (!startDate || !endDate) {
-        return '/search';
-    }
-    return '/search?startDate=' + startDate + '&endDate=' + endDate;
 }
 
 class Home extends React.Component {
@@ -48,7 +54,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
               <Head>
                 <title>{getEnvironmentConfig().title}</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -57,8 +63,13 @@ class Home extends React.Component {
               <main>
                   <Navbar />
                   <div className="main-bg pt-5">
-                      <Container className="mt-5 pt-5">
-                          <Row className="form-row">
+                      <div className="greyscale"></div>
+                      <Container className="mt-5 pt-3">
+                          <Row>
+                              <h1 className="col-12 px-2 ml-5 text-light z-index-999">Title Heading here</h1>
+                              <h2 className="col-12 px-2 ml-5 text-light z-index-999">Sub Heading here</h2>
+                          </Row>
+                          <Row className="form-row d-inline-flex pt-4 pb-2 px-4 rounded" style={{background: 'rgba(255, 255, 255, 0.6)'}}>
                               <Col xs="auto" className="pr-0 border-right-0">
                                   <DateRangePicker
                                       startDateId="startDate"
@@ -71,8 +82,8 @@ class Home extends React.Component {
                                   />
                               </Col>
                               <Col xs="auto" className="pl-0">
-                                  <Form.Group controlId="exampleForm.ControlSelect1">
-                                      <Form.Control as="select" onChange={({ guests }) => { this.setState({ ...this.state, guests: guests })}}
+                                  <Form.Group controlId="propertySearchGuestCount">
+                                      <Form.Control as="select" onChange={() => { this.setState({ ...this.state, guests: document.getElementById('propertySearchGuestCount').value })}}
                                         style={{height: '48px', borderRadius: '0px', borderLeft: '0px', borderTopRightRadius: '2px', borderBottomRightRadius: '2px'}}>
                                           <option value={1}>1 guest</option>
                                           <option value={2}>2 guests</option>
@@ -90,14 +101,18 @@ class Home extends React.Component {
                                   </Form.Group>
                               </Col>
                               <Col xs="auto">
-                                  <Link href={getSearchLink(this.state.startDate, this.state.endDate)}>
+                                  <Link href={getSearchLink(this.state.startDate, this.state.endDate, this.state.guests)}>
                                       <a className="btn btn-primary py-2 mt-1">
                                           Search
                                       </a>
                                   </Link>
                               </Col>
                           </Row>
-                          <Row className="form-row py-3">
+                      </Container>
+                  </div>
+                  <div>
+                      <Container>
+                          <Row className="pt-4">
                               {getProperties(this.state.properties)}
                           </Row>
                       </Container>
