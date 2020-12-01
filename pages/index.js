@@ -5,6 +5,7 @@ import {Container, Row, Col, Card, Form} from "react-bootstrap";
 import Navbar from "../components/navbar";
 import {getAllProperties, getSearchLink} from "../services/properties";
 import { DateRangePicker } from 'react-dates';
+import Footer from "../components/footer";
 
 function getPropertyLink(property) {
     return `/${property.address.state}/${property.link}`
@@ -117,6 +118,7 @@ class Home extends React.Component {
                           </Row>
                       </Container>
                   </div>
+                  <Footer />
               </main>
 
               <style jsx global>{`
