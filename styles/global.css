@@ -1,61 +1,210 @@
 .main-bg {
-    width: 100%;
-    min-height: 350px;
-    display: block;
-    position: relative;
-    top: 0px;
-    left: 0px;
+  width: 100%;
+  min-height: 350px;
+  display: block;
+  /* position: relative;
+  top: 0px;
+  left: 0px; */
+}
+.main-bg {
+  background: url("/images/home_bg.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+.greyscale {
+  min-height: 350px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.greyscale h1 {
+  font-size: 40px;
+  font-weight: 100;
+}
+.greyscale h2 {
+  font-size: 20px;
+  font-weight: 100;
+}
+.searchbox {
+  width: 100%;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  border-radius: 100px;
+}
+.searchbox .DateInput.DateInput_1 {
+  background: transparent;
+}
+.searchbox .DateInput.DateInput_1:first-child input {
+  border-radius: 100px 0 0 100px;
+}
+.searchbox
+  .DateRangePickerInput.DateRangePickerInput_1.DateRangePickerInput__withBorder.DateRangePickerInput__withBorder_2 {
+  border-radius: 100px 0 0 100px;
+  width: 100%;
+  border: none;
+}
+.DateRangePicker {
+  width: 100%;
+}
+.searchbox .form-group {
+  border-radius: 0;
 }
 
-.main-bg .greyscale {
-    filter: grayscale(50%);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    background: url('/images/home_bg.jpg');
-    background-position: center;
-    background-size: cover;
+.searchbox .searchbutn {
+  border-radius: 0 100px 100px 0;
+  padding: 11px 30px !important;
+  background: #61acbb;
+  border-color: #61acbb;
 }
+.searchbox .searchbutn:hover {
+  background: #6191bb;
+  border-color: #6191bb;
+}
+.headingbox h2 {
+  font-size: 40px;
+  font-weight: 100;
+  color: #61acbb;
+}
+.headingbox hr {
+  border-bottom: 4px double #61acbb;
+  width: 80px;
+}
+.headingbox p {
+  color: #999;
+}
+.cardbox .card {
+  border-radius: 8px;
+  overflow: hidden;
+  border-bottom: 6px solid #61acbb;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.card-body .card-title {
+  color: #61acbb;
+  font-weight: 700;
+}
+.card-body .card-text {
+  color: #999;
+  font-size: 16px;
+}
+.iconbox i {
+  color: #61acbb;
+}
+.fixed-bottom {
+  background: #333;
+}
+.fixed-bottom a,
+.fixed-bottom .navbar-brand {
+  color: #fff !important;
+  font-size: 12px;
+}
+.fixed-bottom a:hover,
+.fixed-bottom .navbar-brand:hover {
+  color: #61acbb !important;
+}
+.backhome a {
+  background: #61acbb;
+  color: #fff;
+  font-size: 16px;
+  padding: 6px 20px;
+  border-radius: 100px;
+}
+.firebaseui-id-page-sign-in {
+  border-radius: 8px;
+}
+.firebaseui-form-actions .firebaseui-id-submit {
+  background: #61acbb !important;
+  border-radius: 100px;
+}
+@media (max-width: 1200px) {
+  .DateRangePicker.DateRangePicker_1 div:first-child {
+    display: inline-flex;
+  }
+}
+@media (max-width: 767px) {
+  .searchbox {
+    border-radius: 0px;
+    width: 310px;
+  }
+  .DateRangePicker.DateRangePicker_1 div:first-child {
+    width: 100%;
+  }
+  .searchbox .DateInput.DateInput_1:first-child input {
+    border-radius: 0px;
+  }
+  .searchbox
+    .DateRangePickerInput.DateRangePickerInput_1.DateRangePickerInput__withBorder.DateRangePickerInput__withBorder_2 {
+    border-radius: 0px;
+  }
+  .searchbox .searchbutn,
+  .searchbox .form-group {
+    border-radius: 0px;
+    width: 100% !important;
+  }
+  .searchbox .form-group {
+    margin: 0 auto;
+  }
+  .DateRangePicker.DateRangePicker_1 div:first-child {
+    display: block;
+    width: 100% !important;
+  }
+  .DateRangePicker {
+    width: 100%;
+  }
+  .fixed-bottom {
+    display: inline-block !important;
+  }
+  .fixed-bottom .navbar-expand .navbar-nav {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+/* .main-bg .greyscale {
+  filter: grayscale(50%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: url("/images/home_bg.jpg");
+  background-position: center;
+  background-size: cover;
+} */
 
 .z-index-999 {
-    z-index: 999;
+  z-index: 999;
 }
 
 nav {
-    background: none;
+  background: none;
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .search-chevron {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .selected-property .card-img-top {
-    height: 400px;
-    object-fit: cover;
-    vertical-align: top;
+  height: 400px;
+  object-fit: cover;
+  vertical-align: top;
 }
 
 .selected-property .half-image-size {
-    height: 200px!important;
+  height: 200px !important;
 }
 
 .add-image-preview {
-    min-height: 150px;
-    background-size: contain!important;
-    background-position: center!important;
+  min-height: 150px;
+  background-size: contain !important;
+  background-position: center !important;
 }
 
 .hover-bg-danger:hover {
-    color: #fff!important;
-    background-color: #DF4554!important;
-    cursor: pointer;
+  color: #fff !important;
+  background-color: #df4554 !important;
+  cursor: pointer;
 }

@@ -133,7 +133,7 @@ function updateCalendars() {
 }
 
 export function Dashboard(props) {
-    const propertyPlaceholder = {title: 'None selected', description: 'Select or add a property to continue', amenities: ''};
+    const propertyPlaceholder = {title: '', description: '', amenities: ''};
     const [addressValue] = useState(null);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -160,7 +160,6 @@ export function Dashboard(props) {
     const {user, managedProperties, fieldsCompleted, isAdmin} = props;
     let [selectedProperty, setSelectedProperty] = useState(managedProperties[0] || propertyPlaceholder);
     let [calendar, setCalendar] = useState({});
-
     const loadPropertyCalendar = (property) => {
         getPropertyCalendar(property).then((calendar) => {
             return setCalendar(generateBlockedCalendarDays(calendar.data()));
@@ -257,9 +256,12 @@ export function Dashboard(props) {
                                     }
                                 </Card.Title>
                                 <Card.Title>
-                                    {selectedProperty.title}
+                                    {selectedProperty.title ||'None selected'}
                                 </Card.Title>
-                                <TextExpand text={selectedProperty.description} />
+                                {
+                                  selectedProperty.description? <TextExpand text={selectedProperty.description} />:<p>Select or add a property to continue...</p>
+                                }
+                               
                                 <DayPickerRangeController
                                     onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
                                     isDayBlocked={(day) => {return isDayBlocked(calendar, day)}}

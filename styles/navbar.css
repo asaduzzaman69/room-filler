@@ -1,0 +1,27 @@
+.main-navbar {
+  background: #fff;
+  margin-bottom: 60px;
+}
+.main-navbar .navbar {
+  border-top: 4px solid #61acbb;
+  padding: 10px 0;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.main-navbar .navbar div a {
+  color: #222 !important;
+  padding: 4px 30px 6px 30px !important;
+}
+.main-navbar .navbar div a:hover {
+  color: #61acbb !important;
+}
+.main-navbar .rightside-nav a:last-child {
+  background: #61acbb;
+  border-radius: 100px;
+  text-align: center;
+  color: #fff !important;
+  padding: 4px 30px 6px 30px !important;
+}
+.main-navbar .navbar ul li:last-child a:hover {
+  background: #6191bb;
+}
