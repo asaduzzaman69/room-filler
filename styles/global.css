@@ -47,12 +47,18 @@
 .searchbox .form-group {
   border-radius: 0;
 }
-
+.searchbox .form-group select {
+  border: none;
+}
 .searchbox .searchbutn {
   border-radius: 0 100px 100px 0;
   padding: 11px 30px !important;
   background: #61acbb;
   border-color: #61acbb;
+}
+.searchbox .searchbutn:focus {
+  box-shadow: none;
+  outline: none;
 }
 .searchbox .searchbutn:hover {
   background: #6191bb;
@@ -112,6 +118,39 @@
 .firebaseui-form-actions .firebaseui-id-submit {
   background: #61acbb !important;
   border-radius: 100px;
+}
+.wifilist h3 {
+  color: #61acbb;
+  font-size: 25px;
+  font-weight: 600;
+}
+.optonslist {
+  list-style: none;
+  padding: 0;
+}
+.optonslist li {
+  margin-bottom: 10px;
+}
+.butns-view {
+  display: inline-flex;
+  margin: 10px 0;
+}
+.butns-view a {
+  background: #61acbb;
+  border-radius: 100px;
+  text-align: center;
+  color: #fff !important;
+  margin-right: 10px;
+  padding: 4px 30px 6px 30px !important;
+}
+.clink {
+  color: #000;
+  margin-right: 10px;
+  margin-right: 10px;
+}
+.dashbox {
+  float: left;
+  width: 100%;
 }
 @media (max-width: 1200px) {
   .DateRangePicker.DateRangePicker_1 div:first-child {

@@ -60,11 +60,7 @@ export default function CustomNavbar({ bg }) {
     <div className="main-navbar">
       <Navbar bg="light" expand="lg" fixed="top">
         <Container className="px-3">
-          <Navbar.Brand>
-            <Link href="/">
-              Zion Village Resorts
-            </Link>
-          </Navbar.Brand>
+          <Navbar.Brand href="#home">Zion Village Resorts</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

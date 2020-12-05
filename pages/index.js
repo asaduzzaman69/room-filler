@@ -8,7 +8,8 @@ import { DateRangePicker } from "react-dates";
 import Footer from "../components/footer";
 
 function getPropertyLink(property) {
-  return `/${property.address.state}/${property.link}`;
+  // return `/${property.address.state}/${property.link}`;
+  return `/${property.address}/${property.link}`;
 }
 
 function getProperties(properties) {
