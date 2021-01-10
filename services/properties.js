@@ -134,25 +134,29 @@ export function bookedOrPastDates(date, reservations) {
 }
 
 export function generateBlockedCalendarDays(calendar) {
+
   const month = {};
   const currentDate = {};
-  console.log({ calendar });
-  calendar.dates.forEach(date => {
-    currentDate["date"] = date.startDate;
-    currentDate["editingDate"] = new Date(date.startDate);
-    month[currentDate["date"]] = true;
-    while (currentDate["date"] < date.endDate) {
-      currentDate["editingDate"].setDate(
-        currentDate["editingDate"].getDate() + 1
-      );
-      currentDate.date = currentDate["editingDate"]
-        .toISOString()
-        .split("T")[0]
-        .replace(/-/g, "/");
-      month[currentDate.date] = true;
-    }
-  });
-  return month;
+  if(calendar) {
+    calendar.dates.forEach(date => {
+      currentDate["date"] = date.startDate;
+      currentDate["editingDate"] = new Date(date.startDate);
+      month[currentDate["date"]] = true;
+      while (currentDate["date"] < date.endDate) {
+        currentDate["editingDate"].setDate(
+          currentDate["editingDate"].getDate() + 1
+        );
+        currentDate.date = currentDate["editingDate"]
+          .toISOString()
+          .split("T")[0]
+          .replace(/-/g, "/");
+        month[currentDate.date] = true;
+      }
+    });
+    return month;
+ } else{
+   return null
+ }
 }
 
 export function getPropertyCalendar(property) {
@@ -206,8 +210,7 @@ export async function updatePropertyCalendar(property, airbnbData, vrboData) {
             ).length === 0) ||
             (date.platform === "vrbo" &&
               vrboData.filter(
-                e =>
-                  e.startDate === date.startDate && e.endDate === date.endDate
+                e => e.startDate === date.startDate && e.endDate === date.endDate
               ).length === 0))
         ) {
           date.status = "canceled";

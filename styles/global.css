@@ -49,6 +49,7 @@
 }
 .searchbox .form-group select {
   border: none;
+  height: 46px !important;
 }
 .searchbox .searchbutn {
   border-radius: 0 100px 100px 0;
@@ -152,6 +153,28 @@
   float: left;
   width: 100%;
 }
+.searchbox.innersearch {
+  box-shadow: 0 0 2px #000;
+  padding: 0 !important;
+}
+.imagesbox a {
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  margin-right: 15px;
+}
+.imagesbox a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cributn {
+  background: #61acbb !important;
+  border-radius: 100px !important;
+  text-align: center !important;
+  color: #fff !important;
+  padding: 4px 30px 6px 30px !important;
+}
 @media (max-width: 1200px) {
   .DateRangePicker.DateRangePicker_1 div:first-child {
     display: inline-flex;
@@ -226,15 +249,15 @@ nav {
   font-size: 1.2em;
 }
 
-.selected-property .card-img-top {
+/* .selected-property .card-img-top {
   height: 400px;
   object-fit: cover;
   vertical-align: top;
-}
+} */
 
-.selected-property .half-image-size {
+/* .selected-property .half-image-size {
   height: 200px !important;
-}
+} */
 
 .add-image-preview {
   min-height: 150px;

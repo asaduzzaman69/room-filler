@@ -9,13 +9,16 @@ import Footer from "../components/footer";
 
 function getPropertyLink(property) {
   // return `/${property.address.state}/${property.link}`;
-  return `/${property.address}/${property.link}`;
+  return property && property.address
+    ? `/${property.address.state}/${property.link}`
+    : "/";
+  // return `/${property.address}/${property.link}`;
 }
 
 function getProperties(properties) {
-  return Object.keys(properties).map(prop => {
+  return Object.keys(properties).map((prop, index) => {
     return (
-      <Col xs="12" md="6" className="cardbox" key={properties[prop].link}>
+      <Col xs="12" md="6" className="cardbox mb-4" key={`property_${index}`}>
         <Link href={getPropertyLink(properties[prop])}>
           <Card className="text-center cursor-pointer">
             <div className="row no-gutters">
@@ -93,7 +96,7 @@ class Home extends React.Component {
                     >
                       <Col xs="auto" md="5" className="w-100 h-100 px-0">
                         <DateRangePicker
-                          className="w-100"
+                          // className="w-100"
                           startDateId="startDate"
                           endDateId="endDate"
                           startDate={this.state.startDate}

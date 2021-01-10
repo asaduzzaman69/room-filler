@@ -79,7 +79,7 @@ export default function Search() {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Row
-            className="form-row d-inline-flex pt-3 pb-3 px-2  m-auto w-100 searchbox"
+            className="form-row d-inline-flex pt-3 pb-3 px-2  m-auto w-100 searchbox innersearch"
             style={{ background: "rgba(255, 255, 255, 0.6)" }}
           >
             <Col xs="auto" md="5" className="w-100 h-100 px-0">

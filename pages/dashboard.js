@@ -211,9 +211,17 @@ export function Dashboard(props) {
     managedProperties[0] || propertyPlaceholder
   );
   let [calendar, setCalendar] = useState({});
+  let [showCalendarError, setCalendarError] = useState(false);
+
   const loadPropertyCalendar = property => {
     getPropertyCalendar(property).then(calendar => {
-      return setCalendar(generateBlockedCalendarDays(calendar.data()));
+      const blockedDays= generateBlockedCalendarDays(calendar.data());
+      if (blockedDays !== null) {
+        setCalendarError(false);
+        return setCalendar(blockedDays);
+      } else {
+        return setCalendarError(true);
+      }
     });
   };
 
@@ -250,7 +258,6 @@ export function Dashboard(props) {
     const files = e.target.files;
     for (var x = 0; x < files.length; ) {
       const url = await addFileImagePreview(files[x], selectedProperty);
-      console.log(url);
       selectedProperty.images.push(url);
       x++;
     }
@@ -278,11 +285,18 @@ export function Dashboard(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar user={user} />
+     
+     
       <div className="dashbox mt-5">
         <div className="headingbox text-center col-md-6 offset-md-3">
           <h2>Welcome {user.displayName}</h2>
           <p>You have {managedProperties.length} Properties</p>
         </div>
+        {
+        showCalendarError && <Alert variant="danger" className="mt-3" onClose={() => setCalendarError(false)} dismissible>
+        AirBnB/VRBO url is incorrect
+        </Alert>
+      }
         <Button
           variant="primary"
           onClick={() => {
@@ -419,7 +433,6 @@ export function Dashboard(props) {
                     isDayBlocked={day => {
                       return isDayBlocked(calendar, day);
                     }}
-                    small={true}
                   />
                   <div className="wifilist my-4">
                     <h3 class="mb-3">Amenities</h3>
