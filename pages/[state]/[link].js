@@ -162,7 +162,7 @@ export default function PropertyPage({ property }) {
               return (
                 <p key={"amenity-list-" + index} className="my-1">
                   <i
-                    class={
+                    className={
                       amenity === " air conditioning"
                         ? "fal fa-fan-table"
                         : getAmenityIcon(amenity)

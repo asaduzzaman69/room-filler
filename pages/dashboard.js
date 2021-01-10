@@ -312,35 +312,37 @@ export function Dashboard(props) {
           <p>You have {managedProperties.length} Properties</p>
         </div>
         {
-        showCalendarError && <Alert variant="danger" className="mt-3" onClose={() => setCalendarError(false)} dismissible>
-        AirBnB/VRBO url is incorrect
-        </Alert>
-      }
-        <Button
-          variant="primary"
-          onClick={() => {
-            setSelectedProperty(propertyPlaceholder);
-            handleShow();
-          }}
-          className="mb-3"
-        >
+          showCalendarError && <Alert variant="danger" className="mt-3" onClose={() => setCalendarError(false)} dismissible>
+          AirBnB/VRBO url is incorrect
+          </Alert>
+        }
+
+        {!managedProperties.length &&
+        <Button variant="primary" onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow(); }}
+                className="mx-auto d-block px-4 py-3 mt-5 font-weight-bold">
           Add Property
         </Button>
+        }
+
+        {!!managedProperties.length &&
         <Container>
-          <Row>
+          <Button variant="primary" onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow(); }} className="mb-3">
+            Add Property
+          </Button>
+          <Row className="mx-auto">
             <Col xs="12" md="4" className="pl-0">
               <ListGroup>
                 {managedProperties.map(property => {
                   return (
-                    <ListGroup.Item
-                      onClick={() => {
-                        setSelectedProperty(property);
-                        loadPropertyCalendar(property);
-                      }}
-                      key={property.id}
-                    >
-                      {property.title}
-                    </ListGroup.Item>
+                      <ListGroup.Item
+                          onClick={() => {
+                            setSelectedProperty(property);
+                            loadPropertyCalendar(property);
+                          }}
+                          key={property.id}
+                      >
+                        {property.title}
+                      </ListGroup.Item>
                   );
                 })}
               </ListGroup>
@@ -348,111 +350,111 @@ export function Dashboard(props) {
             <Col xs="12" md="8" className="pr-0">
               <Card className="selected-property">
                 {(selectedProperty.id &&
-                  selectedProperty.images.length > 1 && (
-                    <Row
-                      style={{ overflowX: "auto", maxWidth: '605px' }}
-                      className="d-block text-nowrap mb-2 mx-auto"
-                    >
-                      {selectedProperty.images.map((image, index) => (
-                        <Card.Img
-                            style={{ maxHeight: '400px', width: 'auto' }}
-                          key={"view-only-images-" + index}
-                          variant="top"
-                          src={image}
-                        />
-                      ))}
-                    </Row>
-                  )) || (
-                  <Card.Img
-                    variant="top"
-                    src={getPropertyFirstImage(selectedProperty)}
-                  />
+                    selectedProperty.images.length > 1 && (
+                        <Row
+                            style={{overflowX: "auto", maxWidth: '100%'}}
+                            className="d-block text-nowrap mb-2 mx-auto"
+                        >
+                          {selectedProperty.images.map((image, index) => (
+                              <Card.Img
+                                  style={{maxHeight: '400px', width: 'auto'}}
+                                  key={"view-only-images-" + index}
+                                  variant="top"
+                                  src={image}
+                              />
+                          ))}
+                        </Row>
+                    )) || (
+                    <Card.Img
+                        variant="top"
+                        src={getPropertyFirstImage(selectedProperty)}
+                    />
                 )}
                 <Card.Body>
                   <Card.Title>
                     {selectedProperty.id && isAdmin && (
-                      <Button
-                        variant="primary"
-                        className="mr-2"
-                        onClick={() => {
-                          addOwnerEditor(selectedProperty);
-                        }}
-                      >
-                        Add Owner/Editor
-                      </Button>
+                        <Button
+                            variant="primary"
+                            className="mr-2"
+                            onClick={() => {
+                              addOwnerEditor(selectedProperty);
+                            }}
+                        >
+                          Add Owner/Editor
+                        </Button>
                     )}
                     {selectedProperty.id && (
-                      <Button
-                        variant="primary"
-                        className="mr-2"
-                        onClick={handleShow}
-                      >
-                        Edit Property
-                      </Button>
+                        <Button
+                            variant="primary"
+                            className="mr-2"
+                            onClick={handleShow}
+                        >
+                          Edit Property
+                        </Button>
                     )}
                     {selectedProperty.id && selectedProperty.published && (
-                      <Button
-                        variant="primary"
-                        onClick={() => {
-                          addEditProperty(
-                            null,
-                            {
-                              ...selectedProperty,
-                              published: !selectedProperty.published
-                            },
-                            () => {
-                              setSelectedProperty({
-                                ...selectedProperty,
-                                published: !selectedProperty.published
-                              });
-                            },
-                            true
-                          );
-                        }}
-                      >
-                        Unpublish
-                      </Button>
+                        <Button
+                            variant="primary"
+                            onClick={() => {
+                              addEditProperty(
+                                  null,
+                                  {
+                                    ...selectedProperty,
+                                    published: !selectedProperty.published
+                                  },
+                                  () => {
+                                    setSelectedProperty({
+                                      ...selectedProperty,
+                                      published: !selectedProperty.published
+                                    });
+                                  },
+                                  true
+                              );
+                            }}
+                        >
+                          Unpublish
+                        </Button>
                     )}
                     {selectedProperty.id &&
-                      !selectedProperty.published &&
-                      isAdmin && (
+                    !selectedProperty.published &&
+                    isAdmin && (
                         <Button
-                          variant="primary"
-                          onClick={() => {
-                            addEditProperty(
-                              null,
-                              {
-                                ...selectedProperty,
-                                published: !selectedProperty.published
-                              },
-                              () => {
-                                setSelectedProperty({
-                                  ...selectedProperty,
-                                  published: !selectedProperty.published
-                                });
-                              },
-                              true
-                            );
-                          }}
+                            variant="primary"
+                            onClick={() => {
+                              addEditProperty(
+                                  null,
+                                  {
+                                    ...selectedProperty,
+                                    published: !selectedProperty.published
+                                  },
+                                  () => {
+                                    setSelectedProperty({
+                                      ...selectedProperty,
+                                      published: !selectedProperty.published
+                                    });
+                                  },
+                                  true
+                              );
+                            }}
                         >
                           Publish Live
                         </Button>
-                      )}
+                    )}
                   </Card.Title>
                   <Card.Title>
                     {selectedProperty.title || "None selected"}
                   </Card.Title>
                   {selectedProperty.description ? (
-                    <TextExpand text={selectedProperty.description} />
+                      <TextExpand text={selectedProperty.description}/>
                   ) : (
-                    <p>Select or add a property to continue...</p>
+                      <p>Select or add a property to continue...</p>
                   )}
 
                   <DayPickerRangeController
-                    onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
-                    isDayBlocked={day => {
-                      return isDayBlocked(calendar, day);
-                    }}
+                      onFocusChange={({focused}) => console.log(focused)} // PropTypes.func.isRequired
+                      isDayBlocked={day => {
+                        return isDayBlocked(calendar, day);
+                      }}
                   />
                   {selectedProperty.description ? (
                       <div>
@@ -471,7 +473,7 @@ export function Dashboard(props) {
                         <div className="butns-view">
                           <a href={selectedProperty.airbnbListingURL} target="_blank">View on AirBnB</a>
                           {selectedProperty.vrboListingURL &&
-                            <a href={selectedProperty.vrboListingURL} target="_blank">View on VRBO</a>
+                          <a href={selectedProperty.vrboListingURL} target="_blank">View on VRBO</a>
                           }
                         </div>
                         <div className="marklist mt-3">
@@ -489,13 +491,14 @@ export function Dashboard(props) {
                           </p>
                         </div>
                       </div>
-                    ) : (<span></span>)
+                  ) : (<span></span>)
                   }
                 </Card.Body>
               </Card>
             </Col>
           </Row>
         </Container>
+        }
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>
