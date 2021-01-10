@@ -152,7 +152,7 @@ export default function PropertyPage({ property }) {
             <DayPickerRangeController
               onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
               isDayBlocked={day => {
-                return isDayBlocked(property.calendar, day);
+                return property && property.calendar && isDayBlocked(property.calendar, day);
               }}
               className="my-2"
             />
