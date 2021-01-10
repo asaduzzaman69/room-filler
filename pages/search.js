@@ -3,13 +3,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Layout from "../components/layout";
 import {
-  getAllProperties,
   getAvailableProperties,
-  getPropertyCalendar,
   getSearchLink
 } from "../services/properties";
 import Navbar from "../components/navbar";
-import getEnvironmentConfig from "../environment";
 import { Card, Col, Container, Form, Row } from "react-bootstrap";
 import { DateRangePicker } from "react-dates";
 import { useEffect, useState } from "react";

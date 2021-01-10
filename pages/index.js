@@ -17,7 +17,7 @@ function getPropertyLink(property) {
 
 function getProperties(properties) {
   return Object.keys(properties).map((prop, index) => {
-    return (
+    return !properties[prop].published ? false : (
       <Col xs="12" md="6" className="cardbox mb-4" key={`property_${index}`}>
         <Link href={getPropertyLink(properties[prop])}>
           <Card className="text-center cursor-pointer">

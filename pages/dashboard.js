@@ -52,6 +52,8 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
       const field = e.target[x];
       if (field.value && field.id && field.getAttribute("key-data")) {
         addedProperty[field.getAttribute("key-data")] = field.value;
+      } else if (field.value && field.id && field.getAttribute("optional-key-data")) {
+        addedProperty[field.getAttribute("optional-key-data")] = field.value;
       } else if (
         field.value &&
         field.id &&
@@ -194,6 +196,10 @@ export function Dashboard(props) {
       formValues.forEach(field => {
         field.value = selectedProperty[field.getAttribute("key-data")];
       });
+      const formOptionalValues = document.querySelectorAll("[optional-key-data]");
+      formOptionalValues.forEach(field => {
+        field.value = selectedProperty[field.getAttribute("optional-key-data")];
+      });
       const formSubValues = document.querySelectorAll("[sub-key-data]");
       formSubValues.forEach(field => {
         const subObjectKey = field.getAttribute("sub-key-data").split(".");
@@ -264,6 +270,19 @@ export function Dashboard(props) {
     setupReorder();
   };
 
+  const amenitiesList = [
+    "Wifi",
+    "TV",
+    "Heater, Air conditioning",
+    "Parking",
+    "Hair dryer",
+    "Breakfast",
+    "Carbon monoxide alarm",
+    "Smoke alarm",
+    "Fire extinguisher",
+    "First-aid kit",
+    "Accessible bathroom"
+  ];
   const amenitiesIcon = [
     "fal fa-wifi",
     "fal fa-tv",
@@ -331,11 +350,12 @@ export function Dashboard(props) {
                 {(selectedProperty.id &&
                   selectedProperty.images.length > 1 && (
                     <Row
-                      style={{ overflowX: "auto" }}
+                      style={{ overflowX: "auto", maxWidth: '605px' }}
                       className="d-block text-nowrap mb-2 mx-auto"
                     >
                       {selectedProperty.images.map((image, index) => (
                         <Card.Img
+                            style={{ maxHeight: '400px', width: 'auto' }}
                           key={"view-only-images-" + index}
                           variant="top"
                           src={image}
@@ -434,70 +454,48 @@ export function Dashboard(props) {
                       return isDayBlocked(calendar, day);
                     }}
                   />
-                  <div className="wifilist my-4">
-                    <h3 class="mb-3">Amenities</h3>
-                    <ul className="optonslist">
-                      <li>
-                        <i class="fal fa-wifi"></i> Wifi
-                      </li>
-                      <li>
-                        <i class="fal fa-tv"></i> TV
-                      </li>
-                      <li>
-                        <i class="fal fa-fan-table"></i> Heater, Air
-                        conditioning
-                      </li>
-                      <li>
-                        <i class="fal fa-parking"></i> Parking
-                      </li>
-                      <li>
-                        <i class="fal fa-heat"></i> Hair dryer
-                      </li>
-                      <li>
-                        <i class="fal fa-hamburger"></i> Breakfast
-                      </li>
-                      <li>
-                        <i class="fal fa-alarm-clock"></i> Carbon monoxide alarm
-                      </li>
-                      <li>
-                        <i class="fal fa-sensor-fire"></i> Smoke alarm
-                      </li>
-                      <li>
-                        <i class="fal fa-fire"></i> Fire extinguisher
-                      </li>
-                      <li>
-                        <i class="fal fa-medkit"></i> First-aid kit
-                      </li>
-                      <li>
-                        <i class="fal fa-restroom"></i> Accessible bathroom
-                      </li>
-                    </ul>
-                    <div className="butns-view">
-                      <a href="#">View on AirBnB</a>
-                      <a href="#">View on VRBO</a>
-                    </div>
-                    <div className="marklist mt-3">
-                      <p>
-                        <b> Mark </b>
-                        <br />A great co-host among Zion Village hosts.
-                      </p>
-                      <p>
-                        <a href="#" class="clink">
-                          <i class="fas fa-phone"></i> 435-111-1111
-                        </a>
-                        <a href="#" class="clink">
-                          <i class="fal fa-envelope"></i> fake.email@gmail.com
-                        </a>
-                      </p>
-                    </div>
-                  </div>
+                  {selectedProperty.description ? (
+                      <div>
+                        <div className="wifilist my-4">
+                          <h3 className="mb-3">Amenities</h3>
+                          <ul className="optonslist">
+                            {amenitiesList.map((amenity, index) => {
+                              if (selectedProperty.amenities.includes(amenity)) {
+                                return <li key={'displayAmenities-' + index}>
+                                  <i className={amenitiesIcon[index]}></i> {amenity}
+                                </li>
+                              }
+                            })}
+                          </ul>
+                        </div>
+                        <div className="butns-view">
+                          <a href={selectedProperty.airbnbListingURL} target="_blank">View on AirBnB</a>
+                          {selectedProperty.vrboListingURL &&
+                            <a href={selectedProperty.vrboListingURL} target="_blank">View on VRBO</a>
+                          }
+                        </div>
+                        <div className="marklist mt-3">
+                          <p>
+                            <b> {selectedProperty.owner.name} </b>
+                            <br/> {selectedProperty.owner.description}
+                          </p>
+                          <p>
+                            <a href={'tel:' + selectedProperty.owner.phone} className="clink">
+                              <i className="fas fa-phone"></i> {selectedProperty.owner.phone}
+                            </a>
+                            <a href={'mailto:' + selectedProperty.owner.email} className="clink">
+                              <i className="fal fa-envelope"></i> {selectedProperty.owner.email}
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    ) : (<span></span>)
+                  }
                 </Card.Body>
               </Card>
             </Col>
           </Row>
         </Container>
-        <p>Update a property</p>
-        Invite an owner to house Publish/Unpublish a property
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>
@@ -552,7 +550,7 @@ export function Dashboard(props) {
               </Form.Group>
               <Form.Group controlId="propertyRules">
                 <Form.Label>Property Rules</Form.Label>
-                <Form.Control as="textarea" rows="2" key-data="rules" />
+                <Form.Control as="textarea" rows="2" key-data="rules" placeholder="Rules such as 'No smoking indoors' etc." />
               </Form.Group>
               <Form.Group controlId="propertyImages" className="mb-1">
                 <Form.Label>Property Images</Form.Label>
@@ -572,19 +570,7 @@ export function Dashboard(props) {
               <Form.Label>
                 Property Amenities (Ctrl + Click to select multiple)
               </Form.Label>
-              {[
-                "Wifi",
-                "TV",
-                "Heater, Air conditioning",
-                "Parking",
-                "Hair dryer",
-                "Breakfast",
-                "Carbon monoxide alarm",
-                "Smoke alarm",
-                "Fire extinguisher",
-                "First-aid kit",
-                "Accessible bathroom"
-              ].map((amenity, index) => (
+              {amenitiesList.map((amenity, index) => (
                 <Form.Group
                   className="mb-1 pl-2"
                   controlId={"propertyAmenities" + index}
@@ -594,7 +580,7 @@ export function Dashboard(props) {
                     type="checkbox"
                     label={
                       <p>
-                        <i class={amenitiesIcon[index]}></i> {amenity}{" "}
+                        <i className={amenitiesIcon[index]}></i> {amenity}{" "}
                       </p>
                     }
                     checked={selectedProperty.amenities.includes(amenity)}
@@ -636,7 +622,7 @@ export function Dashboard(props) {
                 <Form.Control
                   type="text"
                   placeholder="Vrbo Listing URL Link"
-                  key-data="vrboListingURL"
+                  optional-key-data="vrboListingURL"
                 />
               </Form.Group>
               <Form.Group controlId="propertyVrboCalendarURL">
@@ -648,7 +634,7 @@ export function Dashboard(props) {
                 <Form.Control
                   type="text"
                   placeholder="Vrbo Calendar URL Link"
-                  key-data="vrboCalendarURL"
+                  optional-key-data="vrboCalendarURL"
                 />
               </Form.Group>
               <hr />
@@ -663,8 +649,8 @@ export function Dashboard(props) {
                       className="form-control"
                       placeholder="Rooms"
                       key-data="bedroomCount"
-                      min="0.0"
-                      step="0.5"
+                      min="0"
+                      step="1"
                     />
                   </Form.Group>
                 </Col>
@@ -693,8 +679,8 @@ export function Dashboard(props) {
                       className="form-control"
                       placeholder="Occupancy"
                       key-data="maxOccupancy"
-                      min="0.0"
-                      step="0.5"
+                      min="0"
+                      step="1"
                     />
                   </Form.Group>
                 </Col>

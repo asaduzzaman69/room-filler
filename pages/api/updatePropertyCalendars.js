@@ -19,28 +19,45 @@ export default async (req, res) => {
   const responses = {};
   for (var x = 0; x < properties.length; ) {
     let property = properties[x];
-    const airbnbCalendarRes = await fetch(property.airbnbCalendarURL);
-    const vrboCalendarRes = await fetch(property.vrboCalendarURL);
-    const airbnbCalendarText = await airbnbCalendarRes.text();
-    const vrboCalendarText = await vrboCalendarRes.text();
-    const airbnbData = icsToJson(airbnbCalendarText).map(data => ({
-      ...data,
-      startDate: getFormattedDate(data.startDate),
-      endDate: getFormattedDate(data.endDate),
-      platform: "airbnb"
-    }));
-    const vrboData = icsToJson(vrboCalendarText).map(data => ({
-      ...data,
-      startDate: getFormattedDate(data.startDate),
-      endDate: getFormattedDate(data.endDate),
-      platform: "vrbo"
-    }));
-    const response = await updatePropertyCalendar(
-      property,
-      airbnbData,
-      vrboData
-    );
-    responses[property.id] = response;
+    let airbnbData;
+    try {
+      const airbnbCalendarRes = await fetch(property.airbnbCalendarURL);
+      const airbnbCalendarText = await airbnbCalendarRes.text();
+      airbnbData = icsToJson(airbnbCalendarText).map(data => ({
+        ...data,
+        startDate: getFormattedDate(data.startDate),
+        endDate: getFormattedDate(data.endDate),
+        platform: "airbnb"
+      }));
+    } catch (e) {
+      console.log(e);
+    }
+    if (property.vrboCalendarURL) {
+      try {
+        const vrboCalendarRes = await fetch(property.vrboCalendarURL);
+        const vrboCalendarText = await vrboCalendarRes.text();
+        const vrboData = icsToJson(vrboCalendarText).map(data => ({
+          ...data,
+          startDate: getFormattedDate(data.startDate),
+          endDate: getFormattedDate(data.endDate),
+          platform: "vrbo"
+        }));
+        const response = await updatePropertyCalendar(
+            property,
+            airbnbData,
+            vrboData
+        );
+        responses[property.id] = response;
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      const response = await updatePropertyCalendar(
+          property,
+          airbnbData
+      );
+      responses[property.id] = response;
+    }
     x++;
   }
   res.end(JSON.stringify(responses));

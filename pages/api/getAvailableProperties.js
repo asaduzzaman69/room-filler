@@ -7,7 +7,9 @@ export default async (req, res) => {
   const propertiesRes = await getAllProperties();
   const properties = [];
   propertiesRes.forEach(property => {
-    properties.push(property.data());
+    if (property.data().published) {
+      properties.push(property.data());
+    }
   });
   if (
     isNaN(parseInt(req.query.startDate)) &&
