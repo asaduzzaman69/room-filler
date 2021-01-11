@@ -123,7 +123,7 @@ export default function PropertyPage({ property }) {
               <Col xs="12">
                 <Row className="imagesbox">
                   {property.images.map((image, index) => (
-                    <a href={image} data-attribute="SRL">
+                    <a href={image} data-attribute="SRL" key={'property-images-' + index}>
                       <Card.Img
                         key={"view-only-images-" + index}
                         variant="top"
@@ -154,7 +154,6 @@ export default function PropertyPage({ property }) {
               isDayBlocked={day => {
                 return property && property.calendar && isDayBlocked(property.calendar, day);
               }}
-              className="my-2"
             />
 
             <Card.Title className="pt-4">Amenities</Card.Title>

@@ -16,6 +16,7 @@ function getPropertyLink(property) {
 }
 
 function getProperties(properties) {
+  console.log(properties)
   return Object.keys(properties).map((prop, index) => {
     return !properties[prop].published ? false : (
       <Col xs="12" md="6" className="cardbox mb-4" key={`property_${index}`}>
