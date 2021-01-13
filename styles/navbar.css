@@ -1,27 +1,31 @@
 .main-navbar {
-  background: #fff;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 .main-navbar .navbar {
-  border-top: 4px solid #61acbb;
-  padding: 10px 0;
-  background: #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background: #fff !important;
+  padding: 0px;
 }
 .main-navbar .navbar div a {
-  color: #222 !important;
-  padding: 4px 30px 6px 30px !important;
+  padding: 0px;
+  margin: 0px 10px ;
+  font-size: 16px;
+  text-transform: uppercase;
+  line-height: 19.64px;
+  color: #707070;
+  border-bottom: 1px solid #fff;
 }
 .main-navbar .navbar div a:hover {
-  color: #61acbb !important;
+  color: #b9a37e !important;
+  border-bottom: 1px solid #b9a37e;
 }
 .main-navbar .rightside-nav a:last-child {
-  background: #61acbb;
-  border-radius: 100px;
-  text-align: center;
+  background: #FECB56;
+  border-radius: 25px;
   color: #fff !important;
-  padding: 4px 30px 6px 30px !important;
+  padding:5px 15px !important;
+  text-transform: unset;
 }
-.main-navbar .navbar ul li:last-child a:hover {
-  background: #6191bb;
+.main-navbar .navbar .rightside-nav.navbar-nav a:last-child:hover {
+  color: #fff !important;
+  border-bottom: 1px solid #fff;
 }

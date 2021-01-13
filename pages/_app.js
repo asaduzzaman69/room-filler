@@ -1,6 +1,7 @@
 import "../styles/global.css";
 import "../styles/navbar.css";
 import "../styles/about.css";
+import "../styles/banner.css";
 // import "../styles/_datepicker.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-pro/css/all.min.css";

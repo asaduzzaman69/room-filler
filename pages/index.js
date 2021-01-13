@@ -6,6 +6,7 @@ import CustomNavbar from "../components/navbar";
 import { getAllProperties, getSearchLink } from "../services/properties";
 import { DateRangePicker } from "react-dates";
 import Footer from "../components/footer";
+import Banner from '../components/banner';
 
 function getPropertyLink(property) {
   // return `/${property.address.state}/${property.link}`;
@@ -80,98 +81,8 @@ class Home extends React.Component {
 
         <main>
           <CustomNavbar />
-          <div className="main-bg">
-            <div className="greyscale py-5">
-              <Container className="">
-                <Row className="text-center">
-                  <h1 className="col-12 text-light mb-1 mt-5">
-                    Title Heading here
-                  </h1>
-                  <h2 className="col-12 text-light">Sub Heading here</h2>
-                </Row>
-                <Row>
-                  <Col className="col-lg-8 offset-lg-2 mt-5 text-center">
-                    <Row
-                      className="form-row d-inline-flex pt-3 pb-3 px-2 searchbox"
-                      style={{ background: "rgba(255, 255, 255, 0.6)" }}
-                    >
-                      <Col xs="auto" md="5" className="w-100 h-100 px-0">
-                        <DateRangePicker
-                          // className="w-100"
-                          startDateId="startDate"
-                          endDateId="endDate"
-                          startDate={this.state.startDate}
-                          endDate={this.state.endDate}
-                          onDatesChange={({ startDate, endDate }) => {
-                            this.setState({
-                              ...this.state,
-                              startDate,
-                              endDate
-                            });
-                          }}
-                          focusedInput={this.state.focusedInput}
-                          onFocusChange={focusedInput => {
-                            this.setState({ focusedInput });
-                          }}
-                        />
-                      </Col>
-                      <Col xs="auto" md="4" className="w-100 h-100 px-0">
-                        <Form.Group
-                          controlId="propertySearchGuestCount"
-                          className="mb-0"
-                        >
-                          <Form.Control
-                            as="select"
-                            onChange={() => {
-                              this.setState({
-                                ...this.state,
-                                guests: document.getElementById(
-                                  "propertySearchGuestCount"
-                                ).value
-                              });
-                            }}
-                            style={{
-                              height: "48px",
-                              borderRadius: "0px",
-                              borderLeft: "0px",
-                              borderTopRightRadius: "2px",
-                              borderBottomRightRadius: "2px"
-                            }}
-                          >
-                            <option value={1}>1 guest</option>
-                            <option value={2}>2 guests</option>
-                            <option value={3}>3 guests</option>
-                            <option value={4}>4 guests</option>
-                            <option value={5}>5 guests</option>
-                            <option value={6}>6 guests</option>
-                            <option value={7}>7 guests</option>
-                            <option value={8}>8 guests</option>
-                            <option value={9}>9 guests</option>
-                            <option value={10}>10 guests</option>
-                            <option value={11}>11 guests</option>
-                            <option value={12}>12+ guests</option>
-                          </Form.Control>
-                        </Form.Group>
-                      </Col>
-                      <Col xs="auto" md="3" className="w-100 h-100 px-0">
-                        <Link
-                          href={getSearchLink(
-                            this.state.startDate,
-                            this.state.endDate,
-                            this.state.guests
-                          )}
-                        >
-                          <button className="btn btn-primary searchbutn py-2 w-100">
-                            Search
-                          </button>
-                        </Link>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Container>
-            </div>
-          </div>
+          <Banner />
+
           <div>
             <Container>
               <Row>

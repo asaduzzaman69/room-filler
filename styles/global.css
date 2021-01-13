@@ -1,70 +1,11 @@
-.main-bg {
-  width: 100%;
-  min-height: 350px;
-  display: block;
-  /* position: relative;
-  top: 0px;
-  left: 0px; */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    /* font-family: 'Oswald', sans-serif; */
+body{
+  font-family: 'Poppins', sans-serif;
+  padding: 30px;
 }
-.main-bg {
-  background: url("/images/home_bg.jpg");
-  background-position: center center;
-  background-size: cover;
-}
-.greyscale {
-  min-height: 350px;
-  background: rgba(0, 0, 0, 0.5);
-}
-.greyscale h1 {
-  font-size: 40px;
-  font-weight: 100;
-}
-.greyscale h2 {
-  font-size: 20px;
-  font-weight: 100;
-}
-.searchbox {
-  width: 100%;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  border-radius: 100px;
-}
-.searchbox .DateInput.DateInput_1 {
-  background: transparent;
-}
-.searchbox .DateInput.DateInput_1:first-child input {
-  border-radius: 100px 0 0 100px;
-}
-.searchbox
-  .DateRangePickerInput.DateRangePickerInput_1.DateRangePickerInput__withBorder.DateRangePickerInput__withBorder_2 {
-  border-radius: 100px 0 0 100px;
-  width: 100%;
-  border: none;
-}
-.DateRangePicker {
-  width: 100%;
-}
-.searchbox .form-group {
-  border-radius: 0;
-}
-.searchbox .form-group select {
-  border: none;
-  height: 46px !important;
-}
-.searchbox .searchbutn {
-  border-radius: 0 100px 100px 0;
-  padding: 11px 30px !important;
-  background: #61acbb;
-  border-color: #61acbb;
-}
-.searchbox .searchbutn:focus {
-  box-shadow: none;
-  outline: none;
-}
-.searchbox .searchbutn:hover {
-  background: #6191bb;
-  border-color: #6191bb;
-}
+    
+
 .headingbox h2 {
   font-size: 40px;
   font-weight: 100;
