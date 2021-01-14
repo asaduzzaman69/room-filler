@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 450px;
     display: block;
-    background: url("/images/home_bg.jpg");
+    background: url("/images/banner-main.png");
     background-position: center center;
     background-size: cover;
   }

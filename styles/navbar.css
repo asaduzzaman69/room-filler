@@ -7,8 +7,8 @@
 }
 .main-navbar .navbar div a {
   padding: 0px;
-  margin: 0px 10px ;
-  font-size: 16px;
+  margin: 0px 5px ;
+  font-size: 15px;
   text-transform: uppercase;
   line-height: 19.64px;
   color: #707070;
@@ -28,4 +28,7 @@
 .main-navbar .navbar .rightside-nav.navbar-nav a:last-child:hover {
   color: #fff !important;
   border-bottom: 1px solid #fff;
+}
+.navbar-brand a{
+  margin: 0px !important;
 }

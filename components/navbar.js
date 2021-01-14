@@ -37,7 +37,7 @@ export default function CustomNavbar({ bg }) {
         <Container fluid className="p-0">
           <Navbar.Brand >
           <a href="/">
-          <img src='/logo.png' />
+          <img src='/images/logo.png' alt="logo" className="logo"/>
           
           {/* <Image src='../public/images/logo.png' alt="logo"/>
             <img src='/public/images/logo.png' /> */}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container, Row, Col, Card, Form,Button } from "react-bootstrap";
 import { getSearchLink } from "../services/properties";
 import { DateRangePicker, SingleDatePicker } from "react-dates";
+import { Carousel } from 'react-responsive-carousel';
 
 const Banner = ({}) => {
     const [startDate, setStartDate]= useState(null);
@@ -95,7 +96,7 @@ const Banner = ({}) => {
                         <Button variant="primary" className="book-btn">Book now</Button>
                       </Col>
                 </Row>
-                <Row className="mt-5">
+                <Row className="mt-5 pt-2">
                   <Col>
                   <h1 className="banner-heading">
                   ZION VILLAGE RESORT
@@ -109,10 +110,11 @@ const Banner = ({}) => {
                     </p>
                   </Col>
                   <Col>
-                  <h1 className="col-12 text-light mb-1 mt-5">
-                    Title Heading here
-                  </h1>
-                  <h2 className="col-12 text-light">Sub Heading here</h2>
+                  <Carousel renderThumbs={()=>[]}>
+                  <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src="/images/banner-slider1.png" />
+  </Card>
+            </Carousel>
                   </Col>
                 </Row>
               </Container>

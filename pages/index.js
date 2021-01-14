@@ -7,6 +7,7 @@ import { getAllProperties, getSearchLink } from "../services/properties";
 import { DateRangePicker } from "react-dates";
 import Footer from "../components/footer";
 import Banner from '../components/banner';
+import AmenitiesCarousel from '../components/amenitiesCarousel';
 
 function getPropertyLink(property) {
   // return `/${property.address.state}/${property.link}`;
@@ -82,7 +83,7 @@ class Home extends React.Component {
         <main>
           <CustomNavbar />
           <Banner />
-
+          <AmenitiesCarousel />
           <div>
             <Container>
               <Row>
