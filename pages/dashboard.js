@@ -145,6 +145,7 @@ function addFileImagePreview(file, selectedProperty) {
     reader.onload = function(e) {
       uploadPropertyImages([e.target.result], selectedProperty.id).then(
         result => {
+          console.log(result)
           addImageToPreview(result[0]);
           res(result[0]);
         }
@@ -212,6 +213,10 @@ export function Dashboard(props) {
     }, 150);
   };
 
+  const resetPropertyOpenModal = () => {
+
+  }
+
   const { user, managedProperties, fieldsCompleted, isAdmin } = props;
   let [selectedProperty, setSelectedProperty] = useState(
     managedProperties[0] || propertyPlaceholder
@@ -264,6 +269,7 @@ export function Dashboard(props) {
     const files = e.target.files;
     for (var x = 0; x < files.length; ) {
       const url = await addFileImagePreview(files[x], selectedProperty);
+      selectedProperty.images = selectedProperty.images || [];
       selectedProperty.images.push(url);
       x++;
     }
