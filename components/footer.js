@@ -44,10 +44,10 @@ export default function Footer({ bg }) {
   return (
     <Navbar className="fixed-bottom text-center justify-content-center">
       <Nav>
-        <a className="mr-2">&copy; 2020 Jones-Trawick Software</a>
+        <a className="mr-2">&copy; 2021 Zion Village Resorts</a>
       </Nav>
       <Navbar.Brand href="/" className="px-4 mr-0">
-        Zion Village Properties
+        Home
       </Navbar.Brand>
       <Nav>{getAuthedNavbarContent(user)}</Nav>
     </Navbar>
