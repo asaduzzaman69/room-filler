@@ -8,6 +8,10 @@ import { DateRangePicker } from "react-dates";
 import Footer from "../components/footer";
 import Banner from '../components/banner';
 import AmenitiesCarousel from '../components/amenitiesCarousel';
+import QuickEatsCarousel from '../components/quickeatsCarousel';
+import LocalEatsCarousel from '../components/localEatsCarousel';
+import LocalActivities from '../components/localActivities';
+import EmergencyLocations from '../components/emergencyLocations';
 
 function getPropertyLink(property) {
   // return `/${property.address.state}/${property.link}`;
@@ -84,7 +88,11 @@ class Home extends React.Component {
           <CustomNavbar />
           <Banner />
           <AmenitiesCarousel />
-          <div>
+          <QuickEatsCarousel />
+          <LocalEatsCarousel />
+          <LocalActivities />
+          <EmergencyLocations />
+          {/* <div>
             <Container>
               <Row>
                 <Col className="my-5 headingbox text-center col-md-6 offset-md-3">
@@ -100,7 +108,7 @@ class Home extends React.Component {
                 {getProperties(this.state.properties)}
               </Row>
             </Container>
-          </div>
+          </div> */}
           <Footer />
         </main>
 

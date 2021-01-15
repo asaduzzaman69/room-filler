@@ -1,25 +1,39 @@
 
 .left-sec h6 {
-  font-family: "Oswald - Regular";
+  font-family: 'Oswald', sans-serif; 
   font-size: 23px;
   color: #e5d0b7;
   text-align: left;
-  line-height: 15px;
+  line-height: 20px;
+  text-transform: uppercase;
 }
 .left-sec h5 {
   color: #b9a37e;
-  font-family: "Oswald - Semi Bold";
+  font-family: 'Oswald', sans-serif; 
   font-size: 41px;
   font-weight: 600;
   text-align: left;
- 
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 405px;
 }
 .left-sec p {
   color: #b2b1b1;
-font-family: "Poppins - Regular";
 font-size: 15px;
 text-align: left;
 line-height: 18px;
+}
+.left-sec .sub{
+  color: #b2b1b1;
+font-size: 13px;
+}
+.left-sec .arrow{
+  box-shadow: none;
+}
+.left-sec button:focus{
+  box-shadow: none;
 }
 .greyscale {
   min-height: 450px;
@@ -94,17 +108,19 @@ line-height: 18px;
   box-shadow: none !important;
 }
 .banner-heading {
-  font-family: "Oswald - Semi Bold";
+  font-family: 'Oswald', sans-serif; 
   font-size: 66px;
   font-weight: 600;
   color: #fff;
 }
 .banner-text {
   padding: 0px;
-  font-family: "Poppins - Regular";
   font-size: 15px;
   line-height: 18px;
   color: #fff;
+}
+.carousel-image{
+  box-shadow: 3px 4px 5px #ccc
 }
 /* .searchbox {
     width: 100%;

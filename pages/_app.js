@@ -3,6 +3,7 @@ import "../styles/navbar.css";
 import "../styles/about.css";
 import "../styles/banner.css";
 import '../styles/custom-carousel.css';
+import '../styles/local-activities.css';
 
 // import "../styles/_datepicker.css"
 import "bootstrap/dist/css/bootstrap.min.css";
