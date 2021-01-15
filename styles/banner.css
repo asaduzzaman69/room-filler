@@ -79,14 +79,13 @@
     box-shadow: none !important;
   }
   .banner-heading{
-    font-family: "Oswald - Semi Bold";
+    font-family: 'Oswald', sans-serif; 
     font-size: 66px;
     font-weight: 600;
     color: #fff;
   }
   .banner-text{
     padding: 0px;
-    font-family: "Poppins - Regular";
     font-size: 15px;
     line-height: 18px;
     color: #fff;

@@ -110,7 +110,7 @@ const Banner = ({}) => {
                     </p>
                   </Col>
                   <Col>
-                  <Carousel renderThumbs={()=>[]}>
+                  <Carousel showThumbs={false}>
                   <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="/images/banner-slider1.png" />
   </Card>
