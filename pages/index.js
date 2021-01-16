@@ -1,10 +1,9 @@
 import Head from "next/head";
 import getEnvironmentConfig from "../environment";
 import Link from "next/link";
-import { Container, Row, Col, Card, Form } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import CustomNavbar from "../components/navbar";
-import { getAllProperties, getSearchLink } from "../services/properties";
-import { DateRangePicker } from "react-dates";
+import { getAllProperties } from "../services/properties";
 import Footer from "../components/footer";
 import Banner from '../components/banner';
 import AmenitiesCarousel from '../components/amenitiesCarousel';
@@ -92,7 +91,7 @@ class Home extends React.Component {
           <LocalEatsCarousel />
           <LocalActivities />
           <EmergencyLocations />
-          {/* <div>
+          <div>
             <Container>
               <Row>
                 <Col className="my-5 headingbox text-center col-md-6 offset-md-3">
@@ -108,7 +107,7 @@ class Home extends React.Component {
                 {getProperties(this.state.properties)}
               </Row>
             </Container>
-          </div> */}
+          </div>
           <Footer />
         </main>
 

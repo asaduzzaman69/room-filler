@@ -38,10 +38,6 @@ export default function CustomNavbar({ bg }) {
           <Navbar.Brand >
           <a href="/">
           <img src='/images/logo.png' alt="logo" className="logo"/>
-          
-          {/* <Image src='../public/images/logo.png' alt="logo"/>
-            <img src='/public/images/logo.png' /> */}
-             {/* <img src='../static/images/logo.png' /> */}
           </a>
           </Navbar.Brand>
          

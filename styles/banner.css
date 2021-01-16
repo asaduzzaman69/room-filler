@@ -90,6 +90,31 @@
     line-height: 18px;
     color: #fff;
   }
+  .main-bg .card{
+border: none !important;
+border-radius: 18px !important;
+  }
+  .main-bg .carousel .slide{
+    background:transparent;
+    /* min-width: 33% !important; */
+  }
+  .main-bg .carousel-dot{
+    height: 8px;
+    width: 8px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+  .main-bg .selected-carousel-dot{
+    height: 8px;
+    width: 8px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    padding: 5px;
+    margin-bottom: 10px;
+
+  }
   /* .searchbox {
     width: 100%;
     -webkit-justify-content: space-between;

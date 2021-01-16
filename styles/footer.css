@@ -1,0 +1,33 @@
+.footer{
+  background-color: #3e362d;
+  padding: 40px;
+  justify-content: center;
+}
+.footer h5{
+  color: #dbd2cb;
+  font-family: 'Oswald', sans-serif; 
+font-size: 17px;
+font-weight: 600;
+text-transform: uppercase;
+}
+.footer h6{
+  color: #dbd2cb;
+font-size: 11px;
+line-height: 18px;
+}
+.footer a{
+  color: #dbd2cb;
+  font-size: 11px;
+  padding: 0px;
+}
+.footer .social-icon{
+  padding-right: 15px;
+  padding-top: 5px;
+}
+.footer p{
+  color: #dbd2cb;
+font-size: 11px;
+margin: 0px;
+/* padding-top: 10px;     */
+border-top: 2px solid;
+}
