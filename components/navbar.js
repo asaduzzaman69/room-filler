@@ -35,10 +35,10 @@ export default function CustomNavbar({ setHash }) {
     <div className="main-navbar">
       <Navbar bg="light" expand="lg" >
         <Container fluid className="p-0">
-          <Navbar.Brand >
-          <a href="/">
-          <img src='/images/logo.png' alt="logo" className="logo"/>
-          </a>
+          <Navbar.Brand className="pt-0">
+            <a href="/">
+              <img src='/images/logo.png' alt="logo" className="logo"/>
+            </a>
           </Navbar.Brand>
          
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -51,7 +51,7 @@ export default function CustomNavbar({ setHash }) {
               <Nav.Link href="/#emergency-locations" onClick={()=>setHash('#emergency-locations')}>Emergency Locations</Nav.Link>
               {/* <Nav.Link href="/about">About</Nav.Link> */}
             </Nav>
-            <Nav className="ml-auto rightside-nav">
+            <Nav className="ml-auto rightside-nav align-items-center">
               {getAuthedNavbarContent(user)}
             </Nav>
           </Navbar.Collapse>

@@ -153,8 +153,8 @@ font-size: 13px;
   .searchbox .searchbutn {
     border-radius: 0 100px 100px 0;
     padding: 11px 30px !important;
-    background: #61acbb;
-    border-color: #61acbb;
+    background: #D1AA77;
+    border-color: #D1AA77;
   }
   .searchbox .searchbutn:focus {
     box-shadow: none;

@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
     /* font-family: 'Oswald', sans-serif; */
-body{
+body {
   font-family: 'Poppins', sans-serif;
-  padding: 30px;
+  padding-top: 30px;
 }
     
 
 .headingbox h2 {
   font-size: 40px;
   font-weight: 100;
-  color: #61acbb;
+  color: #D1AA77;
 }
 .headingbox hr {
-  border-bottom: 4px double #61acbb;
+  border-bottom: 4px double #D1AA77;
   width: 80px;
 }
 .headingbox p {
@@ -21,11 +21,11 @@ body{
 .cardbox .card {
   border-radius: 8px;
   overflow: hidden;
-  border-bottom: 6px solid #61acbb;
+  border-bottom: 6px solid #D1AA77;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .card-body .card-title {
-  color: #61acbb;
+  color: #D1AA77;
   font-weight: 700;
 }
 .card-body .card-text {
@@ -33,7 +33,7 @@ body{
   font-size: 16px;
 }
 .iconbox i {
-  color: #61acbb;
+  color: #D1AA77;
 }
 .fixed-bottom {
   background: #333;
@@ -45,10 +45,10 @@ body{
 }
 .fixed-bottom a:hover,
 .fixed-bottom .navbar-brand:hover {
-  color: #61acbb !important;
+  color: #D1AA77 !important;
 }
 .backhome a {
-  background: #61acbb;
+  background: #D1AA77;
   color: #fff;
   font-size: 16px;
   padding: 6px 20px;
@@ -58,11 +58,11 @@ body{
   border-radius: 8px;
 }
 .firebaseui-form-actions .firebaseui-id-submit {
-  background: #61acbb !important;
+  background: #D1AA77 !important;
   border-radius: 100px;
 }
 .wifilist h3 {
-  color: #61acbb;
+  color: #D1AA77;
   font-size: 25px;
   font-weight: 600;
 }
@@ -78,7 +78,7 @@ body{
   margin: 10px 0;
 }
 .butns-view a {
-  background: #61acbb;
+  background: #D1AA77;
   border-radius: 100px;
   text-align: center;
   color: #fff !important;
@@ -110,7 +110,7 @@ body{
   object-fit: cover;
 }
 .cributn {
-  background: #61acbb !important;
+  background: #D1AA77 !important;
   border-radius: 100px !important;
   text-align: center !important;
   color: #fff !important;

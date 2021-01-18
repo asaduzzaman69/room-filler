@@ -55,9 +55,12 @@ const Home=(props)=>{
     }
 
     const getProperties=(properties)=> {
+      let propertiesPublished = 0;
       return properties && Object.keys(properties).map((prop, index) => {
-        return !properties[prop].published ? false : (
-          <Col xs="12" md="6" className="cardbox mb-4" key={`property_${index}`}>
+        if (!properties[prop].published || propertiesPublished > 5) { return false }
+        propertiesPublished++;
+        return (
+          <Col xs="6" md="2" className="cardbox" key={`property_${index}`}>
             <Link href={getPropertyLink(properties[prop])}>
               <Card className="text-center cursor-pointer">
                 <div className="row no-gutters">
@@ -71,12 +74,12 @@ const Home=(props)=>{
                   ></div>
                   <div className="col-sm-7">
                     <div className="card-body py-2">
-                      <h5 className="card-title text-left">
-                        {properties[prop].title}
-                      </h5>
-                      <p className="card-text text-left mb-3">
-                        {properties[prop].description.substring(0, 200)}...
-                      </p>
+                      {/*<h5 className="card-title text-left">*/}
+                      {/*  {properties[prop].title}*/}
+                      {/*</h5>*/}
+                      {/*<p className="card-text text-left mb-3">*/}
+                      {/*  {properties[prop].description.substring(0, 200)}...*/}
+                      {/*</p>*/}
                       <p className="text-left mb-0 iconbox">
                         <i className="fa fa-bed ml-2" aria-hidden="true"></i>{" "}
                         {properties[prop].bedroomCount}
@@ -103,37 +106,27 @@ const Home=(props)=>{
         <main>
           <CustomNavbar setHash={setHash}/>
           <Banner />
-        <div ref={amenitiesRef}>
-          <AmenitiesCarousel />
-          </div>
-          <div ref={quickEatsRef}>
-          <QuickEatsCarousel />
-          </div>
-            <div ref={localEatsRef}>
-          <LocalEatsCarousel />
-          </div>
-          <div ref={localActivitiesRef}>
-          <LocalActivities />
-          </div>
-          <div ref={emergencyLocationsRef}>
-          <EmergencyLocations />
-          </div>
           <div>
             <Container>
-              <Row>
-                <Col className="my-5 headingbox text-center col-md-6 offset-md-3">
-                  <h2>Title Heading here</h2>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer vel molestie nisl. Duis ac mi leo.
-                  </p>
-                </Col>
-              </Row>
-              <Row className="pb-5 mb-5">
+              <Row className="mt-5 mb-3 mx-auto align-content-center">
                 {getProperties(props)}
               </Row>
             </Container>
+          </div>
+          <div ref={amenitiesRef}>
+            <AmenitiesCarousel />
+          </div>
+          <div ref={quickEatsRef}>
+            <QuickEatsCarousel />
+          </div>
+          <div ref={localEatsRef}>
+            <LocalEatsCarousel />
+          </div>
+          <div ref={localActivitiesRef}>
+            <LocalActivities />
+          </div>
+          <div ref={emergencyLocationsRef}>
+            <EmergencyLocations />
           </div>
           <Footer setHash={setHash}/>
         </main>

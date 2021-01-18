@@ -10,7 +10,7 @@ const EmergencyLocations = ({}) => {
   return (
     <Row
     style={{ backgroundColor: "#fff", padding: "0px 14%" }}
-    className="align-items-center my-5 py-5"
+    className="align-items-center my-5 py-5 mx-auto"
   >
     <Col className="left-sec pr-5" >
       <h5>Emergency Locations</h5>

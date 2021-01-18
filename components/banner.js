@@ -34,7 +34,7 @@ const Banner = ({}) => {
     <div className="main-bg">
       <div className="greyscale py-5">
         <Container>
-          <Row className=" search-section">
+          <Row className="search-section">
             <Col className="search-height">
               <p className="search-heading">Check in</p>
               <SingleDatePicker
@@ -218,43 +218,41 @@ const Banner = ({}) => {
                   </Col>
                 </Row>
               </Carousel> */}
- <Slider {...settings} ref={sliderRef}>
+               <Slider {...settings} ref={sliderRef}>
+                 <div>
+                     <Card>
+                        <Card.Img
+                          variant="top"
+                          src="/images/banner-slider1.png"
+                        />
+                     </Card>
+                 </div>
+                 <div>
+                    <Card>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider2.png"
+                      />
 
-   <div> <Card>
+                    </Card>
+                 </div>
+                 <div>
+                    <Card>
                       <Card.Img
                         variant="top"
                         src="/images/banner-slider1.png"
                       />
                     </Card>
-                    </div>
-                    <div>
+                 </div>
+                 <div>
                     <Card>
                       <Card.Img
                         variant="top"
                         src="/images/banner-slider2.png"
                       />
-                     
                     </Card>
-                    </div>
-                    <div>
-                      <Card>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider1.png"
-                      />
-                    </Card>
-                    </div>
-                    <div>
-                    <Card>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider2.png"
-                      />
-                     
-                    </Card>
-                    </div>
-    
-        </Slider>
+                 </div>
+              </Slider>
             </Col>
             <Col xs={12} md={1} lg={1} style={{ alignSelf: "center" }}>
               {[0, 1, 2, 3].map((item) => (
@@ -265,6 +263,7 @@ const Banner = ({}) => {
                       : "carousel-dot"
                   }
                   onClick={() => setSlide(item)}
+                  key={'mini-banner-tab-' + item}
                 />
               ))}
             </Col>

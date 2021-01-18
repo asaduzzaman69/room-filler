@@ -37,7 +37,7 @@ const LocalActivities = ({}) => {
   };
 
   return (
-    <Row className="activities-row mt-5 align-items-center">
+    <Row className="activities-row mt-5 align-items-center mx-auto">
       <Col>
       <h5>
       ACTIVITIES TO ENJOY WITH
@@ -49,35 +49,35 @@ const LocalActivities = ({}) => {
       that we offer in Zion Village
       </h6>
       <div className="view-all-btn-sec">
-      <Button  variant="outlined"  className="view-all-btn">View all 
-      <i className="fal fa-arrow-right arrow-icon" ></i>
-      </Button>
+      {/*<Button  variant="outlined"  className="view-all-btn">View all */}
+      {/*  <i className="fal fa-arrow-right arrow-icon" ></i>*/}
+      {/*</Button>*/}
       </div>
  <Slider {...settings} ref={sliderRef}>
  {localActivities.length > 0 &&
         localActivities.map((item, index) => {
           return (
-            <div>
-            <Card  key={`activities_${index}`} className="activities-card">
-            <Card.Img variant="top" src={item.places[0].img? item.places[0].img : 'https://via.placeholder.com/'} />
-            <Card.Body>
-              <Card.Title>
-                <h6>{index} {item.name}</h6>
-                <h5>{item.places[0].name? item.places[0].name : ""}</h5>
-              </Card.Title>
-              <Card.Text>
-                {
-                  item.type==='biking'? `${item.places[0].track} 'Mile Trail'` : ""
-                }
-                  {item.places[0].phone? item.places[0].phone : ""}
-               <br/>
-               <br/>
-                  {item.places[0].desc? item.places[0].desc : <><br/><br/></>}
-              </Card.Text>
-              <Button variant="primary">Book Now</Button>
-              <Card.Link href="#">Read More</Card.Link>
-            </Card.Body>
-          </Card>
+            <div key={'local-activity-' + index}>
+                <Card  key={`activities_${index}`} className="activities-card">
+                <Card.Img variant="top" src={item.places[0].img? item.places[0].img : 'https://via.placeholder.com/'} />
+                <Card.Body>
+                  <Card.Title>
+                    <h6>{index} {item.name}</h6>
+                    <h5>{item.places[0].name? item.places[0].name : ""}</h5>
+                  </Card.Title>
+                  <Card.Text>
+                    {
+                      item.type==='biking'? `${item.places[0].track} 'Mile Trail'` : ""
+                    }
+                      {item.places[0].phone? item.places[0].phone : ""}
+                   <br/>
+                   <br/>
+                      {item.places[0].desc? item.places[0].desc : <><br/><br/></>}
+                  </Card.Text>
+                  <Button variant="primary">Book Now</Button>
+                  <Card.Link href="#">Read More</Card.Link>
+                </Card.Body>
+              </Card>
           </div>
           );
         })}
