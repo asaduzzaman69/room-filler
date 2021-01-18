@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Link from "next/link";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { getSearchLink } from "../services/properties";
 import { SingleDatePicker } from "react-dates";
-import { Carousel } from "react-responsive-carousel";
-
+// import { Carousel } from "react-responsive-carousel";
+import Slider from "react-slick";
 const Banner = ({}) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -13,12 +13,21 @@ const Banner = ({}) => {
   const [focusedEndDate, setFocusedEndDate] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const next = () => {
-    setCurrentSlide(currentSlide + 1);
+  const sliderRef = useRef(null)
+
+
+  const setSlide = (item) => {
+    setCurrentSlide(item);
+    sliderRef.current.slickGoTo(item);
   };
 
-  const prev = () => {
-    setCurrentSlide(currentSlide - 1);
+  const settings = {
+    focusOnSelect: true,
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    speed: 500,
+    arrows:false
   };
 
   return (
@@ -57,7 +66,7 @@ const Banner = ({}) => {
 
             <Col className="search-height">
               <p className="search-heading">Guests</p>
-              <Form.Group controlId="propertySearchGuestCount" className="mb-0">
+              <Form.Group controlId="propertySearchGuestCount" className="mb-0 select-guest">
                 <Form.Control
                   as="select"
                   placeholder="Select guests"
@@ -123,41 +132,142 @@ const Banner = ({}) => {
                 <br />
                 one of the top vacation retreats in Utah.
               </p>
+              <Button className="read-more-btn">Read more
+              <i className="fal fa-arrow-right arrow-icon" ></i>
+              </Button>
             </Col>
             <Col xs={12} md={5} lg={5}>
-              <Carousel 
-               showThumbs={false}
-               showArrows={false}
-               showIndicators={false}
-               showStatus={false}
-               selectedItem={currentSlide}
-               swipeable={true}
+              {/* <Carousel
+                showThumbs={false}
+                showArrows={false}
+                showIndicators={false}
+                showStatus={false}
+                selectedItem={currentSlide}
+                swipeable={true}
               >
-                <Card>
-                  <Card.Img variant="top" src="/images/banner-slider1.png" />
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="/images/banner-slider2.png" />
-                </Card>
-                <Card>
-                  <Card.Img variant="top" src="/images/banner-slider1.png" />
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="/images/banner-slider2.png" />
-                </Card>
-              </Carousel>
-             
-              {/* <Button onClick={()=>prev()} variant="outlined" disabled={currentSlide===1}>
-              
-              </Button> */}
+                <Row className="align-items-center">
+                  <Col>
+                    <Card style={{width:"99%"}}>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider1.png"
+                      />
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider2.png"
+                      />
+                    </Card>
+                  </Col>
+                </Row>
+                <Row className="align-items-center">
+                <Col>
+                    <Card style={{width:"99%"}}>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider2.png"
+                      />
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card >
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider1.png"
+                      />
+                    </Card>
+                  </Col>
+                </Row>
+                <Row className="align-items-center">
+                <Col>
+                    <Card style={{width:"99%"}}>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider1.png"
+                      />
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider2.png"
+                      />
+                    </Card>
+                  </Col>
+                </Row>
+                <Row className="align-items-center">
+                <Col>
+                    <Card style={{width:"99%"}}>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider2.png"
+                      />
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider1.png"
+                      />
+                    </Card>
+                  </Col>
+                </Row>
+              </Carousel> */}
+ <Slider {...settings} ref={sliderRef}>
+
+   <div> <Card>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider1.png"
+                      />
+                    </Card>
+                    </div>
+                    <div>
+                    <Card>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider2.png"
+                      />
+                     
+                    </Card>
+                    </div>
+                    <div>
+                      <Card>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider1.png"
+                      />
+                    </Card>
+                    </div>
+                    <div>
+                    <Card>
+                      <Card.Img
+                        variant="top"
+                        src="/images/banner-slider2.png"
+                      />
+                     
+                    </Card>
+                    </div>
+    
+        </Slider>
             </Col>
-            <Col xs={12} md={1} lg={1} style={{alignSelf: 'center'}}>
-            {
-                [0,1,2,3].map(item=>(
-                  <div className ={currentSlide===item?"selected-carousel-dot":"carousel-dot"}onClick={()=>setCurrentSlide(item)}/>
-                ))
-              }
-              </Col>
+            <Col xs={12} md={1} lg={1} style={{ alignSelf: "center" }}>
+              {[0, 1, 2, 3].map((item) => (
+                <div
+                  className={
+                    currentSlide === item
+                      ? "selected-carousel-dot"
+                      : "carousel-dot"
+                  }
+                  onClick={() => setSlide(item)}
+                />
+              ))}
+            </Col>
           </Row>
         </Container>
       </div>

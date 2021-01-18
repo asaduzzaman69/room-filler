@@ -35,7 +35,7 @@ function getAuthedNavbarContent(user) {
   );
 }
 
-export default function Footer({ bg }) {
+export default function Footer({ setHash }) {
   const [user, setUser] = useState();
   firebase.auth().onAuthStateChanged((authUser) => {
     setUser(authUser);
@@ -74,14 +74,14 @@ export default function Footer({ bg }) {
           <Row>
             <Col>
             <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/amenities">Amenities</Nav.Link>
-              <Nav.Link href="/places-to-eat">Places To Eat</Nav.Link>
+              <Nav.Link href="/#amenities" onClick={()=>setHash('#amenities')}>Amenities</Nav.Link>
+              <Nav.Link href="/#places-to-eat" onClick={()=>setHash('#places-to-eat')}>Places To Eat</Nav.Link>
              
             </Col>
             <Col>
-            <Nav.Link href="/local-eateries">Local Eateries</Nav.Link>
-            <Nav.Link href="/local-activities">Local Activities</Nav.Link>
-            <Nav.Link href="/emergency-locations">Emergency Locations</Nav.Link>
+            <Nav.Link href="/#local-eateries" onClick={()=>setHash('#local-eateries')}>Local Eateries</Nav.Link>
+            <Nav.Link href="/#local-activities"onClick={()=>setHash('#local-activities')}>Local Activities</Nav.Link>
+            <Nav.Link href="/#emergency-locations" onClick={()=>setHash('#emergency-locations')}>Emergency Locations</Nav.Link>
             </Col>
           </Row></Col>
         <Col>

@@ -16,6 +16,7 @@
   text-align: left;
   border-radius: 18px !important;
   border: none !important;
+  margin: 20px;
 }
 .activities-card h5{
   font-family: 'Oswald', sans-serif; 
@@ -71,28 +72,40 @@
   font-size: 9px;
 }
 .activities-card a:hover{
-  color: #939393;;
+  color: #939393;
+  cursor: pointer;
 }
-.activities-carousel{
-  background-color: #3e362d !important;
+.activities-row .slick-slide {
+  transform: scale(0.8);
 }
-.activities-carousel .slide{   
-  min-width: 50% !important;
-  background-color: #3e362d !important;
+.activities-row .slick-slide.slick-active.slick-center.slick-current{
+  transform: scale(1);
 }
-.activities-carousel .slide .activities-card{   
-  width: 70% ;
+.activities-row .arrow {
+  transform: scale(0.6);
 }
-.activities-carousel .selected .activities-card{   
-  min-width: 90%;
+.activities-row .arrow:hover, .activities-row .arrow:focus {
+  transform: scale(1);
 }
-.activities-carousel .slider-wrapper .slider.animated{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.activities-row button:hover, .activities-row button:focus {
+  box-shadow: none;
 }
+.activities-row .view-all-btn{
+  color: #e5d0b7; 
+  font-size: 15px;
+  position: absolute;
+    right: 49px;
+    bottom: -44px;
+}
+.activities-row .view-all-btn-sec{
+  position: relative;
+}
+.activities-row .arrow-icon{
+  margin-left: 5px;
+}
+
 .heading-border{
-  border: 1px solid #b9a37e;;
+  border: 1px solid #b9a37e;
   width: 57%;
   margin-bottom: 15px;
 }

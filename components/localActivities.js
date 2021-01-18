@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Link from "next/link";
 import {
   Container,
@@ -9,29 +9,35 @@ import {
   Button,
   Image,
 } from "react-bootstrap";
-import { Carousel } from "react-responsive-carousel";
+// import { Carousel } from "react-responsive-carousel";
 import { localActivities } from "../public/constants/config";
-// import {Carousel} from '3d-react-carousal';
+import Slider from "react-slick";
+
+
 const LocalActivities = ({}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = useRef(null)
   const next = () => {
     setCurrentSlide(currentSlide + 1);
+    sliderRef.current.slickNext();
   };
 
   const prev = () => {
     setCurrentSlide(currentSlide - 1);
+    sliderRef.current.slickPrev();
   };
 
-  
-  // const slides = [
-  //   <img  src="https://picsum.photos/800/300/?random" alt="1" />,
-  //   <img  src="https://picsum.photos/800/301/?random" alt="2" />  ,
-  //   <img  src="https://picsum.photos/800/302/?random" alt="3" />  ,
-  //   <img  src="https://picsum.photos/800/303/?random" alt="4" />  ,
-  //   <img src="https://picsum.photos/800/304/?random" alt="5" />   ];
- 
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "0px",
+    slidesToShow: 3,
+    arrows:false
+  };
+
   return (
-    <Row className="activities-row mt-5">
+    <Row className="activities-row mt-5 align-items-center">
       <Col>
       <h5>
       ACTIVITIES TO ENJOY WITH
@@ -42,28 +48,22 @@ const LocalActivities = ({}) => {
       <br/>
       that we offer in Zion Village
       </h6>
-      <Carousel
-          className="mt-5 activities-carousel"
-          centerMode={true}
-          showThumbs={false}
-          showArrows={false}
-          showIndicators={false}
-          showStatus={false}
-          selectedItem={currentSlide}
-          swipeable={true}
-          infiniteLoop={true}
-          // centerSlidePercentage={40}
-        // centerSlidePercentage={number('centerSlidePercentage', 80, {})}
-    >
-      {localActivities.length > 0 &&
+      <div className="view-all-btn-sec">
+      <Button  variant="outlined"  className="view-all-btn">View all 
+      <i className="fal fa-arrow-right arrow-icon" ></i>
+      </Button>
+      </div>
+ <Slider {...settings} ref={sliderRef}>
+ {localActivities.length > 0 &&
         localActivities.map((item, index) => {
           return (
-            <Card  key={`activities_${index}`}className="activities-card">
+            <div>
+            <Card  key={`activities_${index}`} className="activities-card">
             <Card.Img variant="top" src={item.places[0].img? item.places[0].img : 'https://via.placeholder.com/'} />
             <Card.Body>
               <Card.Title>
-                <h6>{item.name}</h6>
-                <h5>{item.places[0].name? item.places[0].name : "Test"}</h5>
+                <h6>{index} {item.name}</h6>
+                <h5>{item.places[0].name? item.places[0].name : ""}</h5>
               </Card.Title>
               <Card.Text>
                 {
@@ -72,46 +72,28 @@ const LocalActivities = ({}) => {
                   {item.places[0].phone? item.places[0].phone : ""}
                <br/>
                <br/>
-                  {item.places[0].desc? item.places[0].desc : ""}
+                  {item.places[0].desc? item.places[0].desc : <><br/><br/></>}
               </Card.Text>
               <Button variant="primary">Book Now</Button>
               <Card.Link href="#">Read More</Card.Link>
             </Card.Body>
           </Card>
+          </div>
           );
         })}
-    </Carousel>
-  {/* <Carousel slides={localActivities.length > 0 &&
-        localActivities.map((item, index) => {
-          return (
-            <Card  key={`activities_${index}`}className="activities-card">
-            <Card.Img variant="top" src={item.places[0].img? item.places[0].img : 'https://via.placeholder.com/'} />
-            <Card.Body>
-              <Card.Title>
-                <h6>{item.name}</h6>
-                <h5>{item.places[0].name? item.places[0].name : "Test"}</h5>
-              </Card.Title>
-              <Card.Text>
-                {
-                  item.type==='biking'? `${item.places[0].track} 'Mile Trail'` : ""
-                }
-                  {item.places[0].phone? item.places[0].phone : ""}
-               <br/>
-               <br/>
-                  {item.places[0].desc? item.places[0].desc : ""}
-              </Card.Text>
-              <Button variant="primary">Book Now</Button>
-              <Card.Link href="#">Read More</Card.Link>
-            </Card.Body>
-          </Card>
-          );
-        })}/> */}
-     <Button onClick={()=>prev()} variant="outlined" disabled={currentSlide===1}>
-              <Image src={currentSlide === 1?"/images/left-arrow-big-disabled.png":"/images/left-arrow-big.png"} className="arrow"/>
+        </Slider>
+              <Button onClick={()=>prev()} variant="outlined" >
+              <Image src={"/images/left-arrow-big.png"} className="arrow"/>
+              </Button>
+              <Button onClick={()=>next()}variant="outlined" >
+              <Image src={"/images/right-arrow-big.png"} className="arrow"/>
+              </Button>
+     {/* <Button onClick={()=>prev()} variant="outlined" disabled={currentSlide===0}>
+              <Image src={currentSlide === 0?"/images/left-arrow-big-disabled.png":"/images/left-arrow-big.png"} className="arrow"/>
               </Button>
               <Button onClick={()=>next()}variant="outlined" disabled={currentSlide===localActivities.length-1}>
               <Image src={currentSlide===localActivities.length-1?"/images/right-arrow-big-disabled.png":"/images/right-arrow-big.png"} className="arrow"/>
-              </Button>
+              </Button> */}
       </Col> 
     </Row>
     

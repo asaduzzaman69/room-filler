@@ -483,7 +483,8 @@ export const localActivities = [
                 link:"https://utvadventuretours.com/"
             },
         ]
-    }
+    },
+    
 ]
 
 export const emergencyLocations = [

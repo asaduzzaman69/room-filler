@@ -25,7 +25,7 @@ function getAuthedNavbarContent(user) {
   }
 }
 
-export default function CustomNavbar({ bg }) {
+export default function CustomNavbar({ setHash }) {
   const [user, setUser] = useState();
   firebase.auth().onAuthStateChanged(authUser => {
     setUser(authUser);
@@ -45,10 +45,10 @@ export default function CustomNavbar({ bg }) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="m-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/amenities">Amenities</Nav.Link>
-              <Nav.Link href="/places-to-eat">Places To Eat</Nav.Link>
-              <Nav.Link href="/local-activities">Local Activities</Nav.Link>
-              <Nav.Link href="/emergency-locations">Emergency Locations</Nav.Link>
+              <Nav.Link href="/#amenities" onClick={()=>setHash('#amenities')}>Amenities</Nav.Link>
+              <Nav.Link href="/#places-to-eat" onClick={()=>setHash('#places-to-eat')}>Places To Eat</Nav.Link>
+              <Nav.Link href="/#local-activities" onClick={()=>setHash('#local-activities')}>Local Activities</Nav.Link>
+              <Nav.Link href="/#emergency-locations" onClick={()=>setHash('#emergency-locations')}>Emergency Locations</Nav.Link>
               {/* <Nav.Link href="/about">About</Nav.Link> */}
             </Nav>
             <Nav className="ml-auto rightside-nav">

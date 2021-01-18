@@ -20,6 +20,11 @@ line-height: 18px;
   font-size: 11px;
   padding: 0px;
 }
+.footer a:hover, .footer a:focus{
+  color: #fecb56;
+  font-size: 11px;
+  padding: 0px;
+}
 .footer .social-icon{
   padding-right: 15px;
   padding-top: 5px;
