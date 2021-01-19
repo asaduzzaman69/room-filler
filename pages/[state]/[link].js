@@ -44,7 +44,7 @@ export default function PropertyPage({ property }) {
       );
   };
 
-  return (
+  return property && (
     <Layout setHash={setHash}>
       <SimpleReactLightbox>
         <Head>
@@ -113,18 +113,22 @@ export default function PropertyPage({ property }) {
               />
             </Col>
             <Col className="px-1 py-4" xs={5}>
-              <h6 className="mb-0">{property.owner.name}</h6>
-              <h6 className="mb-0">{property.owner.description}</h6>
-              <div className="my-3">
-                <i className="fa fa-phone mr-2" aria-hidden="true"></i>
-                <a href={"tel:" + property.owner.phone}>
-                  {property.owner.phone}
-                </a>
-                <i className="fa fa-envelope ml-5 mr-2" aria-hidden="true"></i>
-                <a href={"mailto:" + property.owner.email}>
-                  {property.owner.email}
-                </a>
-              </div>
+              {property && property.owner &&
+                <span>
+                  <h6 className="mb-0">{property.owner.name}</h6>
+                  <h6 className="mb-0">{property.owner.description}</h6>
+                  <div className="my-3">
+                    <i className="fa fa-phone mr-2" aria-hidden="true"></i>
+                    <a href={"tel:" + property.owner.phone}>
+                      {property.owner.phone}
+                    </a>
+                    <i className="fa fa-envelope ml-5 mr-2" aria-hidden="true"></i>
+                    <a href={"mailto:" + property.owner.email}>
+                      {property.owner.email}
+                    </a>
+                  </div>
+                </span>
+              }
               <h5 className="mt-2">Amenities</h5>
               {property.amenities.split(",").map((amenity, index) => {
                 return (
@@ -143,20 +147,20 @@ export default function PropertyPage({ property }) {
                 );
               })}
               <div className="mt-3">
-                <a
-                  className="cributn mr-2"
-                  href={property.airbnbListingURL}
-                  target="_blank"
-                >
-                  View on AirBnB
-                </a>
-                <a
-                  className="cributn"
-                  href={property.vrboListingURL}
-                  target="_blank"
-                >
-                  View on VRBO
-                </a>
+                {property && property.airbnbListingURL &&
+                  <a className="cributn mr-2"
+                     href={property.airbnbListingURL}
+                     target="_blank">
+                    View on AirBnB
+                  </a>
+                }
+                {property && property.vrboListingURL &&
+                  <a className="cributn"
+                     href={property.vrboListingURL}
+                     target="_blank">
+                    View on VRBO
+                  </a>
+                }
               </div>
             </Col>
           </Row>
