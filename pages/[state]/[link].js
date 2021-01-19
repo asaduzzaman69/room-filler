@@ -119,7 +119,7 @@ export default function PropertyPage({ property }) {
 
         <Card className="selected-property border-0">
           <SRLWrapper options={options}>
-            {(property.id && property.images.length > 1 && (
+            {(property && property.id && property.images.length > 1 && (
               <Col xs="12">
                 <Row className="imagesbox">
                   {property.images.map((image, index) => (
@@ -231,8 +231,10 @@ export async function getStaticProps({ params }) {
       property = { params: doc.data() };
     }
   });
-  let calendar = (await getPropertyCalendar(property.params)).data();
-  property.params.calendar = generateBlockedCalendarDays(calendar);
+  if (property && property.id) {
+    let calendar = (await getPropertyCalendar(property.params)).data();
+    property.params.calendar = generateBlockedCalendarDays(calendar);
+  }
   return {
     props: {
       property

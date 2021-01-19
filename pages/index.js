@@ -61,7 +61,7 @@ const Home=(props)=>{
         propertiesPublished++;
         return (
           <Col xs="6" md="2" className="cardbox" key={`property_${index}`}>
-            <Link href={getPropertyLink(properties[prop])}>
+            <Link href={'' + getPropertyLink(properties[prop])}>
               <Card className="text-center cursor-pointer">
                 <div className="row no-gutters">
                   <div

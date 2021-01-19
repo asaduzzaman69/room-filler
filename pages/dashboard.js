@@ -732,7 +732,7 @@ export function Dashboard(props) {
                 />
               </Form.Group>
               <Button className="col-12" variant="primary" type="submit">
-                {(selectedProperty.id && "Edit") || "Add"} Property
+                {(selectedProperty.id && "Save") || "Add Property"}
               </Button>
 
               <IncompleteFieldsError showError={!fieldsCompleted} />

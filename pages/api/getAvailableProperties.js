@@ -30,7 +30,6 @@ export default async (req, res) => {
   const promises = [];
   for (var x = 0; x < properties.length; ) {
     let property = properties[x];
-    console.log(property.maxOccupancy, req.query.guests);
     if (
       parseInt(property.maxOccupancy) < parseInt(req.query.guests) ||
       !property.published
@@ -62,7 +61,6 @@ export default async (req, res) => {
     }
   }
   Promise.all(promises).then(results => {
-    console.log(available);
     res.json(properties.filter(property => available[property.id]));
   });
 };
