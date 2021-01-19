@@ -72,7 +72,7 @@ const Home = (props) => {
         }
         propertiesPublished++;
         return (
-          <Col xs="6" md="2" className="cardbox" key={`property_${index}`}>
+          <Col xs="12" sm="4" md="3" xl="2" className="cardbox mb-2" key={`property_${index}`}>
             <Link href={"" + getPropertyLink(properties[prop])}>
               <Card className="text-center cursor-pointer">
                 <div className="row no-gutters">
@@ -85,22 +85,15 @@ const Home = (props) => {
                     }}
                   ></div>
                   <div className="col-sm-7">
-                    <div className="card-body py-2">
+                    <div className="card-body py-2 pr-1">
                       {/*<h5 className="card-title text-left">*/}
                       {/*  {properties[prop].title}*/}
                       {/*</h5>*/}
                       {/*<p className="card-text text-left mb-3">*/}
                       {/*  {properties[prop].description.substring(0, 200)}...*/}
                       {/*</p>*/}
-                      <p className="text-left mb-0 iconbox">
-                        <i className="fa fa-bed ml-2" aria-hidden="true"></i>{" "}
-                        {properties[prop].bedroomCount}
-                        <i
-                          className="fa fa-bath ml-2"
-                          aria-hidden="true"
-                        ></i>{" "}
-                        {properties[prop].bathroomCount}
-                      </p>
+                      <p className="text-left mb-0 iconbox"> {properties[prop].bedroomCount} Beds </p>
+                      <p className="text-left mb-0 iconbox"> {properties[prop].maxOccupancy} Guests </p>
                     </div>
                   </div>
                 </div>
@@ -121,11 +114,9 @@ const Home = (props) => {
         <Layout setHash={setHash}>
         <Banner />
         <div>
-          <Container>
-            <Row className="mt-5 mb-3 mx-auto align-content-center">
-              {getProperties(props)}
-            </Row>
-          </Container>
+          <Row className="mt-5 mb-3 mx-auto px-5 align-content-center">
+            {getProperties(props)}
+          </Row>
         </div>
         <div ref={amenitiesRef}>
           <AmenitiesCarousel />

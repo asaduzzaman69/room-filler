@@ -8,5 +8,5 @@ export default function Layout({ children, setHash }) {
         <CustomNavbar setHash={setHash} />
         {children}
         <Footer setHash={setHash} />
-</>
+    </>
 }
