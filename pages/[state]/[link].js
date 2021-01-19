@@ -16,6 +16,7 @@ import { DayPickerRangeController } from "react-dates";
 import TextExpand from "../../components/text-expand";
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
 import {amenitiesIcon} from '../../public/constants/config';
+import PageNotFound from "../404";
 
 export default function PropertyPage({ property }) {
   const [hash, setHash] = useState("");
@@ -44,7 +45,16 @@ export default function PropertyPage({ property }) {
       );
   };
 
-  return property && (
+  if (!property) {
+    return <Layout>
+      <Head>
+        <meta name="robots" content="noindex" />
+      </Head>
+      <PageNotFound />
+    </Layout>
+  }
+
+  return (
     <Layout setHash={setHash}>
       <SimpleReactLightbox>
         <Head>
