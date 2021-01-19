@@ -23,7 +23,7 @@
   border-radius: 25px;
   color: #fff !important;
   padding:5px 15px !important;
-  text-transform: unset;
+  text-transform: uppercase;
 }
 .main-navbar .navbar .rightside-nav.navbar-nav a:last-child:hover {
   color: #fff !important;

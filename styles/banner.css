@@ -11,12 +11,13 @@
   background: rgba(0, 0, 0, 0.5);
 }
 .greyscale h1 {
-  font-size: 40px;
-  font-weight: 100;
+  font-family: "Oswald", sans-serif;
+  font-size: 45px !important;
+  font-weight: 600 !important;
+  color: #fff;
 }
-.greyscale h2 {
-  font-size: 20px;
-  font-weight: 100;
+.greyscale p {
+  font-size: 15px;
 }
 .search-section {
   padding: 10px;
@@ -96,12 +97,7 @@
   border: none !important;
   box-shadow: none !important;
 }
-.banner-heading {
-  font-family: "Oswald", sans-serif;
-  font-size: 66px;
-  font-weight: 600;
-  color: #fff;
-}
+
 .banner-text {
   padding: 0px;
   font-size: 15px;

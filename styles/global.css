@@ -109,13 +109,13 @@ body {
   height: 100%;
   object-fit: cover;
 }
-.cributn {
+/* .cributn {
   background: #D1AA77 !important;
   border-radius: 100px !important;
   text-align: center !important;
   color: #fff !important;
   padding: 4px 30px 6px 30px !important;
-}
+} */
 @media (max-width: 1200px) {
   .DateRangePicker.DateRangePicker_1 div:first-child {
     display: inline-flex;

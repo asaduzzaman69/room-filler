@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import getEnvironmentConfig from "../environment";
 import Link from "next/link";
@@ -6,23 +6,28 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import CustomNavbar from "../components/navbar";
 import { getAllProperties } from "../services/properties";
 import Footer from "../components/footer";
-import Banner from '../components/banner';
-import AmenitiesCarousel from '../components/amenitiesCarousel';
-import QuickEatsCarousel from '../components/quickeatsCarousel';
-import LocalEatsCarousel from '../components/localEatsCarousel';
-import LocalActivities from '../components/localActivities';
-import EmergencyLocations from '../components/emergencyLocations';
+import Banner from "../components/banner";
+import AmenitiesCarousel from "../components/amenitiesCarousel";
+import QuickEatsCarousel from "../components/quickeatsCarousel";
+import LocalEatsCarousel from "../components/localEatsCarousel";
+import LocalActivities from "../components/localActivities";
+import EmergencyLocations from "../components/emergencyLocations";
+import Layout from "../components/layout";
 
-const Home=(props)=>{
-  const [hash, setHash]=useState('');
+const Home = (props) => {
+  const [hash, setHash] = useState("");
   const amenitiesRef = useRef(null);
   const quickEatsRef = useRef(null);
   const localEatsRef = useRef(null);
   const localActivitiesRef = useRef(null);
   const emergencyLocationsRef = useRef(null);
 
-  const scrollToRef = ref => {
-    window.scrollTo({left:0, top:ref.current.offsetTop, behaviour:'smooth'});
+  const scrollToRef = (ref) => {
+    window.scrollTo({
+      left: 0,
+      top: ref.current.offsetTop,
+      behaviour: "smooth",
+    });
   };
 
   useEffect(() => {
@@ -33,7 +38,7 @@ const Home=(props)=>{
       case "places-to-eat":
         scrollToRef(quickEatsRef);
         break;
-      case "qongfu-business":
+      case "local-eateries":
         scrollToRef(localEatsRef);
         break;
       case "local-activities":
@@ -41,27 +46,34 @@ const Home=(props)=>{
         break;
       case "emergency-locations":
         scrollToRef(emergencyLocationsRef);
-        break; 
+        break;
       default:
     }
   }, [hash]);
 
-    const getPropertyLink = ({property})=>  {
-      // return `/${property.address.state}/${property.link}`;
-      return property && property.address
-        ? `/${property.address.state}/${property.link}`
-        : "/";
-      // return `/${property.address}/${property.link}`;
-    }
+  const getPropertyLink = ( property ) => {
+    // const tempState = property && property.address
+    // ? property.address.state.toLowerCase().trim() :"";
+    // return `/${property.address.state}/${property.link}`;
+    return property && property.address
+      ? `/${property.address.state.toLowerCase().replace(' ','-')}/${property.link.toLowerCase().trim()}`
+      : "/";
+    // return `/${property.address}/${property.link}`;
+  };
 
-    const getProperties=(properties)=> {
-      let propertiesPublished = 0;
-      return properties && Object.keys(properties).map((prop, index) => {
-        if (!properties[prop].published || propertiesPublished > 5) { return false }
+  const getProperties = (properties) => {
+    console.log('properties',properties)
+    let propertiesPublished = 0;
+    return (
+      properties &&
+      Object.keys(properties).map((prop, index) => {
+        if (!properties[prop].published || propertiesPublished > 5) {
+          return false;
+        }
         propertiesPublished++;
         return (
           <Col xs="6" md="2" className="cardbox" key={`property_${index}`}>
-            <Link href={'' + getPropertyLink(properties[prop])}>
+            <Link href={"" + getPropertyLink(properties[prop])}>
               <Card className="text-center cursor-pointer">
                 <div className="row no-gutters">
                   <div
@@ -69,7 +81,7 @@ const Home=(props)=>{
                     style={{
                       background: "url('" + properties[prop].images[0] + "')",
                       backgroundSize: "cover",
-                      backgroundPosition: "center"
+                      backgroundPosition: "center",
                     }}
                   ></div>
                   <div className="col-sm-7">
@@ -83,7 +95,10 @@ const Home=(props)=>{
                       <p className="text-left mb-0 iconbox">
                         <i className="fa fa-bed ml-2" aria-hidden="true"></i>{" "}
                         {properties[prop].bedroomCount}
-                        <i className="fa fa-bath ml-2" aria-hidden="true"></i>{" "}
+                        <i
+                          className="fa fa-bath ml-2"
+                          aria-hidden="true"
+                        ></i>{" "}
                         {properties[prop].bathroomCount}
                       </p>
                     </div>
@@ -93,74 +108,56 @@ const Home=(props)=>{
             </Link>
           </Col>
         );
-      });
-    }
-
-    return (
-      <div>
-        <Head>
-          <title>{getEnvironmentConfig().title}</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <main>
-          <CustomNavbar setHash={setHash}/>
-          <Banner />
-          <div>
-            <Container>
-              <Row className="mt-5 mb-3 mx-auto align-content-center">
-                {getProperties(props)}
-              </Row>
-            </Container>
-          </div>
-          <div ref={amenitiesRef}>
-            <AmenitiesCarousel />
-          </div>
-          <div ref={quickEatsRef}>
-            <QuickEatsCarousel />
-          </div>
-          <div ref={localEatsRef}>
-            <LocalEatsCarousel />
-          </div>
-          <div ref={localActivitiesRef}>
-            <LocalActivities />
-          </div>
-          <div ref={emergencyLocationsRef}>
-            <EmergencyLocations />
-          </div>
-          <Footer setHash={setHash}/>
-        </main>
-
-        <style jsx global>{``}</style>
-      </div>
+      })
     );
-}
+  };
+
+  return (
+    <div>
+      <Head>
+        <title>{getEnvironmentConfig().title}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+        <Layout setHash={setHash}>
+        <Banner />
+        <div>
+          <Container>
+            <Row className="mt-5 mb-3 mx-auto align-content-center">
+              {getProperties(props)}
+            </Row>
+          </Container>
+        </div>
+        <div ref={amenitiesRef}>
+          <AmenitiesCarousel />
+        </div>
+        <div ref={quickEatsRef}>
+          <QuickEatsCarousel />
+        </div>
+        <div ref={localEatsRef}>
+          <LocalEatsCarousel />
+        </div>
+        <div ref={localActivitiesRef}>
+          <LocalActivities />
+        </div>
+        <div ref={emergencyLocationsRef}>
+          <EmergencyLocations />
+        </div>
+        </Layout>
+
+      <style jsx global>{``}</style>
+    </div>
+  );
+};
 
 
-// Page.getInitialProps = async (ctx: AppPageContext): Promise<Props> => {
-//   let hash = "";
-//   if (ctx.isServer && ctx.store) {
-//     ctx.store.dispatch(setAdvanceSearchFilters(loadFiltersFromQuery(ctx.query ? ctx.query : null)));
-//   } else if (!ctx.isServer) {
-//     if (ctx.query && (ctx.query.reset === "true" || queryHasFilterParam(ctx.query))) {
-//       ctx.store.dispatch(
-//         setAdvanceSearchFilters(loadFiltersFromQuery(ctx.query ? ctx.query : null))
-//       );
-//     }
-//     hash = ctx.query.hash ? ctx.query.hash.toString() : "";
-//     hash = `${+new Date()}#${hash}`;
-//   }
-//   return { hash };
-// };
-
-export async function getStaticProps( context ) {
+export async function getStaticProps(context) {
   const allProperties = await getAllProperties();
   const properties = [];
-  allProperties.docs.forEach(doc => {
+  allProperties.docs.forEach((doc) => {
     properties.push(doc.data());
   });
   return {
-    props: { ...properties }
+    props: { ...properties },
   };
 }
 

@@ -1,10 +1,10 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { getSearchLink } from "../services/properties";
 import { SingleDatePicker } from "react-dates";
-// import { Carousel } from "react-responsive-carousel";
 import Slider from "react-slick";
+
 const Banner = ({}) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -13,8 +13,7 @@ const Banner = ({}) => {
   const [focusedEndDate, setFocusedEndDate] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const sliderRef = useRef(null)
-
+  const sliderRef = useRef(null);
 
   const setSlide = (item) => {
     setCurrentSlide(item);
@@ -27,9 +26,9 @@ const Banner = ({}) => {
     slidesToShow: 2,
     slidesToScroll: 1,
     speed: 500,
-    arrows:false
+    arrows: false,
   };
-
+console.log(focusedStartDate)
   return (
     <div className="main-bg">
       <div className="greyscale py-5">
@@ -40,7 +39,10 @@ const Banner = ({}) => {
               <SingleDatePicker
                 placeholder="Select dates"
                 date={startDate}
-                onDateChange={(date) => setStartDate({ date })}
+                onDateChange={(date) => {
+                  setStartDate(date );
+                  setFocusedStartDate(null);
+                }}
                 focused={focusedStartDate}
                 onFocusChange={({ focused }) =>
                   setFocusedStartDate({ focused })
@@ -48,6 +50,8 @@ const Banner = ({}) => {
                 id="start_date"
                 noBorder={true}
                 small={true}
+                numberOfMonths={1}
+                autoFocus
               />
             </Col>
             <Col className="search-height">
@@ -55,18 +59,22 @@ const Banner = ({}) => {
               <SingleDatePicker
                 placeholder="Select dates"
                 date={endDate}
-                onDateChange={(date) => setEndDate({ date })}
+                onDateChange={(date) => setEndDate(date)}
                 focused={focusedEndDate}
                 onFocusChange={({ focused }) => setFocusedEndDate({ focused })}
-                id="end_date"
+                // id="end_date"
                 noBorder={true}
                 small={true}
+                numberOfMonths={1}
               />
             </Col>
 
             <Col className="search-height">
               <p className="search-heading">Guests</p>
-              <Form.Group controlId="propertySearchGuestCount" className="mb-0 select-guest">
+              <Form.Group
+                controlId="propertySearchGuestCount"
+                className="mb-0 select-guest"
+              >
                 <Form.Control
                   as="select"
                   placeholder="Select guests"
@@ -96,7 +104,7 @@ const Banner = ({}) => {
               </Form.Group>
             </Col>
 
-            <Col className="search-height">
+            <Col className="search-height pr-0">
               {/* <Link
                           href={getSearchLink(
                             startDate,
@@ -116,7 +124,7 @@ const Banner = ({}) => {
           </Row>
           <Row className="mt-5 pt-2">
             <Col xs={12} md={6} lg={6}>
-              <h1 className="banner-heading">ZION VILLAGE RESORT</h1>
+              <h1 >ZION VILLAGE RESORT</h1>
               <p className="banner-text">
                 With the perfect balance of relaxation and adventure, Zion
                 Village is the
@@ -132,126 +140,33 @@ const Banner = ({}) => {
                 <br />
                 one of the top vacation retreats in Utah.
               </p>
-              <Button className="read-more-btn">Read more
-              <i className="fal fa-arrow-right arrow-icon" ></i>
+              <Button className="read-more-btn">
+                Read more
+                <i className="fal fa-arrow-right arrow-icon"></i>
               </Button>
             </Col>
             <Col xs={12} md={5} lg={5}>
-              {/* <Carousel
-                showThumbs={false}
-                showArrows={false}
-                showIndicators={false}
-                showStatus={false}
-                selectedItem={currentSlide}
-                swipeable={true}
-              >
-                <Row className="align-items-center">
-                  <Col>
-                    <Card style={{width:"99%"}}>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider1.png"
-                      />
-                    </Card>
-                  </Col>
-                  <Col>
-                    <Card>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider2.png"
-                      />
-                    </Card>
-                  </Col>
-                </Row>
-                <Row className="align-items-center">
-                <Col>
-                    <Card style={{width:"99%"}}>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider2.png"
-                      />
-                    </Card>
-                  </Col>
-                  <Col>
-                    <Card >
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider1.png"
-                      />
-                    </Card>
-                  </Col>
-                </Row>
-                <Row className="align-items-center">
-                <Col>
-                    <Card style={{width:"99%"}}>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider1.png"
-                      />
-                    </Card>
-                  </Col>
-                  <Col>
-                    <Card>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider2.png"
-                      />
-                    </Card>
-                  </Col>
-                </Row>
-                <Row className="align-items-center">
-                <Col>
-                    <Card style={{width:"99%"}}>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider2.png"
-                      />
-                    </Card>
-                  </Col>
-                  <Col>
-                    <Card>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider1.png"
-                      />
-                    </Card>
-                  </Col>
-                </Row>
-              </Carousel> */}
-               <Slider {...settings} ref={sliderRef}>
-                 <div>
-                     <Card>
-                        <Card.Img
-                          variant="top"
-                          src="/images/banner-slider1.png"
-                        />
-                     </Card>
-                 </div>
-                 <div>
-                    <Card>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider2.png"
-                      />
-
-                    </Card>
-                 </div>
-                 <div>
-                    <Card>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider1.png"
-                      />
-                    </Card>
-                 </div>
-                 <div>
-                    <Card>
-                      <Card.Img
-                        variant="top"
-                        src="/images/banner-slider2.png"
-                      />
-                    </Card>
-                 </div>
+              <Slider {...settings} ref={sliderRef}>
+                <div>
+                  <Card>
+                    <Card.Img variant="top" src="/images/banner-slider1.png" />
+                  </Card>
+                </div>
+                <div>
+                  <Card>
+                    <Card.Img variant="top" src="/images/banner-slider2.png" />
+                  </Card>
+                </div>
+                <div>
+                  <Card>
+                    <Card.Img variant="top" src="/images/banner-slider1.png" />
+                  </Card>
+                </div>
+                <div>
+                  <Card>
+                    <Card.Img variant="top" src="/images/banner-slider2.png" />
+                  </Card>
+                </div>
               </Slider>
             </Col>
             <Col xs={12} md={1} lg={1} style={{ alignSelf: "center" }}>
@@ -263,7 +178,7 @@ const Banner = ({}) => {
                       : "carousel-dot"
                   }
                   onClick={() => setSlide(item)}
-                  key={'mini-banner-tab-' + item}
+                  key={"mini-banner-tab-" + item}
                 />
               ))}
             </Col>

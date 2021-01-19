@@ -503,4 +503,55 @@ export const emergencyLocations = [
         location: '29 S 100 E, Hurricane, UT 84737',
         open:"8AM-5PM"
     }, 
-]
+];
+
+export const amenitiesIcon = [
+    {
+      name: "Wifi",
+      icon: "fal fa-wifi",
+    },
+    {
+      name: "TV",
+      icon: "fal fa-tv",
+    },
+    {
+      name: "Heater",
+      icon: "fal fa-heat",
+    },
+    {
+      name: "air conditioning",
+      icon: "fal fa-fan-table",
+    },
+    {
+      name: "Parking",
+      icon: "fal fa-parking",
+    },
+    {
+      name: "Hair dryer",
+      icon: "fal fa-heat",
+    },
+    {
+      name: "Breakfast",
+      icon: "fal fa-hamburger",
+    },
+    {
+      name: "Carbon monoxide alarm",
+      icon: "fal fa-alarm-clock",
+    },
+    {
+      name: "Smoke alarm",
+      icon: "fal fa-sensor-fire",
+    },
+    {
+      name: "Fire extinguisher",
+      icon: "fal fa-fire",
+    },
+    {
+      name: "First-aid kit",
+      icon: "fal fa-medkit",
+    },
+    {
+      name: "Accessible bathroom",
+      icon: "fal fa-restroom",
+    },
+  ];

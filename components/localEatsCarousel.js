@@ -57,12 +57,34 @@ const LocalEatsCarousel = ({}) => {
                   ) $
                 </p>
                 <p>{item.desc}</p>
-                <Button onClick={()=>prev()} variant="outlined" disabled={currentSlide===1}>
-              <Image src={currentSlide === 1?"/images/left-arrow-disabled.png":"/images/left-arrow.png"} className="arrow"/>
-              </Button>
-              <Button onClick={()=>next()}variant="outlined" disabled={currentSlide===localEateries.length-1}>
-              <Image src={currentSlide===localEateries.length-1?"/images/right-arrow-disabled.png":"/images/right-arrow.png"} className="arrow"/>
-              </Button>
+                <Button
+                  onClick={() => prev()}
+                  variant="outlined"
+                  disabled={currentSlide === 1}
+                >
+                  <Image
+                    src={
+                      currentSlide === 1
+                        ? "/images/left-arrow-disabled.png"
+                        : "/images/left-arrow.png"
+                    }
+                    className="arrow"
+                  />
+                </Button>
+                <Button
+                  onClick={() => next()}
+                  variant="outlined"
+                  disabled={currentSlide === localEateries.length - 1}
+                >
+                  <Image
+                    src={
+                      currentSlide === localEateries.length - 1
+                        ? "/images/right-arrow-disabled.png"
+                        : "/images/right-arrow.png"
+                    }
+                    className="arrow"
+                  />
+                </Button>
               </Col>
               <Col>
                 <Image
