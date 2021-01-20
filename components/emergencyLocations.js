@@ -5,10 +5,9 @@ import { emergencyLocations } from "../public/constants/config";
 const EmergencyLocations = ({}) => {
   return (
     <Row
-      style={{ backgroundColor: "#fff", padding: "0px 14%" }}
-      className="align-items-center my-5 py-5 mx-auto"
+      className="align-items-center my-4 my-sm-5 my-md-5 my-lg-5 py-lg-5 mx-auto custom-row"
     >
-      <Col className="left-sec pr-5">
+      <Col className="left-sec pr-5" xs={12} sm={6} md={6}>
         <h5>Emergency Locations</h5>
         <div className="heading-border" />
         {emergencyLocations.length > 0 &&
@@ -24,7 +23,7 @@ const EmergencyLocations = ({}) => {
             );
           })}
       </Col>
-      <Col>
+      <Col xs={12} sm={6} md={6}>
         <Image src="/images/map.png" width="100%" />
       </Col>
     </Row>

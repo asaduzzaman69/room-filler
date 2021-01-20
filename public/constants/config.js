@@ -66,30 +66,35 @@ export const quickEats = [
         name:"Wendys",
         address1:"1149 W State ST",
         address2:"Hurricane, UT",
+        image:'/wendys.png',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
         name:"Arbys",
         address1:"1022 W State ST",
         address2:"Hurricane, UT",
+        image:'/arbys.jpg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
         name:"Costa Vida",
         address1:"845 W State ST",
         address2:"Hurricane, UT",
+        image:'/costa.jpg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
         name:"Dairy Queen",
         address1:"754 W State ST",
         address2:"Hurricane, UT",
+        image:'/dairy-queen.jpg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
         name:"Subway",
         address1:"525 W State ST",
         address2:"Hurricane, UT",
+        image:'/subway.jpeg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
 ];
@@ -101,6 +106,7 @@ export const localEateries = [
         address2:"La Verkin, UT",
         stars:4.8,
         likes:2163,
+        image:'/river-rock-roasting.png',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
@@ -109,6 +115,7 @@ export const localEateries = [
         address2:"La Verkin, UT",
         stars:4.5,
         likes:1486,
+        image:'/stage-coach-grille.jpg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
@@ -117,6 +124,7 @@ export const localEateries = [
         address2:"Hurricane, UT",
         stars:4.3,
         likes:1148,
+        image:'/lonny-boy.jpg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
@@ -125,6 +133,7 @@ export const localEateries = [
         address2:"Hurricane, UT",
         stars:4.8,
         likes:1007,
+        image:'/main-street-cafe.jpg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
@@ -133,6 +142,7 @@ export const localEateries = [
         address2:"Hurricane, UT",
         stars:4.8,
         likes:329,
+        image:'/pizza-wagon.jpg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
     {
@@ -141,6 +151,7 @@ export const localEateries = [
         address2:"Hurricane, UT",
         stars:4.5,
         likes:135,
+        image:'/pigs-ear.jpg',
         desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute"
     },
 ];
@@ -153,7 +164,7 @@ export const localActivities = [
            {
                 name:'Fisher Towers',
                 desc:"These landscapes are becoming as familiar as Monument Valley to cinephiles thanks to Hollywood’s ongoing love affair with them. The scenic drive up S.R. 128 along the Colorado River is your introduction to Fisher Towers, a cluster of soaring sandstone towers on BLM land northeast of Moab. After a short drive on a graded dirt road, you’ll park at a trailhead and primitive campground among big-wall climbers. Look for them as tiny dots on their ascents up the jagged monoliths as you rise and descend along the rugged contours of the eroding landscape. Highlights along the hiking trail include Titan (the tallest of the towers), views to Castleton Tower and a culminating panorama that must be very near the end of the earth.",
-                img:"/images/fish-towers.png"
+                img:"/fish-towers.png"
             },
             {
                 name:'Wildcat Trail of Monument Valley',
@@ -190,14 +201,14 @@ export const localActivities = [
                 phone: '435-673-2161',
                 desc:"During the 1800`s Mormon pioneers arrived in Southern Utah. Jacob Hamblin was a missionary and known to help keep peace among the Mormons and the Indians. Hamblin was among the first to settle in Utah in 1847. In the year 1853, Jacob Hamblin was having a skirmish with an Indian. Hamblin pulled out his pistol to shoot the Indian down, but the pistol didn`t fire. This is when he realized that they should not be fighting with the Indians, but instead, they should live in peace with them. Jacob Hamblin helped to build a fort in Santa Clara, Utah. Santa Clara is only five minutes away from the beautiful St. George Utah real estate of Tenaya Sands. During the time of the Mormon settlers St. George, Utah was a difficult place to settle due to the hot, dry climate. The Jacob Hamblin home was finished in 1863 and is one of the few pioneer homes still standing in the St. George, Utah area.",
                 location:"3325 Hamblin Dr, Santa Clara, UT 84765",
-                img:"/images/fish-towers.png"
+                img:"/hamblin-home.jpg"
             },
             {
                 name:'Ancestor Square | St. George',
                 phone: '(435) 674-2002',
                 desc:"In the heart of downtown St George, historic shops and buildings have been restored in a quaint area called Ancestor Square. The Square features small shops, boutiques and galleries, within easy walking distance other downtown attractions and many motels.",
                 location:"2 St. George Boulevard, St. George, UT 84770",
-                img:"/images/ancestor-square.png"
+                img:"/ancestor-square.png"
             },
             {
                 name:'Silver Reef Ghost Town',
@@ -235,7 +246,7 @@ export const localActivities = [
                 price: '$75',
                 link: 'http://www.golfentrada.com/',
                 location:"2537 W Entrada Trail, St. George, UT 84770",
-                img:"/images/fish-towers.png"
+                img:"/entrada-golf-club.jpg"
             },
             {
                 name:'The Ledges Golf Club',
@@ -276,7 +287,7 @@ export const localActivities = [
                 phone: '435-680-0715',
                 desc:"With its warm, blue waters and red sandstone landscape, Utah`s newest state park is also one of its most popular. Boat and fish on Sand Hollow Reservoir, explore and ride the dunes of Sand Mountain on an off-highway vehicle, then RV or tent camp in the new campground.",
                 location:"3351 South Sand Hollow Road Hurricane, UT 84737",
-                img:"/images/fish-towers.png"
+                img:"/sand-hollow-lake.jpeg"
             },
             {
                 name:'Gunlock Lake',
@@ -300,7 +311,7 @@ export const localActivities = [
                 name:'Walmart Supercenter',
                 open:'7AM-11PM',
                 location:"180 N 3400 W, Hurricane, UT 84737 (3.1 mi)",
-                img:"/images/fish-towers.png"
+                img:"/walmart.jpg"
             },
             {
                 name:'Lins Marketplace',
@@ -333,7 +344,7 @@ export const localActivities = [
                 phone: '(435)634-5942',
                 desc:"The leading Museum in the St. George area features fine exhibits of many cultures and times, as well as the work of local and regional artists. Located across from the Main St. Post Office in historic downtown St. George, the Museum is part of the beautiful Pioneer Center for the Arts Complex. Formerly a sugar beet seed storage facility, the space has been transformed into an elegant showcase for art.  In addition to the many programs and events that the Museum hosts, the Family Discovery Center is has materials for kids to create their own art.",
                 location:"47 N 200 E, St George, UT 84770",
-                img:"/images/george-art-museum.png",
+                img:"/george-art-museum.png",
                 
             },
             {
@@ -359,7 +370,7 @@ export const localActivities = [
                 phone: '(435) 772-3256',
                 desc:"Follow the paths where ancient native people and pioneers walked. Gaze up at massive sandstone cliffs of cream, pink, and red that soar into a brilliant blue sky. Experience wilderness in a narrow slot canyon. Zion’s unique array of plants and animals will enchant you as you absorb the rich history of the past and enjoy the excitement of present day adventures.",
                 location:"State Route 9 in Springdale, UT",
-                img:"/images/fish-towers.png"
+                img:"/zion-national-park.jpeg"
             },
             {
                 name:'Snow Canyon State Park',
@@ -394,7 +405,7 @@ export const localActivities = [
             {
                 name:'Jem Trail',
                 track :6.9 ,
-                img:"/images/fish-towers.png"
+                img:"/jem-trail.jpeg"
             },
             {
                 name:'Hurricane Rim Loop',
@@ -419,7 +430,7 @@ export const localActivities = [
                 phone: '',
                 desc:"St George has many family-friendly parks, however, none are so notable as Pioneer Park. Tucked into the Red Rocks overlooking the St George Valley, Pioneer Park provides an afternoon of relaxing and fun. Unlike most parks, instead of grass fields and swing sets, the park is covered in gorgeous red rock formations that you can climb on and walkthrough. What the park is most well known for is the small slot canyon at the back of the park and the Sugar Loaf (a.k.a. the Dixie Rock) You can climb up to the Dixie Rock and view the entire St George Valley. This spot is great to take pictures and we have even seen someone hold their wedding on top of the formation. This spot is famous throughout the St George area and is a must-see while you are in town. The second well-known spot in pioneer park is the slot canyon. going back about 200 yards the first 150 everyone can walkthrough. It is the last 50 that brings people in every weekend. The slot narrows down to the extent that people enjoy trying to wiggle their way through the slot. Children and adults alike love this easy access experience. Along with the red rock formations around the slot that you can explore there is also access to the Desert Preserve Pioneer Park Trail and a pavilion for the family to a picnic at. If you can find it there is also a brick pioneer house hidden among the rocks. Upcoming is the Red Hills Desert Garden, which will have fish viewing areas the put at eye level with the fish and floral setups that will allow you to learn what plants grow the region.",
                 location:"Red Hills Parkway, St. George, UT",
-                img:"/images/fish-towers.png"
+                img:"/pioneer-peek.jpg"
             },
             {
                 name:'St. George Children`s Museum',
@@ -468,7 +479,7 @@ export const localActivities = [
                 phone: '435-773-7630',
                 desc:"Utah Horseback Riding Guides are here to help you experience adventure on horseback at Snow Canyon State Park or at Zion National Park while taking in the native wildlife and vistas, untouched since early settlers once explored this majestic terrain. You'll enjoy the opportunity to take photographs of rarely seen locations in the red rock regions of southwestern Utah. With so much spectacular country to see you'll enjoy a guided horseback riding tour. Trail Rides are a unique horse riding experience for anyone able to sit a horse. Even if you are someone who has never been around a horse we'll teach you how to love a horse; and more importantly, have that horse love you and follow you around like a puppy.",
                 link:"http://www.snowcanyontrailrides.com/",
-                img:"/images/fish-towers.png"
+                img:"/horse-riding.jpeg"
             },
             {
                 name:'Hot Air Balloon rides In St. George',

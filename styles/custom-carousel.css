@@ -1,4 +1,8 @@
 
+.custom-row{
+  background-color: #ffffff;
+  padding:0 14%;
+}
 .left-sec h6 {
   font-family: 'Oswald', sans-serif; 
   font-size: 23px;
@@ -19,8 +23,9 @@
   text-overflow: ellipsis;
   width: 405px;
 }
+
 .left-sec p {
-  color: #b2b1b1;
+color: #b2b1b1;
 font-size: 15px;
 text-align: left;
 line-height: 18px;
@@ -35,132 +40,36 @@ font-size: 13px;
 .left-sec button:focus{
   box-shadow: none;
 }
-.greyscale {
-  min-height: 450px;
-  background: rgba(0, 0, 0, 0.5);
-}
-.greyscale h1 {
-  font-size: 40px;
-  font-weight: 100;
-}
-.greyscale h2 {
-  font-size: 20px;
-  font-weight: 100;
-}
-.search-section {
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 40px;
-  margin: 0px 80px !important;
-}
-.DateInput {
-  width: 200px !important;
-  padding: 0px !important;
-}
-.DateInput_input {
-  padding: 0px !important;
-}
-.DateInput_input__focused {
-  border-bottom: none !important;
-  padding: 0px !important;
-}
-.search-section .book-btn {
-  min-width: 200px;
-  background-color: #fecb56;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: "Oswald", sans-serif;
-  border: none;
-  padding: 9px;
-  border-radius: 32px;
-}
-.search-section .book-btn:hover {
-  background-color: #fecb56;
-  color: #fff;
-  border: none;
-  box-shadow: none;
-}
-.search-section .book-btn:focus {
-  background-color: #fecb56;
-  color: #fff;
-  border: none;
-  box-shadow: none;
-}
-.search-heading {
-  font-size: 15px;
-  margin-bottom: 0px;
-  font-family: "Oswald", sans-serif;
-}
-.search-height {
-  height: 45px;
-}
-#propertySearchGuestCount {
-  border: none;
-  padding: 0px;
-}
-#propertySearchGuestCount:hover {
-  border: none;
-  padding: 0px;
-}
-.form-control:focus {
-  border: none !important;
-  box-shadow: none !important;
-}
-.banner-heading {
-  font-family: 'Oswald', sans-serif; 
-  font-size: 66px;
-  font-weight: 600;
-  color: #fff;
-}
-.banner-text {
-  padding: 0px;
-  font-size: 15px;
-  line-height: 18px;
-  color: #fff;
-}
 .carousel-image{
-  box-shadow: 3px 4px 5px #ccc
+  box-shadow: 3px 4px 5px #ccc;
 }
-/* .searchbox {
+@media (max-width:991px) {
+    .left-sec h5 {
+    font-size: 32px;
+    width: 350px;
+  }
+  .custom-row{
+    padding:0 10%;
+  }
+ }
+ @media (max-width:860px) {
+  .left-sec h5 {
+  width: 302px;
+}
+}
+ @media (max-width:786px) {
+  .left-sec h5 {
+  width: 302px;
+}
+}
+@media (max-width:767px) {
+.custom-row{
+  padding:0 6%;
+}
+}
+@media (max-width:575px) {
+  .left-sec h5 {
     width: 100%;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
-    border-radius: 40px;
+    font-size: 27x;
   }
-  .searchbox .DateInput.DateInput_1 {
-    background: transparent;
   }
-  .searchbox .DateInput.DateInput_1:first-child input {
-    border-radius: 40px 0 0 40px;
-  }
-  .searchbox
-    .DateRangePickerInput.DateRangePickerInput_1.DateRangePickerInput__withBorder.DateRangePickerInput__withBorder_2 {
-    border-radius: 40px 0 0 40px;
-    width: 100%;
-    border: none;
-  }
-  .DateRangePicker {
-    width: 100%;
-  }
-  .searchbox .form-group {
-    border-radius: 0;
-  }
-  .searchbox .form-group select {
-    border: none;
-    height: 46px !important;
-  }
-  .searchbox .searchbutn {
-    border-radius: 0 100px 100px 0;
-    padding: 11px 30px !important;
-    background: #D1AA77;
-    border-color: #D1AA77;
-  }
-  .searchbox .searchbutn:focus {
-    box-shadow: none;
-    outline: none;
-  }
-  .searchbox .searchbutn:hover {
-    background: #6191bb;
-    border-color: #6191bb;
-  } */

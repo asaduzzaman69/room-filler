@@ -15,7 +15,7 @@ import { Carousel } from "react-responsive-carousel";
 import { localEateries } from "../public/constants/config";
 
 const LocalEatsCarousel = ({}) => {
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const next = () => {
     setCurrentSlide(currentSlide + 1);
   };
@@ -26,7 +26,7 @@ const LocalEatsCarousel = ({}) => {
 
   return (
     <Carousel
-      className="mt-5 pt-5 mb-5"
+      className="mt-5 mt-sm-5 mt-md-5 mt-lg-5 pt-lg-5"
       showThumbs={false}
       showArrows={false}
       showIndicators={false}
@@ -38,11 +38,10 @@ const LocalEatsCarousel = ({}) => {
         localEateries.map((item, index) => {
           return (
             <Row
-              style={{ backgroundColor: "#fff", padding: "0px 14%" }}
-              className="align-items-center"
+              className="align-items-center custom-row"
               key={`quick_eats_${index}`}
             >
-              <Col className="left-sec pl-5">
+              <Col className="left-sec pr-lg-5 pr-md-3" xs={12} sm={6} md={6}>
                 <h6>Local Eateries</h6>
                 <h5>{item.name}</h5>
                 <p className="sub">
@@ -60,11 +59,11 @@ const LocalEatsCarousel = ({}) => {
                 <Button
                   onClick={() => prev()}
                   variant="outlined"
-                  disabled={currentSlide === 1}
+                  disabled={currentSlide === 0}
                 >
                   <Image
                     src={
-                      currentSlide === 1
+                      currentSlide === 0
                         ? "/images/left-arrow-disabled.png"
                         : "/images/left-arrow.png"
                     }
@@ -86,9 +85,9 @@ const LocalEatsCarousel = ({}) => {
                   />
                 </Button>
               </Col>
-              <Col>
+              <Col xs={12} sm={6} md={6}>
                 <Image
-                  src="/images/river-rock-roasting.png"
+                  src={`/images${item.image}`}
                   className="carousel-image"
                 />
               </Col>

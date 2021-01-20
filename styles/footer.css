@@ -36,3 +36,14 @@ margin: 0px;
 /* padding-top: 10px;     */
 border-top: 2px solid;
 }
+@media (max-width:786px) {
+  .footer .row .col-lg-3:last-child h5{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  .social-sec{
+    display: table;
+    margin: 0 auto;
+  }
+}

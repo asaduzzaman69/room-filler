@@ -73,7 +73,7 @@ export default function CustomNavbar({ setHash }) {
               </Nav.Link>
               {/* <Nav.Link href="/about">About</Nav.Link> */}
             </Nav>
-            <Nav className="ml-auto rightside-nav align-items-center">
+            <Nav className="ml-auto rightside-nav align-items-lg-center">
               {getAuthedNavbarContent(user)}
             </Nav>
           </Navbar.Collapse>

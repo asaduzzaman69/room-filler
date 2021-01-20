@@ -32,3 +32,22 @@
 .navbar-brand a{
   margin: 0px !important;
 }
+@media (max-width:991px) {
+  .navbar-brand a{
+    margin-left: 12px !important;
+  }
+  .navbar-light .navbar-toggler {
+    margin-right: 12px;
+}
+.main-navbar .rightside-nav a:last-child {
+  width: 15%;
+  text-align: center;
+  margin-top: 3px;
+}
+.main-navbar .navbar div a{
+  margin-left: 14px;
+}
+.main-navbar {
+  margin-bottom: 12px;
+}
+}

@@ -211,3 +211,9 @@ nav {
   background-color: #df4554 !important;
   cursor: pointer;
 }
+
+@media (max-width:991px) {
+  body {
+    padding-top: 12px;
+  }
+}

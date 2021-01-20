@@ -16,8 +16,9 @@
   font-weight: 600 !important;
   color: #fff;
 }
-.greyscale p {
+.greyscale .banner-text {
   font-size: 15px;
+  color: #fff;
 }
 .search-section {
   padding: 10px;
@@ -98,12 +99,6 @@
   box-shadow: none !important;
 }
 
-.banner-text {
-  padding: 0px;
-  font-size: 15px;
-  line-height: 18px;
-  color: #fff;
-}
 .main-bg .slick-slide {
   transform: scale(0.8);
 }
@@ -172,4 +167,32 @@
   border-radius: 25px;
   background-color: #fecb56;
   margin-left: 15px;
+}
+@media (max-width:991px) {
+  .greyscale h1 {
+  font-size: 35px !important;
+  padding-left: 25px;
+  }
+  .main-bg .banner-text {
+    padding-left: 27px;
+    padding-right: 7px;
+  }
+  .main-bg .read-more-btn{
+    margin-left: 30px;
+  }
+  .search-section {
+    margin: 0px 26px !important;
+  }
+  .search-section .book-btn{
+    min-width: 160px;
+    font-size: 16px;
+    padding: 11px 9px;
+  }
+}
+@media (max-width:575px) {
+  
+  .main-bg .slick-slider{
+    margin: 30px 0px 0px 30px;
+  }
+  
 }

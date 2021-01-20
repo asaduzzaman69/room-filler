@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import Link from "next/link";
 import {
   Container,
@@ -14,7 +14,13 @@ import Slider from "react-slick";
 
 const LocalActivities = ({}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [windowWidth, setWindowWidth] = useState('');
   const sliderRef = useRef(null);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
+ 
   const next = () => {
     setCurrentSlide(currentSlide + 1);
     sliderRef.current.slickNext();
@@ -30,7 +36,7 @@ const LocalActivities = ({}) => {
     centerMode: true,
     infinite: true,
     centerPadding: "0px",
-    slidesToShow: 3,
+    slidesToShow: windowWidth <= 575 ? 1:3,
     arrows: false,
   };
 
@@ -59,7 +65,7 @@ const LocalActivities = ({}) => {
                       variant="top"
                       src={
                         item.places[0].img
-                          ? item.places[0].img
+                          ? `/images${item.places[0].img}`
                           : "https://via.placeholder.com/"
                       }
                     />

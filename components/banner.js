@@ -1,18 +1,28 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { getSearchLink } from "../services/properties";
-import { SingleDatePicker } from "react-dates";
+import { DateRangePicker } from "react-dates";
 import Slider from "react-slick";
 
 const Banner = ({}) => {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [guests, setGuests] = useState(1);
-  const [focusedStartDate, setFocusedStartDate] = useState(null);
-  const [focusedEndDate, setFocusedEndDate] = useState(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // const [startDate, setStartDate] = useState(null);
+  // const [endDate, setEndDate] = useState(null);
+  // const [guests, setGuests] = useState(1);
+  // const [focusedStartDate, setFocusedStartDate] = useState(null);
+  // const [focusedEndDate, setFocusedEndDate] = useState(null);
+  const router = useRouter();
 
+  const startDateParam = router.query.startDate;
+  const endDateParam = router.query.endDate;
+  const guestCount = router.query.guests;
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [focusedInput, setFocusedInput] = useState();
+  const [guests, setGuests] = useState(guestCount || 1);
   const sliderRef = useRef(null);
 
   const setSlide = (item) => {
@@ -28,15 +38,35 @@ const Banner = ({}) => {
     speed: 500,
     arrows: false,
   };
-console.log(focusedStartDate)
+
   return (
     <div className="main-bg">
       <div className="greyscale py-5">
-        <Container>
+        <Container  fluid="lg">
           <Row className="search-section">
             <Col className="search-height">
               <p className="search-heading">Check in</p>
-              <SingleDatePicker
+              {/* <DateRangePicker
+                className="w-100"
+                startDateId="startDate"
+                endDateId="endDate"
+                startDate={startDate}
+                endDate={endDate}
+                onDatesChange={({ startDate, endDate }) => {
+                  setStartDate(startDate);
+                  setEndDate(endDate);
+                }}
+                focusedInput={focusedInput}
+                onFocusChange={focusedInput => {
+                  setFocusedInput(focusedInput);
+                }}
+                noBorder={true}
+  //                onOutsideClick={actionHandler}
+  // onPrevMonthClick={actionHandler}
+  // onNextMonthClick={actionHandler}
+  showInputs
+              /> */}
+              {/* <SingleDatePicker
                 placeholder="Select dates"
                 date={startDate}
                 onDateChange={(date) => {
@@ -52,11 +82,11 @@ console.log(focusedStartDate)
                 small={true}
                 numberOfMonths={1}
                 autoFocus
-              />
+              /> */}
             </Col>
             <Col className="search-height">
               <p className="search-heading">Check out</p>
-              <SingleDatePicker
+              {/* <SingleDatePicker
                 placeholder="Select dates"
                 date={endDate}
                 onDateChange={(date) => setEndDate(date)}
@@ -66,7 +96,7 @@ console.log(focusedStartDate)
                 noBorder={true}
                 small={true}
                 numberOfMonths={1}
-              />
+              /> */}
             </Col>
 
             <Col className="search-height">
@@ -104,7 +134,7 @@ console.log(focusedStartDate)
               </Form.Group>
             </Col>
 
-            <Col className="search-height pr-0">
+            <Col className="search-height pr-0 text-md-right">
               {/* <Link
                           href={getSearchLink(
                             startDate,
@@ -123,21 +153,17 @@ console.log(focusedStartDate)
             </Col>
           </Row>
           <Row className="mt-5 pt-2">
-            <Col xs={12} md={6} lg={6}>
+            <Col xs={12} md={6} lg={6} sm={6}>
               <h1 >ZION VILLAGE RESORT</h1>
               <p className="banner-text">
                 With the perfect balance of relaxation and adventure, Zion
                 Village is the
-                <br />
                 perfect getaway for anyone looking to enjoy all Southern Utah
                 has to offer.
-                <br />
                 Offering brand new townhomes and luxury amenities including a
                 private
-                <br />
                 clubhouse and pool area, Zion Village has garnered a reputation
                 for being
-                <br />
                 one of the top vacation retreats in Utah.
               </p>
               <Button className="read-more-btn">
@@ -145,7 +171,7 @@ console.log(focusedStartDate)
                 <i className="fal fa-arrow-right arrow-icon"></i>
               </Button>
             </Col>
-            <Col xs={12} md={5} lg={5}>
+            <Col xs={10} sm={5} md={5} lg={5}style={{ alignSelf: "center" }}>
               <Slider {...settings} ref={sliderRef}>
                 <div>
                   <Card>
@@ -169,7 +195,7 @@ console.log(focusedStartDate)
                 </div>
               </Slider>
             </Col>
-            <Col xs={12} md={1} lg={1} style={{ alignSelf: "center" }}>
+            <Col xs={2} sm={1} md={1} lg={1} style={{ alignSelf: "center" }}>
               {[0, 1, 2, 3].map((item) => (
                 <div
                   className={

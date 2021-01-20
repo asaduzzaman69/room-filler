@@ -16,7 +16,8 @@
   text-align: left;
   border-radius: 18px !important;
   border: none !important;
-  margin: 20px;
+  margin: 20px 10px;
+  overflow: hidden;
 }
 .activities-card h5{
   font-family: 'Oswald', sans-serif; 
@@ -108,4 +109,21 @@
   border: 1px solid #b9a37e;
   width: 57%;
   margin-bottom: 15px;
+}
+
+@media (max-width:991px) {
+  .activities-row h5{
+    font-size: 31px;
+  }
+  .activities-row h6{
+    font-size: 15px;
+  }
+  .activities-row{
+    padding: 30px 0px;
+  }
+}
+@media (max-width:575px) {
+  .activities-row{
+    padding: 30px 40px;
+  }
 }

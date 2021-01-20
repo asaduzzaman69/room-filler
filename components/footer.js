@@ -43,8 +43,8 @@ export default function Footer({ setHash }) {
   return (
     <React.Fragment>
       <div className="footer">
-        <Row className="justify-content-md-center">
-          <Col>
+        <Row className="justify-content-center">
+          <Col xs={6} sm={4} md={4} lg={3} className="mb-4 mb-sm-0 ">
             <a href="/">
               <Image
                 src="/images/logo-dark.png"
@@ -55,17 +55,17 @@ export default function Footer({ setHash }) {
               />
             </a>
           </Col>
-          <Col>
+          <Col xs={12} sm={4} md={4} lg={3}  className="mb-4 mb-sm-0  text-center text-sm-left">
             <h5>Get In touch</h5>
             <Row>
-              <Col>
+              <Col md={12} sm={12}>
                 <h6>
                   info@ZionVillage.com
                   <br />
                   385-529-8686
                 </h6>
               </Col>
-              <Col>
+              <Col md={12} sm={12}>
                 <h6>
                   2170 W 350 N
                   <br />
@@ -74,7 +74,7 @@ export default function Footer({ setHash }) {
               </Col>
             </Row>
           </Col>
-          <Col>
+          <Col xs={6} sm={4} md={4} lg={3}  className="mb-4 mb-sm-0">
             <h5>QUICK LINKS</h5>
             <Row>
               <Col>
@@ -114,9 +114,10 @@ export default function Footer({ setHash }) {
               </Col>
             </Row>
           </Col>
-          <Col>
+          <Col lg={3} md={4} sm={12}>
             <h5>FOLLOW US</h5>
             {/* <FacebookIcon /> */}
+            <div className="social-sec">
             <Image
               src="/icons/facebook.svg"
               alt="facebook-icon"
@@ -127,14 +128,16 @@ export default function Footer({ setHash }) {
               alt="twitter-icon"
               className="social-icon"
             />
+
             <Image
               src="/icons/youtube.svg"
               alt="youtube-icon"
               className="social-icon"
             />
+            </div>
           </Col>
         </Row>
-        <Row className="justify-content-md-center mt-3">
+        <Row className="justify-content-center mt-3">
           <p>© 2020 Zion Village Resorts - All Rights Reserved</p>
         </Row>
       </div>
