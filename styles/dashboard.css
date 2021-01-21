@@ -1,0 +1,44 @@
+.dashbox .headingbox h2 {
+  font-size: 40px;
+  font-weight: 100;
+  color: #D1AA77;
+}
+.dashbox h3 {
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  color: #707070;
+  margin-top: 8px;
+}
+.dashbox .headingbox hr {
+  border-bottom: 4px double #D1AA77;
+  width: 80px;
+}
+.dashbox .headingbox p {
+  color: #999;
+}
+.dashbox .add-property-btn{
+  background-color: #fecb56;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Oswald", sans-serif;
+  border: none;
+  padding: 5px 25px;
+  border-radius: 32px;
+}
+.dashbox .add-property-btn:hover, .dashbox .add-property-btn:focus{
+  background-color: #fecb56 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.dashbox .property-list{
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  color: #707070;
+  border: none;
+}
+.dashbox .property-list:hover{
+  font-size: 19px;
+  color: #b9a37e;
+}

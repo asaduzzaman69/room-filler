@@ -2,12 +2,8 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Layout from "../components/layout";
-import {
-  getAvailableProperties,
-  getSearchLink
-} from "../services/properties";
-import Navbar from "../components/navbar";
-import { Card, Col, Container, Form, Row } from "react-bootstrap";
+import { getAvailableProperties, getSearchLink } from "../services/properties";
+import { Card, Col, Container, Form, Row, Button } from "react-bootstrap";
 import { DateRangePicker } from "react-dates";
 import { useEffect, useState } from "react";
 
@@ -40,7 +36,6 @@ function getSearchResults(property) {
 
 export default function Search() {
   const router = useRouter();
-  console.log(router.query);
   const startDateParam = router.query.startDate;
   const endDateParam = router.query.endDate;
   const guestCount = router.query.guests;
@@ -51,37 +46,36 @@ export default function Search() {
   const [endDate, setEndDate] = useState();
   const [focusedInput, setFocusedInput] = useState();
   const [guests, setGuests] = useState(guestCount || 1);
+  const [windowWidth, setWindowWidth] = useState("");
+  const [hash, setHash] = useState("");
 
   useEffect(() => {
     if (router.query && Object.keys(router.query).length && !loaded) {
       setGuests(guestCount);
       setLoaded(true);
       loadProperties(startDateParam, endDateParam, guestCount)
-        .then(props => {
+        .then((props) => {
           setProperties(props || []);
         })
-        .catch(e => {
+        .catch((e) => {
           setLoaded(false);
         });
     }
   });
 
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
+
   return (
-    <Layout>
-      <Navbar />
-      <div className="searchcont py-5">
-        <Container>
-          <Head>
-            <title>All Properties</title>
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <Row
-            className="form-row d-inline-flex pt-3 pb-3 px-2  m-auto w-100 searchbox innersearch"
-            style={{ background: "rgba(255, 255, 255, 0.6)" }}
-          >
-            <Col xs="auto" md="5" className="w-100 h-100 px-0">
+    <Layout setHash={setHash}>
+      <div className="main-bg search-page">
+      <div className="greyscale py-5">
+      <Container fluid="lg">
+          <Row className="search-section">
+            <Col className="search-height" xs={6} sm={3}>
+              <p className="search-heading">Check in</p>
               <DateRangePicker
-                className="w-100"
                 startDateId="startDate"
                 endDateId="endDate"
                 startDate={startDate}
@@ -91,27 +85,33 @@ export default function Search() {
                   setEndDate(endDate);
                 }}
                 focusedInput={focusedInput}
-                onFocusChange={focusedInput => {
+                onFocusChange={(focusedInput) => {
                   setFocusedInput(focusedInput);
                 }}
+                noBorder={true}
+                customArrowIcon={<div></div>}
+                orientation={windowWidth <= 575 ? "vertical" : "horizontal"}
+                daySize={windowWidth <= 575 ? 30:40}
               />
             </Col>
-            <Col xs="auto" md="4" className="w-100 h-100 px-0">
-              <Form.Group controlId="propertySearchGuestCount" className="mb-0">
+            <Col className="search-height" xs={6} sm={3}>
+              <p className="search-heading">Check out</p>
+            </Col>
+
+            <Col className="search-height" xs={12} sm={3}>
+              <p className="search-heading">Guests</p>
+              <Form.Group
+                controlId="propertySearchGuestCount"
+                className="mb-0 select-guest"
+              >
                 <Form.Control
                   as="select"
-                  onChange={() => {
-                    setGuests(
-                      document.getElementById("propertySearchGuestCount").value
-                    );
+                  placeholder="Select guests"
+                  onChange={(evt) => {
+                    setGuests(evt.target.value);
                   }}
-                  style={{
-                    height: "48px",
-                    borderRadius: "0px",
-                    borderLeft: "0px",
-                    borderTopRightRadius: "2px",
-                    borderBottomRightRadius: "2px"
-                  }}
+                  size="sm"
+                  value={guests}
                 >
                   <option value={1}>1 guest</option>
                   <option value={2}>2 guests</option>
@@ -128,54 +128,18 @@ export default function Search() {
                 </Form.Control>
               </Form.Group>
             </Col>
-            <Col xs="auto" md="3" className="w-100 h-100 px-0">
+
+            <Col className="search-height pr-0 text-center text-md-right" xs={12} sm={3}>
               <Link href={getSearchLink(startDate, endDate, guests)}>
-                <button className="btn btn-primary searchbutn py-2 w-100">
+                <Button variant="primary" className="book-btn">
                   Search
-                </button>
+                </Button>
               </Link>
             </Col>
           </Row>
-          {/* <Row className="form-row d-inline-flex pt-4 pb-2 px-4 searchbox" style={{background: 'rgba(255, 255, 255, 0.6)'}}>
-                    <Col xs="auto" className="pr-0 border-right-0">
-                        <DateRangePicker
-                            startDateId="startDate"
-                            endDateId="endDate"
-                            startDate={startDate}
-                            endDate={endDate}
-                            onDatesChange={({ startDt, endDt }) => { setStartDate(startDt); setEndDate(endDt); }}
-                            focusedInput={focusedInput}
-                            onFocusChange={(focusedInpt) => { setFocusedInput(focusedInpt) }}
-                        />
-                    </Col>
-                    <Col xs="auto" className="pl-0">
-                        <Form.Group controlId="propertySearchGuestCount">
-                            <Form.Control as="select" value={guests} onChange={() => { setGuests(document.getElementById('propertySearchGuestCount').value) }}
-                                          style={{height: '48px', borderRadius: '0px', borderLeft: '0px', borderTopRightRadius: '2px', borderBottomRightRadius: '2px'}}>
-                                <option value={1}>1 guest</option>
-                                <option value={2}>2 guests</option>
-                                <option value={3}>3 guests</option>
-                                <option value={4}>4 guests</option>
-                                <option value={5}>5 guests</option>
-                                <option value={6}>6 guests</option>
-                                <option value={7}>7 guests</option>
-                                <option value={8}>8 guests</option>
-                                <option value={9}>9 guests</option>
-                                <option value={10}>10 guests</option>
-                                <option value={11}>11 guests</option>
-                                <option value={12}>12+ guests</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Col>
-                    <Col xs="auto">
-                        <Link href={getSearchLink(startDate, endDate, guests)}>
-                            <a className="btn btn-primary py-2 mt-1">
-                                Search
-                            </a>
-                        </Link>
-                    </Col>
-                </Row> */}
-          {/* <h1>Search Results</h1> */}
+          </Container>   
+      </div>
+      </div>
           <Row>
             <Col className="my-5 headingbox text-center col-md-6 offset-md-3">
               <h2>Search Results</h2>
@@ -191,8 +155,17 @@ export default function Search() {
               <a>Back to home</a>
             </Link>
           </h2>
-        </Container>
-      </div>
     </Layout>
   );
 }
+
+
+
+
+
+
+
+
+
+
+

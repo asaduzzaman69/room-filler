@@ -58,14 +58,14 @@ export default function Footer({ setHash }) {
           <Col xs={12} sm={4} md={4} lg={3}  className="mb-4 mb-sm-0  text-center text-sm-left">
             <h5>Get In touch</h5>
             <Row>
-              <Col md={12} sm={12}>
+              <Col sm={12} md={6}>
                 <h6>
                   info@ZionVillage.com
                   <br />
                   385-529-8686
                 </h6>
               </Col>
-              <Col md={12} sm={12}>
+              <Col  sm={12} md={6}>
                 <h6>
                   2170 W 350 N
                   <br />
@@ -74,10 +74,10 @@ export default function Footer({ setHash }) {
               </Col>
             </Row>
           </Col>
-          <Col xs={6} sm={4} md={4} lg={3}  className="mb-4 mb-sm-0">
+          <Col xs={12} sm={4} md={4} lg={3}  className="mb-4 mb-sm-0">
             <h5>QUICK LINKS</h5>
             <Row>
-              <Col>
+              <Col  sm={12}md={6}>
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link
                   href="/#amenities"
@@ -92,7 +92,7 @@ export default function Footer({ setHash }) {
                   Places To Eat
                 </Nav.Link>
               </Col>
-              <Col>
+              <Col sm={12} md={6}>
                 <Nav.Link
                   href="/#local-eateries"
                   onClick={() => setHash("#local-eateries")}
@@ -114,7 +114,7 @@ export default function Footer({ setHash }) {
               </Col>
             </Row>
           </Col>
-          <Col lg={3} md={4} sm={12}>
+          <Col xs={12} lg={3} md={4} sm={12}>
             <h5>FOLLOW US</h5>
             {/* <FacebookIcon /> */}
             <div className="social-sec">

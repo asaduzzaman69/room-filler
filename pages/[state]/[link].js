@@ -46,7 +46,7 @@ export default function PropertyPage({ property }) {
   };
 
   if (!property) {
-    return <Layout>
+    return <Layout setHash={setHash}>
       <Head>
         <meta name="robots" content="noindex" />
       </Head>

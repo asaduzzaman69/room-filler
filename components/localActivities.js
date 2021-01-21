@@ -1,11 +1,8 @@
 import React, { useState, useRef,useEffect } from "react";
-import Link from "next/link";
 import {
-  Container,
   Row,
   Col,
   Card,
-  Form,
   Button,
   Image,
 } from "react-bootstrap";
@@ -44,7 +41,7 @@ const LocalActivities = ({}) => {
     <Row className="activities-row mt-5 align-items-center mx-auto">
       <Col>
         <h5>ACTIVITIES TO ENJOY WITH</h5>
-        <br />
+        {windowWidth <= 575?null:<br />}
         <h6>
           Experience the amazing activities
           <br />

@@ -124,6 +124,24 @@
 }
 @media (max-width:575px) {
   .activities-row{
-    padding: 30px 40px;
+    padding: 15px 20px;
+  }
+  .activities-row h5{
+    font-size: 20px;
+  }
+  .activities-row h6{
+    font-size: 13px;
+  }
+  .activities-card p{
+    font-size: 13px !important;
+  }
+  .activities-card a{
+    font-size: 13px;
+  }
+  .activities-row .view-all-btn{
+    font-size: 13px;
+  }
+  .activities-card button{
+    font-size: 13px;
   }
 }

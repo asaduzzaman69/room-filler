@@ -69,7 +69,12 @@ font-size: 13px;
 }
 @media (max-width:575px) {
   .left-sec h5 {
-    width: 100%;
-    font-size: 27x;
+    font-size: 27px;
+  }
+  .left-sec h6 {
+    font-size: 18px;
+  }
+  .left-sec p {
+    font-size: 13px;
   }
   }

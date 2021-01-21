@@ -47,3 +47,8 @@ border-top: 2px solid;
     margin: 0 auto;
   }
 }
+@media (max-width:575px) {
+  .footer .row .col-lg-3{
+    text-align: center;
+  }
+}

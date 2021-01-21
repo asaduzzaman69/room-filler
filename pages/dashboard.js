@@ -189,6 +189,7 @@ export function Dashboard(props) {
   const [addressValue] = useState(null);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const [hash, setHash] = useState('');
   const handleShow = () => {
     setShow(true);
     setTimeout(() => {
@@ -304,14 +305,13 @@ export function Dashboard(props) {
   ];
 
   return (
-    <Container>
+    <Layout user={user} setHash={setHash}>
       <Head>
         <title>Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar user={user} />
-     
-     
+      
+ 
       <div className="dashbox mt-5">
         <div className="headingbox text-center col-md-6 offset-md-3">
           <h2>Welcome {user.displayName}</h2>
@@ -324,19 +324,23 @@ export function Dashboard(props) {
         }
 
         {!managedProperties.length &&
-        <Button variant="primary" onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow(); }}
-                className="mx-auto d-block px-4 py-3 mt-5 font-weight-bold">
+        <Button  onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow(); }}
+                className="mx-auto d-block px-4 py-3 mt-5 font-weight-bold add-property-btn">
           Add Property
         </Button>
         }
 
         {!!managedProperties.length &&
         <Container>
-          <Button variant="primary" onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow(); }} className="mb-3">
-            Add Property
-          </Button>
-          <Row className="mx-auto">
-            <Col xs="12" md="4" className="pl-0">
+          <Row>
+            <Col xs="12" md="4">
+            <Row>
+            <h3>Your Properties</h3>
+            &nbsp; &nbsp;
+            <Button className="add-property-btn mb-3" onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow(); }} >
+              Add Property
+            </Button>
+          </Row>
               <ListGroup>
                 {managedProperties.map(property => {
                   return (
@@ -346,29 +350,32 @@ export function Dashboard(props) {
                             loadPropertyCalendar(property);
                           }}
                           key={property.id}
+                          className="cursor-pointer property-list"
                       >
-                        {property.title}
+                        <i className="fal fa-angle-right angle-right"/>{' '}{property.title}
                       </ListGroup.Item>
                   );
                 })}
               </ListGroup>
             </Col>
-            <Col xs="12" md="8" className="pr-0">
-              <Card className="selected-property">
+            <Col xs="12" md="8">
+              <Card className="selected-property" style={{marginBottom:'15px'}}>
                 {(selectedProperty.id &&
                     selectedProperty.images.length > 1 && (
                         <Row
                             style={{overflowX: "auto", maxWidth: '100%'}}
                             className="d-block text-nowrap mb-2 mx-auto"
                         >
-                          {selectedProperty.images.map((image, index) => (
+                          {
+                            selectedProperty.images.map((image, index) => (
                               <Card.Img
-                                  style={{maxHeight: '400px', width: 'auto'}}
+                                  // style={{ width: 'auto'}}
                                   key={"view-only-images-" + index}
                                   variant="top"
                                   src={image}
                               />
-                          ))}
+                          ))
+                        }
                         </Row>
                     )) || (
                     <Card.Img
@@ -381,7 +388,7 @@ export function Dashboard(props) {
                     {selectedProperty.id && isAdmin && (
                         <Button
                             variant="primary"
-                            className="mr-2"
+                            className="mr-2 add-property-btn"
                             onClick={() => {
                               addOwnerEditor(selectedProperty);
                             }}
@@ -392,7 +399,7 @@ export function Dashboard(props) {
                     {selectedProperty.id && (
                         <Button
                             variant="primary"
-                            className="mr-2"
+                            className="mr-2 add-property-btn"
                             onClick={handleShow}
                         >
                           Edit Property
@@ -401,6 +408,7 @@ export function Dashboard(props) {
                     {selectedProperty.id && selectedProperty.published && (
                         <Button
                             variant="primary"
+                            className="mr-2 add-property-btn"
                             onClick={() => {
                               addEditProperty(
                                   null,
@@ -740,7 +748,8 @@ export function Dashboard(props) {
           </Modal.Body>
         </Modal>
       </div>
-    </Container>
+      </Layout>
+  
   );
 }
 

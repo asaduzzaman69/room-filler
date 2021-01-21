@@ -26,39 +26,36 @@
   border-radius: 40px;
   margin: 0px 80px !important;
 }
-.DateInput {
-  width: 200px !important;
-  padding: 0px !important;
+.main-bg .DateInput {
+  width: 22vw !important;
 }
-.DateInput_input {
+.main-bg .DateInput_input {
   padding: 0px !important;
+  font-size: 15px;
+  color: #707070;
+  font-weight: 300;
 }
-.DateInput_input__focused {
+.main-bg .DateInput_input__focused {
   border-bottom: none !important;
   padding: 0px !important;
 }
 .search-section .book-btn {
-  min-width: 200px;
   background-color: #fecb56;
   color: #fff;
   font-size: 18px;
   font-weight: 500;
   font-family: "Oswald", sans-serif;
   border: none;
-  padding: 9px;
+  padding: 11px 20%;
   border-radius: 32px;
 }
 .search-section .book-btn:hover {
   background-color: #fecb56;
-  color: #fff;
-  border: none;
   box-shadow: none;
 }
 .search-section .book-btn:focus {
-  background-color: #fecb56;
-  color: #fff;
-  border: none;
-  box-shadow: none;
+  background-color: #fecb56 !important;
+  box-shadow: none !important;
 }
 .search-heading {
   font-size: 15px;
@@ -153,7 +150,6 @@
   padding: 5px 5px 5px 10px;
 }
 .main-bg .read-more-btn:hover, .main-bg .read-more-btn:focus, .main-bg .read-more-btn:active{
-  /* min-width: 150px; */
   color: #fecb56 !important;
   background-color: #fff !important;
   box-shadow: none !important;
@@ -167,6 +163,41 @@
   border-radius: 25px;
   background-color: #fecb56;
   margin-left: 15px;
+}
+.main-bg .DateRangePickerInput{
+  display: flex;
+}
+.main-bg.search-page, .main-bg.search-page .greyscale{
+  min-height: 300px;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+.main-bg.search-page .row .headingbox h2{
+  font-family: "Oswald", sans-serif;
+  font-size: 45px !important;
+  font-weight: 600 !important;
+  color: #D1AA77;
+}
+@media (max-width:1440px) {
+  .main-bg .DateInput {
+    width: 16.2vw !important;
+  }
+}
+@media (max-width:1366px) {
+  .main-bg .DateInput {
+    width: 18vw !important;
+  }
+}
+@media (max-width:1199px) {
+  .main-bg .DateInput {
+    width: 15.6vw !important;
+  }
+}
+@media (max-width:1024px) {
+  .main-bg .DateInput {
+    width: 18.1vw !important;
+  }
 }
 @media (max-width:991px) {
   .greyscale h1 {
@@ -183,16 +214,52 @@
   .search-section {
     margin: 0px 26px !important;
   }
-  .search-section .book-btn{
-    min-width: 160px;
-    font-size: 16px;
-    padding: 11px 9px;
+  .main-bg .DateInput {
+    width: 22.4vw !important;
+  }
+}
+@media (max-width:786px) {
+  .main-bg .DateInput {
+    width: 21.8vw !important;
+  }
+}
+@media (max-width:607px) {
+  .search-section .book-btn {
+    padding: 11px 18%;
   }
 }
 @media (max-width:575px) {
-  
   .main-bg .slick-slider{
     margin: 30px 0px 0px 30px;
   }
-  
+  .greyscale h1 {
+    font-size: 25px !important;
+    }
+    .main-bg .banner-text {
+      font-size: 13px
+    }
+    .search-section {
+      border-radius: 20px;
+    }
+    .main-bg .DateInput {
+      width: 40.5vw !important;
+    }
+    .search-section .book-btn {
+      padding: 3px 20%;
+      margin-top: 12px;
+    }
+}
+@media (max-width:480px) {
+  .main-bg .DateInput {
+    width: 39vw !important;
+  }
+}
+@media (max-width:360px) {
+  .main-bg .DateInput {
+    width: 35vw !important;
+  }
+  .main-bg .DateInput:last-child {
+    width: 34vw !important;
+    margin-left: 4px !important;
+  }
 }

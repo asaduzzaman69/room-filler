@@ -6,6 +6,7 @@ import '../styles/custom-carousel.css';
 import '../styles/local-activities.css';
 import '../styles/footer.css';
 import '../styles/properties.css';
+import '../styles/dashboard.css';
 
 // import "../styles/_datepicker.css"
 import "bootstrap/dist/css/bootstrap.min.css";

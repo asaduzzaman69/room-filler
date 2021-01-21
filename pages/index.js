@@ -2,10 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import getEnvironmentConfig from "../environment";
 import Link from "next/link";
-import { Container, Row, Col, Card } from "react-bootstrap";
-import CustomNavbar from "../components/navbar";
+import { Row, Col, Card } from "react-bootstrap";
 import { getAllProperties } from "../services/properties";
-import Footer from "../components/footer";
 import Banner from "../components/banner";
 import AmenitiesCarousel from "../components/amenitiesCarousel";
 import QuickEatsCarousel from "../components/quickeatsCarousel";
@@ -62,7 +60,6 @@ const Home = (props) => {
   };
 
   const getProperties = (properties) => {
-    console.log('properties',properties)
     let propertiesPublished = 0;
     return (
       properties &&

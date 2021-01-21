@@ -1,28 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { getSearchLink } from "../services/properties";
 import { DateRangePicker } from "react-dates";
 import Slider from "react-slick";
 
 const Banner = ({}) => {
-  // const [startDate, setStartDate] = useState(null);
-  // const [endDate, setEndDate] = useState(null);
-  // const [guests, setGuests] = useState(1);
-  // const [focusedStartDate, setFocusedStartDate] = useState(null);
-  // const [focusedEndDate, setFocusedEndDate] = useState(null);
-  const router = useRouter();
-
-  const startDateParam = router.query.startDate;
-  const endDateParam = router.query.endDate;
-  const guestCount = router.query.guests;
-
   const [currentSlide, setCurrentSlide] = useState(0);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focusedInput, setFocusedInput] = useState();
-  const [guests, setGuests] = useState(guestCount || 1);
+  const [guests, setGuests] = useState(1);
+  const [windowWidth, setWindowWidth] = useState("");
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
+
   const sliderRef = useRef(null);
 
   const setSlide = (item) => {
@@ -42,12 +36,11 @@ const Banner = ({}) => {
   return (
     <div className="main-bg">
       <div className="greyscale py-5">
-        <Container  fluid="lg">
-          <Row className="search-section">
-            <Col className="search-height">
+        <Container fluid="lg">
+          <Row className="search-section ">
+            <Col className="search-height" xs={6} sm={3}>
               <p className="search-heading">Check in</p>
-              {/* <DateRangePicker
-                className="w-100"
+              <DateRangePicker
                 startDateId="startDate"
                 endDateId="endDate"
                 startDate={startDate}
@@ -57,49 +50,20 @@ const Banner = ({}) => {
                   setEndDate(endDate);
                 }}
                 focusedInput={focusedInput}
-                onFocusChange={focusedInput => {
+                onFocusChange={(focusedInput) => {
                   setFocusedInput(focusedInput);
                 }}
                 noBorder={true}
-  //                onOutsideClick={actionHandler}
-  // onPrevMonthClick={actionHandler}
-  // onNextMonthClick={actionHandler}
-  showInputs
-              /> */}
-              {/* <SingleDatePicker
-                placeholder="Select dates"
-                date={startDate}
-                onDateChange={(date) => {
-                  setStartDate(date );
-                  setFocusedStartDate(null);
-                }}
-                focused={focusedStartDate}
-                onFocusChange={({ focused }) =>
-                  setFocusedStartDate({ focused })
-                }
-                id="start_date"
-                noBorder={true}
-                small={true}
-                numberOfMonths={1}
-                autoFocus
-              /> */}
+                customArrowIcon={<div/>}
+                orientation={windowWidth <= 575 ? "vertical" : "horizontal"}
+                daySize={windowWidth <= 575 ? 30:40}
+              />
             </Col>
-            <Col className="search-height">
+            <Col className="search-height" xs={6} sm={3}>
               <p className="search-heading">Check out</p>
-              {/* <SingleDatePicker
-                placeholder="Select dates"
-                date={endDate}
-                onDateChange={(date) => setEndDate(date)}
-                focused={focusedEndDate}
-                onFocusChange={({ focused }) => setFocusedEndDate({ focused })}
-                // id="end_date"
-                noBorder={true}
-                small={true}
-                numberOfMonths={1}
-              /> */}
             </Col>
 
-            <Col className="search-height">
+            <Col className="search-height" xs={12} sm={3}>
               <p className="search-heading">Guests</p>
               <Form.Group
                 controlId="propertySearchGuestCount"
@@ -108,15 +72,11 @@ const Banner = ({}) => {
                 <Form.Control
                   as="select"
                   placeholder="Select guests"
-                  onChange={() => {
-                    // this.setState({
-                    //   ...this.state,
-                    //   guests: document.getElementById(
-                    //     "propertySearchGuestCount"
-                    //   ).value
-                    // });
+                  onChange={(evt) => {
+                    setGuests(evt.target.value);
                   }}
                   size="sm"
+                  value={guests}
                 >
                   <option value={1}>1 guest</option>
                   <option value={2}>2 guests</option>
@@ -134,44 +94,31 @@ const Banner = ({}) => {
               </Form.Group>
             </Col>
 
-            <Col className="search-height pr-0 text-md-right">
-              {/* <Link
-                          href={getSearchLink(
-                            startDate,
-                            endDate,
-                            guests
-                          )}
-                        >
-                          <button className="btn btn-primary searchbutn py-2">
-                            Search
-                          </button>
-                        </Link> */}
-
-              <Button variant="primary" className="book-btn">
-                Book now
-              </Button>
+            <Col className="search-height pr-0 text-center text-md-right" xs={12} sm={3}>
+              <Link href={getSearchLink(startDate, endDate, guests)}>
+                <Button variant="primary" className="book-btn">
+                  Book now
+                </Button>
+              </Link>
             </Col>
           </Row>
           <Row className="mt-5 pt-2">
             <Col xs={12} md={6} lg={6} sm={6}>
-              <h1 >ZION VILLAGE RESORT</h1>
+              <h1>ZION VILLAGE RESORT</h1>
               <p className="banner-text">
                 With the perfect balance of relaxation and adventure, Zion
-                Village is the
-                perfect getaway for anyone looking to enjoy all Southern Utah
-                has to offer.
-                Offering brand new townhomes and luxury amenities including a
-                private
-                clubhouse and pool area, Zion Village has garnered a reputation
-                for being
-                one of the top vacation retreats in Utah.
+                Village is the perfect getaway for anyone looking to enjoy all
+                Southern Utah has to offer. Offering brand new townhomes and
+                luxury amenities including a private clubhouse and pool area,
+                Zion Village has garnered a reputation for being one of the top
+                vacation retreats in Utah.
               </p>
               <Button className="read-more-btn">
                 Read more
                 <i className="fal fa-arrow-right arrow-icon"></i>
               </Button>
             </Col>
-            <Col xs={10} sm={5} md={5} lg={5}style={{ alignSelf: "center" }}>
+            <Col xs={10} sm={5} md={5} lg={5} style={{ alignSelf: "center" }}>
               <Slider {...settings} ref={sliderRef}>
                 <div>
                   <Card>

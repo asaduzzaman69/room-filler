@@ -1,23 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-    /* font-family: 'Oswald', sans-serif; */
+   
 body {
   font-family: 'Poppins', sans-serif;
   padding-top: 30px;
 }
     
-
-.headingbox h2 {
-  font-size: 40px;
-  font-weight: 100;
-  color: #D1AA77;
-}
-.headingbox hr {
-  border-bottom: 4px double #D1AA77;
-  width: 80px;
-}
-.headingbox p {
-  color: #999;
-}
 .cardbox .card {
   border-radius: 8px;
   overflow: hidden;
@@ -90,10 +77,6 @@ body {
   margin-right: 10px;
   margin-right: 10px;
 }
-.dashbox {
-  float: left;
-  width: 100%;
-}
 .searchbox.innersearch {
   box-shadow: 0 0 2px #000;
   padding: 0 !important;
@@ -109,70 +92,6 @@ body {
   height: 100%;
   object-fit: cover;
 }
-/* .cributn {
-  background: #D1AA77 !important;
-  border-radius: 100px !important;
-  text-align: center !important;
-  color: #fff !important;
-  padding: 4px 30px 6px 30px !important;
-} */
-@media (max-width: 1200px) {
-  .DateRangePicker.DateRangePicker_1 div:first-child {
-    display: inline-flex;
-  }
-}
-@media (max-width: 767px) {
-  .searchbox {
-    border-radius: 0px;
-    width: 310px;
-  }
-  .DateRangePicker.DateRangePicker_1 div:first-child {
-    width: 100%;
-  }
-  .searchbox .DateInput.DateInput_1:first-child input {
-    border-radius: 0px;
-  }
-  .searchbox
-    .DateRangePickerInput.DateRangePickerInput_1.DateRangePickerInput__withBorder.DateRangePickerInput__withBorder_2 {
-    border-radius: 0px;
-  }
-  .searchbox .searchbutn,
-  .searchbox .form-group {
-    border-radius: 0px;
-    width: 100% !important;
-  }
-  .searchbox .form-group {
-    margin: 0 auto;
-  }
-  .DateRangePicker.DateRangePicker_1 div:first-child {
-    display: block;
-    width: 100% !important;
-  }
-  .DateRangePicker {
-    width: 100%;
-  }
-  .fixed-bottom {
-    display: inline-block !important;
-  }
-  .fixed-bottom .navbar-expand .navbar-nav {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-  }
-}
-/* .main-bg .greyscale {
-  filter: grayscale(50%);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  background: url("/images/home_bg.jpg");
-  background-position: center;
-  background-size: cover;
-} */
 
 .z-index-999 {
   z-index: 999;
@@ -189,16 +108,6 @@ nav {
 .search-chevron {
   font-size: 1.2em;
 }
-
-/* .selected-property .card-img-top {
-  height: 400px;
-  object-fit: cover;
-  vertical-align: top;
-} */
-
-/* .selected-property .half-image-size {
-  height: 200px !important;
-} */
 
 .add-image-preview {
   min-height: 150px;

@@ -42,7 +42,7 @@ const AmenitiesCarousel = ({}) => {
               key={`amenities_${index}`}
             >
                
-              <Col className="left-sec pr-lg-5 pr-md-3 order-xs-1" xs={12} sm={6} md={6}>
+              <Col className="left-sec pr-lg-5 pr-md-3" xs={12} sm={6} md={6}>
                 <h6>Amenities</h6>
                 <h5>{item.name}</h5>
 
@@ -76,7 +76,7 @@ const AmenitiesCarousel = ({}) => {
                   />
                 </Button>
               </Col>
-              <Col xs={12} sm={6} md={6} className="order-xs-2">
+              <Col xs={12} sm={6} md={6}>
                 <Image
                   src="/images/luxury-spa.png"
                   className="carousel-image"
