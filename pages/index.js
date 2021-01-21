@@ -145,6 +145,7 @@ export async function getStaticProps(context) {
     properties.push(doc.data());
   });
   return {
+    revalidate: 1,
     props: { ...properties },
   };
 }
