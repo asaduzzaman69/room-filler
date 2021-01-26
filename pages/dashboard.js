@@ -145,7 +145,6 @@ function addFileImagePreview(file, selectedProperty) {
     reader.onload = function(e) {
       uploadPropertyImages([e.target.result], selectedProperty.id).then(
         result => {
-          console.log(result)
           addImageToPreview(result[0]);
           res(result[0]);
         }

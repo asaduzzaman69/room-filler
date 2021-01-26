@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Head from "next/head";
+import moment from "moment";
 import { useRouter } from "next/router";
 import Layout from "../components/layout";
 import { getAvailableProperties, getSearchLink } from "../services/properties";
@@ -48,10 +48,12 @@ export default function Search() {
   const [guests, setGuests] = useState(guestCount || 1);
   const [windowWidth, setWindowWidth] = useState("");
   const [hash, setHash] = useState("");
-
+  
   useEffect(() => {
     if (router.query && Object.keys(router.query).length && !loaded) {
       setGuests(guestCount);
+      setStartDate(startDateParam? moment(startDateParam):'');
+      setEndDate(endDateParam? moment(endDateParam):'');
       setLoaded(true);
       loadProperties(startDateParam, endDateParam, guestCount)
         .then((props) => {
@@ -74,7 +76,7 @@ export default function Search() {
       <Container fluid="lg">
           <Row className="search-section">
             <Col className="search-height" xs={6} sm={3}>
-              <p className="search-heading">Check in</p>
+              <p className="search-heading">Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Check out</p>
               <DateRangePicker
                 startDateId="startDate"
                 endDateId="endDate"
@@ -94,9 +96,9 @@ export default function Search() {
                 daySize={windowWidth <= 575 ? 30:40}
               />
             </Col>
-            <Col className="search-height" xs={6} sm={3}>
+            {/* <Col className="search-height" xs={6} sm={3}>
               <p className="search-heading">Check out</p>
-            </Col>
+            </Col> */}
 
             <Col className="search-height" xs={12} sm={3}>
               <p className="search-heading">Guests</p>

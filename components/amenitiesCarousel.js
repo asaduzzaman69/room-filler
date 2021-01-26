@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import {
-  Container,
   Row,
   Col,
-  Card,
-  Form,
   Button,
   Image,
 } from "react-bootstrap";
-import { getSearchLink } from "../services/properties";
-import { DateRangePicker, SingleDatePicker } from "react-dates";
 import { Carousel } from "react-responsive-carousel";
 import { amenities } from "../public/constants/config";
 

@@ -1,4 +1,5 @@
 import firebase from "../lib/firebase";
+import moment from 'moment';
 
 export function updateProperty(property) {
   return firebase
@@ -92,14 +93,15 @@ export function getSearchLink(startDate, endDate, guests) {
   if (!startDate || !endDate) {
     return "/search";
   }
-  return (
-    "/search?startDate=" +
-    startDate +
-    "&endDate=" +
-    endDate +
-    "&guests=" +
-    guests
-  );
+  return (`/search?startDate=${moment(startDate).format('MM-DD-YYYY')}&endDate=${moment(endDate).format('MM-DD-YYYY')}&guests=${guests}`)
+  // return (
+  //   "/search?startDate=" +
+  //   startDate +
+  //   "&endDate=" +
+  //   endDate +
+  //   "&guests=" +
+  //   guests
+  // );
 }
 
 export function getPropertyFirstImage(property) {

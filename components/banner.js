@@ -119,7 +119,8 @@ const Banner = (props) => {
             </Col>
             <Col xs={10} sm={5} md={5} lg={5} style={{ alignSelf: "center" }}>
               <Slider {...settings} ref={sliderRef}>
-                {Object.keys(props.properties).map((item) => {console.log(item, props.properties[item]); return (
+                {Object.keys(props.properties).map((item) => {
+                   return (
                     props.properties[item] && props.properties[item].published &&
                     <div>
                       <Card>
