@@ -69,28 +69,22 @@ const Home = (props) => {
         }
         propertiesPublished++;
         return (
-          <Col xs="12" sm="4" md="3" xl="2" className="cardbox mb-2" key={`property_${index}`}>
+          <Col xs={12} sm={6} md={4} className="mb-3" key={`property_${index}`}>
             <Link href={"" + getPropertyLink(properties[prop])}>
-              <Card className="text-center cursor-pointer">
+              <Card className="text-center cursor-pointer border-0">
                 <div className="row no-gutters">
                   <div
-                    className="col-sm-5"
+                    className="col-5 col-lg-4 rounded"
                     style={{
                       background: "url('" + properties[prop].images[0] + "')",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
+                      minHeight: '75px'
                     }}
                   ></div>
-                  <div className="col-sm-7">
-                    <div className="card-body py-2 pr-1">
-                      {/*<h5 className="card-title text-left">*/}
-                      {/*  {properties[prop].title}*/}
-                      {/*</h5>*/}
-                      {/*<p className="card-text text-left mb-3">*/}
-                      {/*  {properties[prop].description.substring(0, 200)}...*/}
-                      {/*</p>*/}
-                      <p className="text-left mb-0 iconbox"> {properties[prop].bedroomCount} Beds </p>
-                      <p className="text-left mb-0 iconbox"> {properties[prop].maxOccupancy} Guests </p>
+                  <div className="col-7 col-lg-8">
+                    <div className="card-body pt-3 pb-2 pr-1">
+                      <p className="text-left mb-0 iconbox"> {properties[prop].bedroomCount} Beds {properties[prop].maxOccupancy} Guests </p>
                     </div>
                   </div>
                 </div>
@@ -109,9 +103,9 @@ const Home = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Layout setHash={setHash}>
-        <Banner />
+        <Banner properties={props} />
         <div>
-          <Row className="mt-5 mb-3 mx-auto px-5 align-content-center">
+          <Row className="container mt-5 mb-3 mx-auto px-md-5 px-xl-0 align-items-center align-content-center">
             {getProperties(props)}
           </Row>
         </div>

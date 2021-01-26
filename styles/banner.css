@@ -26,9 +26,9 @@
   border-radius: 40px;
   margin: 0px 80px !important;
 }
-.main-bg .DateInput {
-  width: 22vw !important;
-}
+/*.main-bg .DateInput {*/
+/*  width: 22vw !important;*/
+/*}*/
 .main-bg .DateInput_input {
   padding: 0px !important;
   font-size: 15px;
@@ -68,11 +68,12 @@
 #propertySearchGuestCount {
   border: none;
   padding: 0px;
-      margin-left: -4px;
-    margin-top: -4px;
-    font-size: 15px;
-    color: #707070;
-    font-weight: 300;
+  margin-left: -4px;
+  margin-top: -4px;
+  font-size: 15px;
+  color: #707070;
+  font-weight: 300;
+  -webkit-appearance:none;
 }
 .select-guest{
   position: relative;
@@ -90,6 +91,7 @@
 #propertySearchGuestCount:hover {
   border: none;
   padding: 0px;
+  -webkit-appearance:none;
 }
 .form-control:focus {
   border: none !important;
@@ -179,26 +181,31 @@
   font-weight: 600 !important;
   color: #D1AA77;
 }
-@media (max-width:1440px) {
-  .main-bg .DateInput {
-    width: 16.2vw !important;
-  }
-}
-@media (max-width:1366px) {
-  .main-bg .DateInput {
-    width: 18vw !important;
-  }
-}
-@media (max-width:1199px) {
-  .main-bg .DateInput {
-    width: 15.6vw !important;
-  }
-}
-@media (max-width:1024px) {
-  .main-bg .DateInput {
-    width: 18.1vw !important;
-  }
-}
+/*@media (min-width:1440px) {*/
+/*  .main-bg .DateInput {*/
+/*    width: 14vw !important;*/
+/*  }*/
+/*}*/
+/*@media (max-width:1440px) {*/
+/*  .main-bg .DateInput {*/
+/*    width: 16.2vw !important;*/
+/*  }*/
+/*}*/
+/*@media (max-width:1366px) {*/
+/*  .main-bg .DateInput {*/
+/*    width: 18vw !important;*/
+/*  }*/
+/*}*/
+/*@media (max-width:1199px) {*/
+/*  .main-bg .DateInput {*/
+/*    width: 15.6vw !important;*/
+/*  }*/
+/*}*/
+/*@media (max-width:1024px) {*/
+/*  .main-bg .DateInput {*/
+/*    width: 18.1vw !important;*/
+/*  }*/
+/*}*/
 @media (max-width:991px) {
   .greyscale h1 {
   font-size: 35px !important;
@@ -214,15 +221,15 @@
   .search-section {
     margin: 0px 26px !important;
   }
-  .main-bg .DateInput {
-    width: 22.4vw !important;
-  }
+  /*.main-bg .DateInput {*/
+  /*  width: 22.4vw !important;*/
+  /*}*/
 }
-@media (max-width:786px) {
-  .main-bg .DateInput {
-    width: 21.8vw !important;
-  }
-}
+/*@media (max-width:786px) {*/
+/*  .main-bg .DateInput {*/
+/*    width: 21.8vw !important;*/
+/*  }*/
+/*}*/
 @media (max-width:607px) {
   .search-section .book-btn {
     padding: 11px 18%;
@@ -241,25 +248,25 @@
     .search-section {
       border-radius: 20px;
     }
-    .main-bg .DateInput {
-      width: 40.5vw !important;
-    }
+    /*.main-bg .DateInput {*/
+    /*  width: 40.5vw !important;*/
+    /*}*/
     .search-section .book-btn {
       padding: 3px 20%;
       margin-top: 12px;
     }
 }
-@media (max-width:480px) {
-  .main-bg .DateInput {
-    width: 39vw !important;
-  }
-}
-@media (max-width:360px) {
-  .main-bg .DateInput {
-    width: 35vw !important;
-  }
-  .main-bg .DateInput:last-child {
-    width: 34vw !important;
-    margin-left: 4px !important;
-  }
-}
+/*@media (max-width:480px) {*/
+/*  .main-bg .DateInput {*/
+/*    width: 39vw !important;*/
+/*  }*/
+/*}*/
+/*@media (max-width:360px) {*/
+/*  .main-bg .DateInput {*/
+/*    width: 35vw !important;*/
+/*  }*/
+/*  .main-bg .DateInput:last-child {*/
+/*    width: 34vw !important;*/
+/*    margin-left: 4px !important;*/
+/*  }*/
+/*}*/

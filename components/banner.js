@@ -5,7 +5,7 @@ import { getSearchLink } from "../services/properties";
 import { DateRangePicker } from "react-dates";
 import Slider from "react-slick";
 
-const Banner = ({}) => {
+const Banner = (props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
@@ -37,71 +37,70 @@ const Banner = ({}) => {
     <div className="main-bg">
       <div className="greyscale py-5">
         <Container fluid="lg">
-          <Row className="search-section ">
-            <Col className="search-height" xs={6} sm={3}>
-              <p className="search-heading">Check in</p>
-              <DateRangePicker
-                startDateId="startDate"
-                endDateId="endDate"
-                startDate={startDate}
-                endDate={endDate}
-                onDatesChange={({ startDate, endDate }) => {
-                  setStartDate(startDate);
-                  setEndDate(endDate);
-                }}
-                focusedInput={focusedInput}
-                onFocusChange={(focusedInput) => {
-                  setFocusedInput(focusedInput);
-                }}
-                noBorder={true}
-                customArrowIcon={<div/>}
-                orientation={windowWidth <= 575 ? "vertical" : "horizontal"}
-                daySize={windowWidth <= 575 ? 30:40}
-              />
-            </Col>
-            <Col className="search-height" xs={6} sm={3}>
-              <p className="search-heading">Check out</p>
-            </Col>
-
-            <Col className="search-height" xs={12} sm={3}>
-              <p className="search-heading">Guests</p>
-              <Form.Group
-                controlId="propertySearchGuestCount"
-                className="mb-0 select-guest"
-              >
-                <Form.Control
-                  as="select"
-                  placeholder="Select guests"
-                  onChange={(evt) => {
-                    setGuests(evt.target.value);
+          <div className="mx-md-5 px-md-5">
+            <Row className="search-section px-sm-3">
+              <Col className="search-height mb-2" sm={6}>
+                <p className="search-heading">Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Check out</p>
+                <DateRangePicker
+                  startDateId="startDate"
+                  endDateId="endDate"
+                  startDate={startDate}
+                  endDate={endDate}
+                  onDatesChange={({ startDate, endDate }) => {
+                    setStartDate(startDate);
+                    setEndDate(endDate);
                   }}
-                  size="sm"
-                  value={guests}
-                >
-                  <option value={1}>1 guest</option>
-                  <option value={2}>2 guests</option>
-                  <option value={3}>3 guests</option>
-                  <option value={4}>4 guests</option>
-                  <option value={5}>5 guests</option>
-                  <option value={6}>6 guests</option>
-                  <option value={7}>7 guests</option>
-                  <option value={8}>8 guests</option>
-                  <option value={9}>9 guests</option>
-                  <option value={10}>10 guests</option>
-                  <option value={11}>11 guests</option>
-                  <option value={12}>12+ guests</option>
-                </Form.Control>
-              </Form.Group>
-            </Col>
+                  focusedInput={focusedInput}
+                  onFocusChange={(focusedInput) => {
+                    setFocusedInput(focusedInput);
+                  }}
+                  noBorder={true}
+                  customArrowIcon={<div/>}
+                  orientation={windowWidth <= 575 ? "vertical" : "horizontal"}
+                  daySize={windowWidth <= 575 ? 30:40}
+                />
+              </Col>
 
-            <Col className="search-height pr-0 text-center text-md-right" xs={12} sm={3}>
-              <Link href={getSearchLink(startDate, endDate, guests)}>
-                <Button variant="primary" className="book-btn">
-                  Book now
-                </Button>
-              </Link>
-            </Col>
-          </Row>
+              <Col className="search-height" xs={12} sm={3}>
+                <p className="search-heading">Guests</p>
+                <Form.Group
+                  controlId="propertySearchGuestCount"
+                  className="mb-0 select-guest"
+                >
+                  <Form.Control
+                    as="select"
+                    placeholder="Select guests"
+                    onChange={(evt) => {
+                      setGuests(evt.target.value);
+                    }}
+                    size="sm"
+                    value={guests}
+                  >
+                    <option value={1}>1 guest</option>
+                    <option value={2}>2 guests</option>
+                    <option value={3}>3 guests</option>
+                    <option value={4}>4 guests</option>
+                    <option value={5}>5 guests</option>
+                    <option value={6}>6 guests</option>
+                    <option value={7}>7 guests</option>
+                    <option value={8}>8 guests</option>
+                    <option value={9}>9 guests</option>
+                    <option value={10}>10 guests</option>
+                    <option value={11}>11 guests</option>
+                    <option value={12}>12+ guests</option>
+                  </Form.Control>
+                </Form.Group>
+              </Col>
+
+              <Col className="search-height pr-0 text-center text-md-right" xs={12} sm={3}>
+                <Link href={getSearchLink(startDate, endDate, guests)}>
+                  <Button variant="primary" className="book-btn">
+                    Book now
+                  </Button>
+                </Link>
+              </Col>
+            </Row>
+          </div>
           <Row className="mt-5 pt-2">
             <Col xs={12} md={6} lg={6} sm={6}>
               <h1>ZION VILLAGE RESORT</h1>
@@ -120,39 +119,28 @@ const Banner = ({}) => {
             </Col>
             <Col xs={10} sm={5} md={5} lg={5} style={{ alignSelf: "center" }}>
               <Slider {...settings} ref={sliderRef}>
-                <div>
-                  <Card>
-                    <Card.Img variant="top" src="/images/banner-slider1.png" />
-                  </Card>
-                </div>
-                <div>
-                  <Card>
-                    <Card.Img variant="top" src="/images/banner-slider2.png" />
-                  </Card>
-                </div>
-                <div>
-                  <Card>
-                    <Card.Img variant="top" src="/images/banner-slider1.png" />
-                  </Card>
-                </div>
-                <div>
-                  <Card>
-                    <Card.Img variant="top" src="/images/banner-slider2.png" />
-                  </Card>
-                </div>
+                {Object.keys(props.properties).map((item) => {console.log(item, props.properties[item]); return (
+                    props.properties[item] && props.properties[item].published &&
+                    <div>
+                      <Card>
+                        <Card.Img variant="top" src={props.properties[item].images[0]} />
+                      </Card>
+                    </div>
+                )})}
               </Slider>
             </Col>
             <Col xs={2} sm={1} md={1} lg={1} style={{ alignSelf: "center" }}>
-              {[0, 1, 2, 3].map((item) => (
-                <div
-                  className={
-                    currentSlide === item
-                      ? "selected-carousel-dot"
-                      : "carousel-dot"
-                  }
-                  onClick={() => setSlide(item)}
-                  key={"mini-banner-tab-" + item}
-                />
+              {Object.keys(props.properties).map((item) => (
+                props.properties[item] && props.properties[item].published &&
+                  <div
+                    className={
+                      currentSlide === item
+                        ? "selected-carousel-dot"
+                        : "carousel-dot"
+                    }
+                    onClick={() => setSlide(item)}
+                    key={"mini-banner-tab-" + item}
+                  />
               ))}
             </Col>
           </Row>

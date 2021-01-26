@@ -114,28 +114,28 @@ export default function Footer({ setHash }) {
               </Col>
             </Row>
           </Col>
-          <Col xs={12} lg={3} md={4} sm={12}>
-            <h5>FOLLOW US</h5>
-            {/* <FacebookIcon /> */}
-            <div className="social-sec">
-            <Image
-              src="/icons/facebook.svg"
-              alt="facebook-icon"
-              className="social-icon"
-            />
-            <Image
-              src="/icons/twitter.svg"
-              alt="twitter-icon"
-              className="social-icon"
-            />
+          {/*<Col xs={12} lg={3} md={4} sm={12}>*/}
+          {/*  <h5>FOLLOW US</h5>*/}
+          {/*  /!* <FacebookIcon /> *!/*/}
+          {/*  <div className="social-sec">*/}
+          {/*  <Image*/}
+          {/*    src="/icons/facebook.svg"*/}
+          {/*    alt="facebook-icon"*/}
+          {/*    className="social-icon"*/}
+          {/*  />*/}
+          {/*  <Image*/}
+          {/*    src="/icons/twitter.svg"*/}
+          {/*    alt="twitter-icon"*/}
+          {/*    className="social-icon"*/}
+          {/*  />*/}
 
-            <Image
-              src="/icons/youtube.svg"
-              alt="youtube-icon"
-              className="social-icon"
-            />
-            </div>
-          </Col>
+          {/*  <Image*/}
+          {/*    src="/icons/youtube.svg"*/}
+          {/*    alt="youtube-icon"*/}
+          {/*    className="social-icon"*/}
+          {/*  />*/}
+          {/*  </div>*/}
+          {/*</Col>*/}
         </Row>
         <Row className="justify-content-center mt-3">
           <p>© 2020 Zion Village Resorts - All Rights Reserved</p>
