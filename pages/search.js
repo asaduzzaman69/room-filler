@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 import { getAvailableProperties, getSearchLink } from "../services/properties";
 import { Card, Col, Container, Form, Row, Button } from "react-bootstrap";
 import { DateRangePicker } from "react-dates";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 async function loadProperties(startDate, endDate, guestCount) {
   const allProperties = await getAvailableProperties(
@@ -74,8 +74,9 @@ export default function Search() {
       <div className="main-bg search-page">
       <div className="greyscale py-5">
       <Container fluid="lg">
-          <Row className="search-section">
-            <Col className="search-height" xs={6} sm={3}>
+        <div className="mx-md-5 px-md-5">
+          <Row className="search-section px-sm-3">
+            <Col className="search-height" sm={6}>
               <p className="search-heading">Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Check out</p>
               <DateRangePicker
                 startDateId="startDate"
@@ -139,7 +140,8 @@ export default function Search() {
               </Link>
             </Col>
           </Row>
-          </Container>   
+        </div>
+      </Container>
       </div>
       </div>
           <Row>

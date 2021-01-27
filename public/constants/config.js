@@ -419,8 +419,8 @@ export const localActivities = [
         ]
     },
     {
-        name:"National/State Parks ",
-        type:"national/state-parks ",
+        name:"National/State Parks",
+        type:"national-state-parks",
         img:"/fish-towers.png",
         places:[
            {
