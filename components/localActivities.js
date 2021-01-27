@@ -1,4 +1,5 @@
 import React, { useState, useRef,useEffect } from "react";
+import Router from "next/router";
 import {
   Row,
   Col,
@@ -57,7 +58,7 @@ const LocalActivities = ({}) => {
             localActivities.map((item, index) => {
               return (
                 <div key={"local-activity-" + index}>
-                  <Card key={`activities_${index}`} className="activities-card">
+                  <Card key={`activities_${index}`} className="activities-card" onClick={()=>Router.push(`activities/${item.type}`)}>
                     <Card.Img
                       variant="top"
                       src={

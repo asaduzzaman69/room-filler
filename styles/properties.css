@@ -47,3 +47,21 @@
   border-radius: 15px;
   padding: 10px;
 }
+.selected-property .bnb-last-image{
+  width: 50%;
+  height: 200px;
+  border-radius: 15px;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+.selected-property .view-more-btn{
+  position: absolute;
+  z-index: 2;
+  right: 34px;
+  bottom: 10px;
+  background: #ccc;
+  border-radius: 18px;
+  padding: 5px 16px;
+  cursor: pointer;
+}

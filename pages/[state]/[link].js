@@ -20,6 +20,7 @@ import PageNotFound from "../404";
 
 export default function PropertyPage({ property }) {
   const [hash, setHash] = useState("");
+  const [lightbox, setLightbox] = useState(false);
   const router = useRouter();
 
   property = property.params;
@@ -33,9 +34,20 @@ export default function PropertyPage({ property }) {
     return amenitiesIcon.find((item) => item.name === amenity);
   };
 
-  const getImagesGallery = (image, index) => {
+  const getImagesGallery = (image, index, total) => {
+    if(index===4){
       return (
-        
+        <>
+        <Card.Img
+          key={"view-only-images-" + index}
+          variant="top"
+          className="bnb-last-image"
+          src={image}
+        />
+        {index===4?<div className="view-more-btn" onClick={()=>setLightbox(true)}>+ {total-4} more</div>:null}
+        </>)
+    }else{
+      return (
         <Card.Img
           key={"view-only-images-" + index}
           variant="top"
@@ -43,6 +55,7 @@ export default function PropertyPage({ property }) {
           src={image}
         />
       );
+    }
   };
 
   if (!property) {
@@ -69,7 +82,15 @@ export default function PropertyPage({ property }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Container className="selected-property">
-          <SRLWrapper options={options}>
+          {/* {
+            lightbox?
+            <SRLWrapper options={options}>
+              {
+              property.images
+}
+            </SRLWrapper>:null
+          } */}
+         
             {property && property.id && property.images.length > 1 ? (
               <Row className="imagesbox">
                 <Col>
@@ -82,20 +103,24 @@ export default function PropertyPage({ property }) {
                       </Col>
                       <Col>
                       <Row>
+                        <Col>
                 {property.images.map((image, index) => {
                    if (index > 0 && index<3) {
                     return (
-                      getImagesGallery(image,index)
+                      getImagesGallery(image,index, property.images.length)
                     );
                 }})}
+                </Col>
                 </Row>
                 <Row>
+                  <Col>
                 {property.images.map((image, index) => {
                    if (index > 2 && index < 5) {
                     return (
-                      getImagesGallery(image,index)
+                      getImagesGallery(image,index, property.images.length)
                     );
                 }})}
+                </Col>
                 </Row>
                 </Col>
               </Row>
@@ -105,7 +130,7 @@ export default function PropertyPage({ property }) {
                 variant="top"
                 src={getPropertyFirstImage(property.params)}
               />)}
-          </SRLWrapper>
+          
           <Row>   
             <Col className="pr-5 pl-1 py-4" xs={7}>
               <h5>{property.title}</h5>

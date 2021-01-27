@@ -18,6 +18,7 @@
   border: none !important;
   margin: 20px 10px;
   overflow: hidden;
+  cursor: pointer;
 }
 .activities-card h5{
   font-family: 'Oswald', sans-serif; 
