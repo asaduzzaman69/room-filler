@@ -214,7 +214,6 @@ export async function getStaticPaths() {
       params: { state: doc.data().address.state.toLowerCase().trim(), link: doc.data().link },
     });
   });
-  console.log(properties)
   return {
     paths: properties,
     fallback: false,
@@ -233,12 +232,9 @@ export async function getStaticProps({ params }) {
       property = { params: doc.data() };
     }
   });
-  console.log(property)
   if (property && property.params && property.params.id) {
     let calendar = (await getPropertyCalendar(property.params)).data();
-    console.log(calendar)
     property.params.calendar = generateBlockedCalendarDays(calendar);
-    console.log(property.params.calendar)
   }
   return {
     props: {

@@ -139,7 +139,6 @@ export function generateBlockedCalendarDays(calendar) {
 
   const month = {};
   const currentDate = {};
-  console.log(calendar)
   if(calendar) {
     calendar.dates.forEach(date => {
       currentDate["date"] = date.startDate;

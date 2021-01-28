@@ -4,7 +4,6 @@ import { Container, Card, Button, Row, Col, Image } from "react-bootstrap";
 import { localActivities } from "../../../public/constants/config";
 
 const Activity = ({ activity }) => {
-  console.log("***********", activity);
   return (
     <Layout>
       <Head>
