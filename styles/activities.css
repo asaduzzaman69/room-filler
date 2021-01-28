@@ -29,7 +29,35 @@ text-align: center;
   overflow: hidden;
   cursor: pointer;
 }
-.places-card-container .places-card h5{
+.places-card-container h3{
+  font-family: 'Oswald', sans-serif; 
+  font-size: 35px;
+  color: #b9a37e;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+.places-card-container h4{
+  font-family: 'Oswald', sans-serif; 
+  font-size: 15px;
+  color: #757575;
+  text-transform: uppercase;
+}
+.places-card-container h6{
+  font-family: 'Oswald', sans-serif; 
+  font-size: 12px;
+  color: #757575;
+  text-transform: uppercase;
+}
+.places-card-container .activity-imgs{
+  width: 70%;
+  border-radius: 18px;
+  display: table;
+  margin: 30px auto;
+}
+/* .places-card-container .places-card h5{
   font-family: 'Oswald', sans-serif; 
   font-size: 25px;
   color: #b9a37e;
@@ -38,8 +66,17 @@ text-align: center;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 100%;
+} */
+.places-card-container span{
+  color: #939393!important;
+  font-size: 14px !important;
+  justify-content: center;
 }
-
+.places-card-container a{
+  color: #939393!important;
+  font-size: 14px !important;
+  justify-content: center;
+}
 .places-card-container .places-card p{
   color: #939393!important;
   font-size: 15px !important;

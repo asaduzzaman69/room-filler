@@ -62,8 +62,8 @@ const LocalActivities = ({}) => {
                     <Card.Img
                       variant="top"
                       src={
-                        item.places[0].img
-                          ? `/images${item.places[0].img}`
+                        item.places[0].bannerImg
+                          ? `/images${item.places[0].bannerImg}`
                           : "https://via.placeholder.com/"
                       }
                     />

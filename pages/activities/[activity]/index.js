@@ -32,8 +32,8 @@ const ActivityPage = ({ activity }) => {
                     <Card.Img
                       variant="top"
                       src={
-                        item.img
-                          ? `/images${item.img}`
+                        item.bannerImg
+                          ? `/images${item.bannerImg}`
                           : "https://via.placeholder.com/"
                       }
                     />
