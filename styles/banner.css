@@ -106,9 +106,13 @@
 }
 .main-bg .card {
   border: none !important;
-  border-radius: 18px !important;
+  /*border-radius: 18px !important;*/
   width: 82%;
   background-color: transparent !important;
+}
+
+.main-bg .slick-active .card {
+  background-color: #ffffff !important;
 }
 
 .main-bg .carousel .slide.selected {

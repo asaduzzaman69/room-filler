@@ -37,15 +37,15 @@ export default function PropertyPage({ property }) {
   const getImagesGallery = (image, index, total) => {
     if(index===4){
       return (
-        <>
-        <Card.Img
-          key={"view-only-images-" + index}
-          variant="top"
-          className="bnb-last-image"
-          src={image}
-        />
-        {index===4?<div className="view-more-btn" onClick={()=>setLightbox(true)}>+ {total-4} more</div>:null}
-        </>)
+        <span key={"view-only-images-" + index}>
+          <Card.Img
+            variant="top"
+            className="bnb-last-image"
+            src={image}
+          />
+          {index===4?<div className="view-more-btn" onClick={()=>setLightbox(true)}>+ {total-4} more</div>:null}
+        </span>
+      )
     }else{
       return (
         <Card.Img
@@ -93,35 +93,35 @@ export default function PropertyPage({ property }) {
          
             {property && property.id && property.images.length > 1 ? (
               <Row className="imagesbox">
+                <Col className="px-0">
+                  <Card.Img
+                          key={"view-only-images-" + 0}
+                          variant="top"
+                          className="bnb-first-img"
+                          src={property.images[0]}
+                        />
+                </Col>
                 <Col>
-                <Card.Img
-                        key={"view-only-images-" + 0}
-                        variant="top"
-                        className="bnb-first-img"
-                        src={property.images[0]}
-                      />
-                      </Col>
-                      <Col>
-                      <Row>
-                        <Col>
-                {property.images.map((image, index) => {
-                   if (index > 0 && index<3) {
-                    return (
-                      getImagesGallery(image,index, property.images.length)
-                    );
-                }})}
-                </Col>
-                </Row>
-                <Row>
-                  <Col>
-                {property.images.map((image, index) => {
-                   if (index > 2 && index < 5) {
-                    return (
-                      getImagesGallery(image,index, property.images.length)
-                    );
-                }})}
-                </Col>
-                </Row>
+                  <Row>
+                    <Col>
+                      {property.images.map((image, index) => {
+                         if (index > 0 && index<3) {
+                          return (
+                            getImagesGallery(image,index, property.images.length)
+                          );
+                      }})}
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      {property.images.map((image, index) => {
+                         if (index > 2 && index < 5) {
+                          return (
+                            getImagesGallery(image,index, property.images.length)
+                          );
+                      }})}
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             ):
@@ -211,9 +211,10 @@ export async function getStaticPaths() {
   const properties = [];
   allProperties.docs.forEach((doc) => {
     properties.push({
-      params: { state: doc.data().address.state.toLowerCase().replace(' ','-'), link: doc.data().link },
+      params: { state: doc.data().address.state.toLowerCase().trim(), link: doc.data().link },
     });
   });
+  console.log(properties)
   return {
     paths: properties,
     fallback: false,
@@ -226,15 +227,18 @@ export async function getStaticProps({ params }) {
   let property = {};
   allProperties.docs.forEach((doc) => {
     if (
-      doc.data().address.state.toLowerCase().replace(' ','-') === params.state &&
+      doc.data().address.state.toLowerCase().trim() === params.state &&
       doc.data().link === params.link
     ) {
       property = { params: doc.data() };
     }
   });
-  if (property && property.id) {
+  console.log(property)
+  if (property && property.params && property.params.id) {
     let calendar = (await getPropertyCalendar(property.params)).data();
+    console.log(calendar)
     property.params.calendar = generateBlockedCalendarDays(calendar);
+    console.log(property.params.calendar)
   }
   return {
     props: {

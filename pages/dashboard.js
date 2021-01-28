@@ -249,16 +249,16 @@ export function Dashboard(props) {
     selectedProperty.address = {
       city: e.value.structured_formatting.secondary_text
         .split(",")[0]
-        .trim()
-        .replace(/[0-9]/g, ""),
+        .replace(/[^A-Za-z]+/g, "")
+        .trim(),
       country: e.value.structured_formatting.secondary_text
         .split(",")[2]
-        .trim()
-        .replace(/[0-9]/g, ""),
+        .replace(/[^A-Za-z]+/g, "")
+        .trim(),
       state: e.value.structured_formatting.secondary_text
         .split(",")[1]
-        .trim()
-        .replace(/[0-9]/g, ""),
+        .replace(/[^A-Za-z]+/g, "")
+        .trim(),
       street: e.value.structured_formatting.main_text,
       stringFormat: e.label
     };
@@ -346,7 +346,7 @@ export function Dashboard(props) {
                       <ListGroup.Item
                           onClick={() => {
                             setSelectedProperty(property);
-                            loadPropertyCalendar(property);
+                            // loadPropertyCalendar(property);
                           }}
                           key={property.id}
                           className="cursor-pointer property-list"
@@ -368,7 +368,7 @@ export function Dashboard(props) {
                           {
                             selectedProperty.images.map((image, index) => (
                               <Card.Img
-                                  // style={{ width: 'auto'}}
+                                  style={{ maxHeight: '400px', width: 'auto' }}
                                   key={"view-only-images-" + index}
                                   variant="top"
                                   src={image}
@@ -463,12 +463,12 @@ export function Dashboard(props) {
                       <p>Select or add a property to continue...</p>
                   )}
 
-                  <DayPickerRangeController
-                      onFocusChange={({focused}) => console.log(focused)} // PropTypes.func.isRequired
-                      isDayBlocked={day => {
-                        return isDayBlocked(calendar, day);
-                      }}
-                  />
+                  {/*<DayPickerRangeController*/}
+                  {/*    onFocusChange={({focused}) => console.log(focused)} // PropTypes.func.isRequired*/}
+                  {/*    isDayBlocked={day => {*/}
+                  {/*      return isDayBlocked(calendar, day);*/}
+                  {/*    }}*/}
+                  {/*/>*/}
                   {selectedProperty.description ? (
                       <div>
                         <div className="wifilist my-4">

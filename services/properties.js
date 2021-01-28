@@ -139,6 +139,7 @@ export function generateBlockedCalendarDays(calendar) {
 
   const month = {};
   const currentDate = {};
+  console.log(calendar)
   if(calendar) {
     calendar.dates.forEach(date => {
       currentDate["date"] = date.startDate;
@@ -177,8 +178,9 @@ export function getPropertyFutureCalendar(property) {
   return new Promise(async (res, rej) => {
     try {
       let calendar = await getPropertyCalendar(property);
+      calendar = calendar.data() || { dates: [] };
       const newDates = [];
-      const dates = calendar.data().dates;
+      const dates = calendar.dates || [];
       dates.forEach(date => {
         if (date.endDate > today) {
           newDates.push(date);

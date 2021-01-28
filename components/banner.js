@@ -119,21 +119,26 @@ const Banner = (props) => {
             </Col>
             <Col xs={10} sm={5} md={5} lg={5} style={{ alignSelf: "center" }}>
               <Slider {...settings} ref={sliderRef}>
-                {Object.keys(props.properties).map((item) => {
+                {Object.keys(props.properties).map((item, index) => {
                    return (
-                    props.properties[item] && props.properties[item].published &&
-                    <div>
+                    props.properties[item] && props.properties[item].published && props.properties[item].images.length &&
+                    <Link href={props.properties[item].address.state.toLowerCase().trim() + '/' + props.properties[item].link} key={'slider-image-' + index}>
                       <Card>
                         <Card.Img variant="top" src={props.properties[item].images[0]} />
+                        <span className="p-2">
+                          <p className="text-left mb-0 font-weight-bold"> {props.properties[item].title} </p>
+                          <p className="text-left mb-0 iconbox"> {props.properties[item].bedroomCount} Beds {props.properties[item].maxOccupancy} Guests </p>
+                        </span>
                       </Card>
-                    </div>
+                    </Link>
                 )})}
               </Slider>
             </Col>
             <Col xs={2} sm={1} md={1} lg={1} style={{ alignSelf: "center" }}>
-              {Object.keys(props.properties).map((item) => (
+              {Object.keys(props.properties).map((item, index) => (
                 props.properties[item] && props.properties[item].published &&
                   <div
+                    key={'slider-dot-' + index}
                     className={
                       currentSlide === item
                         ? "selected-carousel-dot"

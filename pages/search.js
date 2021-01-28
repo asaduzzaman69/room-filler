@@ -34,6 +34,14 @@ function getSearchResults(property) {
   );
 }
 
+function convertDateToMilli(date) {
+  if (date.includes('-')) {
+    return (new Date('' + date)).getTime();
+  }
+
+  return (new Date(date)).getTime();
+}
+
 export default function Search() {
   const router = useRouter();
   const startDateParam = router.query.startDate;
@@ -55,7 +63,7 @@ export default function Search() {
       setStartDate(startDateParam? moment(startDateParam):'');
       setEndDate(endDateParam? moment(endDateParam):'');
       setLoaded(true);
-      loadProperties(startDateParam, endDateParam, guestCount)
+      loadProperties(convertDateToMilli(startDateParam), convertDateToMilli(endDateParam), guestCount)
         .then((props) => {
           setProperties(props || []);
         })

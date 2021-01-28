@@ -84,6 +84,7 @@ const Home = (props) => {
                   ></div>
                   <div className="col-7 col-lg-8">
                     <div className="card-body pt-3 pb-2 pr-1">
+                      <p className="text-left mb-0 font-weight-bold"> {properties[prop].title} </p>
                       <p className="text-left mb-0 iconbox"> {properties[prop].bedroomCount} Beds {properties[prop].maxOccupancy} Guests </p>
                     </div>
                   </div>
