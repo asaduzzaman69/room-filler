@@ -563,7 +563,8 @@
 .DayPicker {
     background: #fff;
     position: relative;
-    text-align: left
+    text-align: left;
+    width: 320px !important;
 }
 .DayPicker__horizontal {
     background: #fff

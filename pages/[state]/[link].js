@@ -90,51 +90,59 @@ export default function PropertyPage({ property }) {
 }
             </SRLWrapper>:null
           } */}
-         
-            {property && property.id && property.images.length > 1 ? (
-              <Row className="imagesbox">
-                <Col className="px-0">
-                  <Card.Img
-                          key={"view-only-images-" + 0}
-                          variant="top"
-                          className="bnb-first-img"
-                          src={property.images[0]}
-                        />
-                </Col>
-                <Col>
-                  <Row>
-                    <Col>
-                      {property.images.map((image, index) => {
-                         if (index > 0 && index<3) {
-                          return (
-                            getImagesGallery(image,index, property.images.length)
-                          );
-                      }})}
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      {property.images.map((image, index) => {
-                         if (index > 2 && index < 5) {
-                          return (
-                            getImagesGallery(image,index, property.images.length)
-                          );
-                      }})}
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            ):
-             (
-              <Card.Img
-                variant="top"
-                src={getPropertyFirstImage(property.params)}
-              />)}
-          
-          <Row>   
-            <Col className="pr-5 pl-1 py-4" xs={7}>
+
+          {property && property.id && property.images.length > 1 ? (
+            <Row className="imagesbox">
+              <Col className="px-0  image-box-responsive">
+                <Card.Img
+                  key={"view-only-images-" + 0}
+                  variant="top"
+                  className="bnb-first-img"
+                  src={property.images[0]}
+                />
+              </Col>
+              <Col>
+                <Row>
+                  <Col>
+                    {property.images.map((image, index) => {
+                      if (index > 0 && index < 3) {
+                        return getImagesGallery(
+                          image,
+                          index,
+                          property.images.length
+                        );
+                      }
+                    })}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    {property.images.map((image, index) => {
+                      if (index > 2 && index < 5) {
+                        return getImagesGallery(
+                          image,
+                          index,
+                          property.images.length
+                        );
+                      }
+                    })}
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          ) : (
+            <Card.Img
+              variant="top"
+              src={getPropertyFirstImage(property.params)}
+            />
+          )}
+
+          <Row className='row-pad'>
+            <Col className="pr-sm-5 pl-sm-1 py-4 row-res"  xs={7}>
               <h5>{property.title}</h5>
               <TextExpand text={property.description} />
+              <div className="customDatePickerWidth">
+
               <DayPickerRangeController
                 onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
                 isDayBlocked={(day) => {
@@ -146,9 +154,10 @@ export default function PropertyPage({ property }) {
                 }}
                 daySize={60}
               />
+              </div>
             </Col>
-            <Col className="px-1 py-4" xs={5}>
-              {property && property.owner &&
+            <Col className="px-1 py-4" row-res xs={5}>
+              {property && property.owner && (
                 <span>
                   <h6 className="mb-0">{property.owner.name}</h6>
                   <h6 className="mb-0">{property.owner.description}</h6>
@@ -157,13 +166,16 @@ export default function PropertyPage({ property }) {
                     <a href={"tel:" + property.owner.phone}>
                       {property.owner.phone}
                     </a>
-                    <i className="fa fa-envelope ml-5 mr-2" aria-hidden="true"></i>
+                    <i
+                      className="fa fa-envelope ml-5 mr-2"
+                      aria-hidden="true"
+                    ></i>
                     <a href={"mailto:" + property.owner.email}>
                       {property.owner.email}
                     </a>
                   </div>
                 </span>
-              }
+              )}
               <h5 className="mt-2">Amenities</h5>
               {property.amenities.split(",").map((amenity, index) => {
                 return (
@@ -181,21 +193,25 @@ export default function PropertyPage({ property }) {
                   </div>
                 );
               })}
-              <div className="mt-3">
-                {property && property.airbnbListingURL &&
-                  <a className="cributn mr-2"
-                     href={property.airbnbListingURL}
-                     target="_blank">
+              <div className="mt-3 btn-res">
+                {property && property.airbnbListingURL && (
+                  <a
+                    className="cributn mr-2"
+                    href={property.airbnbListingURL}
+                    target="_blank"
+                  >
                     View on AirBnB
                   </a>
-                }
-                {property && property.vrboListingURL &&
-                  <a className="cributn"
-                     href={property.vrboListingURL}
-                     target="_blank">
+                )}
+                {property && property.vrboListingURL && (
+                  <a
+                    className="cributn"
+                    href={property.vrboListingURL}
+                    target="_blank"
+                  >
                     View on VRBO
                   </a>
-                }
+                )}
               </div>
             </Col>
           </Row>

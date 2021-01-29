@@ -19,7 +19,7 @@ function getAuthedNavbarContent(user) {
   } else {
     return (
       <React.Fragment>
-        <Nav.Link href="/login" className="signup-btn">
+        <Nav.Link href="/login" className="signup-btn resp">
           Sign in / Sign up
         </Nav.Link>
       </React.Fragment>

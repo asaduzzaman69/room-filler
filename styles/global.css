@@ -1,18 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-   
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   padding-top: 30px;
 }
-    
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 .cardbox .card {
   border-radius: 8px;
   overflow: hidden;
-  border-bottom: 6px solid #D1AA77;
+  border-bottom: 6px solid #d1aa77;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .card-body .card-title {
-  color: #D1AA77;
+  color: #d1aa77;
   font-weight: 700;
 }
 .card-body .card-text {
@@ -20,7 +29,7 @@ body {
   font-size: 16px;
 }
 .iconbox i {
-  color: #D1AA77;
+  color: #d1aa77;
 }
 .fixed-bottom {
   background: #333;
@@ -32,10 +41,10 @@ body {
 }
 .fixed-bottom a:hover,
 .fixed-bottom .navbar-brand:hover {
-  color: #D1AA77 !important;
+  color: #d1aa77 !important;
 }
 .backhome a {
-  background: #D1AA77;
+  background: #d1aa77;
   color: #fff;
   font-size: 16px;
   padding: 6px 20px;
@@ -45,11 +54,11 @@ body {
   border-radius: 8px;
 }
 .firebaseui-form-actions .firebaseui-id-submit {
-  background: #D1AA77 !important;
+  background: #d1aa77 !important;
   border-radius: 100px;
 }
 .wifilist h3 {
-  color: #D1AA77;
+  color: #d1aa77;
   font-size: 25px;
   font-weight: 600;
 }
@@ -65,7 +74,7 @@ body {
   margin: 10px 0;
 }
 .butns-view a {
-  background: #D1AA77;
+  background: #d1aa77;
   border-radius: 100px;
   text-align: center;
   color: #fff !important;
@@ -121,8 +130,67 @@ nav {
   cursor: pointer;
 }
 
-@media (max-width:991px) {
+@media (max-width: 991px) {
   body {
     padding-top: 12px;
   }
+}
+
+@media only screen and (max-width: 576px) {
+  .row-res {
+    -moz-box-flex: 0 !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .row-pad {
+    padding: 0 15px !important;
+  }
+  .btn-res > a {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .btn-res > a {
+    width: 135% !important;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .image-box-responsive {
+    -moz-box-flex: 0 !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .btn-res > a {
+    display: block;
+    width: 70%;
+    margin: 1rem 0;
+    padding: 6px 21px !important;
+  }
+
+  .customDatePickerWidth,
+  .customDatePickerWidth > div.react-datepicker-wrapper,
+  .customDatePickerWidth
+    > div
+    > div.react-datepicker__input-container
+    .customDatePickerWidth
+    > div
+    > div.react-datepicker__input-container
+    input {
+    width: 100% !important;
+  }
+  .customDatePickerWidth > div {
+    width: 100% !important;
+    overflow: scroll;
+  }
+}
+@media only screen and (max-width: 811px) and (min-width: 768px)  {
+
+  .book-btn {
+    padding: 0px 20% !important;
+  }
+
 }

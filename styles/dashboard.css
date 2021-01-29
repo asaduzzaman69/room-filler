@@ -24,8 +24,9 @@
   font-weight: 500;
   font-family: "Oswald", sans-serif;
   border: none;
-  padding: 5px 25px;
-  border-radius: 32px;
+  padding: 10px 35px !important;
+  margin-bottom: 2rem;  border-radius: 32px;
+
 }
 .dashbox .add-property-btn:hover, .dashbox .add-property-btn:focus{
   background-color: #fecb56 !important;
