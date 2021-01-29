@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import Layout from "../../../components/layout";
 import Head from "next/head";
 import Router from "next/router";
@@ -5,8 +6,9 @@ import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import { localActivities } from "../../../public/constants/config";
 
 const ActivityPage = ({ activity }) => {
+  const [hash, setHash] = useState("");
   return (
-    <Layout>
+    <Layout setHash={setHash}>
       <Head>
         <title>Activties</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,8 +29,8 @@ const ActivityPage = ({ activity }) => {
         {
           activity.places.map((item, index)=>{
             return(
-              <Col xs={12} sm={6} md={6} lg={4}>
-              <Card key={`activity_places_${index}`} className="places-card" onClick={()=>Router.push(`${activity.type}/${item.slug}`)}>
+              <Col xs={12} sm={6} md={6} lg={4} key={`activity_places_${index}`}>
+              <Card  className="places-card" onClick={()=>Router.push(`${activity.type}/${item.slug}`)}>
                     <Card.Img
                       variant="top"
                       src={
@@ -48,15 +50,10 @@ const ActivityPage = ({ activity }) => {
                           ? `${item.track} 'Mile Trail'`
                           : ""}
                         {item.phone ? item.phone : ""}
-                        <br />
-                        {/* <br /> */}
+                        {item.phone?<br/>:null}
                         {item.desc ? (
                           item.desc
                         ) : (null
-                          // <>
-                          //   <br />
-                          //   <br />
-                          // </>
                         )}
                       </Card.Text>
                       <Button variant="primary">Book Now</Button>

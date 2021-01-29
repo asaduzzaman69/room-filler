@@ -1,3 +1,4 @@
+export const routes = ["quick-eats", "local-eats", "emergency-locations"];
 export const amenities = [
   {
     name: "Private Pool/Always heated",
@@ -79,41 +80,86 @@ export const quickEats = [
     name: "Wendys",
     address1: "1149 W State ST",
     address2: "Hurricane, UT",
-    image: "/wendys.png",
+    image: "/quick-eats/wendys.png",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "06:30 am", close: "10:00 pm" },
+      { day: "Monday", open: "06:30 am", close: "10:00 pm" },
+      { day: "Tuesday", open: "06:30 am", close: "10:00 pm" },
+      { day: "Wednesday", open: "06:30 am", close: "10:00 pm" },
+      { day: "Thursday", open: "06:30 am", close: "10:00 pm" },
+      { day: "Friday", open: "06:30 am", close: "10:00 pm" },
+      { day: "Saturday", open: "06:30 am", close: "10:00 pm" },
+    ],
   },
   {
     name: "Arbys",
     address1: "1022 W State ST",
     address2: "Hurricane, UT",
-    image: "/arbys.jpg",
+    image: "/quick-eats/arbys.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "10:00 am", close: "10:00 pm" },
+      { day: "Monday", open: "10:00 am", close: "11:00 pm" },
+      { day: "Tuesday", open: "10:00 am", close: "11:00 pm" },
+      { day: "Wednesday", open: "10:00 am", close: "11:00 pm" },
+      { day: "Thursday", open: "10:00 am", close: "11:00 pm" },
+      { day: "Friday", open: "10:00 am", close: "12:00 am" },
+      { day: "Saturday", open: "10:00 am", close: "12:00 am" },
+    ],
   },
   {
     name: "Costa Vida",
     address1: "845 W State ST",
     address2: "Hurricane, UT",
-    image: "/costa.jpg",
+    image: "/quick-eats/costa.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "10:30 am", close: "09:00 pm" },
+      { day: "Tuesday", open: "10:30 am", close: "09:00 pm" },
+      { day: "Wednesday", open: "10:30 am", close: "09:00 pm" },
+      { day: "Thursday", open: "10:30 am", close: "09:00 pm" },
+      { day: "Friday", open: "10:30 am", close: "10:00 pm" },
+      { day: "Saturday", open: "10:30 am", close: "10:00 pm" },
+    ],
   },
   {
     name: "Dairy Queen",
     address1: "754 W State ST",
     address2: "Hurricane, UT",
-    image: "/dairy-queen.jpg",
+    image: "/quick-eats/dairy-queen.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "10:30 am", close: "10:00 pm" },
+      { day: "Tuesday", open: "10:30 am", close: "10:00 pm" },
+      { day: "Wednesday", open: "10:30 am", close: "10:00 pm" },
+      { day: "Thursday", open: "10:30 am", close: "10:00 pm" },
+      { day: "Friday", open: "10:30 am", close: "11:00 pm" },
+      { day: "Saturday", open: "10:30 am", close: "11:00 pm" },
+    ],
   },
   {
     name: "Subway",
     address1: "525 W State ST",
     address2: "Hurricane, UT",
-    image: "/subway.jpeg",
+    image: "/quick-eats/subway.jpeg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "00:00", close: "00:00" },
+      { day: "Monday", open: "00:00", close: "00:00" },
+      { day: "Tuesday", open: "00:00", close: "00:00" },
+      { day: "Wednesday", open: "00:00", close: "00:00" },
+      { day: "Thursday", open: "00:00", close: "00:00" },
+      { day: "Friday", open: "00:00", close: "00:00" },
+      { day: "Saturday", open: "00:00", close: "00:00" },
+    ],
   },
 ];
 
@@ -124,9 +170,19 @@ export const localEateries = [
     address2: "La Verkin, UT",
     stars: 4.8,
     likes: 2163,
-    image: "/river-rock-roasting.png",
+    image: "/local-eats/river-rock-roasting.png",
+    phone: "435-635-7625",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "07:00 am", close: "09:30 pm" },
+      { day: "Monday", open: "06:30 am", close: "09:30 pm" },
+      { day: "Tuesday", open: "06:30 am", close: "09:30 pm" },
+      { day: "Wednesday", open: "06:30 am", close: "09:30 pm" },
+      { day: "Thursday", open: "06:30 am", close: "09:30 pm" },
+      { day: "Friday", open: "06:30 am", close: "09:30 pm" },
+      { day: "Saturday", open: "06:30 am", close: "09:30 pm" },
+    ],
   },
   {
     name: "Stage Coach Grille",
@@ -134,9 +190,19 @@ export const localEateries = [
     address2: "La Verkin, UT",
     stars: 4.5,
     likes: 1486,
-    image: "/stage-coach-grille.jpg",
+    phone: "435-635-7400",
+    image: "/local-eats/stage-coach-grille.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "08:00 am", close: "09:00 pm" },
+      { day: "Monday", open: "08:00 am", close: "09:00 pm" },
+      { day: "Tuesday", open: "08:00 am", close: "09:00 pm" },
+      { day: "Wednesday", open: "08:00 am", close: "09:00 pm" },
+      { day: "Thursday", open: "08:00 am", close: "09:00 pm" },
+      { day: "Friday", open: "08:00 am", close: "10:00 pm" },
+      { day: "Saturday", open: "08:00 am", close: "10:00 pm" },
+    ],
   },
   {
     name: "Lonny Boy’s BBQ",
@@ -144,9 +210,19 @@ export const localEateries = [
     address2: "Hurricane, UT",
     stars: 4.3,
     likes: 1148,
-    image: "/lonny-boy.jpg",
+    phone: "435-215-3011",
+    image: "/local-eats/lonny-boy.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "11:00 am", close: "08:30 pm" },
+      { day: "Tuesday", open: "11:00 am", close: "08:30 pm" },
+      { day: "Wednesday", open: "11:00 am", close: "08:30 pm" },
+      { day: "Thursday", open: "11:00 am", close: "08:30 pm" },
+      { day: "Friday", open: "11:00 am", close: "09:00 pm" },
+      { day: "Saturday", open: "11:00 am", close: "09:00 pm" },
+    ],
   },
   {
     name: "Main Street Cafe",
@@ -154,9 +230,19 @@ export const localEateries = [
     address2: "Hurricane, UT",
     stars: 4.8,
     likes: 1007,
-    image: "/main-street-cafe.jpg",
+    phone: "435-635-9080",
+    image: "/local-eats/main-street-cafe.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "07:00 am", close: "08:00 pm" },
+      { day: "Tuesday", open: "07:00 am", close: "08:00 pm" },
+      { day: "Wednesday", open: "07:00 am", close: "08:00 pm" },
+      { day: "Thursday", open: "07:00 am", close: "08:00 pm" },
+      { day: "Friday", open: "07:00 am", close: "08:00 pm" },
+      { day: "Saturday", open: "07:00 am", close: "08:00 pm" },
+    ],
   },
   {
     name: "The Pizza Wagon",
@@ -164,9 +250,19 @@ export const localEateries = [
     address2: "Hurricane, UT",
     stars: 4.8,
     likes: 329,
-    image: "/pizza-wagon.jpg",
+    phone: "435-327-2503",
+    image: "/local-eats/pizza-wagon.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "", close: "" },
+      { day: "Tuesday", open: "", close: "" },
+      { day: "Wednesday", open: "", close: "" },
+      { day: "Thursday", open: "12:00 pm", close: "08:00 pm" },
+      { day: "Friday", open: "12:00 pm", close: "08:00 pm" },
+      { day: "Saturday", open: "12:00 pm", close: "08:00 pm" },
+    ],
   },
   {
     name: "Pig’s Ear Bistro",
@@ -174,9 +270,75 @@ export const localEateries = [
     address2: "Hurricane, UT",
     stars: 4.5,
     likes: 135,
-    image: "/pigs-ear.jpg",
+    phone: "435-359-1957",
+    image: "/local-eats/pigs-ear.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "04:30 pm", close: "08:30 pm" },
+      { day: "Tuesday", open: "11:30 am", close: "08:30 pm" },
+      { day: "Wednesday", open: "11:30 am", close: "08:30 pm" },
+      { day: "Thursday", open: "11:30 am", close: "08:30 pm" },
+      { day: "Friday", open: "11:30 am", close: "08:30 pm" },
+      { day: "Saturday", open: "11:30 am", close: "08:30 pm" },
+    ],
+  },
+];
+
+export const emergencyLocations = [
+  {
+    name: "Dixie Regional Hospital",
+    location: "1380 E Medical Center Dr, St George, UT (17 mi)",
+    open: "24 hours",
+    phone: "435-251-1000",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "", close: "" },
+      { day: "Tuesday", open: "", close: "" },
+      { day: "Wednesday", open: "", close: "" },
+      { day: "Thursday", open: "", close: "" },
+      { day: "Friday", open: "", close: "" },
+      { day: "Saturday", open: "", close: "" },
+    ],
+    desc:
+      "Intermountain St. George Regional Hospital formerly Dixie Regional Medical Center is a 284-bed hospital located on two campuses in St. George, Utah, United States. St. George Regional is the major medical referral center for northwestern Arizona, southeastern Nevada and southern Utah",
+    image: "/emergency-locations/dixie-regional-hospital.jpeg",
+  },
+  {
+    name: "Hurricane Valley Instacare",
+    location: "75 N 2260 W, Hurricane, UT (1 mi)",
+    open: "8AM-8PM",
+    phone: "435-635-6550",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "08:00 am", close: "08:00 pm" },
+      { day: "Tuesday", open: "08:00 am", close: "08:00 pm" },
+      { day: "Wednesday", open: "08:00 am", close: "08:00 pm" },
+      { day: "Thursday", open: "08:00 am", close: "08:00 pm" },
+      { day: "Friday", open: "08:00 am", close: "08:00 pm" },
+      { day: "Saturday", open: "08:00 am", close: "08:00 pm" },
+    ],
+    desc:
+      "Intermountain Healthcare is a Utah-based, not-for-profit system of 24 hospitals (includes 'virtual' hospital), a Medical Group with more than 2,400 physicians and advanced practice clinicians at about 160 clinics, a health plans division called SelectHealth, and other health services. Helping people live the healthiest lives possible, Intermountain is widely recognized as a leader in clinical quality improvement and efficient healthcare delivery.",
+    image: "/emergency-locations/hurricane-valley-instacare .jpeg",
+  },
+  {
+    name: "Zion Veterinary Hospital",
+    location: "29 S 100 E, Hurricane, UT 84737",
+    open: "8AM-5PM",
+    phone: "435-635-4033",
+    openingHours: [
+      { day: "Sunday", open: "", close: "" },
+      { day: "Monday", open: "08:00 am", close: "05:00 pm" },
+      { day: "Tuesday", open: "08:00 am", close: "05:00 pm" },
+      { day: "Wednesday", open: "08:00 am", close: "05:00 pm" },
+      { day: "Thursday", open: "08:00 am", close: "05:00 pm" },
+      { day: "Friday", open: "08:00 am", close: "05:00 pm" },
+      { day: "Saturday", open: "", close: "" },
+    ],
+    desc: "",
+    image: "/emergency-locations/zion-veterinary-hospital.jpeg",
   },
 ];
 
@@ -206,17 +368,18 @@ export const localActivities = [
         fees: "No fee",
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/hiking/fish-towers-1.jpeg",
             caption:
               "Fisher Towers (Utah) - 2021 All You Need to Know BEFORE You Go (with  Photos) - Tripadvisor",
           },
           {
-            name: "/fish-towers.png",
+            name: "/hiking/fish-towers-2.jpeg",
             caption:
               "The 5 Best Fisher Towers Tours & Tickets 2021 - Moab | Viator",
           },
         ],
-        directions: [],
+        directions: ["The trailhead is located off Hwy 128, east of Moab. From the junction of highways 128 and 191, travel east for 21 miles to an improved dirt road. Turn right onto that dirt road and follow it for 2.2 miles to the parking lot.",
+      ],
       },
       {
         name: "Wildcat Trail of Monument Valley",
@@ -239,12 +402,12 @@ export const localActivities = [
         fees: "Park entry fee required",
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/hiking/wildcat-trail-1.jpeg",
             caption:
               "Best time for Wildcat Trail & Monument Valley in Utah 2020 - Rove.me",
           },
           {
-            name: "/fish-towers.png",
+            name: "/hiking/wildcat-trail-2.png",
             caption: "Monument Valley and the Wildcat Trail - YouTube",
           },
         ],
@@ -282,11 +445,11 @@ export const localActivities = [
         fees: "$2 per person for the day or $5 per person for the week",
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/hiking/house-on-fire-1.jpg",
             caption: "House on Fire - Your Hike Guide",
           },
           {
-            name: "/fish-towers.png",
+            name: "/hiking/house-on-fire-2.jpeg",
             caption:
               "House on Fire Ruin – South Fork of Mule Canyon | Utah's Canyon Country Blog",
           },
@@ -316,15 +479,15 @@ export const localActivities = [
         //   fees:'$2 per person for the day or $5 per person for the week',
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/hiking/lower-calf-creek-1.jpeg",
             caption: "Calf Creek Falls Lower Hiking Trail | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/hiking/lower-calf-creek-2.jpeg",
             caption: "Calf Creek Falls Lower Hiking Trail | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/hiking/lower-calf-creek-3.jpg",
             caption: "Calf Creek Falls Lower Hiking Trail | Utah.com",
           },
         ],
@@ -352,11 +515,11 @@ export const localActivities = [
         //   fees:'$2 per person for the day or $5 per person for the week',
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/hiking/gooseberry-mesa-1.jpeg",
             caption: "Gooseberry Mesa – Greater Zion",
           },
           {
-            name: "/fish-towers.png",
+            name: "/hiking/gooseberry-mesa-2.jpeg",
             caption: "Gooseberry Mesa",
           },
         ],
@@ -386,11 +549,11 @@ export const localActivities = [
           "Day use is $8 per vehicle, $4 Day-Use for Utah seniors 62+, $75 Annual Pass is available at the park, $35 Senior Adventure (annual) Pass",
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/hiking/kodachrome-basin-state-park-1.jpeg",
             caption: "Kodachrome Basin State Park | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/hiking/kodachrome-basin-state-park-2.jpg",
             caption: "Kodachrome Basin State Park | Utah.com",
           },
         ],
@@ -420,12 +583,12 @@ export const localActivities = [
         //   fees:'Day use is $8 per vehicle, $4 Day-Use for Utah seniors 62+, $75 Annual Pass is available at the park, $35 Senior Adventure (annual) Pass',
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/hiking/ramparts-cedar-break-1.jpeg",
             caption:
               "Hiking Ramparts Overlook Trail in Cedar Breaks National Monument, Utah",
           },
           {
-            name: "/fish-towers.png",
+            name: "/hiking/ramparts-cedar-break-2.jpg",
             caption: "Ramparts Trail Hiking Trail, Parowan, Utah",
           },
         ],
@@ -461,11 +624,11 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/hamblin-home-1.jpeg",
             caption: "A Brief History of Jacob Hamblin – Greater Zion",
           },
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/hamblin-home-2.jpg",
             caption: "Jacob Hamblin Home - St. George Utah",
           },
         ],
@@ -491,11 +654,11 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/ancestor-square-1.jpg",
             caption: "Ancestor Square Concert Series - St. George Downtown",
           },
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/ancestor-square-2.jpeg",
             caption:
               "Ancestor Square - art sign - Picture of Ancestor Square, St. George -  Tripadvisor",
           },
@@ -522,12 +685,12 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/silver-reef-ghost-town-1.jpeg",
             caption:
               "Silver Reef day; the boom, bust and rebirth of a ghost town anomaly – St  George News",
           },
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/silver-reef-ghost-town-2.jpeg",
             caption: "Silver Reef Ghost Town - Hike St George",
           },
         ],
@@ -553,11 +716,11 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/pioneer-daughters-museum-1.jpg",
             caption: "Daughters of Utah Pioneer Museum - Hike St George",
           },
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/pioneer-daughters-museum-2.jpg",
             caption:
               "Daughters of Utah Pioneers Museum - Museums - 145 N 100th E, Saint George,  UT - Phone Number - Yelp",
           },
@@ -584,11 +747,11 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/george-temple-1.jpeg",
             caption: "St. George Utah Temple",
           },
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/george-temple-2.jpg",
             caption:
               "St. George Utah Temple to Close for Two Years | LDS Daily",
           },
@@ -616,17 +779,17 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/old-judds-store-1.jpeg",
             caption:
               "Thomas Judd's store day; from sheep supplies to nostalgic treats, the story  of St. George's longest-running business – St George News",
           },
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/old-judds-store-2.jpg",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
           },
           {
-            name: "/fish-towers.png",
+            name: "/historical-places/old-judds-store-3.jpeg",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
           },
@@ -653,11 +816,11 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/entrada-golf-club-1.jpg",
             caption: "Entrada at Snow Canyon Country Club | Troon.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/entrada-golf-club-2.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
         ],
@@ -677,15 +840,15 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/the-ledges-golf-club-1.jpg",
             caption: "Entrada at Snow Canyon Country Club | Troon.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/the-ledges-golf-club-2.jpeg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/the-ledges-golf-club-3.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
         ],
@@ -705,15 +868,15 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/green-springs-golf-club-1.jpg",
             caption: "Entrada at Snow Canyon Country Club | Troon.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/green-springs-golf-club-2.jpeg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/green-springs-golf-club-3.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
         ],
@@ -732,11 +895,11 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/sand-hollow-golf-club-1.jpg",
             caption: "Entrada at Snow Canyon Country Club | Troon.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/sand-hollow-golf-club-2.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
         ],
@@ -756,15 +919,15 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/south-gate-golf-club-1.jpeg",
             caption: "Entrada at Snow Canyon Country Club | Troon.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/south-gate-golf-club-2.jpeg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/golf-club/south-gate-golf-club-3.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
         ],
@@ -798,19 +961,19 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/lakes/sand-hollow-lake-1.jpg",
             caption: "Entrada at Snow Canyon Country Club | Troon.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/lakes/sand-hollow-lake-2.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/lakes/sand-hollow-lake-3.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/lakes/sand-hollow-lake-4.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
         ],
@@ -837,19 +1000,19 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/lakes/gunlock-lake-1.jpg",
             caption: "Entrada at Snow Canyon Country Club | Troon.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/lakes/gunlock-lake-2.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/lakes/gunlock-lake-3.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/lakes/gunlock-lake-4.jpeg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
         ],
@@ -876,15 +1039,15 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/lakes/quail-lake-1.jpg",
             caption: "Entrada at Snow Canyon Country Club | Troon.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/lakes/quail-lake-2.jpg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
           {
-            name: "/fish-towers.png",
+            name: "/lakes/quail-lake-3.jpeg",
             caption: "Entrada at Snow Canyon Country Club | Utah.com",
           },
         ],
@@ -941,10 +1104,11 @@ export const localActivities = [
       {
         name: "St. George Art Museum & Store",
         phone: "(435)634-5942",
-        desc:["The leading Museum in the St. George area features fine exhibits of many cultures and times, as well as the work of local and regional artists.",
-            "Located across from the Main St. Post Office in historic downtown St. George, the Museum is part of the beautiful Pioneer Center for the Arts Complex.",
-            "Formerly a sugar beet seed storage facility, the space has been transformed into an elegant showcase for art.  In addition to the many programs and events that the Museum hosts, the Family Discovery Center is has materials for kids to create their own art.",
-      ],
+        desc: [
+          "The leading Museum in the St. George area features fine exhibits of many cultures and times, as well as the work of local and regional artists.",
+          "Located across from the Main St. Post Office in historic downtown St. George, the Museum is part of the beautiful Pioneer Center for the Arts Complex.",
+          "Formerly a sugar beet seed storage facility, the space has been transformed into an elegant showcase for art.  In addition to the many programs and events that the Museum hosts, the Family Discovery Center is has materials for kids to create their own art.",
+        ],
         location: "47 N 200 E, St George, UT 84770",
         bannerImg: "/george-art-museum.png",
         slug: "george-art-museum",
@@ -959,17 +1123,17 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/museums/george-art-museum-1.jpeg",
             caption:
               "Thomas Judd's store day; from sheep supplies to nostalgic treats, the story  of St. George's longest-running business – St George News",
           },
           {
-            name: "/fish-towers.png",
+            name: "/museums/george-art-museum-2.jpg",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
           },
           {
-            name: "/fish-towers.png",
+            name: "/museums/george-art-museum-3.jpg",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
           },
@@ -978,10 +1142,11 @@ export const localActivities = [
       {
         name: "St. George Dinosaur Discovery Site",
         phone: "435-574-3466",
-        desc:["Here at the St. George Dinosaur Discovery Site at Johnson Farm, you’ll enter a 200 million-year-old ecosystem that was once home to dinosaurs, fishes, plants, and more. Besides the actual fossils, you won’t want to miss the five life-sized models of prehistoric animals and the working fossil preparation lab.",
-        "The history of the museum begins in 2000, when local optometrist, Dr. Sheldon Johnson, was leveling a hill on his property. After removing several feet of topsoil, he came across a thick sandstone layer. This layer was the “paleontological jackpot”: dinosaur footprints! Dr. Johnson and his wife, LaVerna, decided to share the tracks with the world, opening their farm to the public. Within a few months, trained paleontologists from around the state, plus hundreds of volunteers, helped uncover thousands of fossils. Utah Paleontologist, Jim Kirkland has said, “The St. George track site is not only the oldest Jurassic dinosaur site in Utah, it is the best basal Jurassic track site in western North America.”",
-        "Together with scientists, businesses, and government officials on the local, state, and national levels, the Johnsons and the DinosaurAH!torium Foundation raised enough funds to build a museum. In 2005, the St. George Dinosaur Discovery Site at Johnson Farm opened its doors and has served over 500,000 visitors.",
-  ],
+        desc: [
+          "Here at the St. George Dinosaur Discovery Site at Johnson Farm, you’ll enter a 200 million-year-old ecosystem that was once home to dinosaurs, fishes, plants, and more. Besides the actual fossils, you won’t want to miss the five life-sized models of prehistoric animals and the working fossil preparation lab.",
+          "The history of the museum begins in 2000, when local optometrist, Dr. Sheldon Johnson, was leveling a hill on his property. After removing several feet of topsoil, he came across a thick sandstone layer. This layer was the “paleontological jackpot”: dinosaur footprints! Dr. Johnson and his wife, LaVerna, decided to share the tracks with the world, opening their farm to the public. Within a few months, trained paleontologists from around the state, plus hundreds of volunteers, helped uncover thousands of fossils. Utah Paleontologist, Jim Kirkland has said, “The St. George track site is not only the oldest Jurassic dinosaur site in Utah, it is the best basal Jurassic track site in western North America.”",
+          "Together with scientists, businesses, and government officials on the local, state, and national levels, the Johnsons and the DinosaurAH!torium Foundation raised enough funds to build a museum. In 2005, the St. George Dinosaur Discovery Site at Johnson Farm opened its doors and has served over 500,000 visitors.",
+        ],
         location: "2180 East Riverside Drive, St. George, UT 84790",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "george-dinosaur-site",
@@ -996,17 +1161,17 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/museums/george-dinosaur-discovery-site-1.jpeg",
             caption:
               "Thomas Judd's store day; from sheep supplies to nostalgic treats, the story  of St. George's longest-running business – St George News",
           },
           {
-            name: "/fish-towers.png",
+            name: "/museums/george-dinosaur-discovery-site-2.jpg",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
           },
           {
-            name: "/fish-towers.png",
+            name: "/museums/george-dinosaur-discovery-site-3.jpeg",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
           },
@@ -1015,10 +1180,10 @@ export const localActivities = [
       {
         name: "Rosenburch Wildlife Museum",
         phone: "435-656-0033",
-        desc:
-          ["The Rosenbruch World Wildlife Museum has over 300 taxidermy animals from all over the world.  Staged like they are in their natural habitat, you might find yourself wondering if the animals will come alive. Touring the museum, you can listen to an audio presentation on your phone. The audio will tell you about the animals, and stories from our founder, Jim Rosenbruch, about how some of the animals were acquired.",
-        "Nestled in the heart of southern Utah, The Rosenbruch World Wildlife Museum brings the wonders of the planet’s greatest animals in their natural habitat right to you. Experience hundreds of wildlife species in an over 35,000+ square feet facility in habitats ranging from the plains of Africa to the Rocky Mountains and beyond. You won’t want to miss this unique opportunity.",
-      ],
+        desc: [
+          "The Rosenbruch World Wildlife Museum has over 300 taxidermy animals from all over the world.  Staged like they are in their natural habitat, you might find yourself wondering if the animals will come alive. Touring the museum, you can listen to an audio presentation on your phone. The audio will tell you about the animals, and stories from our founder, Jim Rosenbruch, about how some of the animals were acquired.",
+          "Nestled in the heart of southern Utah, The Rosenbruch World Wildlife Museum brings the wonders of the planet’s greatest animals in their natural habitat right to you. Experience hundreds of wildlife species in an over 35,000+ square feet facility in habitats ranging from the plains of Africa to the Rocky Mountains and beyond. You won’t want to miss this unique opportunity.",
+        ],
         location: "1835 Convention Center Drive Suite B, St. George, UT 84790",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "rosenburch-wildlife",
@@ -1033,15 +1198,15 @@ export const localActivities = [
         ],
         imgs: [
           {
-            name: "/fish-towers.png",
+            name: "/museums/rosenburch-wildlife-museum-1.jpeg",
             caption:
               "Thomas Judd's store day; from sheep supplies to nostalgic treats, the story  of St. George's longest-running business – St George News",
           },
           {
-            name: "/fish-towers.png",
+            name: "/museums/rosenburch-wildlife-museum-3.jpg",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
-          }
+          },
         ],
       },
     ],
@@ -1054,13 +1219,15 @@ export const localActivities = [
       {
         name: "Zion National Park",
         phone: "(435) 772-3256",
-        desc:["Follow the paths where ancient native people and pioneers walked. Gaze up at massive sandstone cliffs of cream, pink, and red that soar into a brilliant blue sky. Experience wilderness in a narrow slot canyon.",
-      "Zion’s unique array of plants and animals will enchant you as you absorb the rich history of the past and enjoy the excitement of present day adventures. Zion National Park is a southwest Utah nature preserve distinguished by Zion Canyon’s steep red cliffs.",
-    "Zion Canyon Scenic Drive cuts through its main section, leading to forest trails along the Virgin River. The river flows to the Emerald Pools, which have waterfalls and a hanging garden. Also along the river, partly through deep chasms, is Zion Narrows wading hike."],
+        desc: [
+          "Follow the paths where ancient native people and pioneers walked. Gaze up at massive sandstone cliffs of cream, pink, and red that soar into a brilliant blue sky. Experience wilderness in a narrow slot canyon.",
+          "Zion’s unique array of plants and animals will enchant you as you absorb the rich history of the past and enjoy the excitement of present day adventures. Zion National Park is a southwest Utah nature preserve distinguished by Zion Canyon’s steep red cliffs.",
+          "Zion Canyon Scenic Drive cuts through its main section, leading to forest trails along the Virgin River. The river flows to the Emerald Pools, which have waterfalls and a hanging garden. Also along the river, partly through deep chasms, is Zion Narrows wading hike.",
+        ],
         location: "State Route 9 in Springdale, UT",
         bannerImg: "/zion-national-park.jpeg",
         slug: "zion-national-park",
-        link:"https://www.nps.gov/zion/index.html",
+        link: "https://www.nps.gov/zion/index.html",
         imgs: [
           {
             name: "/fish-towers.png",
@@ -1076,19 +1243,21 @@ export const localActivities = [
             name: "/fish-towers.png",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
-          }
+          },
         ],
       },
       {
         name: "Snow Canyon State Park",
         phone: "435-628-2255",
-        desc:["Explore the trails and dunes of beautiful Snow Canyon on foot, bike, and horseback. Camp in the peaceful campground surrounded by ancient lava flows and red Navajo sandstone. Discover the secrets of the desert landscape through seasonal nature programs.",
-      "Snow Canyon State Park is a 7,400-acre scenic park quietly tucked amid lava flows and soaring sandstone cliffs in a strikingly colorful and fragile desert environment. Majestic views and the subtle interplay of light, shadow, and color dancing across canyon walls evoke strong emotional responses from visitors.",
-    "Located in the 62,000 acre Red Cliffs Desert Reserve, established to protect the federally listed desert tortoise and its habitat, the park offers opportunities for outdoor enthusiasts of all ages. Activities include hiking, nature studies, wildlife viewing, photography, camping, ranger talks and junior ranger programs. There are more than 38 miles of hiking trails, a three-mile paved walking/biking trail and over 15 miles of equestrian trails."],
+        desc: [
+          "Explore the trails and dunes of beautiful Snow Canyon on foot, bike, and horseback. Camp in the peaceful campground surrounded by ancient lava flows and red Navajo sandstone. Discover the secrets of the desert landscape through seasonal nature programs.",
+          "Snow Canyon State Park is a 7,400-acre scenic park quietly tucked amid lava flows and soaring sandstone cliffs in a strikingly colorful and fragile desert environment. Majestic views and the subtle interplay of light, shadow, and color dancing across canyon walls evoke strong emotional responses from visitors.",
+          "Located in the 62,000 acre Red Cliffs Desert Reserve, established to protect the federally listed desert tortoise and its habitat, the park offers opportunities for outdoor enthusiasts of all ages. Activities include hiking, nature studies, wildlife viewing, photography, camping, ranger talks and junior ranger programs. There are more than 38 miles of hiking trails, a three-mile paved walking/biking trail and over 15 miles of equestrian trails.",
+        ],
         location: "1002 Snow Canyon Dr, Ivins, UT 84738",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "snow-canyon-state-park",
-        link:"https://stateparks.utah.gov/parks/snow-canyon/",
+        link: "https://stateparks.utah.gov/parks/snow-canyon/",
         imgs: [
           {
             name: "/fish-towers.png",
@@ -1104,20 +1273,22 @@ export const localActivities = [
             name: "/fish-towers.png",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
-          }
+          },
         ],
       },
       {
         name: "Sand Hollow State Park",
         phone: "435-680-0715",
-        desc:["With its warm, blue waters and red sandstone landscape, one of Utah’s newer state parks is also one of its most popular. Boat, fish, and dive at Sand Hollow Reservoir, explore and ride the dunes of Sand Mountain on an off-highway vehicle, then RV or tent camp in a campground or the beach.",
-      "The sprawling 20,000-acre park, which rests mostly on USDI Bureau of Land Management (BLM) land, rivals Utah’s two largest state parks – Wasatch Mountain and Antelope Island. Sand Hollow already one of the most visited destinations in the Utah State Park system, with recreation opportunities for nearly every user from boaters to bikers, and OHV riders to equestrians.",
-    "A favorite destination for local off-highway vehicle (OHV) enthusiasts, Sand Mountain provides 15,000 acres of perfectly sculpted dunes. The red sand is an incredible backdrop for Sand Hollow reservoir. At nearly twice the size of nearby Quail Creek Reservoir, Sand Hollow offers boating and other water recreation in a spectacular setting.",
-  "Sand Hollow is located approximately 15 miles east of St George and seven miles east of the I-15 Hurricane Exit. Visitors should exit I-15 at Exit 16 (Highway 9), travel east for about four miles and turn right on Sand Hollow Road, travel south for about three miles and turn left at the park entrance"],
+        desc: [
+          "With its warm, blue waters and red sandstone landscape, one of Utah’s newer state parks is also one of its most popular. Boat, fish, and dive at Sand Hollow Reservoir, explore and ride the dunes of Sand Mountain on an off-highway vehicle, then RV or tent camp in a campground or the beach.",
+          "The sprawling 20,000-acre park, which rests mostly on USDI Bureau of Land Management (BLM) land, rivals Utah’s two largest state parks – Wasatch Mountain and Antelope Island. Sand Hollow already one of the most visited destinations in the Utah State Park system, with recreation opportunities for nearly every user from boaters to bikers, and OHV riders to equestrians.",
+          "A favorite destination for local off-highway vehicle (OHV) enthusiasts, Sand Mountain provides 15,000 acres of perfectly sculpted dunes. The red sand is an incredible backdrop for Sand Hollow reservoir. At nearly twice the size of nearby Quail Creek Reservoir, Sand Hollow offers boating and other water recreation in a spectacular setting.",
+          "Sand Hollow is located approximately 15 miles east of St George and seven miles east of the I-15 Hurricane Exit. Visitors should exit I-15 at Exit 16 (Highway 9), travel east for about four miles and turn right on Sand Hollow Road, travel south for about three miles and turn left at the park entrance",
+        ],
         location: "3351 Sand Hollow Rd, Hurricane, UT 84737",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "sand-hollow-state-park",
-        link:"https://stateparks.utah.gov/parks/sand-hollow/",
+        link: "https://stateparks.utah.gov/parks/sand-hollow/",
         imgs: [
           {
             name: "/fish-towers.png",
@@ -1138,20 +1309,22 @@ export const localActivities = [
             name: "/fish-towers.png",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
-          }
+          },
         ],
       },
       {
         name: "Red Cliffs National Conservation Area",
         phone: "(435) 688-3200",
-        desc:
-          ["The conservation area's 130 miles of non-motorized trails provide world-class recreational opportunities while protecting crucial habitat. It encompasses two wilderness areas, the Red Cliffs Recreation Area, the Red Cliffs Campground, over a hundred miles of non-motorized trails, as well as heritage public use sites.",
+        desc: [
+          "The conservation area's 130 miles of non-motorized trails provide world-class recreational opportunities while protecting crucial habitat. It encompasses two wilderness areas, the Red Cliffs Recreation Area, the Red Cliffs Campground, over a hundred miles of non-motorized trails, as well as heritage public use sites.",
           "Located just north of St. George, Utah, this area is technically a transition zone between the Mojave Desert, the Great Basin and the Colorado Plateau. This promises a mixture of plants and animals from each of these regions, as well as a few you won’t see anywhere else in the world. In particular, the reserve was created to protect the desert tortoise, a threatened species, as well as other reptiles, birds, and mammals who need a fighting chance to make it in this harsh environment.",
-          "Because the landscape and ecological makeup within the Red Cliffs Desert Reserve vary, it’s been broken out into two primary zones, the Upland and Lowland. The Upland area is more biologically durable, and cross-country and off-trail travel are permitted. Hikers and equestrians can ramble through the red rocks or use designated trails, and primitive and established camping is permitted here. The Lowland zone is a little more fragile, so it’s set aside to protect sensitive species. You’ll need to carefully hike only on established trails and stay in developed campgrounds. A living cryptobiotic crust covers the soil here, holding it together with hardy little microbes. To keep it intact, the only creatures permitted to trek over it are the non-human variety."],
+          "Because the landscape and ecological makeup within the Red Cliffs Desert Reserve vary, it’s been broken out into two primary zones, the Upland and Lowland. The Upland area is more biologically durable, and cross-country and off-trail travel are permitted. Hikers and equestrians can ramble through the red rocks or use designated trails, and primitive and established camping is permitted here. The Lowland zone is a little more fragile, so it’s set aside to protect sensitive species. You’ll need to carefully hike only on established trails and stay in developed campgrounds. A living cryptobiotic crust covers the soil here, holding it together with hardy little microbes. To keep it intact, the only creatures permitted to trek over it are the non-human variety.",
+        ],
         location: "345 E Riverside Dr, St. George, UT 84790",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "red-cliff-conservation",
-        link:"https://www.blm.gov/programs/national-conservation-lands/utah/red-cliffs-nca",
+        link:
+          "https://www.blm.gov/programs/national-conservation-lands/utah/red-cliffs-nca",
         imgs: [
           {
             name: "/fish-towers.png",
@@ -1167,21 +1340,21 @@ export const localActivities = [
             name: "/fish-towers.png",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
-          }
+          },
         ],
       },
       {
         name: "Quail Creek State Park",
         phone: "435-879-2378",
-        desc:
-          ["Boasting some of the warmest waters in the state and a mild winter climate, Quail Creek lures boaters and anglers year-round. Camp. Hike. Explore. Just 15 miles north of St. George and even closer to the town of Hurricane, Quail Creek State Park, with its warm water and mild weather offers an idyllic Southwestern getaway, no matter the time of year.",
+        desc: [
+          "Boasting some of the warmest waters in the state and a mild winter climate, Quail Creek lures boaters and anglers year-round. Camp. Hike. Explore. Just 15 miles north of St. George and even closer to the town of Hurricane, Quail Creek State Park, with its warm water and mild weather offers an idyllic Southwestern getaway, no matter the time of year.",
           "The park’s centerpiece and namesake, the Quail Creek Reservoir, is the greater St. George area’s water supply. Completed in 1895, the reservoir is formed by two dams and draws water not just from Quail Creek, but from the Virgin River, as well. (Despite being spelled like the bird, the reservoir draws its name from Anthony Quayle, a local hat manufacturer who supplied neighboring Mormon communities.)",
-        "In addition to its immediate surroundings, the colorful striped cliffs so emblematic of the American Southwest, Quail Creek State Park has plenty of nearby attractions to extend your trip. It’s a mere 45 minutes east to Zion National Park, and even closer to Red Cliffs National Conservation Area, as well as Snow Canyon and Sand Hollow state parks. This means, of course, that many of the same otherworldly geological features you’ll find in Utah’s best-known parks are also nearby at Quail Creek.",
-      ],
+          "In addition to its immediate surroundings, the colorful striped cliffs so emblematic of the American Southwest, Quail Creek State Park has plenty of nearby attractions to extend your trip. It’s a mere 45 minutes east to Zion National Park, and even closer to Red Cliffs National Conservation Area, as well as Snow Canyon and Sand Hollow state parks. This means, of course, that many of the same otherworldly geological features you’ll find in Utah’s best-known parks are also nearby at Quail Creek.",
+        ],
         location: "472 N. 5300 W. Hurricane, UT 84737",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "quail-creek-state-park",
-        link:"https://stateparks.utah.gov/parks/quail-creek/",
+        link: "https://stateparks.utah.gov/parks/quail-creek/",
         imgs: [
           {
             name: "/fish-towers.png",
@@ -1197,7 +1370,7 @@ export const localActivities = [
             name: "/fish-towers.png",
             caption:
               "photo0.jpg - Picture of Judd's Store, St. George - Tripadvisor",
-          }
+          },
         ],
       },
     ],
@@ -1212,48 +1385,60 @@ export const localActivities = [
         track: 6.9,
         bannerImg: "/jem-trail.jpeg",
         slug: "jem-trail",
-        desc: ["This is a great trail when you just want to go fast and easy. It has it all; great views, easy climbing, and a fast flowy downhill. By itself, the JEM is an out-and back trail, but can be combined with Goulds Rim, or the Hurricane Rim trail, to make loops over 20 miles."],
-        imgs:[{
-          name: "/jem-trail.jpeg",
-          caption:
-            "Jemtrail",
-        },]
+        desc: [
+          "This is a great trail when you just want to go fast and easy. It has it all; great views, easy climbing, and a fast flowy downhill. By itself, the JEM is an out-and back trail, but can be combined with Goulds Rim, or the Hurricane Rim trail, to make loops over 20 miles.",
+        ],
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Hurricane Rim Loop",
         track: 24.1,
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "hurricane-rim-loop",
-        desc: ["One of the best link-ups in Southern Utah. This loop includes the Hurricane Rim Trail, Goulds Rim, and JEM Trail for 20+ miles on mostly singletrack This loop is a roller coaster ride with great vistas, easy climbing, fast flowing descending, and some technical sections. It combines most of the trails in this network."],
-         imgs:[{
-          name: "/jem-trail.jpeg",
-          caption:
-            "Jemtrail",
-        },]
+        desc: [
+          "One of the best link-ups in Southern Utah. This loop includes the Hurricane Rim Trail, Goulds Rim, and JEM Trail for 20+ miles on mostly singletrack This loop is a roller coaster ride with great vistas, easy climbing, fast flowing descending, and some technical sections. It combines most of the trails in this network.",
+        ],
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Goosebump Loop",
         track: 13.3,
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "goosebump-loop",
-        desc: ["This ride combines the 1st two-thirds of JEM Trail with a new trail, Goosebump. The combination makes a great loop ride. It then finishes with a sweet downhill on the part of JEM Trail you climbed up earlier."],
-         imgs:[{
-          name: "/jem-trail.jpeg",
-          caption:
-            "Jemtrail",
-        },]
+        desc: [
+          "This ride combines the 1st two-thirds of JEM Trail with a new trail, Goosebump. The combination makes a great loop ride. It then finishes with a sweet downhill on the part of JEM Trail you climbed up earlier.",
+        ],
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Rhythm and Blues",
         track: 2.5,
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "rhythm-and-blues",
-        desc: ["The Rhythm and Blues loop bike trail is only 2.6 miles in length, and is a one-way trail designed to be ridden clockwise. It can be a fairly quick ride for a skilled technical rider, or a long and frustrating ride for an early-intermediate. Starting at 2900 feet elevation, there's only 100 feet of absolute elevation change, but lots of short up-and-downs add to about 300 vertical feet of climbing."],
-         imgs:[{
-          name: "/jem-trail.jpeg",
-          caption:
-            "Jemtrail",
-        },]
+        desc: [
+          "The Rhythm and Blues loop bike trail is only 2.6 miles in length, and is a one-way trail designed to be ridden clockwise. It can be a fairly quick ride for a skilled technical rider, or a long and frustrating ride for an early-intermediate. Starting at 2900 feet elevation, there's only 100 feet of absolute elevation change, but lots of short up-and-downs add to about 300 vertical feet of climbing.",
+        ],
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
     ],
   },
@@ -1264,66 +1449,157 @@ export const localActivities = [
     places: [
       {
         name: "Pioneer Park",
-        phone: "",
-        desc:
-          "St George has many family-friendly parks, however, none are so notable as Pioneer Park. Tucked into the Red Rocks overlooking the St George Valley, Pioneer Park provides an afternoon of relaxing and fun. Unlike most parks, instead of grass fields and swing sets, the park is covered in gorgeous red rock formations that you can climb on and walkthrough. What the park is most well known for is the small slot canyon at the back of the park and the Sugar Loaf (a.k.a. the Dixie Rock) You can climb up to the Dixie Rock and view the entire St George Valley. This spot is great to take pictures and we have even seen someone hold their wedding on top of the formation. This spot is famous throughout the St George area and is a must-see while you are in town. The second well-known spot in pioneer park is the slot canyon. going back about 200 yards the first 150 everyone can walkthrough. It is the last 50 that brings people in every weekend. The slot narrows down to the extent that people enjoy trying to wiggle their way through the slot. Children and adults alike love this easy access experience. Along with the red rock formations around the slot that you can explore there is also access to the Desert Preserve Pioneer Park Trail and a pavilion for the family to a picnic at. If you can find it there is also a brick pioneer house hidden among the rocks. Upcoming is the Red Hills Desert Garden, which will have fish viewing areas the put at eye level with the fish and floral setups that will allow you to learn what plants grow the region.",
+        phone: "435-627-4530",
+        desc: [
+          "St George has many family-friendly parks, however, none are so notable as Pioneer Park. Tucked into the Red Rocks overlooking the St George Valley, Pioneer Park provides an afternoon of relaxing and fun. Unlike most parks, instead of grass fields and swing sets, the park is covered in gorgeous red rock formations that you can climb on and walkthrough. What the park is most well known for is the small slot canyon at the back of the park and the Sugar Loaf (a.k.a. the Dixie Rock) You can climb up to the Dixie Rock and view the entire St George Valley. ",
+          "This spot is great to take pictures and we have even seen someone hold their wedding on top of the formation. This spot is famous throughout the St George area and is a must-see while you are in town. The second well-known spot in pioneer park is the slot canyon. going back about 200 yards the first 150 everyone can walkthrough. It is the last 50 that brings people in every weekend. The slot narrows down to the extent that people enjoy trying to wiggle their way through the slot. Children and adults alike love this easy access experience.",
+          " Along with the red rock formations around the slot that you can explore there is also access to the Desert Preserve Pioneer Park Trail and a pavilion for the family to a picnic at. If you can find it there is also a brick pioneer house hidden among the rocks. Upcoming is the Red Hills Desert Garden, which will have fish viewing areas the put at eye level with the fish and floral setups that will allow you to learn what plants grow the region.",
+        ],
         location: "Red Hills Parkway, St. George, UT",
         bannerImg: "/pioneer-peek.jpg",
         slug: "pioneer-park",
+        link: "www.sgcity.org/parkstrailsandcemetery/cityparks/pioneerpark",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "St. George Children`s Museum",
         phone: "435-986-4000",
-        desc:
+        desc: [
           "The St. George Children´s Museum provides vibrant and engaging interactive activities that invite children and families to discover, imagine and create. Admission is by donations only - $3.00 per person is suggested.",
+          "The St. George Children’s Museum encourages its guests to touch, feel, play, and explore in our twelve exhibit rooms. The rooms are designed to encourage interaction between children and adults. Minds both young and old will discover a world of imagination as they play and interact with the exhibits. It is the Museum’s goal to offer and provide educational opportunities for all children and adults to learn and grow.",
+          "“Discover, Imagine, and Create” is the Museum’s motto for a particular reason. Everything the Museum provides, all the specific designs of each exhibit piece, and every activity planned and offered strives to provide a way for its guests to discover, imagine, and create. Discover new worlds, participate in imaginative play, and create fun with us at the St. George Children’s Museum!",
+        ],
         location: "86 South Main Street, St. George, UT 84770",
+        link: "https://www.sgchildrensmuseum.org/",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "george-children-museum",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Dixie Rock",
         phone: "",
-        desc:
+        desc: [
           "Pioneer Park is a defining landmark of St George. Climbing up on the Dixie Rock can be done by anyone young to old, and there are many cracks, holes, caves, etc. in the rocks to explore. It's an awesome way for young ones to learn to love hiking and climbing and the red rocks of southern Utah.",
-        location: "",
+          "This 52 acre rustic community park is a rock climber’s paradise. From Dixie Rock, also known as the Sugarloaf, spectacular views of downtown, White Dome, Zion National Park and Arizona can be seen. This park has a large trellis pavilion with two barbecues and fire ring, several smaller picnic areas with tables, two with metal trellis pavilions, and a separate fire pit with an amphitheater. Numerous hiking trails provide access to a Boy Scout Cave, historical pioneer cabin location, slot canyons and a connection into the Red Cliffs Desert Reserve.",
+        ],
+        location: "Pioneer Peek",
+        link: "",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "dixie-rock",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Laser Mania Family Fun Center in St. George",
         phone: "435-656-5832",
-        desc:
+        desc: [
           "Conveniently located in downtown St. George, Laser Mania is the perfect place to take your family and friends for a great time. You’ll have a blast enjoying Laser Tag, Blacklight Mini Golf, the 4D Movie Ride, Bumper Cars, and our large arcade. To top it all off, our birthday parties are out of this world! Its all-out fun around here!",
+          "Great for Parties they can host groups of all sizes both during and after hours. Packages range from one attraction per guest to unlimited! Your guests will have a blast!",
+        ],
+        link: "https://www.laser-mania.com/",
         location: "67 E. St. George Blvd. St. George UT 84770",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "family-fun-center",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Jumping Jacks Indoor Family Fun Center",
         phone: "(435) 627-1155",
-        desc:
+        desc: [
           "Jumpin Jacks Indoor Inflatable Playground is a fun new way to have a great time for the whole family, and at the same time get some good exercise! We also have a welcome Parents Area that is great for when you just want to watch your kids have fun.",
+        ],
         location: "314 North 3050 East, St. George, UT 84790",
+        link: "",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "jumping-jacks",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Rosenbruch Wildlife Museum",
         phone: "435-656-0033",
-        desc:
-          "It is a new world-class facility of over 35,000 sq. ft. allowing visitors to experience over 300 species of wildlife throughout the world in their natural habitat. Nearly a quarter-mile of mountain pathway (suitable for handicap access) winds its way through the plains of Africa, the forests of North America, and the mountains of Asia. A two-story mountain with two live waterfalls, over 50 hidden speakers providing ambient sounds of different animals, periodic thunder and lightning storms, provide an experience to be remembered.",
+        desc: [
+          "The Rosenbruch World Wildlife Museum has over 300 taxidermy animals from all over the world.  Staged like they are in their natural habitat, you might find yourself wondering if the animals will come alive. Touring the museum, you can listen to an audio presentation on your phone. The audio will tell you about the animals, and stories from our founder, Jim Rosenbruch, about how some of the animals were acquired.",
+          "Nestled in the heart of southern Utah, The Rosenbruch World Wildlife Museum brings the wonders of the planet’s greatest animals in their natural habitat right to you. Experience hundreds of wildlife species in an over 35,000+ square feet facility in habitats ranging from the plains of Africa to the Rocky Mountains and beyond. You won’t want to miss this unique opportunity.",
+        ],
         location: "1835 Convention Center Dr., St. George UT 84790",
+        link: "http://rosenbruch.org/",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "rosebrunch-wildlife-museum",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Grandpas Pond ",
         phone: "(435) 635-0665",
-        desc:
-          "- Fishing pond with fishing dock  (DWR rules apply) - Walking trail around pond - Restrooms - Dogs are allowed in the park but are restricted to paved pathway and sidewalk areas and must be on a leash at all times.",
+        desc: [
+          "A popular fishing spot in Hurricane, Grandpa’s Pond, also known as Stratton’s Pond, is currently drained of most of its water as a result of the Utah Division of Wildlife Resources treating the water to remove invasive fish species.",
+          "One of six urban fishing ponds in Washington County, Grandpa’s Pond is owned and managed by Hurricane City and the Washington County Water Conservancy District. The pond is ordinarily stocked with rainbow trout by the Division of Wildlife Resources in the spring and occasionally with Bluegill and Largemouth Bass.",
+        ],
         location: "350 N 3700 W, Hurricane, UT 84737",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "grandpas-pond",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
     ],
   },
@@ -1335,50 +1611,73 @@ export const localActivities = [
       {
         name: "Horseback Riding in St. George",
         phone: "435-773-7630",
-        desc:
-          "Utah Horseback Riding Guides are here to help you experience adventure on horseback at Snow Canyon State Park or at Zion National Park while taking in the native wildlife and vistas, untouched since early settlers once explored this majestic terrain. You'll enjoy the opportunity to take photographs of rarely seen locations in the red rock regions of southwestern Utah. With so much spectacular country to see you'll enjoy a guided horseback riding tour. Trail Rides are a unique horse riding experience for anyone able to sit a horse. Even if you are someone who has never been around a horse we'll teach you how to love a horse; and more importantly, have that horse love you and follow you around like a puppy.",
+        desc: [
+          "Utah Horseback Riding Guides are here to help you experience adventure on horseback at Snow Canyon State Park or at Zion National Park while taking in the native wildlife and vistas, untouched since early settlers once explored this majestic terrain. You'll enjoy the opportunity to take photographs of rarely seen locations in the red rock regions of southwestern Utah. ",
+          "With so much spectacular country to see you'll enjoy a guided horseback riding tour. Trail Rides are a unique horse riding experience for anyone able to sit a horse. Even if you are someone who has never been around a horse we'll teach you how to love a horse; and more importantly, have that horse love you and follow you around like a puppy.",
+        ],
         link: "http://www.snowcanyontrailrides.com/",
         bannerImg: "/horse-riding.jpeg",
         slug: "horse-riding",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "Hot Air Balloon rides In St. George",
         phone: "866 366 8824",
-        desc:
-          "On your morning Saint George balloon flight, you will see the world from a new perspective. After meeting and lift - off, your spirits will soar, you will get eagles views of St. George and surrounding red rock and desert areas. The flight lasts for about one hour, leaving you stunned with impressions. Flights are scheduled year-round at sunrise. All walks of life are welcome to experience the oldest and safest form of aviation.",
+        desc: [
+          "On your morning Saint George balloon flight, you will see the world from a new perspective. After meeting and lift - off, your spirits will soar, you will get eagles views of St. George and surrounding red rock and desert areas. ",
+          "The flight lasts for about one hour, leaving you stunned with impressions. Flights are scheduled year-round at sunrise. All walks of life are welcome to experience the oldest and safest form of aviation.",
+        ],
         link:
           "http://www.skywalker.at/utah-ballooning/st-george-hot-air-balloon-rides.html",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "hot-air-balloon",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
       {
         name: "UTV Adventures Tour",
         phone: "435-313-4040",
-        desc:
-          "UTV Adventure Tours is St. George and Southern Utah's premier ATV & UTV Tour Company. We're proud to offer the 'Best in Class' UTVs on the market: Wildcat side-by-sides by Arctic Cat. The Wildcat boasts incredible wheel travel-ready to crawl over large rocks, a lightweight front end for optimal handling, and a low-to-the-ground comfortable & confident ride. Full of power, traction, and great handling, our UTVs come loaded with Bluetooth stereos, tops, doors, front windows, coolers and are ready to ride. Take your UTV Adventure Tour today! A UTV Tour from UTV Adventure Tours offers a great option for families and groups looking to experience a unique 4x4 adventure in southern Utah. You can crawl up boulder fields, go flying through sand dunes, or simply stroll down back-country roads. Whether you want to get your adrenaline pumping or just want a casual and comfortable ride where few get to go, the Wildcat is the machine and UTV Adventure Tours is the adventure!",
+        desc: [
+          "UTV Adventure Tours is St. George and Southern Utah's premier ATV & UTV Tour Company. We're proud to offer the 'Best in Class' UTVs on the market: Wildcat side-by-sides by Arctic Cat. The Wildcat boasts incredible wheel travel-ready to crawl over large rocks, a lightweight front end for optimal handling, and a low-to-the-ground comfortable & confident ride. ",
+          "Full of power, traction, and great handling, our UTVs come loaded with Bluetooth stereos, tops, doors, front windows, coolers and are ready to ride. Take your UTV Adventure Tour today! A UTV Tour from UTV Adventure Tours offers a great option for families and groups looking to experience a unique 4x4 adventure in southern Utah.",
+          " You can crawl up boulder fields, go flying through sand dunes, or simply stroll down back-country roads. Whether you want to get your adrenaline pumping or just want a casual and comfortable ride where few get to go, the Wildcat is the machine and UTV Adventure Tours is the adventure!",
+        ],
         link: "https://utvadventuretours.com/",
         bannerImg: "/sand-hollow-lake.jpeg",
         slug: "utv-adventure-tour",
+        imgs: [
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+          {
+            name: "/jem-trail.jpeg",
+            caption: "Jemtrail",
+          },
+        ],
       },
     ],
-  },
-];
-
-export const emergencyLocations = [
-  {
-    name: "Dixie Regional Hospital",
-    location: "1380 E Medical Center Dr, St George, UT (17 mi)",
-    open: "",
-  },
-  {
-    name: "Hurricane Valley Instacare",
-    location: "75 N 2260 W, Hurricane, UT (1 mi)",
-    open: "8AM-8PM",
-  },
-  {
-    name: "Zion Veterinary Hospital",
-    location: "29 S 100 E, Hurricane, UT 84737",
-    open: "8AM-5PM",
   },
 ];
 

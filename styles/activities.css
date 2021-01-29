@@ -57,16 +57,6 @@ text-align: center;
   display: table;
   margin: 30px auto;
 }
-/* .places-card-container .places-card h5{
-  font-family: 'Oswald', sans-serif; 
-  font-size: 25px;
-  color: #b9a37e;
-  text-transform: uppercase;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100%;
-} */
 .places-card-container span{
   color: #939393!important;
   font-size: 14px !important;
@@ -133,4 +123,12 @@ text-align: center;
 .places-card-container  p{
   color: #939393!important;
   font-size: 15px !important;
+}
+@media (max-width:575px) {
+  .places-card-container h3 {
+    font-size: 27px;
+  }
+  .places-card-container .activity-imgs{
+    width: 100%;
+  }
 }

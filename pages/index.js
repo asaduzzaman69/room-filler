@@ -28,6 +28,12 @@ const Home = (props) => {
     });
   };
 
+  useEffect(()=>{
+   if(window && window.location.hash){
+     setHash(window.location.hash.split("#").pop())
+   }
+  }, [])
+
   useEffect(() => {
     switch (hash.split("#").pop()) {
       case "amenities":
