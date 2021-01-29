@@ -55,7 +55,8 @@ const Activity = ({ activity }) => {
             <div key={`opening_hours_${index}`}><h4>{item.day}: <span>{item.open && item.close ? `${item.open} - ${item.close}`: "Closed"}</span></h4> </div>
           )
         }) } </div>:null}
-        {activity.desc && activity.desc.length && activity.desc.length>0 ?
+        console.log(activity);
+        {activity.desc && activity.desc.length ?
         activity.desc.map((item, index)=>{
           return(
             <div key={`desc_${index}`}>

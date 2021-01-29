@@ -35,21 +35,21 @@ export default function PropertyPage({ property }) {
   };
 
   const getImagesGallery = (image, index, total) => {
-    if(index===4){
+    if (index===4) {
       return (
-        <span key={"view-only-images-" + index}>
+        <div key={"view-only-images-1-" + index}>
           <Card.Img
             variant="top"
             className="bnb-last-image"
             src={image}
           />
           {index===4?<div className="view-more-btn" onClick={()=>setLightbox(true)}>+ {total-4} more</div>:null}
-        </span>
+        </div>
       )
-    }else{
+    } else {
       return (
         <Card.Img
-          key={"view-only-images-" + index}
+          key={"view-only-images-2-" + index}
           variant="top"
           className="bnb-other-images"
           src={image}

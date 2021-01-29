@@ -27,8 +27,8 @@ const ActivityPage = ({ activity }) => {
         {
           activity.places.map((item, index)=>{
             return(
-              <Col xs={12} sm={6} md={6} lg={4}>
-              <Card key={`activity_places_${index}`} className="places-card" onClick={()=>Router.push(`${activity.type}/${item.slug}`)}>
+              <Col xs={12} sm={6} md={6} lg={4} key={`activity_places_${index}`}>
+                <Card className="places-card" onClick={()=>Router.push(`${activity.type}/${item.slug}`)}>
                     <Card.Img
                       variant="top"
                       src={
@@ -63,7 +63,7 @@ const ActivityPage = ({ activity }) => {
                       <Card.Link href="#">Read More</Card.Link>
                     </Card.Body>
                   </Card>
-                  </Col>
+              </Col>
             )
           })
         }
