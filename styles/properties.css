@@ -26,7 +26,7 @@
   border-radius: 25px;
   border: none;
   color: #fff !important;
-  padding: 6px 30px !important;
+  padding: 6px 21px !important;
 }
 .selected-property .cributn:hover, .selected-property .cributn:focus {
   background: #d1aa77;

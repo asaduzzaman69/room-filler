@@ -57,8 +57,15 @@ const LocalActivities = ({}) => {
           {localActivities.length > 0 &&
             localActivities.map((item, index) => {
               return (
-                <div key={"local-activity-" + index}>
-                  <Card key={`activities_${index}`} className="activities-card" onClick={()=>Router.push(`activities/${item.type}`)}>
+                <div
+                  key={"local-activity-" + index}
+                  style={{ width: "250px !important" }}
+                >
+                  <Card
+                    key={`activities_${index}`}
+                    className="activities-card demo"
+                    onClick={() => Router.push(`activities/${item.type}`)}
+                  >
                     <Card.Img
                       variant="top"
                       src={
