@@ -75,7 +75,7 @@ const Home = (props) => {
         }
         propertiesPublished++;
         return (
-          <Col xs={12} sm={6} md={4} className="mb-3" key={`property_${index}`}>
+          <Col xs={12} xl={4}  md={6} className="mb-3" key={`property_${index}`}>
             <Link href={"" + getPropertyLink(properties[prop])}>
               <Card className="text-center cursor-pointer border-0">
                 <div className="row no-gutters">
@@ -85,13 +85,20 @@ const Home = (props) => {
                       background: "url('" + properties[prop].images[0] + "')",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
-                      minHeight: '75px'
+                      minHeight: "75px",
                     }}
                   ></div>
                   <div className="col-7 col-lg-8">
                     <div className="card-body pt-3 pb-2 pr-1">
-                      <p className="text-left mb-0 font-weight-bold"> {properties[prop].title} </p>
-                      <p className="text-left mb-0 iconbox"> {properties[prop].bedroomCount} Beds {properties[prop].maxOccupancy} Guests </p>
+                      <p className="text-left mb-0 font-weight-bold">
+                        {" "}
+                        {properties[prop].title}{" "}
+                      </p>
+                      <p className="text-left mb-0 iconbox">
+                        {" "}
+                        {properties[prop].bedroomCount} Beds{" "}
+                        {properties[prop].maxOccupancy} Guests{" "}
+                      </p>
                     </div>
                   </div>
                 </div>

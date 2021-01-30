@@ -136,6 +136,10 @@ nav {
   }
 }
 
+.btn-resp-log {
+  width: 40% !important;
+}
+
 @media only screen and (max-width: 576px) {
   .row-res {
     -moz-box-flex: 0 !important;
@@ -160,6 +164,14 @@ nav {
     -moz-box-flex: 0 !important;
     flex: 0 0 100% !important;
     max-width: 100% !important;
+  }
+
+  .col-resp {
+    display: flex;
+  }
+
+  .bnb-last-image {
+    width: 100% !important;
   }
 }
 
@@ -192,5 +204,20 @@ nav {
   .book-btn {
     padding: 0px 20% !important;
   }
+
+}
+@media only screen and (max-width: 619px) and (min-width: 576px)  {
+
+  .book-btn {
+    padding: 11px 16% !important;
+  }
+
+}
+
+
+@media only screen and (max-width: 992px) {
+.DateInput {
+  width: 100% !important;
+}
 
 }

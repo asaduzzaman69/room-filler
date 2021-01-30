@@ -103,7 +103,7 @@ export default function PropertyPage({ property }) {
               </Col>
               <Col>
                 <Row>
-                  <Col>
+                  <Col className="p-0">
                     {property.images.map((image, index) => {
                       if (index > 0 && index < 3) {
                         return getImagesGallery(
@@ -116,7 +116,7 @@ export default function PropertyPage({ property }) {
                   </Col>
                 </Row>
                 <Row>
-                  <Col>
+                  <Col className="p-0 col-resp">
                     {property.images.map((image, index) => {
                       if (index > 2 && index < 5) {
                         return getImagesGallery(
@@ -137,23 +137,22 @@ export default function PropertyPage({ property }) {
             />
           )}
 
-          <Row className='row-pad'>
-            <Col className="pr-sm-5 pl-sm-1 py-4 row-res"  xs={7}>
+          <Row className="row-pad">
+            <Col className="pr-sm-5 pl-sm-1 py-4 row-res" xs={7}>
               <h5>{property.title}</h5>
               <TextExpand text={property.description} />
               <div className="customDatePickerWidth">
-
-              <DayPickerRangeController
-                onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
-                isDayBlocked={(day) => {
-                  return (
-                    property &&
-                    property.calendar &&
-                    isDayBlocked(property.calendar, day)
-                  );
-                }}
-                daySize={60}
-              />
+                <DayPickerRangeController
+                  onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
+                  isDayBlocked={(day) => {
+                    return (
+                      property &&
+                      property.calendar &&
+                      isDayBlocked(property.calendar, day)
+                    );
+                  }}
+                  daySize={60}
+                />
               </div>
             </Col>
             <Col className="px-1 py-4" row-res xs={5}>

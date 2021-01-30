@@ -13,7 +13,9 @@ function getAuthedNavbarContent(user) {
     return (
       <React.Fragment>
         <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-        <Nav.Link onClick={logout}>Logout</Nav.Link>
+        <Nav.Link className="btn-resp-log" onClick={logout}>
+          Logout
+        </Nav.Link>
       </React.Fragment>
     );
   } else {
