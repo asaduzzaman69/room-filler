@@ -1,11 +1,13 @@
+import React, {useState} from 'react';
 import Layout from "../../../components/layout";
 import Head from "next/head";
 import { Container, Card, Button, Row, Col, Image } from "react-bootstrap";
 import { localActivities } from "../../../public/constants/config";
 
 const Activity = ({ activity }) => {
+  const [hash, setHash] = useState("");
   return (
-    <Layout>
+    <Layout setHash={setHash}>
       <Head>
         <title>{activity.name}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -92,6 +94,7 @@ export async function getStaticPaths(context) {
       });
     });
   });
+  console.log(activities)
   return {
     paths: activities,
     fallback: false,

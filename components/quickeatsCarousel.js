@@ -5,6 +5,7 @@ import {
   Button,
   Image,
 } from "react-bootstrap";
+import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 import { quickEats } from "../public/constants/config";
 
@@ -39,6 +40,9 @@ const QuickEatsCarousel = ({}) => {
                 <Image src={`/images${item.image}`} className="carousel-image" />
               </Col>
               <Col className="left-sec pl-lg-5 pl-md-4 order-1 order-sm-2" xs={12} sm={6} md={6}>
+              <Link  href="/places/quick-eats">
+                <div style={{cursor:'pointer'}}>
+                
                 <h6>Quick Eats</h6>
                 <h5>{item.name}</h5>
                 <p className="sub">
@@ -47,6 +51,9 @@ const QuickEatsCarousel = ({}) => {
                   {item.address2}
                 </p>
                 <p>{item.desc}</p>
+               
+                </div>
+                </Link> 
                 <Button
                   onClick={() => prev()}
                   variant="outlined"

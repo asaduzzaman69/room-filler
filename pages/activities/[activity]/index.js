@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import Layout from "../../../components/layout";
 import Head from "next/head";
 import Router from "next/router";
@@ -5,8 +6,9 @@ import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import { localActivities } from "../../../public/constants/config";
 
 const ActivityPage = ({ activity }) => {
+  const [hash, setHash] = useState("");
   return (
-    <Layout>
+    <Layout setHash={setHash}>
       <Head>
         <title>Activties</title>
         <link rel="icon" href="/favicon.ico" />
@@ -48,15 +50,10 @@ const ActivityPage = ({ activity }) => {
                           ? `${item.track} 'Mile Trail'`
                           : ""}
                         {item.phone ? item.phone : ""}
-                        <br />
-                        {/* <br /> */}
+                        {item.phone?<br/>:null}
                         {item.desc ? (
                           item.desc
                         ) : (null
-                          // <>
-                          //   <br />
-                          //   <br />
-                          // </>
                         )}
                       </Card.Text>
                       <Button variant="primary">Book Now</Button>

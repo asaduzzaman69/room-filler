@@ -5,6 +5,7 @@ import {
   Button,
   Image,
 } from "react-bootstrap";
+import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 import { localEateries } from "../public/constants/config";
 
@@ -36,6 +37,8 @@ const LocalEatsCarousel = ({}) => {
               key={`quick_eats_${index}`}
             >
               <Col className="left-sec pr-lg-5 pr-md-3" xs={12} sm={6} md={6}>
+       <Link  href="/places/local-eats">
+                <div style={{cursor:'pointer'}}>
                 <h6>Local Eateries</h6>
                 <h5>{item.name}</h5>
                 <p className="sub">
@@ -47,9 +50,11 @@ const LocalEatsCarousel = ({}) => {
                   {new Intl.NumberFormat("en-IN", {
                     maximumSignificantDigits: 3,
                   }).format(item.likes)}
-                  ) $
+                  ) 
                 </p>
                 <p>{item.desc}</p>
+                </div>
+                </Link>
                 <Button
                   onClick={() => prev()}
                   variant="outlined"
