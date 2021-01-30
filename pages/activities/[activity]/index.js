@@ -47,7 +47,7 @@ const ActivityPage = ({ activity }) => {
                       </Card.Title>
                       <Card.Text>
                         {activity.type === "biking"
-                          ? `${item.track} 'Mile Trail'`
+                          ? <>{item.track} Mile Trail<br/></>
                           : ""}
                         {item.phone ? item.phone : ""}
                         {item.phone?<br/>:null}
