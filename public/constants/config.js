@@ -611,14 +611,14 @@ export const localActivities = [
     img: "/fish-towers.png",
     places: [
       {
-        name: "dJacob Hamblin Home",
+        name: "Jacob Hamblin Home",
         phone: "435-673-2161",
         desc: [
           "During the 1800`s Mormon pioneers arrived in Southern Utah. Jacob Hamblin was a missionary and known to help keep peace among the Mormons and the Indians. Hamblin was among the first to settle in Utah in 1847. In the year 1853, Jacob Hamblin was having a skirmish with an Indian. Hamblin pulled out his pistol to shoot the Indian down, but the pistol didn`t fire.",
           "This is when he realized that they should not be fighting with the Indians, but instead, they should live in peace with them. Jacob Hamblin helped to build a fort in Santa Clara, Utah. Santa Clara is only five minutes away from the beautiful St. George Utah real estate of Tenaya Sands. During the time of the Mormon settlers St. George, Utah was a difficult place to settle due to the hot, dry climate. The Jacob Hamblin home was finished in 1863 and is one of the few pioneer homes still standing in the St. George, Utah area.",
         ],
         location: "3325 Hamblin Dr, Santa Clara, UT 84765",
-        bannerImg: "/historical-places/hamblin-home.jpg",
+        bannerImg: "/historical-places/hamblin-home-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "hamblin-home",
         openingHours: [
@@ -649,7 +649,7 @@ export const localActivities = [
           "Ancestor Square in St. George, is a place where local history, the Arts and fine dining meet, creating a center of local culture. The square is encompassed by 12 buildings, half of which are in the historical registry, including Sheriff Hardy’s house built in 1877, the Sheriff’s Office and the original jailhouse.",
         ],
         location: "2 UT-34, St. George, UT 84770",
-        bannerImg: "/historical-places/ancestor-square.png",
+        bannerImg: "/historical-places/ancestor-square-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "ancestor-square",
         openingHours: [
@@ -681,7 +681,7 @@ export const localActivities = [
           "The old Silver Reef Wells Fargo Express office is on the National Historical Register and is now houses a small museum. Foundations of a few other old buildings can be seen. Tailings from mines can be seen in the surrounding area. New mining efforts are undertaken now and again, and much of the area is closed to exploration. A few dangerous open shafts dot the countryside and so explorers need to use caution.",
         ],
         location: "1903 Wells Fargo Road, Leeds, UT 84746",
-        bannerImg: "/historical-places/silver-reef-ghost-town.jpeg",
+        bannerImg: "/historical-places/silver-reef-ghost-town.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "silver-reef-ghost-town",
         openingHours: [
@@ -745,7 +745,7 @@ export const localActivities = [
           "The lower Assembly Hall was partitioned with curtains to provide the ordinance rooms for the Endowment Ceremony. In 1938, the lower Assembly Hall was rebuilt with permanent walls dividing it into four ordinance rooms. The four ordinance rooms were later changed into the present three rooms, at the time the endowment ceremony was changed from a live presentation to one presented on film. In the 1970s, the temple was closed for extensive remodeling. LDS Church president Spencer W. Kimball rededicated it in 1975.",
         ],
         location: "250 East 400 South, St. George, UT 84770",
-        bannerImg: "/historical-places/george-temple.jpeg",
+        bannerImg: "/historical-places/george-temple.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "george-temple",
         openingHours: [
@@ -778,7 +778,7 @@ export const localActivities = [
           "The store remained in the Judd family`s possession until 1982. At that time, the city wanted to condemn the store and turn it into a parking lot. Cooler heads prevailed and Dr. Mark & Barbara Greene purchased the building making it into a focal point of their Green Gate Village. The store has been restored and is still open today. To step into Judd`s Store is to step back in time. Particularly outstanding is the ceiling which the Greenes rescued from another business establishment of pioneer days, Snow`s Furniture Store, which was located one block to the east.",
         ],
         location: "62 W Tabernacle St, St. George, UT 84770",
-        bannerImg: "/historical-places/old-judds-store.jpeg",
+        bannerImg: "/historical-places/old-judds-store.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "judd-store",
         openingHours: [
@@ -821,7 +821,7 @@ export const localActivities = [
         price: "$75",
         link: "http://www.golfentrada.com/",
         location: "2537 W Entrada Trail, St. George, UT 84770",
-        bannerImg: "/golf-club/entrada-golf-club.jpg",
+        bannerImg: "/golf-club/entrada-golf-club-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "entrada-golf-club",
         desc: [
@@ -845,7 +845,7 @@ export const localActivities = [
         price: "$75",
         link: "https://www.ledges.com/golf-course/",
         location: "1585 Ledges Parkway, St. George, UT 84770",
-        bannerImg: "/golf-club/the-ledges-golf-club.jpg",
+        bannerImg: "/golf-club/the-ledges-golf-club-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "ledges-golf-club",
         desc: [
@@ -874,7 +874,7 @@ export const localActivities = [
         price: "$20-38",
         link: "http://www.greenspringgolfcourse.com/",
         location: "111 N 100 E Washington, UT 84780",
-        bannerImg: "/golf-club/green-springs-golf-club.jpg",
+        bannerImg: "/golf-club/green-springs-golf-club-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "green-springs-golf-club",
         desc: [
@@ -903,7 +903,7 @@ export const localActivities = [
         price: "$20-38",
         link: "http://www.sandhollowresorts.com/book-a-tee-time/",
         location: "5625 West Clubhouse Drive, Hurricane, UT 84737",
-        bannerImg: "/golf-club/sand-hollow-golf-club.jpg",
+        bannerImg: "/golf-club/sand-hollow-golf-club-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "sand-hollow-golf-club",
         desc: [
@@ -927,7 +927,7 @@ export const localActivities = [
         price: "$10.50-$27.00",
         link: "http://www.stgeorgecitygolf.com/southgate.php",
         location: "1975 Tonaquint Drive, St. George, UT 84770",
-        bannerImg: "/golf-club/south-gate-golf-club.jpeg",
+        bannerImg: "/golf-club/south-gate-golf-club-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "south-gate-golf-club",
         desc: [
@@ -963,8 +963,8 @@ export const localActivities = [
         location: "3351 South Sand Hollow Road Hurricane, UT 84737",
         fullLoc:
           "Located near Hurricane, approximately 297 miles south of Salt Lake City. It is a 45 minute drive from the park to Zion National Park and 20 minutes to St George. From I-15, take the Hurricane exit (Exit 16). Travel east on Hwy 9 for about four miles to Sand Hollow Road and then turn right. Travel south for 4 1/2 miles and turn left at the park entrance.",
-        bannerImg: "/lakes/sand-hollow-lake.jpg",
-         bannerImgPosition:"center 76% !important",
+        bannerImg: "/lakes/sand-hollow-lake-1.jpg",
+        bannerImgPosition:"center 76% !important",
         slug: "sand-hollow-lake",
         desc: [
           "With its warm, blue waters and red sandstone landscape, Utah`s newest state park is also one of its most popular. Boat and fish on Sand Hollow Reservoir, explore and ride the dunes of Sand Mountain on an off-highway vehicle, then RV or tent camp in the new campground.",
@@ -1003,7 +1003,7 @@ export const localActivities = [
         location: "Gunlock Road Gunlock, UT 84733",
         fullLoc:
           "Located near the town of Gunlock, about 15 miles northwest of St George.About 318 miles south of Salt Lake City",
-        bannerImg: "/lakes/gunlock-lake.jpg",
+        bannerImg: "/lakes/gunlock-lake-2.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "gunlock-lake",
         desc: [
@@ -1043,7 +1043,7 @@ export const localActivities = [
         location: "472 N. 5300 W. Hurricane, UT 84737",
         fullLoc:
           "Located just south of I-15, about 13 miles NE of St George. About 293 miles south of Salt Lake City. From I-15, take the Hurricane exit (Exit 16). Travel east on Hwy 9, drive for about three miles toward Hurricane City to the second light, turn left . The entrance is on the right side of the road. Look for the flag pole.",
-        bannerImg: "/lakes/quail-lake.jpg",
+        bannerImg: "/lakes/quail-lake-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "quail-lake",
         desc: [
@@ -1136,7 +1136,7 @@ export const localActivities = [
           "Formerly a sugar beet seed storage facility, the space has been transformed into an elegant showcase for art.  In addition to the many programs and events that the Museum hosts, the Family Discovery Center is has materials for kids to create their own art.",
         ],
         location: "47 N 200 E, St George, UT 84770",
-        bannerImg: "/museums/george-art-museum.jpeg",
+        bannerImg: "/museums/george-art-museum-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "george-art-museum",
         openingHours: [
@@ -1175,7 +1175,7 @@ export const localActivities = [
           "Together with scientists, businesses, and government officials on the local, state, and national levels, the Johnsons and the DinosaurAH!torium Foundation raised enough funds to build a museum. In 2005, the St. George Dinosaur Discovery Site at Johnson Farm opened its doors and has served over 500,000 visitors.",
         ],
         location: "2180 East Riverside Drive, St. George, UT 84790",
-        bannerImg: "/museums/george-dinosaur-discovery-site.jpeg",
+        bannerImg: "/museums/george-dinosaur-discovery-site.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "george-dinosaur-site",
         openingHours: [
@@ -1213,7 +1213,7 @@ export const localActivities = [
           "Nestled in the heart of southern Utah, The Rosenbruch World Wildlife Museum brings the wonders of the planet’s greatest animals in their natural habitat right to you. Experience hundreds of wildlife species in an over 35,000+ square feet facility in habitats ranging from the plains of Africa to the Rocky Mountains and beyond. You won’t want to miss this unique opportunity.",
         ],
         location: "1835 Convention Center Drive Suite B, St. George, UT 84790",
-        bannerImg: "/museums/rosenburch-wildlife-museum.jpeg",
+        bannerImg: "/museums/rosenburch-wildlife-museum.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "rosenburch-wildlife",
         openingHours: [
@@ -1254,7 +1254,7 @@ export const localActivities = [
           "Zion Canyon Scenic Drive cuts through its main section, leading to forest trails along the Virgin River. The river flows to the Emerald Pools, which have waterfalls and a hanging garden. Also along the river, partly through deep chasms, is Zion Narrows wading hike.",
         ],
         location: "State Route 9 in Springdale, UT",
-        bannerImg: "/national-state-park/zion-national-park.jpeg",
+        bannerImg: "/national-state-park/zion-national-park-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "zion-national-park",
         link: "https://www.nps.gov/zion/index.html",
@@ -1285,7 +1285,7 @@ export const localActivities = [
           "Located in the 62,000 acre Red Cliffs Desert Reserve, established to protect the federally listed desert tortoise and its habitat, the park offers opportunities for outdoor enthusiasts of all ages. Activities include hiking, nature studies, wildlife viewing, photography, camping, ranger talks and junior ranger programs. There are more than 38 miles of hiking trails, a three-mile paved walking/biking trail and over 15 miles of equestrian trails.",
         ],
         location: "1002 Snow Canyon Dr, Ivins, UT 84738",
-        bannerImg: "/national-state-park/snow-canyon-state-park.jpeg",
+        bannerImg: "/national-state-park/snow-canyon-state-park-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "snow-canyon-state-park",
         link: "https://stateparks.utah.gov/parks/snow-canyon/",
@@ -1317,7 +1317,7 @@ export const localActivities = [
           "Sand Hollow is located approximately 15 miles east of St George and seven miles east of the I-15 Hurricane Exit. Visitors should exit I-15 at Exit 16 (Highway 9), travel east for about four miles and turn right on Sand Hollow Road, travel south for about three miles and turn left at the park entrance",
         ],
         location: "3351 Sand Hollow Rd, Hurricane, UT 84737",
-        bannerImg: "/national-state-park/sand-hollow-state-park.jpg",
+        bannerImg: "/national-state-park/sand-hollow-state-park-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "sand-hollow-state-park",
         link: "https://stateparks.utah.gov/parks/sand-hollow/",
@@ -1353,7 +1353,7 @@ export const localActivities = [
           "Because the landscape and ecological makeup within the Red Cliffs Desert Reserve vary, it’s been broken out into two primary zones, the Upland and Lowland. The Upland area is more biologically durable, and cross-country and off-trail travel are permitted. Hikers and equestrians can ramble through the red rocks or use designated trails, and primitive and established camping is permitted here. The Lowland zone is a little more fragile, so it’s set aside to protect sensitive species. You’ll need to carefully hike only on established trails and stay in developed campgrounds. A living cryptobiotic crust covers the soil here, holding it together with hardy little microbes. To keep it intact, the only creatures permitted to trek over it are the non-human variety.",
         ],
         location: "345 E Riverside Dr, St. George, UT 84790",
-        bannerImg: "/national-state-park/red-cliff-conservation-park.jpg",
+        bannerImg: "/national-state-park/red-cliff-conservation-park-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "red-cliff-conservation",
         link:
@@ -1385,7 +1385,7 @@ export const localActivities = [
           "In addition to its immediate surroundings, the colorful striped cliffs so emblematic of the American Southwest, Quail Creek State Park has plenty of nearby attractions to extend your trip. It’s a mere 45 minutes east to Zion National Park, and even closer to Red Cliffs National Conservation Area, as well as Snow Canyon and Sand Hollow state parks. This means, of course, that many of the same otherworldly geological features you’ll find in Utah’s best-known parks are also nearby at Quail Creek.",
         ],
         location: "472 N. 5300 W. Hurricane, UT 84737",
-        bannerImg: "/national-state-park/quail-creek-state-park.jpeg",
+        bannerImg: "/national-state-park/quail-creek-state-park-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "quail-creek-state-park",
         link: "https://stateparks.utah.gov/parks/quail-creek/",
@@ -1494,7 +1494,7 @@ export const localActivities = [
           " Along with the red rock formations around the slot that you can explore there is also access to the Desert Preserve Pioneer Park Trail and a pavilion for the family to a picnic at. If you can find it there is also a brick pioneer house hidden among the rocks. Upcoming is the Red Hills Desert Garden, which will have fish viewing areas the put at eye level with the fish and floral setups that will allow you to learn what plants grow the region.",
         ],
         location: "Red Hills Parkway, St. George, UT",
-        bannerImg: "/activities-for-kids/pioneer-park.jpeg",
+        bannerImg: "/activities-for-kids/pioneer-park-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "pioneer-park",
         link: "www.sgcity.org/parkstrailsandcemetery/cityparks/pioneerpark",
@@ -1523,7 +1523,7 @@ export const localActivities = [
         ],
         location: "86 South Main Street, St. George, UT 84770",
         link: "https://www.sgchildrensmuseum.org/",
-        bannerImg: "/activities-for-kids/george-children-museum.jpg",
+        bannerImg: "/activities-for-kids/george-children-museum-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "george-children-museum",
         imgs: [
@@ -1550,7 +1550,7 @@ export const localActivities = [
         ],
         location: "Pioneer Peek",
         link: "",
-        bannerImg: "/activities-for-kids/dixie-rock.jpg",
+        bannerImg: "/activities-for-kids/dixie-rock-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "dixie-rock",
         imgs: [
@@ -1573,7 +1573,7 @@ export const localActivities = [
         ],
         link: "https://www.laser-mania.com/",
         location: "67 E. St. George Blvd. St. George UT 84770",
-        bannerImg: "/activities-for-kids/laser-mania-family-fun-center.jpeg",
+        bannerImg: "/activities-for-kids/laser-mania-family-fun-center-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "family-fun-center",
         imgs: [
@@ -1595,7 +1595,7 @@ export const localActivities = [
         ],
         location: "314 North 3050 East, St. George, UT 84790",
         link: "",
-        bannerImg: "/activities-for-kids/jumping-jack-family-fun-center.jpg",
+        bannerImg: "/activities-for-kids/jumping-jack-family-fun-center-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "jumping-jacks",
         imgs: [
@@ -1614,7 +1614,7 @@ export const localActivities = [
         ],
         location: "1835 Convention Center Dr., St. George UT 84790",
         link: "http://rosenbruch.org/",
-        bannerImg: "/activities-for-kids/rosenbruch-wildlife-museum.jpg",
+        bannerImg: "/activities-for-kids/rosenbruch-wildlife-museum-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "rosebrunch-wildlife-museum",
         imgs: [
@@ -1636,7 +1636,7 @@ export const localActivities = [
           "One of six urban fishing ponds in Washington County, Grandpa’s Pond is owned and managed by Hurricane City and the Washington County Water Conservancy District. The pond is ordinarily stocked with rainbow trout by the Division of Wildlife Resources in the spring and occasionally with Bluegill and Largemouth Bass.",
         ],
         location: "350 N 3700 W, Hurricane, UT 84737",
-        bannerImg: "/activities-for-kids/grandpas-pond.jpeg",
+        bannerImg: "/activities-for-kids/grandpas-pond-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "grandpas-pond",
         imgs: [
@@ -1665,7 +1665,7 @@ export const localActivities = [
           "With so much spectacular country to see you'll enjoy a guided horseback riding tour. Trail Rides are a unique horse riding experience for anyone able to sit a horse. Even if you are someone who has never been around a horse we'll teach you how to love a horse; and more importantly, have that horse love you and follow you around like a puppy.",
         ],
         link: "http://www.snowcanyontrailrides.com/",
-        bannerImg: "/adventures/horseback-riding.jpg",
+        bannerImg: "/adventures/horseback-riding-1.jpg",
          bannerImgPosition:"center 76% !important",
         slug: "horse-riding",
         imgs: [
@@ -1688,7 +1688,7 @@ export const localActivities = [
         ],
         link:
           "http://www.skywalker.at/utah-ballooning/st-george-hot-air-balloon-rides.html",
-        bannerImg: "/adventures/hot-air-ballon-ride.jpeg",
+        bannerImg: "/adventures/hot-air-ballon-ride-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "hot-air-balloon",
         imgs: [
@@ -1711,7 +1711,7 @@ export const localActivities = [
           " You can crawl up boulder fields, go flying through sand dunes, or simply stroll down back-country roads. Whether you want to get your adrenaline pumping or just want a casual and comfortable ride where few get to go, the Wildcat is the machine and UTV Adventure Tours is the adventure!",
         ],
         link: "https://utvadventuretours.com/",
-        bannerImg: "/adventures/utv-adventure.jpeg",
+        bannerImg: "/adventures/utv-adventure-1.jpeg",
          bannerImgPosition:"center 76% !important",
         slug: "utv-adventure-tour",
         imgs: [
