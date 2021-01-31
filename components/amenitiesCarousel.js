@@ -28,6 +28,7 @@ const AmenitiesCarousel = ({}) => {
       selectedItem={currentSlide}
       swipeable={true}
       autoPlay={true}
+      infiniteLoop={true}
     >
       {amenities.length > 0 &&
         amenities.map((item, index) => {

@@ -29,6 +29,7 @@ const LocalEatsCarousel = ({}) => {
       selectedItem={currentSlide}
       swipeable={true}
       autoPlay={true}
+      infiniteLoop={true}
     >
       {localEateries.length > 0 &&
         localEateries.map((item, index) => {

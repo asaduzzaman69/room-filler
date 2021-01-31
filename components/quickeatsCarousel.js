@@ -29,6 +29,7 @@ const QuickEatsCarousel = ({}) => {
       selectedItem={currentSlide}
       swipeable={true}
       autoPlay={true}
+      infiniteLoop={true}
     >
       {quickEats.length > 0 &&
         quickEats.map((item, index) => {

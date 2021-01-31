@@ -89,7 +89,10 @@ const Home = (props) => {
      
     });
 
-    const res = renderedArray.map( el => publishedProperty[el])
+    let res;
+    if (renderedArray) {
+      res = renderedArray.map((el) => publishedProperty[el]);
+    }
 
 
     let propertiesPublished = 0;

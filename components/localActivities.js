@@ -37,8 +37,8 @@ const LocalActivities = ({}) => {
     centerPadding: "0px",
     slidesToShow: windowWidth <= 575 ? 1 : 3,
     arrows: false,
-    autoPlay: true,
-    autoplaySpeed: 1000,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
 
   return (
