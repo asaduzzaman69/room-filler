@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import getEnvironmentConfig from "../environment";
 import Link from "next/link";
-import { Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { getAllProperties } from "../services/properties";
 import Banner from "../components/banner";
 import AmenitiesCarousel from "../components/amenitiesCarousel";
@@ -106,26 +106,25 @@ const Home = (props) => {
               <Card className="text-center cursor-pointer border-0">
                 <div className="row no-gutters">
                   <div
-                    className="col-5 col-lg-4 rounded"
-                    style={{
-                      background: "url('" + properties[prop].images[0] + "')",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      minHeight: "75px",
-                    }}
+                      className="rounded"
+                      style={{
+                        background: "url('" + properties[prop].images[0] + "')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        height: "75px",
+                        width: "75px",
+                      }}
                   ></div>
-                  <div className="col-7 col-lg-8">
-                    <div className="card-body pt-3 pb-2 pr-1">
-                      <p className="text-left mb-0 font-weight-bold">
-                        {" "}
-                        {properties[prop].title}{" "}
-                      </p>
-                      <p className="text-left mb-0 iconbox">
-                        {" "}
-                        {properties[prop].bedroomCount} Beds{" "}
-                        {properties[prop].maxOccupancy} Guests{" "}
-                      </p>
-                    </div>
+                  <div className="card-body py-0 pr-1 align-self-center" style={{width: 'calc(100% - 75px)'}}>
+                    <p className="text-left mb-0 font-weight-bold">
+                      {" "}
+                      {properties[prop].title}{" "}
+                    </p>
+                    <p className="text-left mb-0 iconbox">
+                      {" "}
+                      {properties[prop].bedroomCount} Beds{" "}
+                      {properties[prop].maxOccupancy} Guests{" "}
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -145,24 +144,36 @@ const Home = (props) => {
       <Layout setHash={setHash}>
         <Banner properties={props} />
         <div>
-          <Row className="container mt-5 mb-3 mx-auto px-md-5 px-xl-0 align-items-center align-content-center">
-            {getProperties(props)}
-          </Row>
+          <Container className="col-12 col-lg-10 offset-lg-1 mt-5 mb-3">
+            <Row>
+              {getProperties(props)}
+            </Row>
+          </Container>
         </div>
         <div ref={amenitiesRef}>
-          <AmenitiesCarousel />
+          <Container className="col-12 col-lg-10 offset-lg-1 pb-2">
+            <AmenitiesCarousel />
+          </Container>
         </div>
         <div ref={quickEatsRef}>
-          <QuickEatsCarousel />
+          <Container className="col-12 col-lg-10 offset-lg-1 pb-2">
+            <QuickEatsCarousel />
+          </Container>
         </div>
         <div ref={localEatsRef}>
-          <LocalEatsCarousel />
+          <Container className="col-12 col-lg-10 offset-lg-1 pb-2">
+            <LocalEatsCarousel />
+          </Container>
         </div>
-        <div ref={localActivitiesRef}>
-          <LocalActivities />
+        <div ref={localActivitiesRef} style={{backgroundColor: '#3e362d'}}>
+          <Container className="col-12 col-lg-10 offset-lg-1 py-4 my-5">
+            <LocalActivities />
+          </Container>
         </div>
         <div ref={emergencyLocationsRef}>
-          <EmergencyLocations />
+          <Container className="col-12 col-lg-10 offset-lg-1 pb-2">
+            <EmergencyLocations />
+          </Container>
         </div>
       </Layout>
 

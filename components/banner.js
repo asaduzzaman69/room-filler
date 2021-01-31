@@ -50,12 +50,18 @@ const Banner = (props) => {
     <div className="main-bg">
       <div className="greyscale">
         <Container className="col-12 col-lg-10 offset-lg-1 py-5">
+<<<<<<< HEAD
           <Row className="search-section px-sm-3">
             <Col className="search-height mb-2" sm={6}>
               <p className="search-heading">
                 Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; Check out
               </p>
+=======
+          <Row className="search-section mx-auto mb-4 align-self-center p-2">
+            <Col className="search-height pl-4" sm={6}>
+              <p className="search-heading">Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Check out</p>
+>>>>>>> 492aa78603b2d265189e14a20fc94015d8866658
               <DateRangePicker
                 startDateId="startDate"
                 endDateId="endDate"
@@ -113,7 +119,7 @@ const Banner = (props) => {
               sm={3}
             >
               <Link href={getSearchLink(startDate, endDate, guests)}>
-                <Button variant="primary" className="book-btn">
+                <Button variant="primary" className="book-btn py-2" style={{lineHeight: 1, minHeight: '100%'}}>
                   Book now
                 </Button>
               </Link>

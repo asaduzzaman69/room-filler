@@ -1,6 +1,7 @@
 import React, { useState, useRef,useEffect } from "react";
 import Router from "next/router";
 import {
+  Container,
   Row,
   Col,
   Card,
@@ -39,8 +40,8 @@ const LocalActivities = ({}) => {
   };
 
   return (
-    <Row className="activities-row mt-5 align-items-center mx-auto">
-      <Col>
+    <Row className="activities-row text-center mt-5 align-items-center mx-auto px-0">
+      <Col className="px-0">
         <h5>ACTIVITIES TO ENJOY WITH</h5>
         {windowWidth <= 575?null:<br />}
         <h6>
