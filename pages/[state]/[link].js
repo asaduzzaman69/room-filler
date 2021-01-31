@@ -117,7 +117,7 @@ export default function PropertyPage({ property }) {
               <Col className="px-0  image-box-responsive">
                 <Card.Img
                   key={"view-only-images-" + 0}
-                  variant="top"
+                  variant="top"   
                   className="bnb-first-img"
                   src={property.images[0]}
                 />

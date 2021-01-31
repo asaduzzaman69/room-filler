@@ -85,9 +85,7 @@ const LocalActivities = ({}) => {
                         {item.type === "biking"
                           ? `${item.places[0].track} 'Mile Trail'`
                           : ""}
-                        {item.places[0].phone ? item.places[0].phone : ""}
-                        <br />
-                        <br />
+                        {item.places[0].phone ? <>{item.places[0].phone}<br/></> : ""}
                         {item.places[0].desc ? (
                           item.places[0].desc
                         ) : (
