@@ -37,8 +37,8 @@ const Banner = (props) => {
     <div className="main-bg">
       <div className="greyscale">
         <Container className="col-12 col-lg-10 offset-lg-1 py-5">
-          <Row className="search-section px-sm-3">
-            <Col className="search-height mb-2" sm={6}>
+          <Row className="search-section mx-auto mb-4 align-self-center p-2">
+            <Col className="search-height pl-4" sm={6}>
               <p className="search-heading">Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Check out</p>
               <DateRangePicker
                 startDateId="startDate"
@@ -93,7 +93,7 @@ const Banner = (props) => {
 
             <Col className="search-height pr-0 text-center text-md-right" xs={12} sm={3}>
               <Link href={getSearchLink(startDate, endDate, guests)}>
-                <Button variant="primary" className="book-btn">
+                <Button variant="primary" className="book-btn py-2" style={{lineHeight: 1, minHeight: '100%'}}>
                   Book now
                 </Button>
               </Link>

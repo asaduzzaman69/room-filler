@@ -32,11 +32,11 @@ const AmenitiesCarousel = ({}) => {
         amenities.map((item, index) => {
           return (
             <Row
-              className="align-items-center custom-row"
+              className="align-items-center custom-row px-0"
               key={`amenities_${index}`}
             >
                
-              <Col className="left-sec pr-lg-5 pr-md-3" xs={12} sm={6} md={6}>
+              <Col className="left-sec pr-lg-5 pr-md-3 mb-3" xs={12} sm={6} md={6}>
                 <h6>Amenities</h6>
                 <h5>{item.name}</h5>
 

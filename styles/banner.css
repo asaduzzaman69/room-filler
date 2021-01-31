@@ -24,10 +24,10 @@
   color: #fff;
 }
 .search-section {
-  padding: 10px;
   background-color: #fff;
   border-radius: 40px;
   margin: 0px 80px !important;
+  max-width: 600px;
 }
 /*.main-bg .DateInput {*/
 /*  width: 22vw !important;*/
@@ -69,7 +69,7 @@
   font-family: "Oswald", sans-serif;
 }
 .search-height {
-  height: 45px;
+  height: auto;
 }
 #propertySearchGuestCount {
   border: none;

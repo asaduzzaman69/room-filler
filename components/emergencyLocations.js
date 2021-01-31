@@ -6,7 +6,7 @@ import Link from "next/link";
 const EmergencyLocations = ({}) => {
   return (
     <Row
-      className="align-items-center my-4 my-sm-5 my-md-5 my-lg-5 py-lg-5 mx-auto custom-row"
+      className="align-items-center my-4 my-sm-5 my-md-5 my-lg-5 py-lg-5 px-0 mx-auto custom-row"
     >
        <Link  href="/places/emergency-locations">
       <Col className="left-sec pr-5" xs={12} sm={6} md={6} style={{cursor:'pointer'}}>

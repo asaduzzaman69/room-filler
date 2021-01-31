@@ -106,10 +106,10 @@ export default function PropertyPage({ property }) {
             lightbox?
             (<>
               {
-                property.images.map(el => <img className='d-none' src={el} />)
+                property.images.map((el, index) => <img key={'lightbox-image-' + index} className='d-none' src={el} />)
               }
               </>
-        ):null
+            ):null
           } 
 
           {property && property.id && property.images.length > 1 ? (
@@ -176,7 +176,7 @@ export default function PropertyPage({ property }) {
                 />
               </div>
             </Col>
-            <Col className="px-1 py-4" row-res xs={5}>
+            <Col className="px-1 py-4" row-res="true" xs={5}>
               {property && property.owner && (
                 <span>
                   <h6 className="mb-0">{property.owner.name}</h6>
