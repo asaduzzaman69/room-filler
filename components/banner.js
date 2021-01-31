@@ -6,17 +6,11 @@ import { getSearchLink } from "../services/properties";
 import { DateRangePicker } from "react-dates";
 import Slider from "react-slick";
 
-
-
-
-
 //this function is for spliting the large title in a single one
 
-
 const splitTitle = (title) => {
-  return title.split('|')[0];
-
-}
+  return title.split("|")[0];
+};
 
 const Banner = (props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -44,24 +38,20 @@ const Banner = (props) => {
     slidesToScroll: 1,
     speed: 500,
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
 
   return (
     <div className="main-bg">
       <div className="greyscale">
         <Container className="col-12 col-lg-10 offset-lg-1 py-5">
-<<<<<<< HEAD
           <Row className="search-section px-sm-3">
             <Col className="search-height mb-2" sm={6}>
               <p className="search-heading">
                 Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; Check out
               </p>
-=======
-          <Row className="search-section mx-auto mb-4 align-self-center p-2">
-            <Col className="search-height pl-4" sm={6}>
-              <p className="search-heading">Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Check out</p>
->>>>>>> 492aa78603b2d265189e14a20fc94015d8866658
               <DateRangePicker
                 startDateId="startDate"
                 endDateId="endDate"
@@ -119,7 +109,7 @@ const Banner = (props) => {
               sm={3}
             >
               <Link href={getSearchLink(startDate, endDate, guests)}>
-                <Button variant="primary" className="book-btn py-2" style={{lineHeight: 1, minHeight: '100%'}}>
+                <Button variant="primary" className="book-btn">
                   Book now
                 </Button>
               </Link>
@@ -153,35 +143,42 @@ const Banner = (props) => {
               className="offset-lg-1 pr-0"
             >
               <Slider {...settings} ref={sliderRef}>
-                {Object.keys(props.properties).slice(0,9).map((item, index) => {
-                  return (
-                    props.properties[item] &&
-                    props.properties[item].published &&
-                    props.properties[item].images.length && (
-                      <Link
-                        href={
-                          props.properties[item].address.state
-                            .toLowerCase()
-                            .trim() +
-                          "/" +
-                          props.properties[item].link
-                        }
-                        key={"slider-image-" + index}
-                      >
-                        <Card className="card-home">
-                          <div className='overlay'></div>
-                          <div
-                            style={{
-                              backgroundImage: `url(${props.properties[item].images[0]})`,
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                            }}
-                            /*  src={props.properties[item].images[0]} */
-                            className="card-home__image"
-                          ></div>
-                          <span className="p-2 card-home__text">
-                            <p className='text-left mb-0 font-weight-bold'>{props.properties[item].title.substring(0, 200) + '...'}</p>
-                            {/* <p className="text-left mb-0 font-weight-bold">
+                {Object.keys(props.properties)
+                  .slice(0, 9)
+                  .map((item, index) => {
+                    return (
+                      props.properties[item] &&
+                      props.properties[item].published &&
+                      props.properties[item].images.length && (
+                        <Link
+                          href={
+                            props.properties[item].address.state
+                              .toLowerCase()
+                              .trim() +
+                            "/" +
+                            props.properties[item].link
+                          }
+                          key={"slider-image-" + index}
+                        >
+                          <Card className="card-home">
+                            <div className="overlay"></div>
+                            <div
+                              style={{
+                                backgroundImage: `url(${props.properties[item].images[0]})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                              /*  src={props.properties[item].images[0]} */
+                              className="card-home__image"
+                            ></div>
+                            <span className="p-2 card-home__text">
+                              <p className="text-left mb-0 font-weight-bold">
+                                {props.properties[item].title.substring(
+                                  0,
+                                  200
+                                ) + "..."}
+                              </p>
+                              {/* <p className="text-left mb-0 font-weight-bold">
                               {" "}
                               {props.properties[item].title}{" "}
                             </p>
@@ -190,12 +187,12 @@ const Banner = (props) => {
                               {props.properties[item].bedroomCount} Beds{" "}
                               {props.properties[item].maxOccupancy} Guests{" "}
                             </p> */}
-                          </span> 
-                        </Card>
-                      </Link>
-                    )
-                  );
-                })}
+                            </span>
+                          </Card>
+                        </Link>
+                      )
+                    );
+                  })}
               </Slider>
             </Col>
             <Col
@@ -206,22 +203,24 @@ const Banner = (props) => {
               className="pr-0"
               style={{ alignSelf: "center" }}
             >
-              {Object.keys(props.properties).slice(0,9).map(
-                (item, index) =>
-                  props.properties[item] &&
-                  props.properties[item].published && (
-                    <div
-                      key={"slider-dot-" + index}
-                      className={
-                        currentSlide === item
-                          ? "selected-carousel-dot"
-                          : "carousel-dot"
-                      }
-                      onClick={() => setSlide(item)}
-                      key={"mini-banner-tab-" + item}
-                    />
-                  )
-              )}
+              {Object.keys(props.properties)
+                .slice(0, 9)
+                .map(
+                  (item, index) =>
+                    props.properties[item] &&
+                    props.properties[item].published && (
+                      <div
+                        key={"slider-dot-" + index}
+                        className={
+                          currentSlide === item
+                            ? "selected-carousel-dot"
+                            : "carousel-dot"
+                        }
+                        onClick={() => setSlide(item)}
+                        key={"mini-banner-tab-" + item}
+                      />
+                    )
+                )}
             </Col>
           </Row>
         </Container>

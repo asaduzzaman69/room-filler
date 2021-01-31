@@ -62,10 +62,13 @@ const Activity = ({ activity }) => {
           return(
             <div key={`desc_${index}`}>
             <p >{item}</p>
-            <Image
+            <div>
+              <Image
               src={`/images${activity.imgs[index].name}`}
               className="activity-imgs"
                   />
+            </div>
+            
              </div>
           )
         }):null}

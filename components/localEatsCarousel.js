@@ -28,6 +28,7 @@ const LocalEatsCarousel = ({}) => {
       showStatus={false}
       selectedItem={currentSlide}
       swipeable={true}
+      autoPlay={true}
     >
       {localEateries.length > 0 &&
         localEateries.map((item, index) => {
@@ -36,24 +37,29 @@ const LocalEatsCarousel = ({}) => {
               className="align-items-center custom-row px-0"
               key={`quick_eats_${index}`}
             >
-              <Col className="left-sec pr-lg-5 pr-md-3 mb-3" xs={12} sm={6} md={6}>
-       <Link  href="/places/local-eats">
-                <div style={{cursor:'pointer'}}>
-                <h6>Local Eateries</h6>
-                <h5>{item.name}</h5>
-                <p className="sub">
-                  {item.address1}
-                  <br />
-                  {item.address2}
-                  <br />
-                  {item.stars} Stars (
-                  {new Intl.NumberFormat("en-IN", {
-                    maximumSignificantDigits: 3,
-                  }).format(item.likes)}
-                  ) 
-                </p>
-                <p>{item.desc}</p>
-                </div>
+              <Col
+                className="left-sec pr-lg-5 pr-md-3 mb-3"
+                xs={12}
+                sm={6}
+                md={6}
+              >
+                <Link href="/places/local-eats">
+                  <div style={{ cursor: "pointer" }}>
+                    <h6>Local Eateries</h6>
+                    <h5>{item.name}</h5>
+                    <p className="sub">
+                      {item.address1}
+                      <br />
+                      {item.address2}
+                      <br />
+                      {item.stars} Stars (
+                      {new Intl.NumberFormat("en-IN", {
+                        maximumSignificantDigits: 3,
+                      }).format(item.likes)}
+                      )
+                    </p>
+                    <p>{item.desc}</p>
+                  </div>
                 </Link>
                 <Button
                   onClick={() => prev()}

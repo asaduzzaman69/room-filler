@@ -21,10 +21,12 @@ const PlaceType = ({ places }) => {
     <Container  className="places-card-container my-5">
       <Row>
         <Col md={{span:10, offset:1}}>
+
           {
             places && places.length && places.length>0?
             places.map((item, index)=>{return(
-              <div key={`places_${index}`}> 
+              <div key={`places_${index}`} className='d-flex mb-3'> 
+              <div >
               <h3>{item.name ? item.name : ""}</h3>
           {item.address1 ? <><h4>Location: <span>{item.address1}{item.address2?`, ${item.address2}`:""}</span></h4> </>  : null}
           {item.location ? <><h4>Location: <span>{item.location}</span></h4> </>  : null}
@@ -33,6 +35,7 @@ const PlaceType = ({ places }) => {
           {item.stars ? <><h4>Rating: <span>{item.stars} Stars</span></h4> </>  : null}
           {item.openingHours && item.openingHours.length && item.openingHours.length > 0 ?
        <div>
+         
     
        <h4>Opening Hours: </h4>
       {item.openingHours.map((day, index)=>{
@@ -41,11 +44,12 @@ const PlaceType = ({ places }) => {
         )
       }) } </div>:null}
           {item.desc?<p>{item.desc}</p>:null} 
+          </div>
 
-          {item.image ?  <Image
+          {item.image ? (<div> <Image
             src={`/images${item.image}`}
             className="activity-imgs"
-                />  : null}
+                /> </div>)  : null}
 
             </div>
             )})

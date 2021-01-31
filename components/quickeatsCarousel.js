@@ -28,6 +28,7 @@ const QuickEatsCarousel = ({}) => {
       showStatus={false}
       selectedItem={currentSlide}
       swipeable={true}
+      autoPlay={true}
     >
       {quickEats.length > 0 &&
         quickEats.map((item, index) => {
@@ -37,23 +38,29 @@ const QuickEatsCarousel = ({}) => {
               key={`quick_eats_${index}`}
             >
               <Col xs={12} sm={6} md={6} className="order-2 order-sm-1">
-                <Image src={`/images${item.image}`} className="carousel-image" />
+                <Image
+                  src={`/images${item.image}`}
+                  className="carousel-image"
+                />
               </Col>
-              <Col className="left-sec pl-lg-5 pl-md-4 mb-3 order-1 order-sm-2" xs={12} sm={6} md={6}>
-              <Link  href="/places/quick-eats">
-                <div style={{cursor:'pointer'}}>
-                
-                <h6>Quick Eats</h6>
-                <h5>{item.name}</h5>
-                <p className="sub">
-                  {item.address1}
-                  <br />
-                  {item.address2}
-                </p>
-                <p>{item.desc}</p>
-               
-                </div>
-                </Link> 
+              <Col
+                className="left-sec pl-lg-5 pl-md-4 mb-3 order-1 order-sm-2"
+                xs={12}
+                sm={6}
+                md={6}
+              >
+                <Link href="/places/quick-eats">
+                  <div style={{ cursor: "pointer" }}>
+                    <h6>Quick Eats</h6>
+                    <h5>{item.name}</h5>
+                    <p className="sub">
+                      {item.address1}
+                      <br />
+                      {item.address2}
+                    </p>
+                    <p>{item.desc}</p>
+                  </div>
+                </Link>
                 <Button
                   onClick={() => prev()}
                   variant="outlined"

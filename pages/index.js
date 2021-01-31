@@ -145,9 +145,7 @@ const Home = (props) => {
         <Banner properties={props} />
         <div>
           <Container className="col-12 col-lg-10 offset-lg-1 mt-5 mb-3">
-            <Row>
-              {getProperties(props)}
-            </Row>
+            <Row>{getProperties(props)}</Row>
           </Container>
         </div>
         <div ref={amenitiesRef}>
@@ -165,7 +163,7 @@ const Home = (props) => {
             <LocalEatsCarousel />
           </Container>
         </div>
-        <div ref={localActivitiesRef} style={{backgroundColor: '#3e362d'}}>
+        <div ref={localActivitiesRef} style={{ backgroundColor: "#3e362d" }}>
           <Container className="col-12 col-lg-10 offset-lg-1 py-4 my-5">
             <LocalActivities />
           </Container>
