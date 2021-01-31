@@ -14,13 +14,30 @@ import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import Navbar from "../../components/navbar";
 import { DayPickerRangeController } from "react-dates";
 import TextExpand from "../../components/text-expand";
-import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
+import SimpleReactLightbox, { SRLWrapper,useLightbox  } from "simple-react-lightbox";
 import {amenitiesIcon} from '../../public/constants/config';
 import PageNotFound from "../404";
 
+
+const ButtonACC = (props) => {
+  const { openLightbox } = useLightbox();
+
+  return (
+    <button
+      className="view-more-btn"
+      onClick={() => openLightbox(props.imageToOpen)}
+    >
+      {props.children}
+    </button>
+  );
+};
+
+
+
 export default function PropertyPage({ property }) {
+  const { openLightbox } = useLightbox()
   const [hash, setHash] = useState("");
-  const [lightbox, setLightbox] = useState(false);
+  const [lightbox, setLightbox] = useState(true);
   const router = useRouter();
 
   property = property.params;
@@ -43,7 +60,8 @@ export default function PropertyPage({ property }) {
             className="bnb-last-image"
             src={image}
           />
-          {index===4?<div className="view-more-btn" onClick={()=>setLightbox(true)}>+ {total-4} more</div>:null}
+          {index===4?<ButtonACC imageToOpen={index + 1} className="view-more-btn" >+ {total-4} more</ButtonACC >:null}
+         {/*  {index===4?<button imageToOpen='2' className="view-more-btn" onClick={()=>{openLightbox()}}>+ {total-4} more</button >:null} */}
         </div>
       )
     } else {
@@ -82,14 +100,17 @@ export default function PropertyPage({ property }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Container className="selected-property">
-          {/* {
+        <SRLWrapper options={options}>
+          
+          {
             lightbox?
-            <SRLWrapper options={options}>
+            (<>
               {
-              property.images
-}
-            </SRLWrapper>:null
-          } */}
+                property.images.map(el => <img className='d-none' src={el} />)
+              }
+              </>
+        ):null
+          } 
 
           {property && property.id && property.images.length > 1 ? (
             <Row className="imagesbox">
@@ -214,6 +235,7 @@ export default function PropertyPage({ property }) {
               </div>
             </Col>
           </Row>
+          </SRLWrapper>
         </Container>
       </SimpleReactLightbox>
     </Layout>

@@ -6,6 +6,7 @@ import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import { localActivities } from "../../../public/constants/config";
 
 const ActivityPage = ({ activity }) => {
+  console.log(activity);
   const [hash, setHash] = useState("");
   return (
     <Layout setHash={setHash}>
