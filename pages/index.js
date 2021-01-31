@@ -11,7 +11,11 @@ import LocalEatsCarousel from "../components/localEatsCarousel";
 import LocalActivities from "../components/localActivities";
 import EmergencyLocations from "../components/emergencyLocations";
 import Layout from "../components/layout";
-
+const random = (mn, mx) => {
+  const result = Math.random() * (mx - 0) + mn;
+  return result;
+  console.log(result);
+};
 const Home = (props) => {
   const [hash, setHash] = useState("");
   const amenitiesRef = useRef(null);
@@ -28,11 +32,11 @@ const Home = (props) => {
     });
   };
 
-  useEffect(()=>{
-   if(window && window.location.hash){
-     setHash(window.location.hash.split("#").pop())
-   }
-  }, [])
+  useEffect(() => {
+    if (window && window.location.hash) {
+      setHash(window.location.hash.split("#").pop());
+    }
+  }, []);
 
   useEffect(() => {
     switch (hash.split("#").pop()) {
@@ -55,27 +59,49 @@ const Home = (props) => {
     }
   }, [hash]);
 
-  const getPropertyLink = ( property ) => {
+  const getPropertyLink = (property) => {
     // const tempState = property && property.address
     // ? property.address.state.toLowerCase().trim() :"";
     // return `/${property.address.state}/${property.link}`;
     return property && property.address
-      ? `/${property.address.state.toLowerCase().replace(' ','-')}/${property.link.toLowerCase().trim()}`
+      ? `/${property.address.state
+          .toLowerCase()
+          .replace(" ", "-")}/${property.link.toLowerCase().trim()}`
       : "/";
     // return `/${property.address}/${property.link}`;
   };
 
   const getProperties = (properties) => {
+    const publishedProperty = Object.keys(properties).filter(
+      (prop, index) => properties[prop].published === true
+    );;
+
+    let renderedArray;
+     publishedProperty.forEach((el, idx) => {
+      let arr = [];
+      if (idx <= 5) {
+        while (arr.length < 6) {
+          var r = Math.floor(Math.random() * publishedProperty.length -1) + 1;
+          if (arr.indexOf(r) === -1) arr.push(r);
+        }
+        renderedArray = arr;
+      }
+     
+    });
+
+    const res = renderedArray.map( el => publishedProperty[el])
+
+
     let propertiesPublished = 0;
     return (
       properties &&
-      Object.keys(properties).map((prop, index) => {
+      res.map((prop, index) => {
         if (!properties[prop].published || propertiesPublished > 5) {
           return false;
         }
         propertiesPublished++;
         return (
-          <Col xs={12} xl={4}  md={6} className="mb-3" key={`property_${index}`}>
+          <Col xs={12} xl={4} md={6} className="mb-3" key={`property_${index}`}>
             <Link href={"" + getPropertyLink(properties[prop])}>
               <Card className="text-center cursor-pointer border-0">
                 <div className="row no-gutters">
@@ -108,7 +134,7 @@ const Home = (props) => {
         );
       })
     );
-  };
+  };;
 
   return (
     <div>
@@ -116,7 +142,7 @@ const Home = (props) => {
         <title>{getEnvironmentConfig().title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <Layout setHash={setHash}>
+      <Layout setHash={setHash}>
         <Banner properties={props} />
         <div>
           <Row className="container mt-5 mb-3 mx-auto px-md-5 px-xl-0 align-items-center align-content-center">
@@ -138,13 +164,12 @@ const Home = (props) => {
         <div ref={emergencyLocationsRef}>
           <EmergencyLocations />
         </div>
-        </Layout>
+      </Layout>
 
       <style jsx global>{``}</style>
     </div>
   );
 };
-
 
 export async function getStaticProps(context) {
   const allProperties = await getAllProperties();

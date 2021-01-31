@@ -27,7 +27,7 @@ const ActivityPage = ({ activity }) => {
       <Container fluid="lg" className="places-card-container my-5">
         <Row>
          
-        {
+        { 
           activity.places.map((item, index)=>{
             return(
               <Col xs={12} sm={6} md={6} lg={4} key={`activity_places_${index}`}>
