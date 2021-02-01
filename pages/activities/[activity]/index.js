@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Link from "next/link";
 import Layout from "../../../components/layout";
 import Head from "next/head";
 import Router from "next/router";
@@ -15,7 +16,7 @@ const ActivityPage = ({ activity }) => {
       </Head>
       <div
         className="activities-bg"
-        style={{ background: `url(/images${activity.img})` }}
+        style={{ background: `url(/images${activity.img})`, backgroundPosition: "center" }}
       >
         <div className="greyscale py-5">
           <Container fluid="lg">
@@ -25,48 +26,43 @@ const ActivityPage = ({ activity }) => {
       </div>
       <Container fluid="lg" className="places-card-container my-5">
         <Row>
-          {activity.places.map((item, index) => {
-            return (
-              <Col
-                xs={12}
-                sm={6}
-                md={6}
-                lg={4}
-                key={`activity_places_${index}`}
-              >
-                <Card
-                  className="places-card"
-                  onClick={() => Router.push(`${activity.type}/${item.slug}`)}
-                >
-                  <Card.Img
-                    variant="top"
-                    src={
-                      item.bannerImg
-                        ? `/images${item.bannerImg}`
-                        : "https://via.placeholder.com/"
-                    }
-                  />
-                  <Card.Body>
-                    <Card.Title>
-                      <h5>{item.name ? item.name : ""}</h5>
-                    </Card.Title>
-                    <Card.Text>
-                      {activity.type === "biking" ? (
-                        <>
-                          {item.track} Mile Trail
-                          <br />
-                        </>
-                      ) : (
-                        ""
-                      )}
-                      {item.phone ? item.phone : ""}
-                      {item.phone ? <br /> : null}
-                      {item.desc ? item.desc : null}
-                    </Card.Text>
-                    <Button variant="primary">Book Now</Button>
-                    <Card.Link href="#">Read More</Card.Link>
-                  </Card.Body>
-                </Card>
+         
+        { 
+          activity.places.map((item, index)=>{
+            return(
+              <Col xs={12} sm={6} md={6} lg={4} key={`activity_places_${index}`}>
+                  <Link href={`${activity.type}/${item.slug}`}>
+                <Card className="places-card" >
+                    <Card.Img
+                      variant="top"
+                      src={
+                        item.bannerImg
+                          ? `/images${item.bannerImg}`
+                          : "https://via.placeholder.com/"
+                      }
+                    />
+                    <Card.Body>
+                      <Card.Title>
+                        <h5>
+                          {item.name ? item.name : ""}
+                        </h5>
+                      </Card.Title>
+                      <Card.Text>
+                        {activity.type === "biking"
+                          ? <>{item.track} Mile Trail<br/></>
+                          : ""}
+                        {item.phone ? item.phone : ""}
+                        {item.phone?<br/>:null}
+                        {item.desc ? (
+                          item.desc
+                        ) : (null
+                        )}
+                      </Card.Text>
+                      <Button variant="primary">Book Now</Button>
+                      <Card.Link href="#">Read More</Card.Link>
+                    </Card.Body>
+                  </Card>
+                  </Link>
               </Col>
             );
           })}

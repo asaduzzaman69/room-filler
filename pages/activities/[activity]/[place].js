@@ -14,7 +14,7 @@ const Activity = ({ activity }) => {
       </Head>
       <div
         className="activities-bg"
-        style={{ background: `url(/images${activity.bannerImg})`, backgroundPosition:activity.bannerImgPosition }}
+        style={{ background: `url(/images${activity.bannerImg})`}}
       >
         <div className="greyscale py-5">
           <Container fluid="lg">
