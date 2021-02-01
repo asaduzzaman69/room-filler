@@ -14,7 +14,7 @@ import {
 import firebase from "../lib/firebase";
 import { isUserAdmin } from "../services/user";
 import Router from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Modal,
@@ -110,6 +110,10 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
   alert("Successfully Updated!");
 }
 
+
+
+
+
 function addOwnerEditor(property) {
   const email = window.prompt("Enter email of owner/editor:");
   property.editors = property.editors || [];
@@ -118,6 +122,12 @@ function addOwnerEditor(property) {
   });
   addEditProperty(null, property, () => {}, true);
 }
+
+
+
+
+
+
 
 function IncompleteFieldsError(props) {
   if (props.showError) {
@@ -129,6 +139,8 @@ function IncompleteFieldsError(props) {
   }
   return null;
 }
+
+
 
 function addImageToPreview(url) {
   document.getElementById("propertyImagesPreview").innerHTML += `
@@ -188,21 +200,24 @@ export function Dashboard(props) {
   const [addressValue] = useState(null);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const [hash, setHash] = useState('');
+  const [hash, setHash] = useState("");
+
   const handleShow = () => {
     setShow(true);
     setTimeout(() => {
       if (!selectedProperty.id) return;
       const formValues = document.querySelectorAll("[key-data]");
-      formValues.forEach(field => {
+      formValues.forEach((field) => {
         field.value = selectedProperty[field.getAttribute("key-data")];
       });
-      const formOptionalValues = document.querySelectorAll("[optional-key-data]");
-      formOptionalValues.forEach(field => {
+      const formOptionalValues = document.querySelectorAll(
+        "[optional-key-data]"
+      );
+      formOptionalValues.forEach((field) => {
         field.value = selectedProperty[field.getAttribute("optional-key-data")];
       });
       const formSubValues = document.querySelectorAll("[sub-key-data]");
-      formSubValues.forEach(field => {
+      formSubValues.forEach((field) => {
         const subObjectKey = field.getAttribute("sub-key-data").split(".");
         field.value = selectedProperty[subObjectKey[0]][subObjectKey[1]];
       });
@@ -213,20 +228,51 @@ export function Dashboard(props) {
     }, 150);
   };
 
-  const resetPropertyOpenModal = () => {
+  const handleOnCLose = () => {
+    setShow(true);
+    setTimeout(() => {
+      if (!selectedProperty.id) return;
+      const formValues = document.querySelectorAll("[key-data]");
+      formValues.forEach((field) => {
+        field.value = ''
+      });
+      const formOptionalValues = document.querySelectorAll(
+        "[optional-key-data]"
+      );
+      formOptionalValues.forEach((field) => {
+        field.value = 'dsd'
+      });
+      const formSubValues = document.querySelectorAll("[sub-key-data]");
+      formSubValues.forEach((field) => {
+        const subObjectKey = field.getAttribute("sub-key-data").split(".");
+        field.value = 'sds'
+      });
+      //for (let image of selectedProperty.images) {
+      //  addImageToPreview(image);
+      //}
+      setupReorder();
+    }, 150);
+  };
 
-  }
+
+  const resetPropertyOpenModal = () => {};
 
   const { user, managedProperties, fieldsCompleted, isAdmin } = props;
   let [selectedProperty, setSelectedProperty] = useState(
     managedProperties[0] || propertyPlaceholder
   );
+
+  useEffect(() => {
+    if (managedProperties[0] !== undefined) {
+      setSelectedProperty(managedProperties[0])
+    }
+  }, [managedProperties]);
   let [calendar, setCalendar] = useState({});
   let [showCalendarError, setCalendarError] = useState(false);
 
-  const loadPropertyCalendar = property => {
-    getPropertyCalendar(property).then(calendar => {
-      const blockedDays= generateBlockedCalendarDays(calendar.data());
+  const loadPropertyCalendar = (property) => {
+    getPropertyCalendar(property).then((calendar) => {
+      const blockedDays = generateBlockedCalendarDays(calendar.data());
       if (blockedDays !== null) {
         setCalendarError(false);
         return setCalendar(blockedDays);
@@ -241,11 +287,11 @@ export function Dashboard(props) {
     Sortable.create(el, {
       onUpdate: () => {
         selectedProperty.images = resetImages(selectedProperty);
-      }
+      },
     });
   }
 
-  const updatedAddress = e => {
+  const updatedAddress = (e) => {
     selectedProperty.address = {
       city: e.value.structured_formatting.secondary_text
         .split(",")[0]
@@ -260,11 +306,11 @@ export function Dashboard(props) {
         .replace(/[^A-Za-z]+/g, "")
         .trim(),
       street: e.value.structured_formatting.main_text,
-      stringFormat: e.label
+      stringFormat: e.label,
     };
   };
 
-  const handleFileImages = async e => {
+  const handleFileImages = async (e) => {
     e.persist();
     const files = e.target.files;
     for (var x = 0; x < files.length; ) {
@@ -287,7 +333,7 @@ export function Dashboard(props) {
     "Smoke alarm",
     "Fire extinguisher",
     "First-aid kit",
-    "Accessible bathroom"
+    "Accessible bathroom",
   ];
   const amenitiesIcon = [
     "fal fa-wifi",
@@ -300,7 +346,7 @@ export function Dashboard(props) {
     "fal fa-sensor-fire",
     "fal fa-fire",
     "fal fa-medkit",
-    "fal fa-restroom"
+    "fal fa-restroom",
   ];
 
   return (
@@ -309,219 +355,260 @@ export function Dashboard(props) {
         <title>Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
- 
+
       <div className="dashbox mt-5">
         <div className="headingbox text-center col-md-6 offset-md-3">
           <h2>Welcome {user.displayName}</h2>
           <p>You have {managedProperties.length} Properties</p>
         </div>
-        {
-          showCalendarError && <Alert variant="danger" className="mt-3" onClose={() => setCalendarError(false)} dismissible>
-          AirBnB/VRBO url is incorrect
+        {showCalendarError && (
+          <Alert
+            variant="danger"
+            className="mt-3"
+            onClose={() => setCalendarError(false)}
+            dismissible
+          >
+            AirBnB/VRBO url is incorrect
           </Alert>
-        }
+        )}
 
-        {!managedProperties.length &&
-        <Button  onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow(); }}
-                className="mx-auto d-block px-4 py-3 mt-5 font-weight-bold add-property-btn">
-          Add Property
-        </Button>
-        }
+        {!managedProperties.length && (
+          <Button
+            onClick={() => {
+              setSelectedProperty(propertyPlaceholder);
+              handleOnCLose();
+            }}
+            className="mx-auto d-block px-4 py-3 mt-5 font-weight-bold add-property-btn"
+          >
+            Add Property
+          </Button>
+        )}
 
-        {!!managedProperties.length &&
-        <Container>
-          <Row>
-            <Col xs="12" md="4">
+        {!!managedProperties.length && (
+          <Container>
             <Row>
-            <h3>Your Properties</h3>
-            &nbsp; &nbsp;
-            <Button className="add-property-btn mb-3" onClick={() => { setSelectedProperty(propertyPlaceholder); handleShow(); }} >
-              Add Property
-            </Button>
-          </Row>
-              <ListGroup>
-                {managedProperties.map(property => {
-                  return (
+              <Col xs="12" md="4">
+                <Row>
+                  <h3>Your Properties</h3>
+                  &nbsp; &nbsp;
+                  <Button
+                    className="add-property-btn mb-3"
+                    onClick={() => {
+                      setSelectedProperty(propertyPlaceholder);
+                      handleOnCLose();
+                    }}
+                  >
+                    Add Property
+                  </Button>
+                </Row>
+                <ListGroup>
+                  {managedProperties.map((property) => {
+                    return (
                       <ListGroup.Item
-                          onClick={() => {
-                            setSelectedProperty(property);
-                            // loadPropertyCalendar(property);
-                          }}
-                          key={property.id}
-                          className="cursor-pointer property-list"
+                        onClick={() => {
+                          setSelectedProperty(property);
+                          // loadPropertyCalendar(property);
+                        }}
+                        key={property.id}
+                        className="cursor-pointer property-list"
                       >
-                        <i className="fal fa-angle-right angle-right"/>{' '}{property.title}
+                        <i className="fal fa-angle-right angle-right" />{" "}
+                        {property.title}
                       </ListGroup.Item>
-                  );
-                })}
-              </ListGroup>
-            </Col>
-            <Col xs="12" md="8">
-              <Card className="selected-property" style={{marginBottom:'15px'}}>
-                {(selectedProperty.id &&
+                    );
+                  })}
+                </ListGroup>
+              </Col>
+              <Col xs="12" md="8">
+                <Card
+                  className="selected-property"
+                  style={{ marginBottom: "15px" }}
+                >
+                  {(selectedProperty.id &&
                     selectedProperty.images.length > 1 && (
-                        <Row
-                            style={{overflowX: "auto", maxWidth: '100%'}}
-                            className="d-block text-nowrap mb-2 mx-auto"
-                        >
-                          {
-                            selectedProperty.images.map((image, index) => (
-                              <Card.Img
-                                  style={{ maxHeight: '400px', width: 'auto' }}
-                                  key={"view-only-images-" + index}
-                                  variant="top"
-                                  src={image}
-                              />
-                          ))
-                        }
-                        </Row>
+                      <Row
+                        style={{ overflowX: "auto", maxWidth: "100%" }}
+                        className="d-block text-nowrap mb-2 mx-auto"
+                      >
+                        {selectedProperty.images.map((image, index) => (
+                          <Card.Img
+                            style={{ maxHeight: "400px", width: "auto" }}
+                            key={"view-only-images-" + index}
+                            variant="top"
+                            src={image}
+                          />
+                        ))}
+                      </Row>
                     )) || (
                     <Card.Img
-                        variant="top"
-                        src={getPropertyFirstImage(selectedProperty)}
+                      variant="top"
+                      src={getPropertyFirstImage(selectedProperty)}
                     />
-                )}
-                <Card.Body>
-                  <Card.Title>
-                    {selectedProperty.id && isAdmin && (
+                  )}
+                  <Card.Body>
+                    <Card.Title>
+                      {selectedProperty.id && isAdmin && (
                         <Button
-                            variant="primary"
-                            className="mr-2 add-property-btn"
-                            onClick={() => {
-                              addOwnerEditor(selectedProperty);
-                            }}
+                          variant="primary"
+                          className="mr-2 add-property-btn"
+                          onClick={() => {
+                            addOwnerEditor(selectedProperty);
+                          }}
                         >
                           Add Owner/Editor
                         </Button>
-                    )}
-                    {selectedProperty.id && (
+                      )}
+                      {selectedProperty.id && (
                         <Button
-                            variant="primary"
-                            className="mr-2 add-property-btn"
-                            onClick={handleShow}
+                          variant="primary"
+                          className="mr-2 add-property-btn"
+                          onClick={handleShow}
                         >
                           Edit Property
                         </Button>
-                    )}
-                    {selectedProperty.id && selectedProperty.published && (
+                      )}
+                      {selectedProperty.id && selectedProperty.published && (
                         <Button
-                            variant="primary"
-                            className="mr-2 add-property-btn"
-                            onClick={() => {
-                              addEditProperty(
-                                  null,
-                                  {
-                                    ...selectedProperty,
-                                    published: !selectedProperty.published
-                                  },
-                                  () => {
-                                    setSelectedProperty({
-                                      ...selectedProperty,
-                                      published: !selectedProperty.published
-                                    });
-                                  },
-                                  true
-                              );
-                            }}
+                          variant="primary"
+                          className="mr-2 add-property-btn"
+                          onClick={() => {
+                            addEditProperty(
+                              null,
+                              {
+                                ...selectedProperty,
+                                published: !selectedProperty.published,
+                              },
+                              () => {
+                                setSelectedProperty({
+                                  ...selectedProperty,
+                                  published: !selectedProperty.published,
+                                });
+                              },
+                              true
+                            );
+                          }}
                         >
                           Unpublish
                         </Button>
-                    )}
-                    {selectedProperty.id &&
-                    !selectedProperty.published &&
-                    isAdmin && (
-                        <Button
+                      )}
+                      {selectedProperty.id &&
+                        !selectedProperty.published &&
+                        isAdmin && (
+                          <Button
                             variant="primary"
                             onClick={() => {
                               addEditProperty(
-                                  null,
-                                  {
+                                null,
+                                {
+                                  ...selectedProperty,
+                                  published: !selectedProperty.published,
+                                },
+                                () => {
+                                  setSelectedProperty({
                                     ...selectedProperty,
-                                    published: !selectedProperty.published
-                                  },
-                                  () => {
-                                    setSelectedProperty({
-                                      ...selectedProperty,
-                                      published: !selectedProperty.published
-                                    });
-                                  },
-                                  true
+                                    published: !selectedProperty.published,
+                                  });
+                                },
+                                true
                               );
                             }}
-                        >
-                          Publish Live
-                        </Button>
-                    )}
-                  </Card.Title>
-                  <Card.Title>
-                    {selectedProperty.title || "None selected"}
-                  </Card.Title>
-                  {selectedProperty.description ? (
-                      <TextExpand text={selectedProperty.description}/>
-                  ) : (
+                          >
+                            Publish Live
+                          </Button>
+                        )}
+                    </Card.Title>
+                    <Card.Title>
+                      {selectedProperty.title || "None selected"}
+                    </Card.Title>
+                    {selectedProperty.description ? (
+                      <TextExpand text={selectedProperty.description} />
+                    ) : (
                       <p>Select or add a property to continue...</p>
-                  )}
+                    )}
 
-                  {/*<DayPickerRangeController*/}
-                  {/*    onFocusChange={({focused}) => console.log(focused)} // PropTypes.func.isRequired*/}
-                  {/*    isDayBlocked={day => {*/}
-                  {/*      return isDayBlocked(calendar, day);*/}
-                  {/*    }}*/}
-                  {/*/>*/}
-                  {selectedProperty.description ? (
+                    {/*<DayPickerRangeController*/}
+                    {/*    onFocusChange={({focused}) => console.log(focused)} // PropTypes.func.isRequired*/}
+                    {/*    isDayBlocked={day => {*/}
+                    {/*      return isDayBlocked(calendar, day);*/}
+                    {/*    }}*/}
+                    {/*/>*/}
+                    {selectedProperty.description ? (
                       <div>
                         <div className="wifilist my-4">
                           <h3 className="mb-3">Amenities</h3>
                           <ul className="optonslist">
                             {amenitiesList.map((amenity, index) => {
-                              if (selectedProperty.amenities.includes(amenity)) {
-                                return <li key={'displayAmenities-' + index}>
-                                  <i className={amenitiesIcon[index]}></i> {amenity}
-                                </li>
+                              if (
+                                selectedProperty.amenities.includes(amenity)
+                              ) {
+                                return (
+                                  <li key={"displayAmenities-" + index}>
+                                    <i className={amenitiesIcon[index]}></i>{" "}
+                                    {amenity}
+                                  </li>
+                                );
                               }
                             })}
                           </ul>
                         </div>
                         <div className="butns-view">
-                          <a href={selectedProperty.airbnbListingURL} target="_blank">View on AirBnB</a>
-                          {selectedProperty.vrboListingURL &&
-                          <a href={selectedProperty.vrboListingURL} target="_blank">View on VRBO</a>
-                          }
+                          <a
+                            href={selectedProperty.airbnbListingURL}
+                            target="_blank"
+                          >
+                            View on AirBnB
+                          </a>
+                          {selectedProperty.vrboListingURL && (
+                            <a
+                              href={selectedProperty.vrboListingURL}
+                              target="_blank"
+                            >
+                              View on VRBO
+                            </a>
+                          )}
                         </div>
                         <div className="marklist mt-3">
                           <p>
                             <b> {selectedProperty.owner.name} </b>
-                            <br/> {selectedProperty.owner.description}
+                            <br /> {selectedProperty.owner.description}
                           </p>
                           <p>
-                            <a href={'tel:' + selectedProperty.owner.phone} className="clink">
-                              <i className="fas fa-phone"></i> {selectedProperty.owner.phone}
+                            <a
+                              href={"tel:" + selectedProperty.owner.phone}
+                              className="clink"
+                            >
+                              <i className="fas fa-phone"></i>{" "}
+                              {selectedProperty.owner.phone}
                             </a>
-                            <a href={'mailto:' + selectedProperty.owner.email} className="clink">
-                              <i className="fal fa-envelope"></i> {selectedProperty.owner.email}
+                            <a
+                              href={"mailto:" + selectedProperty.owner.email}
+                              className="clink"
+                            >
+                              <i className="fal fa-envelope"></i>{" "}
+                              {selectedProperty.owner.email}
                             </a>
                           </p>
                         </div>
                       </div>
-                  ) : (<span></span>)
-                  }
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-        }
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
+                    ) : (
+                      <span></span>
+                    )}
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        )}
+        <Modal show={show}   onHide={() => {handleClose()}}>
+          <Modal.Header closeButton >
             <Modal.Title>
               {(selectedProperty.id && "Edit") || "Add"} Property
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form
-              onSubmit={e => {
-                addEditProperty(e, selectedProperty, e => {
+              onSubmit={(e) => {
+                addEditProperty(e, selectedProperty, (e) => {
                   setSelectedProperty(e);
                   handleClose();
                   updateCalendars();
@@ -549,7 +636,7 @@ export function Dashboard(props) {
                   apiKey="AIzaSyBctVpXpDF7LVk2qGvUmWV3PfK2rCgFaP8"
                   selectProps={{
                     addressValue,
-                    onChange: updatedAddress
+                    onChange: updatedAddress,
                   }}
                 />
                 <Form.Text className="text-muted pl-1">
@@ -566,7 +653,12 @@ export function Dashboard(props) {
               </Form.Group>
               <Form.Group controlId="propertyRules">
                 <Form.Label>Property Rules</Form.Label>
-                <Form.Control as="textarea" rows="2" key-data="rules" placeholder="Rules such as 'No smoking indoors' etc." />
+                <Form.Control
+                  as="textarea"
+                  rows="2"
+                  key-data="rules"
+                  placeholder="Rules such as 'No smoking indoors' etc."
+                />
               </Form.Group>
               <Form.Group controlId="propertyImages" className="mb-1">
                 <Form.Label>Property Images</Form.Label>
@@ -606,7 +698,7 @@ export function Dashboard(props) {
                         amenities: getAmenitiesList(
                           selectedProperty.amenities,
                           amenity
-                        )
+                        ),
                       });
                     }}
                   />
@@ -747,8 +839,7 @@ export function Dashboard(props) {
           </Modal.Body>
         </Modal>
       </div>
-      </Layout>
-  
+    </Layout>
   );
 }
 

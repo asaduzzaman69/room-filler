@@ -7,7 +7,6 @@ import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import { localActivities } from "../../../public/constants/config";
 
 const ActivityPage = ({ activity }) => {
-  console.log(activity);
   const [hash, setHash] = useState("");
   return (
     <Layout setHash={setHash}>
@@ -21,7 +20,7 @@ const ActivityPage = ({ activity }) => {
       >
         <div className="greyscale py-5">
           <Container fluid="lg">
-              <h1>{activity.name}</h1>
+            <h1>{activity.name}</h1>
           </Container>
         </div>
       </div>
@@ -65,10 +64,8 @@ const ActivityPage = ({ activity }) => {
                   </Card>
                   </Link>
               </Col>
-            )
-          })
-        }
-       
+            );
+          })}
         </Row>
       </Container>
     </Layout>
