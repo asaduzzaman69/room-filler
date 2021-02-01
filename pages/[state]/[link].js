@@ -35,6 +35,7 @@ const ButtonACC = (props) => {
 
 
 export default function PropertyPage({ property }) {
+  console.log(property);
   const { openLightbox } = useLightbox()
   const [hash, setHash] = useState("");
   const [lightbox, setLightbox] = useState(true);

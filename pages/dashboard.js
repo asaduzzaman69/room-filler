@@ -234,18 +234,18 @@ export function Dashboard(props) {
       if (!selectedProperty.id) return;
       const formValues = document.querySelectorAll("[key-data]");
       formValues.forEach((field) => {
-        field.value = ''
+        field.value = "";
       });
       const formOptionalValues = document.querySelectorAll(
         "[optional-key-data]"
       );
       formOptionalValues.forEach((field) => {
-        field.value = 'dsd'
+        field.value = "dsd";
       });
       const formSubValues = document.querySelectorAll("[sub-key-data]");
       formSubValues.forEach((field) => {
         const subObjectKey = field.getAttribute("sub-key-data").split(".");
-        field.value = 'sds'
+        field.value = "sds";
       });
       //for (let image of selectedProperty.images) {
       //  addImageToPreview(image);
@@ -253,7 +253,6 @@ export function Dashboard(props) {
       setupReorder();
     }, 150);
   };
-
 
   const resetPropertyOpenModal = () => {};
 
@@ -264,7 +263,7 @@ export function Dashboard(props) {
 
   useEffect(() => {
     if (managedProperties[0] !== undefined) {
-      setSelectedProperty(managedProperties[0])
+      setSelectedProperty(managedProperties[0]);
     }
   }, [managedProperties]);
   let [calendar, setCalendar] = useState({});
@@ -327,26 +326,26 @@ export function Dashboard(props) {
     "TV",
     "Heater, Air conditioning",
     "Parking",
-    "Hair dryer",
-    "Breakfast",
+    "Outdoor Furniture",
+    "Coffee Maker",
     "Carbon monoxide alarm",
     "Smoke alarm",
     "Fire extinguisher",
-    "First-aid kit",
-    "Accessible bathroom",
+    "Pool Towels",
+    "Kitchen Basics",
   ];
   const amenitiesIcon = [
     "fal fa-wifi",
     "fal fa-tv",
     "fal fa-fan-table",
     "fal fa-parking",
-    "fal fa-heat",
-    "fal fa-hamburger",
+    "fas fa-chair",
+    "fas fa-mug-hot",
     "fal fa-alarm-clock",
     "fal fa-sensor-fire",
     "fal fa-fire",
-    "fal fa-medkit",
-    "fal fa-restroom",
+    "fas fa-swimming-pool",
+    "fas fa-blender",
   ];
 
   return (
@@ -599,8 +598,13 @@ export function Dashboard(props) {
             </Row>
           </Container>
         )}
-        <Modal show={show}   onHide={() => {handleClose()}}>
-          <Modal.Header closeButton >
+        <Modal
+          show={show}
+          onHide={() => {
+            handleClose();
+          }}
+        >
+          <Modal.Header closeButton>
             <Modal.Title>
               {(selectedProperty.id && "Edit") || "Add"} Property
             </Modal.Title>

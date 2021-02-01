@@ -1755,12 +1755,12 @@ export const amenitiesIcon = [
     icon: "fal fa-parking",
   },
   {
-    name: "Hair dryer",
-    icon: "fal fa-heat",
+    name: "Outdoor Furniture",
+    icon: "fas fa-chair",
   },
   {
-    name: "Breakfast",
-    icon: "fal fa-hamburger",
+    name: "Coffee Maker",
+    icon: "fas fa-mug-hot",
   },
   {
     name: "Carbon monoxide alarm",
@@ -1775,11 +1775,11 @@ export const amenitiesIcon = [
     icon: "fal fa-fire",
   },
   {
-    name: "First-aid kit",
-    icon: "fal fa-medkit",
+    name: "Pool Towels",
+    icon: "fas fa-swimming-pool",
   },
   {
-    name: "Accessible bathroom",
-    icon: "fal fa-restroom",
+    name: "Kitchen Basics",
+    icon: "fas fa-blender",
   },
 ];
