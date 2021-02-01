@@ -71,6 +71,7 @@ export default function Search() {
   const startDateParam = router.query.startDate;
   const endDateParam = router.query.endDate;
   const guestCount = router.query.guests;
+  //console.log(startDateParam, endDateParam, guestCount);
 
   const [properties, setProperties] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -82,7 +83,8 @@ export default function Search() {
   const [hash, setHash] = useState("");
 
   useEffect(() => {
-    if (router.query && Object.keys(router.query).length && !loaded) {
+    if (router.query && Object.keys(router.query).length ) {
+      console.log(' i am get fetched')
       setGuests(guestCount);
       setStartDate(startDateParam ? moment(startDateParam) : "");
       setEndDate(endDateParam ? moment(endDateParam) : "");
@@ -99,7 +101,7 @@ export default function Search() {
           setLoaded(false);
         });
     }
-  });
+  }, [startDateParam, endDateParam, guestCount]);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);

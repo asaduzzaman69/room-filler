@@ -42,13 +42,27 @@ const Banner = (props) => {
     autoplaySpeed: 2000,
   };
 
+
+
+  const handleOnRouteChange = () => {
+
+    if(startDate && endDate && guests) {
+      Router.push(getSearchLink(startDate, endDate, guests))
+    } else {
+      alert('You must have to specified the Start Date,End Date and Guest')
+    }
+  }
+
   return (
     <div className="main-bg">
       <div className="greyscale">
         <Container className="col-12 col-lg-10 offset-lg-1 py-5">
           <Row className="search-section mx-auto mb-4 align-self-center p-2">
             <Col className="search-height pl-4" sm={6}>
-              <p className="search-heading">Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Check out</p>
+              <p className="search-heading">
+                Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; Check out
+              </p>
               <DateRangePicker
                 startDateId="startDate"
                 endDateId="endDate"
@@ -105,11 +119,12 @@ const Banner = (props) => {
               xs={12}
               sm={3}
             >
-              <Link href={getSearchLink(startDate, endDate, guests)}>
-                <Button variant="primary" className="book-btn">
+          
+                <Button  onClick={() =>
+                 handleOnRouteChange()
+                } variant="primary" className="book-btn">
                   Book now
                 </Button>
-              </Link>
             </Col>
           </Row>
           <Row className="info-carousel-section align-items-center">
