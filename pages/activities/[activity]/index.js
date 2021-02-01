@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Link from "next/link";
 import Layout from "../../../components/layout";
 import Head from "next/head";
 import Router from "next/router";
@@ -16,7 +17,7 @@ const ActivityPage = ({ activity }) => {
       </Head>
       <div
         className="activities-bg"
-        style={{ background: `url(/images${activity.img})` }}
+        style={{ background: `url(/images${activity.img})`, backgroundPosition: "center" }}
       >
         <div className="greyscale py-5">
           <Container fluid="lg">
@@ -31,7 +32,8 @@ const ActivityPage = ({ activity }) => {
           activity.places.map((item, index)=>{
             return(
               <Col xs={12} sm={6} md={6} lg={4} key={`activity_places_${index}`}>
-                <Card className="places-card" onClick={()=>Router.push(`${activity.type}/${item.slug}`)}>
+                  <Link href={`${activity.type}/${item.slug}`}>
+                <Card className="places-card" >
                     <Card.Img
                       variant="top"
                       src={
@@ -61,6 +63,7 @@ const ActivityPage = ({ activity }) => {
                       <Card.Link href="#">Read More</Card.Link>
                     </Card.Body>
                   </Card>
+                  </Link>
               </Col>
             )
           })
