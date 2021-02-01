@@ -97,7 +97,6 @@ export async function getStaticPaths(context) {
       });
     });
   });
-  console.log(activities)
   return {
     paths: activities,
     fallback: false,

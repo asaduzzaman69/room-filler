@@ -7,7 +7,6 @@ import { getAllProperties } from "../services/properties";
 import Layout from "../components/layout";
 
 export default function ViewAllProperty(props) {
-  console.log(props);
   const [hash, setHash] = useState("");
   return (
     <Layout setHash={setHash}>

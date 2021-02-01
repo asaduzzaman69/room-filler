@@ -17,7 +17,6 @@ async function loadProperties(startDate, endDate, guestCount) {
 }
 
 function getSearchResults(property) {
-  console.log(property);
   return (
     <Link
       href={`/${property.address.state}/${property.link}`}
@@ -34,7 +33,6 @@ function getSearchResults(property) {
             alt="Card image cap"
           />
           <div>
-          
             <Card.Title>{property.title}</Card.Title>
             <div className="d-flex">
               <div class="my-1 mr-3">

@@ -14,7 +14,6 @@ import Layout from "../components/layout";
 const random = (mn, mx) => {
   const result = Math.random() * (mx - 0) + mn;
   return result;
-  console.log(result);
 };
 const Home = (props) => {
   const [hash, setHash] = useState("");
