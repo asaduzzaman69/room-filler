@@ -179,18 +179,6 @@
 .main-bg .DateRangePickerInput{
   display: flex;
 }
-.main-bg.search-page, .main-bg.search-page .greyscale{
-  min-height: 300px;
-  align-items: center;
-  display: flex;
-  width: 100%;
-}
-.main-bg.search-page .row .headingbox h2{
-  font-family: "Oswald", sans-serif;
-  font-size: 45px !important;
-  font-weight: 600 !important;
-  color: #D1AA77;
-}
 /*@media (min-width:1440px) {*/
 /*  .main-bg .DateInput {*/
 /*    width: 14vw !important;*/

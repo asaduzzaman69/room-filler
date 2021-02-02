@@ -1,6 +1,6 @@
 import Link from "next/link";
 import moment from "moment";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Layout from "../components/layout";
 import { getAvailableProperties, getSearchLink } from "../services/properties";
 import { Card, Col, Container, Form, Row, Button } from "react-bootstrap";
@@ -107,55 +107,60 @@ export default function Search() {
     setWindowWidth(window.innerWidth);
   }, []);
 
+  const handleOnRouteChange = () => {
+
+    if(startDate && endDate && guests) {
+      Router.push(getSearchLink(startDate, endDate, guests))
+    } else {
+      alert('You must have to specified the Start Date,End Date and Guest')
+    }
+  }
+
   return (
     <Layout setHash={setHash}>
-      <div className="main-bg search-page">
-        <div className="greyscale py-5">
-          <Container fluid="lg">
-            <div className="mx-md-5 px-md-5">
-              <Row className="search-section px-sm-3">
-                <Col className="search-height" sm={6}>
+      <div className="main-bg" style={{minHeight: 'auto'}}>
+        <div className="greyscale" style={{minHeight: 'auto', height: 'auto'}}>
+          <Container className="col-12 col-lg-10 offset-lg-1 py-5"  style={{minHeight: 'auto', height: 'auto'}}>
+              <Row className="search-section mx-auto align-self-center p-2">
+                <Col className="search-height pl-4" sm={6}>
                   <p className="search-heading">
                     Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; Check out
                   </p>
                   <DateRangePicker
-                    startDateId="startDate"
-                    endDateId="endDate"
-                    startDate={startDate}
-                    endDate={endDate}
-                    onDatesChange={({ startDate, endDate }) => {
-                      setStartDate(startDate);
-                      setEndDate(endDate);
-                    }}
-                    focusedInput={focusedInput}
-                    onFocusChange={(focusedInput) => {
-                      setFocusedInput(focusedInput);
-                    }}
-                    noBorder={true}
-                    customArrowIcon={<div></div>}
-                    orientation={windowWidth <= 575 ? "vertical" : "horizontal"}
-                    daySize={windowWidth <= 575 ? 30 : 40}
+                      startDateId="startDate"
+                      endDateId="endDate"
+                      startDate={startDate}
+                      endDate={endDate}
+                      onDatesChange={({ startDate, endDate }) => {
+                        setStartDate(startDate);
+                        setEndDate(endDate);
+                      }}
+                      focusedInput={focusedInput}
+                      onFocusChange={(focusedInput) => {
+                        setFocusedInput(focusedInput);
+                      }}
+                      noBorder={true}
+                      customArrowIcon={<div />}
+                      orientation={windowWidth <= 575 ? "vertical" : "horizontal"}
+                      daySize={windowWidth <= 575 ? 30 : 40}
                   />
                 </Col>
-                {/* <Col className="search-height" xs={6} sm={3}>
-              <p className="search-heading">Check out</p>
-            </Col> */}
 
                 <Col className="search-height" xs={12} sm={3}>
                   <p className="search-heading">Guests</p>
                   <Form.Group
-                    controlId="propertySearchGuestCount"
-                    className="mb-0 select-guest"
+                      controlId="propertySearchGuestCount"
+                      className="mb-0 select-guest"
                   >
                     <Form.Control
-                      as="select"
-                      placeholder="Select guests"
-                      onChange={(evt) => {
-                        setGuests(evt.target.value);
-                      }}
-                      size="sm"
-                      value={guests}
+                        as="select"
+                        placeholder="Select guests"
+                        onChange={(evt) => {
+                          setGuests(evt.target.value);
+                        }}
+                        size="sm"
+                        value={guests}
                     >
                       <option value={1}>1 guest</option>
                       <option value={2}>2 guests</option>
@@ -174,36 +179,38 @@ export default function Search() {
                 </Col>
 
                 <Col
-                  className="search-height pr-0 text-center text-md-right"
-                  xs={12}
-                  sm={3}
+                    className="search-height pr-0 text-center text-md-right"
+                    xs={12}
+                    sm={3}
                 >
-                  <Link href={getSearchLink(startDate, endDate, guests)}>
-                    <Button variant="primary" className="book-btn">
-                      Search
-                    </Button>
-                  </Link>
+
+                  <Button  onClick={() =>
+                      handleOnRouteChange()
+                  } variant="primary" className="book-btn">
+                    Book now
+                  </Button>
                 </Col>
               </Row>
-            </div>
           </Container>
         </div>
       </div>
-      <Row>
-        <Col className="my-5 headingbox text-center col-md-6 offset-md-3">
-          <h2>Search Results</h2>
-          <hr />
-        </Col>
-      </Row>
-      {properties.map((property, index) => {
-        return getSearchResults(property);
-      })}
-      {!properties.length && loaded && "0 Results"}
-      <h2 className="text-center backhome mt-4">
-        <Link href="/">
-          <a>Back to home</a>
-        </Link>
-      </h2>
+      <Container>
+        <Row>
+          <Col className="my-5 headingbox text-center col-md-6 offset-md-3">
+            <h2>Search Results</h2>
+            <hr />
+          </Col>
+        </Row>
+        {properties.map((property, index) => {
+          return getSearchResults(property);
+        })}
+        {!properties.length && loaded && "0 Results"}
+        <h2 className="text-center backhome my-4">
+          <Link href="/">
+            <a>Back to home</a>
+          </Link>
+        </h2>
+      </Container>
     </Layout>
   );
 }

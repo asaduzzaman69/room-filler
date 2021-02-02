@@ -67,7 +67,7 @@ const LocalActivities = ({}) => {
                   <Card
                     key={`activities_${index}`}
                     className="activities-card demo"
-                    onClick={() => Router.push(`activities/${item.type}`)}
+                    onClick={() => Router.push(`activities/${item.type}`).then(() => window.scrollTo(0, 0)) }
                   >
                     <Card.Img
                       variant="top"
@@ -98,8 +98,7 @@ const LocalActivities = ({}) => {
                           </>
                         )}
                       </Card.Text>
-                      <Button variant="primary">Book Now</Button>
-                      <Card.Link href="#">Read More</Card.Link>
+                      <Button variant="primary">View All</Button>
                     </Card.Body>
                   </Card>
                 </div>

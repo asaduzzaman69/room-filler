@@ -50,14 +50,12 @@ export default function CustomNavbar({ setHash }) {
             <Nav className="m-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link
-                href="/#amenities"
-                onClick={() => setHash("#amenities")}
+                href="/activities/amenities-to-rent"
               >
                 Amenities
               </Nav.Link>
               <Nav.Link
-                href="/#places-to-eat"
-                onClick={() => setHash("#places-to-eat")}
+                href="/places/local-eats"
               >
                 Places To Eat
               </Nav.Link>
@@ -68,10 +66,9 @@ export default function CustomNavbar({ setHash }) {
                 Local Activities
               </Nav.Link>
               <Nav.Link
-                href="/#emergency-locations"
-                onClick={() => setHash("#emergency-locations")}
+                href="/view-all-properties"
               >
-                Emergency Locations
+                View All Properties
               </Nav.Link>
               {/* <Nav.Link href="/about">About</Nav.Link> */}
             </Nav>

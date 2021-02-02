@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import Link from "next/link";
-import Layout from "../../../components/layout";
+import Layout from "../../components/layout";
 import Head from "next/head";
 import Router from "next/router";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
-import { localActivities } from "../../../public/constants/config";
+import { localActivities } from "../../public/constants/config";
 
 const ActivityPage = ({ activity }) => {
   const [hash, setHash] = useState("");
@@ -58,7 +58,8 @@ const ActivityPage = ({ activity }) => {
                         ) : (null
                         )}
                       </Card.Text>
-                      <Button variant="primary">Learn More</Button>
+                      <Button variant="primary">Book Now</Button>
+                      <Card.Link href="#">Read More</Card.Link>
                     </Card.Body>
                   </Card>
                   </Link>
@@ -72,14 +73,10 @@ const ActivityPage = ({ activity }) => {
 };
 
 export async function getStaticPaths() {
-  const activities = [];
-  localActivities.forEach((item) => {
-    activities.push({
-      params: { activity: item.type },
-    });
-  });
   return {
-    paths: activities,
+    paths: {
+      params: { ...localActivities },
+    },
     fallback: false,
   };
 }

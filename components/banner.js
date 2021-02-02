@@ -140,9 +140,9 @@ const Banner = (props) => {
               </p>
               <Button
                 className="read-more-btn"
-                onClick={() => Router.push("/view-all-property")}
+                onClick={() => Router.push("/view-all-properties")}
               >
-                View All Property
+                View More
                 <i className="fal fa-arrow-right arrow-icon"></i>
               </Button>
             </Col>
