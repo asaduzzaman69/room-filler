@@ -121,7 +121,7 @@ export default function Search() {
       <div className="main-bg" style={{minHeight: 'auto'}}>
         <div className="greyscale" style={{minHeight: 'auto', height: 'auto'}}>
           <Container className="col-12 col-lg-10 offset-lg-1 py-5"  style={{minHeight: 'auto', height: 'auto'}}>
-              <Row className="search-section mx-auto align-self-center p-2">
+              <Row className="search-section mx-auto align-self-center p-2" style={{marginLeft: 'auto!important', marginRight: 'auto!important'}}>
                 <Col className="search-height pl-4" sm={6}>
                   <p className="search-heading">
                     Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;

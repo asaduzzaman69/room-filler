@@ -57,7 +57,7 @@ const Banner = (props) => {
     <div className="main-bg">
       <div className="greyscale">
         <Container className="col-12 col-lg-10 offset-lg-1 py-5">
-          <Row className="search-section mx-auto mb-4 align-self-center p-2">
+          <Row className="search-section mx-auto mb-4 align-self-center p-2" style={{marginLeft: 'auto!important', marginRight: 'auto!important'}}>
             <Col className="search-height pl-4" sm={6}>
               <p className="search-heading">
                 Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;
