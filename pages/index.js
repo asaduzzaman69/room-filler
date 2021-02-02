@@ -155,14 +155,14 @@ const Home = (props) => {
             <AmenitiesCarousel />
           </Container>
         </div>
-        <div ref={quickEatsRef}>
-          <Container className="col-12 col-lg-10 offset-lg-1 pb-2">
-            <QuickEatsCarousel />
-          </Container>
-        </div>
         <div ref={localEatsRef}>
           <Container className="col-12 col-lg-10 offset-lg-1 pb-2">
             <LocalEatsCarousel />
+          </Container>
+        </div>
+        <div ref={quickEatsRef}>
+          <Container className="col-12 col-lg-10 offset-lg-1 pb-2">
+            <QuickEatsCarousel />
           </Container>
         </div>
         <div ref={localActivitiesRef} style={{ backgroundColor: "#3e362d" }}>

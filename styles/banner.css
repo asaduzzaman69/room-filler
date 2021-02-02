@@ -74,8 +74,6 @@
 #propertySearchGuestCount {
   border: none;
   padding: 0px;
-  margin-left: -4px;
-  margin-top: -4px;
   font-size: 15px;
   color: #707070;
   font-weight: 300;
@@ -178,18 +176,6 @@
 }
 .main-bg .DateRangePickerInput{
   display: flex;
-}
-.main-bg.search-page, .main-bg.search-page .greyscale{
-  min-height: 300px;
-  align-items: center;
-  display: flex;
-  width: 100%;
-}
-.main-bg.search-page .row .headingbox h2{
-  font-family: "Oswald", sans-serif;
-  font-size: 45px !important;
-  font-weight: 600 !important;
-  color: #D1AA77;
 }
 /*@media (min-width:1440px) {*/
 /*  .main-bg .DateInput {*/

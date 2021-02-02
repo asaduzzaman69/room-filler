@@ -19,7 +19,7 @@
   text-align: left;
   text-transform: uppercase;
   overflow: hidden;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   text-overflow: ellipsis;
   width: 405px;
 }

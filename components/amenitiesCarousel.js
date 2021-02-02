@@ -79,7 +79,7 @@ const AmenitiesCarousel = ({}) => {
               <Col xs={12} sm={6} md={6}>
                 <Image
                   src="/images/luxury-spa.png"
-                  className="carousel-image"
+                  className="carousel-image shadow rounded"
                 />
               </Col>
             </Row>

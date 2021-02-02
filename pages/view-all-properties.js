@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import firebase from "../lib/firebase";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import Router from "next/router";
@@ -6,11 +6,15 @@ import { getAllProperties } from "../services/properties";
 
 import Layout from "../components/layout";
 
-export default function ViewAllProperty(props) {
+export default function ViewAllProperties(props) {
   const [hash, setHash] = useState("");
   return (
     <Layout setHash={setHash}>
       <Container fluid="lg" className="places-card-container my-5">
+        <Row>
+          <h2 className="col-12 text-center">Properties</h2>
+          <hr />
+        </Row>
         <Row>
           {props.data.map((item, index) => {
             return (
@@ -52,8 +56,7 @@ export default function ViewAllProperty(props) {
                       </div>
                     </div>
                     <Card.Text>{item.description}</Card.Text>
-                    <Button variant="primary">Book Now</Button>
-                    <Card.Link href="#">Read More</Card.Link>
+                    <Button variant="primary">View More</Button>
                   </Card.Body>
                 </Card>
               </Col>

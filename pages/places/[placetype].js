@@ -25,33 +25,34 @@ const PlaceType = ({ places }) => {
           {
             places && places.length && places.length>0?
             places.map((item, index)=>{return(
-              <div key={`places_${index}`} className='d-flex mb-3'> 
-              <div >
-              <h3>{item.name ? item.name : ""}</h3>
-          {item.address1 ? <><h4>Location: <span>{item.address1}{item.address2?`, ${item.address2}`:""}</span></h4> </>  : null}
-          {item.location ? <><h4>Location: <span>{item.location}</span></h4> </>  : null}
-          {item.phone ? <><h4>Phone: <span>{item.phone}</span></h4> </>  : null}
-          {item.price ? <><h4>Price: <span>{item.price}</span></h4> </>  : null}
-          {item.stars ? <><h4>Rating: <span>{item.stars} Stars</span></h4> </>  : null}
-          {item.openingHours && item.openingHours.length && item.openingHours.length > 0 ?
-       <div>
-         
-    
-       <h4>Opening Hours: </h4>
-      {item.openingHours.map((day, index)=>{
-        return(
-          <div key={`opening_hours_${index}`}><h4>{day.day}: <span>{day.open && day.close ? day.open==="00:00" && day.close==="00:00"? 'Open 24 hours' :`${day.open} - ${day.close}`: "Closed"}</span></h4> </div>
-        )
-      }) } </div>:null}
-          {item.desc?<p>{item.desc}</p>:null} 
-          </div>
+              <div key={`places_${index}`} className='col-12 d-flex mb-3 flex-column flex-md-row justify-content-between'>
+                <div className="pt-5 pr-5">
+                  <h3 className="my-4">{item.name ? item.name : ""}</h3>
+                  {item.address1 ? <><h4>Location: <span>{item.address1}{item.address2?`, ${item.address2}`:""}</span></h4> </>  : null}
+                  {item.location ? <><h4>Location: <span>{item.location}</span></h4> </>  : null}
+                  {item.phone ? <><h4>Phone: <span>{item.phone}</span></h4> </>  : null}
+                  {item.price ? <><h4>Price: <span>{item.price}</span></h4> </>  : null}
+                  {item.stars ? <><h4>Rating: <span>{item.stars} Stars</span></h4> </>  : null}
+                  {item.openingHours && item.openingHours.length && item.openingHours.length > 0 ?
+                      <div>
+                        <h4>Opening Hours: </h4>
+                        {item.openingHours.map((day, index)=>{
+                          return(
+                            <div key={`opening_hours_${index}`}><h4>{day.day}: <span>{day.open && day.close ? day.open==="00:00" && day.close==="00:00"? 'Open 24 hours' :`${day.open} - ${day.close}`: "Closed"}</span></h4> </div>
+                          )
+                        }) }
+                      </div>:null
+                  }
+                  {/*{item.desc?<p>{item.desc}</p>:null} */}
+                </div>
 
-          {item.image ? (<div> <Image
-            src={`/images${item.image}`}
-            className="activity-imgs"
-                /> </div>)  : null}
-
-            </div>
+                {
+                  item.image ? (<div> <Image
+                  src={`/images${item.image}`}
+                  className="activity-imgs"
+                      /> </div>)  : null
+                }
+              </div>
             )})
            
             :null

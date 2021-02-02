@@ -83,15 +83,8 @@ export const quickEats = [
     image: "/quick-eats/wendys.png",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "06:30 am", close: "10:00 pm" },
-      { day: "Monday", open: "06:30 am", close: "10:00 pm" },
-      { day: "Tuesday", open: "06:30 am", close: "10:00 pm" },
-      { day: "Wednesday", open: "06:30 am", close: "10:00 pm" },
-      { day: "Thursday", open: "06:30 am", close: "10:00 pm" },
-      { day: "Friday", open: "06:30 am", close: "10:00 pm" },
-      { day: "Saturday", open: "06:30 am", close: "10:00 pm" },
-    ],
+    openingHours: [],
+    price: '$'
   },
   {
     name: "Arbys",
@@ -100,15 +93,8 @@ export const quickEats = [
     image: "/quick-eats/arbys.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "10:00 am", close: "10:00 pm" },
-      { day: "Monday", open: "10:00 am", close: "11:00 pm" },
-      { day: "Tuesday", open: "10:00 am", close: "11:00 pm" },
-      { day: "Wednesday", open: "10:00 am", close: "11:00 pm" },
-      { day: "Thursday", open: "10:00 am", close: "11:00 pm" },
-      { day: "Friday", open: "10:00 am", close: "12:00 am" },
-      { day: "Saturday", open: "10:00 am", close: "12:00 am" },
-    ],
+    openingHours: [],
+    price: '$'
   },
   {
     name: "Costa Vida",
@@ -117,15 +103,8 @@ export const quickEats = [
     image: "/quick-eats/costa.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "", close: "" },
-      { day: "Monday", open: "10:30 am", close: "09:00 pm" },
-      { day: "Tuesday", open: "10:30 am", close: "09:00 pm" },
-      { day: "Wednesday", open: "10:30 am", close: "09:00 pm" },
-      { day: "Thursday", open: "10:30 am", close: "09:00 pm" },
-      { day: "Friday", open: "10:30 am", close: "10:00 pm" },
-      { day: "Saturday", open: "10:30 am", close: "10:00 pm" },
-    ],
+    openingHours: [],
+    price: '$$'
   },
   {
     name: "Dairy Queen",
@@ -134,15 +113,8 @@ export const quickEats = [
     image: "/quick-eats/dairy-queen.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "", close: "" },
-      { day: "Monday", open: "10:30 am", close: "10:00 pm" },
-      { day: "Tuesday", open: "10:30 am", close: "10:00 pm" },
-      { day: "Wednesday", open: "10:30 am", close: "10:00 pm" },
-      { day: "Thursday", open: "10:30 am", close: "10:00 pm" },
-      { day: "Friday", open: "10:30 am", close: "11:00 pm" },
-      { day: "Saturday", open: "10:30 am", close: "11:00 pm" },
-    ],
+    openingHours: [],
+    price: '$'
   },
   {
     name: "Subway",
@@ -151,15 +123,8 @@ export const quickEats = [
     image: "/quick-eats/subway.jpeg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "00:00", close: "00:00" },
-      { day: "Monday", open: "00:00", close: "00:00" },
-      { day: "Tuesday", open: "00:00", close: "00:00" },
-      { day: "Wednesday", open: "00:00", close: "00:00" },
-      { day: "Thursday", open: "00:00", close: "00:00" },
-      { day: "Friday", open: "00:00", close: "00:00" },
-      { day: "Saturday", open: "00:00", close: "00:00" },
-    ],
+    openingHours: [],
+    price: '$$'
   },
 ];
 
@@ -174,15 +139,8 @@ export const localEateries = [
     phone: "435-635-7625",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "07:00 am", close: "09:30 pm" },
-      { day: "Monday", open: "06:30 am", close: "09:30 pm" },
-      { day: "Tuesday", open: "06:30 am", close: "09:30 pm" },
-      { day: "Wednesday", open: "06:30 am", close: "09:30 pm" },
-      { day: "Thursday", open: "06:30 am", close: "09:30 pm" },
-      { day: "Friday", open: "06:30 am", close: "09:30 pm" },
-      { day: "Saturday", open: "06:30 am", close: "09:30 pm" },
-    ],
+    openingHours: [],
+    price: '$$'
   },
   {
     name: "Stage Coach Grille",
@@ -194,15 +152,8 @@ export const localEateries = [
     image: "/local-eats/stage-coach-grille.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "08:00 am", close: "09:00 pm" },
-      { day: "Monday", open: "08:00 am", close: "09:00 pm" },
-      { day: "Tuesday", open: "08:00 am", close: "09:00 pm" },
-      { day: "Wednesday", open: "08:00 am", close: "09:00 pm" },
-      { day: "Thursday", open: "08:00 am", close: "09:00 pm" },
-      { day: "Friday", open: "08:00 am", close: "10:00 pm" },
-      { day: "Saturday", open: "08:00 am", close: "10:00 pm" },
-    ],
+    openingHours: [],
+    price: '$$'
   },
   {
     name: "Lonny Boy’s BBQ",
@@ -214,15 +165,8 @@ export const localEateries = [
     image: "/local-eats/lonny-boy.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "", close: "" },
-      { day: "Monday", open: "11:00 am", close: "08:30 pm" },
-      { day: "Tuesday", open: "11:00 am", close: "08:30 pm" },
-      { day: "Wednesday", open: "11:00 am", close: "08:30 pm" },
-      { day: "Thursday", open: "11:00 am", close: "08:30 pm" },
-      { day: "Friday", open: "11:00 am", close: "09:00 pm" },
-      { day: "Saturday", open: "11:00 am", close: "09:00 pm" },
-    ],
+    openingHours: [],
+    price: '$$'
   },
   {
     name: "Main Street Cafe",
@@ -234,15 +178,8 @@ export const localEateries = [
     image: "/local-eats/main-street-cafe.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "", close: "" },
-      { day: "Monday", open: "07:00 am", close: "08:00 pm" },
-      { day: "Tuesday", open: "07:00 am", close: "08:00 pm" },
-      { day: "Wednesday", open: "07:00 am", close: "08:00 pm" },
-      { day: "Thursday", open: "07:00 am", close: "08:00 pm" },
-      { day: "Friday", open: "07:00 am", close: "08:00 pm" },
-      { day: "Saturday", open: "07:00 am", close: "08:00 pm" },
-    ],
+    openingHours: [],
+    price: '$$'
   },
   {
     name: "The Pizza Wagon",
@@ -254,15 +191,8 @@ export const localEateries = [
     image: "/local-eats/pizza-wagon.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "", close: "" },
-      { day: "Monday", open: "", close: "" },
-      { day: "Tuesday", open: "", close: "" },
-      { day: "Wednesday", open: "", close: "" },
-      { day: "Thursday", open: "12:00 pm", close: "08:00 pm" },
-      { day: "Friday", open: "12:00 pm", close: "08:00 pm" },
-      { day: "Saturday", open: "12:00 pm", close: "08:00 pm" },
-    ],
+    openingHours: [],
+    price: '$'
   },
   {
     name: "Pig’s Ear Bistro",
@@ -274,15 +204,8 @@ export const localEateries = [
     image: "/local-eats/pigs-ear.jpg",
     desc:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
-    openingHours: [
-      { day: "Sunday", open: "", close: "" },
-      { day: "Monday", open: "04:30 pm", close: "08:30 pm" },
-      { day: "Tuesday", open: "11:30 am", close: "08:30 pm" },
-      { day: "Wednesday", open: "11:30 am", close: "08:30 pm" },
-      { day: "Thursday", open: "11:30 am", close: "08:30 pm" },
-      { day: "Friday", open: "11:30 am", close: "08:30 pm" },
-      { day: "Saturday", open: "11:30 am", close: "08:30 pm" },
-    ],
+    openingHours: [],
+    price: '$$$'
   },
 ];
 

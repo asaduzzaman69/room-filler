@@ -58,8 +58,7 @@ const ActivityPage = ({ activity }) => {
                         ) : (null
                         )}
                       </Card.Text>
-                      <Button variant="primary">Book Now</Button>
-                      <Card.Link href="#">Read More</Card.Link>
+                      <Button variant="primary">Learn More</Button>
                     </Card.Body>
                   </Card>
                   </Link>
