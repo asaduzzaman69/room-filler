@@ -42,17 +42,17 @@ export default function ViewAllProperties(props) {
                       <h5>{item.title ? item.title : ""}</h5>
                     </Card.Title>
                     <div className="d-flex">
-                      <div class="my-1 mr-3">
-                        <i class="fas fa-user-friends"></i>
-                        <span class="ml-2 amenity">{item.maxOccupancy}</span>
+                      <div className="my-1 mr-3">
+                        <i className="fas fa-user-friends"></i>
+                        <span className="ml-2 amenity">{item.maxOccupancy}</span>
                       </div>
-                      <div class="my-1 mr-3">
-                        <i class="fas fa-bed"></i>
-                        <span class="ml-2 amenity">{item.bedroomCount}</span>
+                      <div className="my-1 mr-3">
+                        <i className="fas fa-bed"></i>
+                        <span className="ml-2 amenity">{item.bedroomCount}</span>
                       </div>
-                      <div class="my-1 mr-3">
-                        <i class="fas fa-hot-tub"></i>
-                        <span class="ml-2 amenity">{item.bathroomCount}</span>
+                      <div className="my-1 mr-3">
+                        <i className="fas fa-hot-tub"></i>
+                        <span className="ml-2 amenity">{item.bathroomCount}</span>
                       </div>
                     </div>
                     <Card.Text>{item.description}</Card.Text>

@@ -172,23 +172,28 @@ const Banner = (props) => {
                           }
                           key={"slider-image-" + index}
                         >
-                          <Card className="card-home">
+                          <Card className="card-home cursor-pointer mx-auto align-self-center">
                             <div className="overlay"></div>
                             <div
                               style={{
                                 backgroundImage: `url(${props.properties[item].images[0]})`,
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
+                                borderRadius: '50%',
+                                width: '150px',
+                                height: '150px'
                               }}
                               /*  src={props.properties[item].images[0]} */
-                              className="card-home__image"
+                              className="card-home__image mx-auto my-4"
                             ></div>
                             <span className="p-2 card-home__text">
                               <p className="text-left mb-0 font-weight-bold">
-                                {props.properties[item].title.substring(
-                                  0,
-                                  200
-                                ) + "..."}
+                                {props.properties[item].title
+                                //     .substring(
+                                //   0,
+                                //   200
+                                // ) + "..."
+                                }
                               </p>
                               {/* <p className="text-left mb-0 font-weight-bold">
                               {" "}
@@ -199,6 +204,25 @@ const Banner = (props) => {
                               {props.properties[item].bedroomCount} Beds{" "}
                               {props.properties[item].maxOccupancy} Guests{" "}
                             </p> */}
+                              <div className="d-flex">
+                                <div className="my-1 mr-3">
+                                  <i className="fas fa-user-friends"></i>
+                                  <span className="ml-2 amenity">{props.properties[item].maxOccupancy}</span>
+                                </div>
+                                <div className="my-1 mr-3">
+                                  <i className="fas fa-bed"></i>
+                                  <span className="ml-2 amenity">{props.properties[item].bedroomCount}</span>
+                                </div>
+                                <div className="my-1 mr-3">
+                                  <i className="fas fa-hot-tub"></i>
+                                  <span className="ml-2 amenity">{props.properties[item].bathroomCount}</span>
+                                </div>
+                              </div>
+                              <div className="d-flex">
+                                <Button className="signup-btn mt-2 mx-auto">
+                                  Book Now
+                                </Button>
+                              </div>
                             </span>
                           </Card>
                         </Link>

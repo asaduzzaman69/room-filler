@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import getEnvironmentConfig from "../environment";
 import Link from "next/link";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import {Container, Row, Col, Card, Nav} from "react-bootstrap";
 import { getAllProperties } from "../services/properties";
 import Banner from "../components/banner";
 import AmenitiesCarousel from "../components/amenitiesCarousel";
@@ -148,6 +148,14 @@ const Home = (props) => {
         <div>
           <Container className="col-12 col-lg-10 offset-lg-1 mt-5 mb-3">
             <Row>{getProperties(props)}</Row>
+            <Row className="text-center">
+              <Nav.Link
+                  href="/view-all-properties"
+                  className="text-dark font-weight-bold mx-auto"
+              >
+                View All Properties
+              </Nav.Link>
+            </Row>
           </Container>
         </div>
         <div ref={amenitiesRef}>

@@ -54,7 +54,7 @@ export default function PropertyPage({ property }) {
   const getImagesGallery = (image, index, total) => {
     if (index===4) {
       return (
-        <div key={"view-only-images-1-" + index} className="bnb-image-container">
+        <div key={"view-only-images-1-" + index} className="bnb-image-container p-0 my-2 mr-2" style={{backgroundImage: `url(${image})`}}>
           <Card.Img
             variant="top"
             className="bnb-image bnb-last-image"
@@ -66,12 +66,13 @@ export default function PropertyPage({ property }) {
       )
     } else {
       return (
-        <Card.Img
-          key={"view-only-images-2-" + index}
-          variant="top"
-          className="bnb-image bnb-other-images"
-          src={image}
-        />
+        <div key={"view-only-images-2-" + index} className="bnb-image-container p-0 m-2" style={{backgroundImage: `url(${image})`}}>
+          <Card.Img
+            variant="top"
+            className="bnb-image bnb-other-images"
+            src={image}
+          />
+        </div>
       );
     }
   };
@@ -114,7 +115,17 @@ export default function PropertyPage({ property }) {
 
           {property && property.id && property.images.length > 1 ? (
             <Row className="imagesbox">
-              <Col className="px-0 image-box-responsive" style={{backgroundImage: `url(${property.images[0]})`}}>
+              <Col className="col-12 d-md-none col px-2 mb-2">
+                <Col className="image-box-responsive bnb-image-container" style={{backgroundImage: `url(${property.images[0]})`}}>
+                  <Card.Img
+                      key={"view-only-images-" + 0}
+                      variant="top"
+                      className="bnb-image bnb-first-img"
+                      src={property.images[0]}
+                  />
+                </Col>
+              </Col>
+              <Col className="image-box-responsive bnb-image-container p-0 my-2 ml-2 d-none d-md-block" style={{backgroundImage: `url(${property.images[0]})`}}>
                 <Card.Img
                   key={"view-only-images-" + 0}
                   variant="top"
@@ -123,7 +134,7 @@ export default function PropertyPage({ property }) {
                 />
               </Col>
               <Col>
-                <Row>
+                <Row className="d-none d-md-block">
                   <Col className="p-0">
                     {property.images.map((image, index) => {
                       if (index > 0 && index < 3) {
@@ -137,17 +148,19 @@ export default function PropertyPage({ property }) {
                   </Col>
                 </Row>
                 <Row>
-                  <Col className="p-0 col-resp">
                     {property.images.map((image, index) => {
                       if (index > 2 && index < 5) {
-                        return getImagesGallery(
-                          image,
-                          index,
-                          property.images.length
-                        );
+                        return (
+                            <Col className="p-0 mt-n2 col-resp">
+                              {getImagesGallery(
+                                image,
+                                index,
+                                property.images.length
+                              )}
+                            </Col>
+                        )
                       }
                     })}
-                  </Col>
                 </Row>
               </Col>
             </Row>
@@ -158,25 +171,62 @@ export default function PropertyPage({ property }) {
             />
           )}
 
-          <Row className="row-pad">
+          <Row className="row-pad mb-5">
             <Col className="pr-sm-5 pl-sm-1 py-4 row-res" xs={7}>
               <h5>{property.title}</h5>
               <TextExpand text={property.description} />
-              <div className="customDatePickerWidth">
-                <DayPickerRangeController
-                  onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
-                  isDayBlocked={(day) => {
-                    return (
-                      property &&
-                      property.calendar &&
-                      isDayBlocked(property.calendar, day)
-                    );
-                  }}
-                  daySize={60}
-                />
-              </div>
+              <h5 className="mt-2">Amenities</h5>
+              {property.amenities.split(",").map((amenity, index) => {
+                return (
+                    <div key={"amenity-list-" + index} className="my-1">
+                      <i
+                          className={
+                            amenity === " air conditioning"
+                                ? "fal fa-fan-table"
+                                : getAmenityIcon(amenity)
+                                ? getAmenityIcon(amenity).icon
+                                : ""
+                          }
+                      />
+                      <span className="ml-2 amenity"> {amenity}</span>
+                    </div>
+                );
+              })}
             </Col>
             <Col className="px-1 py-4" row-res="true" xs={5}>
+              <div className="mt-3 mb-4 btn-res">
+                {property && property.airbnbListingURL && (
+                    <a
+                        className="cributn mr-2"
+                        href={property.airbnbListingURL}
+                        target="_blank"
+                    >
+                      View on AirBnB
+                    </a>
+                )}
+                {property && property.vrboListingURL && (
+                    <a
+                        className="cributn"
+                        href={property.vrboListingURL}
+                        target="_blank"
+                    >
+                      View on VRBO
+                    </a>
+                )}
+              </div>
+              <div className="customDatePickerWidth mb-4">
+                <DayPickerRangeController
+                    onFocusChange={({ focused }) => console.log(focused)} // PropTypes.func.isRequired
+                    isDayBlocked={(day) => {
+                      return (
+                          property &&
+                          property.calendar &&
+                          isDayBlocked(property.calendar, day)
+                      );
+                    }}
+                    daySize={60}
+                />
+              </div>
               {property && property.owner && (
                 <span>
                   <h6 className="mb-0">{property.owner.name}</h6>
@@ -196,43 +246,6 @@ export default function PropertyPage({ property }) {
                   </div>
                 </span>
               )}
-              <h5 className="mt-2">Amenities</h5>
-              {property.amenities.split(",").map((amenity, index) => {
-                return (
-                  <div key={"amenity-list-" + index} className="my-1">
-                    <i
-                      className={
-                        amenity === " air conditioning"
-                          ? "fal fa-fan-table"
-                          : getAmenityIcon(amenity)
-                          ? getAmenityIcon(amenity).icon
-                          : ""
-                      }
-                    />
-                    <span className="ml-2 amenity"> {amenity}</span>
-                  </div>
-                );
-              })}
-              <div className="mt-3 btn-res">
-                {property && property.airbnbListingURL && (
-                  <a
-                    className="cributn mr-2"
-                    href={property.airbnbListingURL}
-                    target="_blank"
-                  >
-                    View on AirBnB
-                  </a>
-                )}
-                {property && property.vrboListingURL && (
-                  <a
-                    className="cributn"
-                    href={property.vrboListingURL}
-                    target="_blank"
-                  >
-                    View on VRBO
-                  </a>
-                )}
-              </div>
             </Col>
           </Row>
           </SRLWrapper>
