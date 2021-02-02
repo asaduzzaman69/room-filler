@@ -34,7 +34,7 @@ const Banner = (props) => {
   const settings = {
     focusOnSelect: true,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     speed: 500,
     arrows: false,
