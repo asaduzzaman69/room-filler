@@ -38,21 +38,21 @@ const QuickEatsCarousel = ({}) => {
               className="align-items-center custom-row px-0"
               key={`quick_eats_${index}`}
             >
-              <Col xs={12} sm={6} md={6} className="order-2 order-sm-1">
+              <Col xs={12} sm={6} md={6} className="order-1 order-sm-2">
                 <Image
                   src={`/images${item.image}`}
-                  className="carousel-image"
+                  className="carousel-image shadow rounded"
                 />
               </Col>
               <Col
-                className="left-sec pl-lg-5 pl-md-4 mb-3 order-1 order-sm-2"
+                className="left-sec pl-lg-5 pl-md-4 mb-3 order-2 order-sm-1"
                 xs={12}
                 sm={6}
                 md={6}
               >
                 <Link href="/places/quick-eats">
                   <div style={{ cursor: "pointer" }}>
-                    <h6>Quick Eats</h6>
+                    <h6 className="mt-2">Quick Eats</h6>
                     <h5>{item.name}</h5>
                     <p className="sub">
                       {item.address1}

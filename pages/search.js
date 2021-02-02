@@ -84,7 +84,6 @@ export default function Search() {
 
   useEffect(() => {
     if (router.query && Object.keys(router.query).length ) {
-      console.log(' i am get fetched')
       setGuests(guestCount);
       setStartDate(startDateParam ? moment(startDateParam) : "");
       setEndDate(endDateParam ? moment(endDateParam) : "");

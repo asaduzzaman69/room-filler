@@ -60,9 +60,9 @@ export default function Footer({ setHash }) {
             <Row>
               <Col sm={12} md={6}>
                 <h6>
-                  info@ZionVillage.com
+                  zionvillage@cohostin.com
                   <br />
-                  385-529-8686
+                  <a href="tel:(480) 331-5595">(480) 331-5595</a>
                 </h6>
               </Col>
               <Col  sm={12} md={6}>
@@ -106,10 +106,10 @@ export default function Footer({ setHash }) {
                   Local Activities
                 </Nav.Link>
                 <Nav.Link
-                  href="/#emergency-locations"
+                  href="/login"
                   onClick={() => setHash("#emergency-locations")}
                 >
-                  Emergency Locations
+                  Owner Login
                 </Nav.Link>
               </Col>
             </Row>

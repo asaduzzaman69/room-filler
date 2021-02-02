@@ -56,9 +56,9 @@ const Banner = (props) => {
   return (
     <div className="main-bg">
       <div className="greyscale">
-        <Container className="col-12 col-lg-10 offset-lg-1 py-5">
+        <Container className="col-12 col-lg-10 offset-lg-1 py-sm-5 d-flex flex-column-reverse flex-sm-column">
           <Row className="search-section mx-auto mb-4 align-self-center p-2" style={{marginLeft: 'auto!important', marginRight: 'auto!important'}}>
-            <Col className="search-height pl-4" sm={6}>
+            <Col className="search-height pl-md-4 mb-2 mb-md-0" sm={6}>
               <p className="search-heading">
                 Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; Check out
@@ -115,7 +115,7 @@ const Banner = (props) => {
             </Col>
 
             <Col
-              className="search-height pr-0 text-center text-md-right"
+              className="search-height px-0 text-center text-md-right"
               xs={12}
               sm={3}
             >
@@ -142,7 +142,7 @@ const Banner = (props) => {
                 className="read-more-btn"
                 onClick={() => Router.push("/view-all-properties")}
               >
-                View More
+                View All
                 <i className="fal fa-arrow-right arrow-icon"></i>
               </Button>
             </Col>
@@ -152,7 +152,7 @@ const Banner = (props) => {
               md={5}
               lg={4}
               style={{ alignSelf: "center" }}
-              className="offset-lg-1 pr-0"
+              className="offset-lg-1 pr-0 d-none d-sm-block"
             >
               <Slider {...settings} ref={sliderRef}>
                 {Object.keys(props.properties)
@@ -212,7 +212,7 @@ const Banner = (props) => {
               sm={1}
               md={1}
               lg={1}
-              className="pr-0"
+              className="pr-0 d-none d-sm-block"
               style={{ alignSelf: "center" }}
             >
               {Object.keys(props.properties)

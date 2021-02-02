@@ -38,6 +38,12 @@ const LocalEatsCarousel = ({}) => {
               className="align-items-center custom-row px-0"
               key={`quick_eats_${index}`}
             >
+              <Col xs={12} sm={6} md={6}>
+                <Image
+                    src={`/images${item.image}`}
+                    className="carousel-image shadow rounded"
+                />
+              </Col>
               <Col
                 className="left-sec pr-lg-5 pr-md-3 mb-3"
                 xs={12}
@@ -46,7 +52,7 @@ const LocalEatsCarousel = ({}) => {
               >
                 <Link href="/places/local-eats">
                   <div style={{ cursor: "pointer" }}>
-                    <h6>Local Eateries</h6>
+                    <h6 className="mt-2">Local Eateries</h6>
                     <h5>{item.name}</h5>
                     <p className="sub">
                       {item.address1}
@@ -90,12 +96,6 @@ const LocalEatsCarousel = ({}) => {
                     className="arrow"
                   />
                 </Button>
-              </Col>
-              <Col xs={12} sm={6} md={6}>
-                <Image
-                  src={`/images${item.image}`}
-                  className="carousel-image"
-                />
               </Col>
             </Row>
           );
