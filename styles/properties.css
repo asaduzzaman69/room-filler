@@ -21,6 +21,7 @@
 .selected-property .fa {
   color: #d1aa77;
 }
+
 .selected-property .cributn {
   background-color: #d1aa77;
   border-radius: 25px;
@@ -32,6 +33,14 @@
   background: #d1aa77;
   border: none;
   box-shadow: none;
+}
+.selected-property .bnb-image {
+  opacity: 0;
+}
+.selected-property .bnb-image-container {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .selected-property .bnb-first-img{
   /* width: 50%; */

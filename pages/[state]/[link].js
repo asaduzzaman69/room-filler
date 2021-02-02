@@ -24,7 +24,7 @@ const ButtonACC = (props) => {
 
   return (
     <button
-      className="view-more-btn"
+      className="btn btn-primary view-more-btn"
       onClick={() => openLightbox(props.imageToOpen)}
     >
       {props.children}
@@ -54,10 +54,10 @@ export default function PropertyPage({ property }) {
   const getImagesGallery = (image, index, total) => {
     if (index===4) {
       return (
-        <div key={"view-only-images-1-" + index}>
+        <div key={"view-only-images-1-" + index} className="bnb-image-container">
           <Card.Img
             variant="top"
-            className="bnb-last-image"
+            className="bnb-image bnb-last-image"
             src={image}
           />
           {index===4?<ButtonACC imageToOpen={index + 1} className="view-more-btn" >+ {total-4} more</ButtonACC >:null}
@@ -69,7 +69,7 @@ export default function PropertyPage({ property }) {
         <Card.Img
           key={"view-only-images-2-" + index}
           variant="top"
-          className="bnb-other-images"
+          className="bnb-image bnb-other-images"
           src={image}
         />
       );
@@ -114,11 +114,11 @@ export default function PropertyPage({ property }) {
 
           {property && property.id && property.images.length > 1 ? (
             <Row className="imagesbox">
-              <Col className="px-0  image-box-responsive">
+              <Col className="px-0 image-box-responsive" style={{backgroundImage: `url(${property.images[0]})`}}>
                 <Card.Img
                   key={"view-only-images-" + 0}
-                  variant="top"   
-                  className="bnb-first-img"
+                  variant="top"
+                  className="bnb-image bnb-first-img"
                   src={property.images[0]}
                 />
               </Col>
