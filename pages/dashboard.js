@@ -1,3 +1,5 @@
+import { DebounceInput } from "react-debounce-input";
+
 import Link from "next/link";
 import Head from "next/head";
 import Layout from "../components/layout";
@@ -9,7 +11,7 @@ import {
   getUsersProperties,
   isDayBlocked,
   updateProperty,
-  uploadPropertyImages
+  uploadPropertyImages,
 } from "../services/properties";
 import firebase from "../lib/firebase";
 import { isUserAdmin } from "../services/user";
@@ -24,7 +26,7 @@ import {
   Row,
   Col,
   Card,
-  ListGroup
+  ListGroup,
 } from "react-bootstrap";
 import Navbar from "../components/navbar";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
@@ -40,7 +42,7 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
   const existingProperty = property.id;
   const addedProperty = { ...property } || {
     createdBy: this.state.user.uid,
-    published: false
+    published: false,
   };
   addedProperty.createdBy = addedProperty.createdBy || this.state.user.uid;
   addedProperty.published = addedProperty.published || false;
@@ -52,7 +54,11 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
       const field = e.target[x];
       if (field.value && field.id && field.getAttribute("key-data")) {
         addedProperty[field.getAttribute("key-data")] = field.value;
-      } else if (field.value && field.id && field.getAttribute("optional-key-data")) {
+      } else if (
+        field.value &&
+        field.id &&
+        field.getAttribute("optional-key-data")
+      ) {
         addedProperty[field.getAttribute("optional-key-data")] = field.value;
       } else if (
         field.value &&
@@ -77,10 +83,7 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
     return this.setState({ ...this.state, fieldsCompleted: false });
   }
   if (!existingProperty) {
-    const ref = firebase
-      .firestore()
-      .collection("properties")
-      .doc();
+    const ref = firebase.firestore().collection("properties").doc();
     addedProperty.id = ref.id;
   }
 
@@ -89,7 +92,7 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
     this.setState({
       ...this.state,
       fieldsCompleted: true,
-      managedProperties: [...this.state.managedProperties, addedProperty]
+      managedProperties: [...this.state.managedProperties, addedProperty],
     });
   } else {
     const managedProperties = this.state.managedProperties;
@@ -103,31 +106,21 @@ async function addEditProperty(e, property, cb, showSuccess = false) {
     this.setState({
       ...this.state,
       fieldsCompleted: true,
-      managedProperties: managedProperties
+      managedProperties: managedProperties,
     });
   }
   cb(addedProperty);
   alert("Successfully Updated!");
 }
 
-
-
-
-
 function addOwnerEditor(property) {
   const email = window.prompt("Enter email of owner/editor:");
   property.editors = property.editors || [];
   property.editors.push({
-    email: email
+    email: email,
   });
   addEditProperty(null, property, () => {}, true);
 }
-
-
-
-
-
-
 
 function IncompleteFieldsError(props) {
   if (props.showError) {
@@ -140,8 +133,6 @@ function IncompleteFieldsError(props) {
   return null;
 }
 
-
-
 function addImageToPreview(url) {
   document.getElementById("propertyImagesPreview").innerHTML += `
         <div class="col-12 col-md-6 img-thumbnail add-image-preview" style="background: url(${url});">
@@ -152,11 +143,11 @@ function addImageToPreview(url) {
 
 function addFileImagePreview(file, selectedProperty) {
   if (!file) return;
-  return new Promise(res => {
+  return new Promise((res) => {
     var reader = new FileReader(file);
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       uploadPropertyImages([e.target.result], selectedProperty.id).then(
-        result => {
+        (result) => {
           addImageToPreview(result[0]);
           res(result[0]);
         }
@@ -201,6 +192,8 @@ export function Dashboard(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [hash, setHash] = useState("");
+  const [duplicate, setDuplicate] = useState();
+  console.log(duplicate);
 
   const handleShow = () => {
     setShow(true);
@@ -252,6 +245,11 @@ export function Dashboard(props) {
       //}
       setupReorder();
     }, 150);
+  };
+
+  const handleDuplicate = (link) => {
+    const isDuplicate = props.allProperties.some((el) => el.link === link);
+    isDuplicate ? setDuplicate(true) : setDuplicate(false);
   };
 
   const resetPropertyOpenModal = () => {};
@@ -612,6 +610,11 @@ export function Dashboard(props) {
           <Modal.Body>
             <Form
               onSubmit={(e) => {
+                e.preventDefault();
+                if (duplicate) {
+                  alert("Your Link Name Has Already Taken");
+                  return;
+                }
                 addEditProperty(e, selectedProperty, (e) => {
                   setSelectedProperty(e);
                   handleClose();
@@ -629,9 +632,20 @@ export function Dashboard(props) {
               </Form.Group>
               <Form.Group controlId="propertyLink">
                 <Form.Label>Property Link</Form.Label>
-                <Form.Control type="text" placeholder="Link" key-data="link" />
+                <Form.Control
+                  onChange={(e) => handleDuplicate(e.target.value)}
+                  type="text"
+                  placeholder="Link"
+                  key-data="link"
+                />
                 <Form.Text className="text-muted pl-1">
-                  Will be used as URL path /property-link
+                  {duplicate ? (
+                    <span style={{ color: "red" }}>
+                      This link is already taken
+                    </span>
+                  ) : duplicate === false ? (
+                    <span style={{ color: "green" }}>Nice Link</span>
+                  ) : '' }
                 </Form.Text>
               </Form.Group>
               <Form.Group controlId="propertyAddress">
@@ -849,17 +863,18 @@ export function Dashboard(props) {
 
 async function loadDashboardData(self, user) {
   const isAdmin = await isUserAdmin(user);
-  const propertiesResponse = isAdmin
-    ? await getAllProperties()
-    : await getUsersProperties(user);
+  const propertiesResponse = await getAllProperties();
   const properties = [];
-  propertiesResponse.forEach(doc => {
+  propertiesResponse.forEach((doc) => {
     properties.push(doc.data());
   });
+
+  const managedProperty = properties.filter((el) => el.createdBy == user.uid);
   self.setState({
     ...self.state,
-    managedProperties: properties,
-    isAdmin: isAdmin
+    managedProperties: managedProperty,
+    allProperties: properties,
+    isAdmin: isAdmin,
   });
 }
 
@@ -870,17 +885,18 @@ class DashboardPage extends React.Component {
     this.state = {
       status: "LOADING",
       user: null,
+      allProperties: [],
       managedProperties: [],
-      fieldsCompleted: true
+      fieldsCompleted: true,
     };
   }
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(authUser => {
+    firebase.auth().onAuthStateChanged((authUser) => {
       if (authUser) {
         this.setState({
           ...this.state,
           status: "SIGNED_IN",
-          user: authUser
+          user: authUser,
         });
         loadDashboardData(this, authUser);
       } else {
