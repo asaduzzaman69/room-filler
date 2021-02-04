@@ -19,12 +19,26 @@ const Banner = (props) => {
   const [focusedInput, setFocusedInput] = useState();
   const [guests, setGuests] = useState(1);
   const [windowWidth, setWindowWidth] = useState("");
+  const [filteredProperties, setFilteredProperties]= useState([])
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+   if(props && props.properties){
+   const tempData= [];
+   Object.keys(props.properties).slice(0, 9).map((item)=>{
+      if(props.properties[item] &&
+      props.properties[item].published &&
+      props.properties[item].images.length){
+       tempData.push(props.properties[item])
+      }
+    })
+    setFilteredProperties(tempData)
+   }
+  }, [props.properties]);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
   }, []);
-
-  const sliderRef = useRef(null);
 
   const setSlide = (item) => {
     setCurrentSlide(item);
@@ -42,22 +56,26 @@ const Banner = (props) => {
     autoplaySpeed: 2000,
   };
 
-
-
   const handleOnRouteChange = () => {
-
-    if(startDate && endDate && guests) {
-      Router.push(getSearchLink(startDate, endDate, guests))
+    if (startDate && endDate && guests) {
+      Router.push(getSearchLink(startDate, endDate, guests));
     } else {
-      alert('You must have to specified the Start Date,End Date and Guest')
+      alert("You must have to specified the Start Date,End Date and Guest");
     }
-  }
+  };
+  
 
   return (
     <div className="main-bg">
       <div className="greyscale">
         <Container className="col-12 col-lg-10 offset-lg-1 py-sm-5 d-flex flex-column-reverse flex-sm-column">
-          <Row className="search-section mx-auto mb-4 align-self-center p-2" style={{marginLeft: 'auto!important', marginRight: 'auto!important'}}>
+          <Row
+            className="search-section mx-auto mb-4 align-self-center p-2"
+            style={{
+              marginLeft: "auto!important",
+              marginRight: "auto!important",
+            }}
+          >
             <Col className="search-height pl-md-4 mb-2 mb-md-0" sm={6}>
               <p className="search-heading">
                 Check in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;
@@ -119,12 +137,13 @@ const Banner = (props) => {
               xs={12}
               sm={3}
             >
-          
-                <Button  onClick={() =>
-                 handleOnRouteChange()
-                } variant="primary" className="book-btn">
-                  Book now
-                </Button>
+              <Button
+                onClick={() => handleOnRouteChange()}
+                variant="primary"
+                className="book-btn"
+              >
+                Book now
+              </Button>
             </Col>
           </Row>
           <Row className="info-carousel-section align-items-center">
@@ -154,21 +173,21 @@ const Banner = (props) => {
               style={{ alignSelf: "center" }}
               className="offset-lg-1 pr-0 d-none d-sm-block"
             >
-              <Slider {...settings} ref={sliderRef}>
-                {Object.keys(props.properties)
-                  .slice(0, 9)
-                  .map((item, index) => {
+              <Slider
+                {...settings}
+                ref={sliderRef}
+                beforeChange={(current, next) => setCurrentSlide(next)}
+              >
+                {filteredProperties.length>0 &&
+                filteredProperties.map((item, index) => {
                     return (
-                      props.properties[item] &&
-                      props.properties[item].published &&
-                      props.properties[item].images.length && (
                         <Link
                           href={
-                            props.properties[item].address.state
+                            item.address.state
                               .toLowerCase()
                               .trim() +
                             "/" +
-                            props.properties[item].link
+                            item.link
                           }
                           key={"slider-image-" + index}
                         >
@@ -176,46 +195,53 @@ const Banner = (props) => {
                             <div className="overlay"></div>
                             <div
                               style={{
-                                backgroundImage: `url(${props.properties[item].images[0]})`,
+                                backgroundImage: `url(${item.images[0]})`,
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
-                                borderRadius: '50%',
-                                width: '150px',
-                                height: '150px'
+                                borderRadius: "50%",
+                                width: "150px",
+                                height: "150px",
                               }}
-                              /*  src={props.properties[item].images[0]} */
+                              /*  src={item.images[0]} */
                               className="card-home__image mx-auto my-4"
                             ></div>
                             <span className="p-2 card-home__text">
                               <p className="text-left mb-0 font-weight-bold">
-                                {props.properties[item].title
-                                //     .substring(
-                                //   0,
-                                //   200
-                                // ) + "..."
+                                {
+                                  item.title
+                                  //     .substring(
+                                  //   0,
+                                  //   200
+                                  // ) + "..."
                                 }
                               </p>
                               {/* <p className="text-left mb-0 font-weight-bold">
                               {" "}
-                              {props.properties[item].title}{" "}
+                              {item.title}{" "}
                             </p>
                             <p className="text-left mb-0 iconbox">
                               {" "}
-                              {props.properties[item].bedroomCount} Beds{" "}
-                              {props.properties[item].maxOccupancy} Guests{" "}
+                              {item.bedroomCount} Beds{" "}
+                              {item.maxOccupancy} Guests{" "}
                             </p> */}
                               <div className="d-flex">
                                 <div className="my-1 mr-3">
                                   <i className="fas fa-user-friends"></i>
-                                  <span className="ml-2 amenity">{props.properties[item].maxOccupancy}</span>
+                                  <span className="ml-2 amenity">
+                                    {item.maxOccupancy}
+                                  </span>
                                 </div>
                                 <div className="my-1 mr-3">
                                   <i className="fas fa-bed"></i>
-                                  <span className="ml-2 amenity">{props.properties[item].bedroomCount}</span>
+                                  <span className="ml-2 amenity">
+                                    {item.bedroomCount}
+                                  </span>
                                 </div>
                                 <div className="my-1 mr-3">
                                   <i className="fas fa-hot-tub"></i>
-                                  <span className="ml-2 amenity">{props.properties[item].bathroomCount}</span>
+                                  <span className="ml-2 amenity">
+                                    {item.bathroomCount}
+                                  </span>
                                 </div>
                               </div>
                               <div className="d-flex">
@@ -226,7 +252,7 @@ const Banner = (props) => {
                             </span>
                           </Card>
                         </Link>
-                      )
+                      
                     );
                   })}
               </Slider>
@@ -239,23 +265,22 @@ const Banner = (props) => {
               className="pr-0 d-none d-sm-block"
               style={{ alignSelf: "center" }}
             >
-              {Object.keys(props.properties)
-                .slice(0, 9)
-                .map(
-                  (item, index) =>
-                    props.properties[item] &&
-                    props.properties[item].published && (
-                      <div
-                        key={"slider-dot-" + index}
-                        className={
-                          currentSlide === item
-                            ? "selected-carousel-dot"
-                            : "carousel-dot"
-                        }
-                        onClick={() => setSlide(item)}
-                        key={"mini-banner-tab-" + item}
-                      />
-                    )
+              {filteredProperties.length>0 &&
+                filteredProperties
+                .map((item, index) =>{
+                  return (
+                    <div
+                      key={"slider-dot-" + index}
+                      className={
+                        currentSlide === parseInt(index,10)
+                          ? "selected-carousel-dot"
+                          : "carousel-dot"
+                      }
+                      onClick={() => setSlide(index)}
+                      key={"mini-banner-tab-" + index}
+                    />
+                  )
+                    }
                 )}
             </Col>
           </Row>

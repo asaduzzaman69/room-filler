@@ -9,13 +9,21 @@ import { Carousel } from "react-responsive-carousel";
 import { amenities } from "../public/constants/config";
 
 const AmenitiesCarousel = ({}) => {
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const next = () => {
+    if(currentSlide === amenities.length - 1){
+    setCurrentSlide(0);
+    }else{
     setCurrentSlide(currentSlide + 1);
+    }
   };
 
   const prev = () => {
+    if(currentSlide === 0){
+      setCurrentSlide(amenities.length - 1);
+    }else{
     setCurrentSlide(currentSlide - 1);
+    }
   };
 
   return (
@@ -34,7 +42,7 @@ const AmenitiesCarousel = ({}) => {
         amenities.map((item, index) => {
           return (
             <Row
-              className="align-items-center custom-row px-0"
+              className="align-items-center custom-row px-0 slide-bg"
               key={`amenities_${index}`}
             >
               <Col
@@ -53,25 +61,16 @@ const AmenitiesCarousel = ({}) => {
                   disabled={currentSlide === 1}
                 >
                   <Image
-                    src={
-                      currentSlide === 1
-                        ? "/images/left-arrow-disabled.png"
-                        : "/images/left-arrow.png"
-                    }
+                    src={"/images/left-arrow.png"}
                     className="arrow"
                   />
                 </Button>
                 <Button
                   onClick={() => next()}
                   variant="outlined"
-                  disabled={currentSlide === amenities.length - 1}
                 >
                   <Image
-                    src={
-                      currentSlide === amenities.length - 1
-                        ? "/images/right-arrow-disabled.png"
-                        : "/images/right-arrow.png"
-                    }
+                    src={"/images/right-arrow.png"}
                     className="arrow"
                   />
                 </Button>

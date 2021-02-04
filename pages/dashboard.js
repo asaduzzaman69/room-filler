@@ -27,7 +27,7 @@ import {
   ListGroup
 } from "react-bootstrap";
 import Navbar from "../components/navbar";
-import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import GooglePlacesAutocomplete,{geocodeByPlaceId} from "react-google-places-autocomplete";
 import { Sortable } from "sortablejs";
 import { DayPickerRangeController } from "react-dates";
 import TextExpand from "../components/text-expand";
@@ -291,7 +291,12 @@ export function Dashboard(props) {
   }
 
   const updatedAddress = (e) => {
+     //debugger;
+    // geocodeByPlaceId(e.value.place_id)
+    // .then(results => console.log(results))
+    // .catch(error => console.error(error));
     selectedProperty.address = {
+      
       city: e.value.structured_formatting.secondary_text
         .split(",")[0]
         .replace(/[^A-Za-z]+/g, "")
