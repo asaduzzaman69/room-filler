@@ -193,7 +193,6 @@ export function Dashboard(props) {
   const handleClose = () => setShow(false);
   const [hash, setHash] = useState("");
   const [duplicate, setDuplicate] = useState();
-  console.log(duplicate);
 
   const handleShow = () => {
     setShow(true);
@@ -874,7 +873,8 @@ async function loadDashboardData(self, user) {
     properties.push(doc.data());
   });
 
-  const managedProperty = properties.filter((el) => el.createdBy == user.uid);
+  const filteredProperty = properties.filter((el) => el.createdBy == user.uid);
+  const managedProperty = isAdmin ? properties : filteredProperty;
   self.setState({
     ...self.state,
     managedProperties: managedProperty,
