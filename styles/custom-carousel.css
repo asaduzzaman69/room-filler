@@ -18,10 +18,7 @@
   font-weight: 600;
   text-align: left;
   text-transform: uppercase;
-  overflow: hidden;
-  /*white-space: nowrap;*/
-  text-overflow: ellipsis;
-  width: 405px;
+  /* width: 405px; */
 }
 
 .left-sec p {
@@ -41,27 +38,31 @@ font-size: 13px;
   box-shadow: none;
 }
 .carousel-image{
-  box-shadow: 3px 4px 5px #ccc;
+  box-shadow: 3px 4px 5px #ccc !important;
+  width: 93% !important;
+}
+.carousel .slide{
+  background: #fff !important;
 }
 @media (max-width:991px) {
     .left-sec h5 {
     font-size: 32px;
-    width: 350px;
+    /* width: 350px; */
   }
   .custom-row{
     padding:0 10%;
   }
  }
- @media (max-width:860px) {
+ /* @media (max-width:860px) {
   .left-sec h5 {
   width: 302px;
 }
-}
- @media (max-width:786px) {
+} */
+ /* @media (max-width:786px) {
   .left-sec h5 {
   width: 302px;
 }
-}
+} */
 @media (max-width:767px) {
 .custom-row{
   padding:0 6%;

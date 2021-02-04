@@ -12,11 +12,19 @@ import { quickEats } from "../public/constants/config";
 const QuickEatsCarousel = ({}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const next = () => {
+    if(currentSlide === quickEats.length - 1){
+    setCurrentSlide(0);
+    }else{
     setCurrentSlide(currentSlide + 1);
+    }
   };
 
   const prev = () => {
+    if(currentSlide === 0){
+      setCurrentSlide(quickEats.length - 1);
+    }else{
     setCurrentSlide(currentSlide - 1);
+    }
   };
 
   return (
@@ -65,28 +73,20 @@ const QuickEatsCarousel = ({}) => {
                 <Button
                   onClick={() => prev()}
                   variant="outlined"
-                  disabled={currentSlide === 0}
+              
                 >
                   <Image
-                    src={
-                      currentSlide === 0
-                        ? "/images/left-arrow-disabled.png"
-                        : "/images/left-arrow.png"
-                    }
+                    src={"/images/left-arrow.png"}
                     className="arrow"
                   />
                 </Button>
                 <Button
                   onClick={() => next()}
                   variant="outlined"
-                  disabled={currentSlide === quickEats.length - 1}
+                 
                 >
                   <Image
-                    src={
-                      currentSlide === quickEats.length - 1
-                        ? "/images/right-arrow-disabled.png"
-                        : "/images/right-arrow.png"
-                    }
+                    src={"/images/right-arrow.png" }
                     className="arrow"
                   />
                 </Button>
