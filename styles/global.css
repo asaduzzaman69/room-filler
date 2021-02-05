@@ -199,6 +199,18 @@ nav {
     width: 100%;
   }
 }
+
+
+.publish-hov-btn {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Oswald", sans-serif;
+  border: none !important;
+  padding: 10px 35px !important;
+  margin-bottom: 2rem;  border-radius: 32px;
+  background-color: #FF5A60 !important;
+}
 @media only screen and (max-width: 576px) {
   .btn-res > a {
     width: 135% !important;

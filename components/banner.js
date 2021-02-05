@@ -17,7 +17,7 @@ const Banner = (props) => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focusedInput, setFocusedInput] = useState();
-  const [guests, setGuests] = useState(1);
+  const [guests, setGuests] = useState(0);
   const [windowWidth, setWindowWidth] = useState("");
   const [filteredProperties, setFilteredProperties]= useState([])
   const sliderRef = useRef(null);
@@ -70,7 +70,7 @@ const Banner = (props) => {
       <div className="greyscale">
         <Container className="col-12 col-lg-10 offset-lg-1 py-sm-5 d-flex flex-column-reverse flex-sm-column">
           <Row
-            className="search-section mx-auto mb-4 align-self-center p-2"
+            className="search-section mx-auto mb-4 align-self-center p-2 align-items-center"
             style={{
               marginLeft: "auto!important",
               marginRight: "auto!important",
@@ -116,6 +116,8 @@ const Banner = (props) => {
                   size="sm"
                   value={guests}
                 >
+                  <option >guest</option>
+                  
                   <option value={1}>1 guest</option>
                   <option value={2}>2 guests</option>
                   <option value={3}>3 guests</option>
@@ -178,44 +180,42 @@ const Banner = (props) => {
                 ref={sliderRef}
                 beforeChange={(current, next) => setCurrentSlide(next)}
               >
-                {filteredProperties.length>0 &&
-                filteredProperties.map((item, index) => {
+                {filteredProperties.length > 0 &&
+                  filteredProperties.map((item, index) => {
                     return (
-                        <Link
-                          href={
-                            item.address.state
-                              .toLowerCase()
-                              .trim() +
-                            "/" +
-                            item.link
-                          }
-                          key={"slider-image-" + index}
-                        >
-                          <Card className="card-home cursor-pointer mx-auto align-self-center">
-                            <div className="overlay"></div>
-                            <div
-                              style={{
-                                backgroundImage: `url(${item.images[0]})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                borderRadius: "50%",
-                                width: "150px",
-                                height: "150px",
-                              }}
-                              /*  src={item.images[0]} */
-                              className="card-home__image mx-auto my-4"
-                            ></div>
-                            <span className="p-2 card-home__text">
-                              <p className="text-left mb-0 font-weight-bold">
-                                {
-                                  item.title
-                                  //     .substring(
-                                  //   0,
-                                  //   200
-                                  // ) + "..."
-                                }
-                              </p>
-                              {/* <p className="text-left mb-0 font-weight-bold">
+                      <Link
+                        href={
+                          item.address.state.toLowerCase().trim() +
+                          "/" +
+                          item.link
+                        }
+                        key={"slider-image-" + index}
+                      >
+                        <Card className="card-home cursor-pointer mx-auto align-self-center">
+                          <div className="overlay"></div>
+                          <div
+                            style={{
+                              backgroundImage: `url(${item.images[0]})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              borderRadius: "50%",
+                              width: "150px",
+                              height: "150px",
+                            }}
+                            /*  src={item.images[0]} */
+                            className="card-home__image mx-auto my-4"
+                          ></div>
+                          <span className="p-2 card-home__text">
+                            <p className="text-left mb-0 font-weight-bold">
+                              {
+                                item.title
+                                //     .substring(
+                                //   0,
+                                //   200
+                                // ) + "..."
+                              }
+                            </p>
+                            {/* <p className="text-left mb-0 font-weight-bold">
                               {" "}
                               {item.title}{" "}
                             </p>
@@ -224,35 +224,40 @@ const Banner = (props) => {
                               {item.bedroomCount} Beds{" "}
                               {item.maxOccupancy} Guests{" "}
                             </p> */}
-                              <div className="d-flex">
-                                <div className="my-1 mr-3">
-                                  <i className="fas fa-user-friends"></i>
-                                  <span className="ml-2 amenity">
-                                    {item.maxOccupancy}
-                                  </span>
-                                </div>
-                                <div className="my-1 mr-3">
-                                  <i className="fas fa-bed"></i>
-                                  <span className="ml-2 amenity">
-                                    {item.bedroomCount}
-                                  </span>
-                                </div>
-                                <div className="my-1 mr-3">
-                                  <i className="fas fa-hot-tub"></i>
-                                  <span className="ml-2 amenity">
-                                    {item.bathroomCount}
-                                  </span>
-                                </div>
+                            <div className="d-flex">
+                              <div className="my-1 mr-3">
+                                <i className="fas fa-user-friends"></i>
+                                <span className="ml-2 amenity">
+                                  {item.maxOccupancy}
+                                </span>
                               </div>
-                              <div className="d-flex">
-                                <Button className="signup-btn mt-2 mx-auto">
-                                  Book Now
-                                </Button>
+                              <div className="my-1 mr-3">
+                                <i className="fas fa-bed"></i>
+                                <span className="ml-2 amenity">
+                                  {item.bedroomCount}
+                                </span>
                               </div>
-                            </span>
-                          </Card>
-                        </Link>
-                      
+                              <div className="my-1 mr-3">
+                                <i className="fas fa-hot-tub"></i>
+                                <span className="ml-2 amenity">
+                                  {item.bathroomCount}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="d-flex">
+                              <Button
+                                className="signup-btn mt-2 mx-auto"
+                                style={{
+                                  backgroundColor: "#fecb56",
+                                  border: "none",
+                                }}
+                              >
+                                Book Now
+                              </Button>
+                            </div>
+                          </span>
+                        </Card>
+                      </Link>
                     );
                   })}
               </Slider>
@@ -265,23 +270,21 @@ const Banner = (props) => {
               className="pr-0 d-none d-sm-block"
               style={{ alignSelf: "center" }}
             >
-              {filteredProperties.length>0 &&
-                filteredProperties
-                .map((item, index) =>{
+              {filteredProperties.length > 0 &&
+                filteredProperties.map((item, index) => {
                   return (
                     <div
                       key={"slider-dot-" + index}
                       className={
-                        currentSlide === parseInt(index,10)
+                        currentSlide === parseInt(index, 10)
                           ? "selected-carousel-dot"
                           : "carousel-dot"
                       }
                       onClick={() => setSlide(index)}
                       key={"mini-banner-tab-" + index}
                     />
-                  )
-                    }
-                )}
+                  );
+                })}
             </Col>
           </Row>
         </Container>

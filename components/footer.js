@@ -105,12 +105,15 @@ export default function Footer({ setHash }) {
                 >
                   Local Activities
                 </Nav.Link>
-                <Nav.Link
-                  href="/login"
-                  onClick={() => setHash("#emergency-locations")}
-                >
-                  Owner Login
-                </Nav.Link>
+                {
+                  !user ? (<Nav.Link
+                    href="/login"
+                    onClick={() => setHash("#emergency-locations")}
+                  >
+                    Owner Login
+                  </Nav.Link>) : ''
+                }
+                
               </Col>
             </Row>
           </Col>

@@ -232,12 +232,12 @@ export function Dashboard(props) {
         "[optional-key-data]"
       );
       formOptionalValues.forEach((field) => {
-        field.value = "dsd";
+        field.value = "";
       });
       const formSubValues = document.querySelectorAll("[sub-key-data]");
       formSubValues.forEach((field) => {
         const subObjectKey = field.getAttribute("sub-key-data").split(".");
-        field.value = "sds";
+        field.value = "";
       });
       //for (let image of selectedProperty.images) {
       //  addImageToPreview(image);
@@ -497,6 +497,7 @@ export function Dashboard(props) {
                         isAdmin && (
                           <Button
                             variant="primary"
+                            className="publish-hov-btn"
                             onClick={() => {
                               addEditProperty(
                                 null,
@@ -649,7 +650,9 @@ export function Dashboard(props) {
                     </span>
                   ) : duplicate === false ? (
                     <span style={{ color: "green" }}>Nice Link</span>
-                  ) : '' }
+                  ) : (
+                    ""
+                  )}
                 </Form.Text>
               </Form.Group>
               <Form.Group controlId="propertyAddress">
@@ -683,11 +686,11 @@ export function Dashboard(props) {
                 />
               </Form.Group>
               <Form.Group controlId="propertyImages" className="mb-1">
-                <Form.Label>Property Images</Form.Label>
+                <span>Property Images</span>
                 <Form.Text className="text-muted pl-1 mb-2 mt-0">
                   Drag and drop to reorder
                 </Form.Text>
-                <Form.Label className="btn btn-primary">Add images</Form.Label>
+                <Form.Label className="btn btn-primary" style={{backgroundColor: '#fecb56', border: "none"}}>Add images</Form.Label>
                 <Form.Control
                   as="input"
                   type="file"
@@ -707,6 +710,7 @@ export function Dashboard(props) {
                   key={"amenities-" + index}
                 >
                   <Form.Check
+                  className='checkbox-property'
                     type="checkbox"
                     label={
                       <p>

@@ -2,6 +2,7 @@ import { Accordion, Button } from "react-bootstrap";
 import { useState } from "react";
 
 export default function TextExpand({ text }) {
+  console.log(text.length);
   const [toggled, setToggled] = useState(false);
 
   return (
@@ -10,7 +11,9 @@ export default function TextExpand({ text }) {
       <Accordion.Collapse eventKey="0">
         <div>{text}</div>
       </Accordion.Collapse>
-      <Accordion.Toggle
+      {
+        text.length >= 450 ? (
+           <Accordion.Toggle
         as={Button}
         variant="link"
         eventKey="0"
@@ -21,6 +24,9 @@ export default function TextExpand({ text }) {
       >
         Read {!!toggled ? "less" : "more"}
       </Accordion.Toggle>
+        ) : ''
+      }
+     
     </Accordion>
   );
 }

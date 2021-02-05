@@ -43,3 +43,16 @@
   font-size: 19px;
   color: #b9a37e;
 }
+
+
+.checkbox-property input:checked {
+  border-color: red;
+  background-color:red;
+}
+
+.checkbox-propert input:checked {
+  background-color: #2196F3;
+}
+
+
+/* experimental */

@@ -45,10 +45,7 @@ export function uploadPropertyImages(files, propertyId) {
 }
 
 export function getAllProperties() {
-  return firebase
-    .firestore()
-    .collection("properties")
-    .get();
+  return firebase.firestore().collection("properties").get();
 }
 
 export function getAvailableProperties(startDate, endDate, guests) {
