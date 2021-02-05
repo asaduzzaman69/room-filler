@@ -55,17 +55,27 @@ export default function Footer({ setHash }) {
               />
             </a>
           </Col>
-          <Col xs={12} sm={4} md={4} lg={3}  className="mb-4 mb-sm-0  text-center text-sm-left">
+          <Col
+            xs={12}
+            sm={4}
+            md={4}
+            lg={3}
+            className="mb-4 mb-sm-0  text-center text-sm-left"
+          >
             <h5>Get In touch</h5>
             <Row>
               <Col sm={12} md={6}>
                 <h6>
-                  zionvillage@cohostin.com
+                  <a href="mailto:zionvillage@cohostin.com">
+ 
+                    zionvillage@cohostin.com
+
+                  </a>
                   <br />
                   <a href="tel:(480) 331-5595">(480) 331-5595</a>
                 </h6>
               </Col>
-              <Col  sm={12} md={6}>
+              <Col sm={12} md={6}>
                 <h6>
                   2170 W 350 N
                   <br />
@@ -74,10 +84,10 @@ export default function Footer({ setHash }) {
               </Col>
             </Row>
           </Col>
-          <Col xs={12} sm={4} md={4} lg={3}  className="mb-4 mb-sm-0">
+          <Col xs={12} sm={4} md={4} lg={3} className="mb-4 mb-sm-0">
             <h5>QUICK LINKS</h5>
             <Row>
-              <Col  sm={12}md={6}>
+              <Col sm={12} md={6}>
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link
                   href="/#amenities"
@@ -105,15 +115,16 @@ export default function Footer({ setHash }) {
                 >
                   Local Activities
                 </Nav.Link>
-                {
-                  !user ? (<Nav.Link
+                {!user ? (
+                  <Nav.Link
                     href="/login"
                     onClick={() => setHash("#emergency-locations")}
                   >
                     Owner Login
-                  </Nav.Link>) : ''
-                }
-                
+                  </Nav.Link>
+                ) : (
+                  ""
+                )}
               </Col>
             </Row>
           </Col>
