@@ -151,7 +151,7 @@ export default function PropertyPage({ property }) {
                     {property.images.map((image, index) => {
                       if (index > 2 && index < 5) {
                         return (
-                            <Col className="p-0 mt-n2 col-resp">
+                            <Col className="p-0 mt-n2 col-resp" key={'image-gallery-row-col-' + index}>
                               {getImagesGallery(
                                 image,
                                 index,
@@ -260,9 +260,11 @@ export async function getStaticPaths() {
   const allProperties = await getAllProperties();
   const properties = [];
   allProperties.docs.forEach((doc) => {
-    properties.push({
-      params: { state: doc.data().address.state.toLowerCase().trim(), link: doc.data().link },
-    });
+    if (doc.data() && doc.data().address && doc.data().link) {
+      properties.push({
+        params: { state: doc.data().address.state.toLowerCase().trim(), link: doc.data().link },
+      });
+    }
   });
   return {
     paths: properties,
@@ -276,6 +278,7 @@ export async function getStaticProps({ params }) {
   let property = {};
   allProperties.docs.forEach((doc) => {
     if (
+      doc.data() && doc.data().address &&
       doc.data().address.state.toLowerCase().trim() === params.state &&
       doc.data().link === params.link
     ) {

@@ -73,7 +73,7 @@ const Home = (props) => {
   const getProperties = (properties) => {
     const publishedProperty = Object.keys(properties).filter(
       (prop, index) => properties[prop].published === true
-    );;
+    );
 
     let renderedArray;
      publishedProperty.forEach((el, idx) => {
