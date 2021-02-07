@@ -2,7 +2,6 @@ import { Accordion, Button } from "react-bootstrap";
 import { useState } from "react";
 
 export default function TextExpand({ text }) {
-  console.log(text.length);
   const [toggled, setToggled] = useState(false);
 
   return (

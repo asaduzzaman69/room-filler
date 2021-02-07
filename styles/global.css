@@ -14,6 +14,13 @@ html {
   box-sizing: inherit;
 }
 
+.banner-baby-tile {
+  background-size: cover!important;
+  background-position: center!important;
+  height: 75px;
+  width: 75px;
+}
+
 .cardbox .card {
   border-radius: 8px;
   overflow: hidden;

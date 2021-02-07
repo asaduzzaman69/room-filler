@@ -64,8 +64,7 @@ const Home = (props) => {
     // return `/${property.address.state}/${property.link}`;
     return property && property.address
       ? `/${property.address.state
-          .toLowerCase()
-          .replace(" ", "-")}/${property.link.toLowerCase().trim()}`
+          .toLowerCase().trim()}/${property.link.toLowerCase().trim()}`
       : "/";
     // return `/${property.address}/${property.link}`;
   };
@@ -108,18 +107,15 @@ const Home = (props) => {
               <Card className="text-center cursor-pointer border-0">
                 <div className="row no-gutters">
                   <div
-                      className="rounded"
+                      className="rounded banner-baby-tile"
                       style={{
-                        background: "url('" + properties[prop].images[0] + "')",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        height: "75px",
-                        width: "75px",
+                        background: "url('" + properties[prop].images[0] + "')"
                       }}
                   ></div>
                   <div className="card-body py-0 pr-1 align-self-center" style={{width: 'calc(100% - 75px)'}}>
                     <p className="text-left mb-0 font-weight-bold">
                       {" "}
+                      {properties[prop].address.state}&nbsp;&nbsp;
                       {properties[prop].title}{" "}
                     </p>
                     <p className="text-left mb-0 iconbox">
