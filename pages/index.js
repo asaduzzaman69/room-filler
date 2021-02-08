@@ -75,10 +75,10 @@ const Home = (props) => {
     );
 
     let renderedArray;
-     publishedProperty.forEach((el, idx) => {
+    publishedProperty.forEach((el, idx) => {
       let arr = [];
       if (idx <= 5) {
-        while (arr.length < 6) {
+        while (arr.length < 6 && arr.length < publishedProperty.length) {
           var r = Math.floor(Math.random() * publishedProperty.length -1) + 1;
           if (arr.indexOf(r) === -1) arr.push(r);
         }
@@ -95,8 +95,8 @@ const Home = (props) => {
 
     let propertiesPublished = 0;
     return (
-      properties &&
-      res?.map((prop, index) => {
+      properties && res &&
+      res.map((prop, index) => {
         if (!properties[prop].published || propertiesPublished > 5) {
           return false;
         }
@@ -131,7 +131,7 @@ const Home = (props) => {
         );
       })
     );
-  };;
+  };
 
   return (
     <div>
