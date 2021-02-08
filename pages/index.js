@@ -97,6 +97,9 @@ const Home = (props) => {
     return (
       properties &&
       res?.map((prop, index) => {
+
+      properties && res &&
+      res.map((prop, index) => {
         if (!properties[prop].published || propertiesPublished > 5) {
           return false;
         }

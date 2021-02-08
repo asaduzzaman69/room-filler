@@ -16,7 +16,7 @@ export default function ViewAllProperties(props) {
           <h2 className="col-12 text-center">Properties</h2>
           <hr />
         </Row>
-        <Row>
+        <Row style={{minHeight: 'calc(100vh - 350px)'}}>
           {props.data.map((item, index) => {
             return (
               <Col
