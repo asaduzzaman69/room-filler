@@ -56,3 +56,7 @@
 
 
 /* experimental */
+
+.mode-content {
+  min-width: min-content !important;
+}

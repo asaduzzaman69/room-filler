@@ -105,3 +105,12 @@ const LocalEatsCarousel = ({}) => {
 };
 
 export default LocalEatsCarousel;
+
+
+/*
+
+return  React.Children.Map(props.children, child => {
+  return React.CloneElement()
+})
+
+*/

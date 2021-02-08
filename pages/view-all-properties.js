@@ -7,6 +7,7 @@ import { getAllProperties } from "../services/properties";
 import Layout from "../components/layout";
 
 export default function ViewAllProperties(props) {
+  console.log(props.data);
   const [hash, setHash] = useState("");
   return (
     <Layout setHash={setHash}>
@@ -27,7 +28,11 @@ export default function ViewAllProperties(props) {
               >
                 <Card
                   className="places-card"
-                  /*  onClick={() => Router.push(`${activity.type}/${item.slug}`)} */
+                  onClick={() =>
+                    Router.push(
+                      `/${item.address.state.toLowerCase().trim()}/${item.link.toLowerCase().trim()}`
+                    )
+                  }
                 >
                   <Card.Img
                     variant="top"
@@ -44,15 +49,21 @@ export default function ViewAllProperties(props) {
                     <div className="d-flex">
                       <div className="my-1 mr-3">
                         <i className="fas fa-user-friends"></i>
-                        <span className="ml-2 amenity">{item.maxOccupancy}</span>
+                        <span className="ml-2 amenity">
+                          {item.maxOccupancy}
+                        </span>
                       </div>
                       <div className="my-1 mr-3">
                         <i className="fas fa-bed"></i>
-                        <span className="ml-2 amenity">{item.bedroomCount}</span>
+                        <span className="ml-2 amenity">
+                          {item.bedroomCount}
+                        </span>
                       </div>
                       <div className="my-1 mr-3">
                         <i className="fas fa-hot-tub"></i>
-                        <span className="ml-2 amenity">{item.bathroomCount}</span>
+                        <span className="ml-2 amenity">
+                          {item.bathroomCount}
+                        </span>
                       </div>
                     </div>
                     <Card.Text>{item.description}</Card.Text>
