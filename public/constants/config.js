@@ -82,7 +82,7 @@ export const quickEats = [
     address2: "Hurricane, UT",
     image: "/quick-eats/wendys.png",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Wendy's is an American international fast food restaurant chain founded by Dave Thomas on November 15, 1969, in Columbus, Ohio. The company moved its headquarters to Dublin, Ohio, on January 29, 2006.",
     openingHours: [],
     price: '$'
   },
@@ -92,7 +92,7 @@ export const quickEats = [
     address2: "Hurricane, UT",
     image: "/quick-eats/arbys.jpg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      `Arby's is an American fast food sandwich restaurant chain with more than 3,300 restaurants system wide and third in terms of revenue. In October 2017, Food & Wine called Arby's "America's second largest sandwich chain". Arby's is owned by Inspire Brands, the renamed Arby's Restaurant Group, Inc.`,
     openingHours: [],
     price: '$'
   },
@@ -102,7 +102,7 @@ export const quickEats = [
     address2: "Hurricane, UT",
     image: "/quick-eats/costa.jpg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Costa Vida is Committed to Safely Delivering Delicious Food to Our Awesome Customers. Order Online, In-Store Pickup, Drive-Thru, Third Party Delivery. Find Your Nearest Costa. Delicious And Nutritious. Locations Near You. Easy Online Ordering. Made Fresh Daily.",
     openingHours: [],
     price: '$$'
   },
@@ -112,7 +112,7 @@ export const quickEats = [
     address2: "Hurricane, UT",
     image: "/quick-eats/dairy-queen.jpg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Dairy Queen is an American chain of soft serve ice cream and fast-food restaurants owned by International Dairy Queen, Inc., a subsidiary of Berkshire Hathaway. International Dairy Queen, Inc., also owns Orange Julius, and formerly owned Karmelkorn and Golden Skillet Fried Chicken.",
     openingHours: [],
     price: '$'
   },
@@ -122,7 +122,7 @@ export const quickEats = [
     address2: "Hurricane, UT",
     image: "/quick-eats/subway.jpeg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      `Subway is an American fast food restaurant franchise that primarily sells submarine sandwiches, salads and beverages. It was founded by the 17 year old Fred DeLuca and financed by Peter Buck in 1965 as "Pete's Super Submarines" in Bridgeport, Connecticut. `,
     openingHours: [],
     price: '$$'
   },
@@ -138,7 +138,7 @@ export const localEateries = [
     image: "/local-eats/river-rock-roasting.png",
     phone: "435-635-7625",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "River Rock Roasting Company River Rock Roasting Co. and Bakery, sitting on the edge of a basalt canyon, carved deep by the Virgin River, offers a variety of fresh roasted coffee, espresso drinks, homemade baked goods, sandwiches, and beer.",
     openingHours: [],
     price: '$$'
   },
@@ -151,7 +151,7 @@ export const localEateries = [
     phone: "435-635-7400",
     image: "/local-eats/stage-coach-grille.jpg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "The Stage Coach Grille serves the highest quality, made from scratch menu items. Quality is never compromised. We’re strong believers in breaking away from the mundane, bean counting, portion control restaurants that have become the American standard. The Stage Coach Grille is an old fashioned, slowly cooked, fresh ingredients, type of restaurant. New owner, Rich Tabish, invites you to make a reservation and see for yourself that his restaurant is the best full-service restaurant in the valley.",
     openingHours: [],
     price: '$$'
   },
@@ -164,7 +164,7 @@ export const localEateries = [
     phone: "435-215-3011",
     image: "/local-eats/lonny-boy.jpg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Lonny Boy's is all about quick service and fresh food fast, but behind the scenes, we're also dedicated to taking the time to perfect the way we do things. It all started 20 years ago when our family began perfecting our barbecue recipes. We traveled the world, learning from the best. When we opened our restaurant, we knew what it took to do things right, like smoking our pork and brisket for 12-plus hours, brining our turkey with the perfect ingredients, and making all our side dishes in-house. Today, customers reap the rewards of all our hard work when they line up to order. We serve everything up fast casual style, piping hot and ready in a hurry, because your time and satisfaction are what matter most to us. ",
     openingHours: [],
     price: '$$'
   },
@@ -177,7 +177,7 @@ export const localEateries = [
     phone: "435-635-9080",
     image: "/local-eats/main-street-cafe.jpg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Main Street Café offers stunning, delicious food, great coffee, and great service. Indoor & outdoor seating are available. We hope you come spend some time with us and enjoy a great meal.",
     openingHours: [],
     price: '$$'
   },
@@ -203,7 +203,7 @@ export const localEateries = [
     phone: "435-359-1957",
     image: "/local-eats/pigs-ear.jpg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Pig's Ear American Bistro is a modern casual dining restaurant catering to the most demanding appetites in Hurricane, Utah. Come for the great food, drinks and desserts, and stay for the warm, inviting 'second home' atmosphere you'll love from the start.",
     openingHours: [],
     price: '$$$'
   },
@@ -308,7 +308,7 @@ export const localActivities = [
       {
         name: "Wildcat Trail of Monument Valley",
         desc: [
-          "If you’re looking for a trail to hike in Monument Valley Navajo Tribal Park, this is the one. While guided jeep tours are the most educational and in-depth way to see and understand the significance of the park, Wildcat Trail may be the most intimate. Hiking these fascinating and arid lands, gives a slow, shifting perspective on the monoliths that made this place famous. These are important lands for the Navajo Nation. The slow travel of hiking opens them up to a new level of appreciation.",
+          "Wildcat. Wildcat. If you’re looking for a trail to hike in Monument Valley Navajo Tribal Park, this is the one. While guided jeep tours are the most educational and in-depth way to see and understand the significance of the park, Wildcat Trail may be the most intimate.Hiking these fascinating and arid lands, gives a slow, shifting perspective on the monoliths that made this place famous. These are important lands for the Navajo Nation. The slow travel of hiking opens them up to a new level of appreciation.",
           "The Wildcat Trail is the only self-guided trail in Monument Valley Navajo Tribal Park, but the route offers some world-class scenery as it takes hikers for a walk through the world-famous Mitten Buttes and Merrick Butte. The Navajo Parks and Recreation Department, which manages the park, shares this message with visitors: “The Navajo people have a custom that has endured.  Whenever visitors come they are always treated as honored guests.  They are offered shelter, warmth and nourishment so they can continue on with their journey.  The same hospitality we offer to you, and we hope that you have a safe and pleasant visit to our land.",
         ],
         bannerImg: "/hiking/wildcat-trail.jpg",
@@ -351,7 +351,7 @@ export const localActivities = [
         name: "House on Fire",
         desc: [
           "There are so many ancestral puebloan dwellings in the Four Corners region of southeastern Utah it’s hard to know where to begin, especially with the boundaries of Bears Ears National Monument. A good place to start is S.R. 95, a rolling and scenic byway that from Blanding, Utah, on the east, rises up over the Comb Ridge of the Shash Jaa unit before approaching some of this remote and rugged area’s most accessible hikes.",
-          "A stop at the Butler Wash overlook is a good introduction (1 mile, round-trip, with interpretive signage by the Friends of Cedar Mesa), but give yourself a couple of hours to hit the South Fork of Mule Canyon, on county road 263, east of the well-marked Mule Canyon turnoff and just before mile marker 102.Drive this dirt road to the fee box ($2/person) then continue about a quarter mile to the trailhead for Mule Canyon. The mile to House on Fire trail is mostly flat, but it crisscrosses a sandy and rocky wash and is mostly exposed; hike with care and be sure to carry plenty of water. The ruin itself is not marked, so keep your head up and watch for the distinctive rock dwelling on the right. (Additional ruins exist further up the canyon.) When visiting ancient ruins, always practice Respect and Protect principles. Do not climb in or on ruins. Do not move rocks or anything else. While they have lasted for hundreds of years, they are fragile. Instead, notice the ancient thumb prints in the adobe mortar and the assembly of stones and imagine eeking out a life in this remote territory in a sea of canyons in the heart of the Colorado Plateau.",
+          "A stop at the Butler Wash overlook is a good introduction (1 mile, round-trip, with interpretive signage by the Friends of Cedar Mesa), but give yourself a couple of hours to hit the South Fork of Mule Canyon, on county road 263, east of the well-marked Mule Canyon turnoff and just before mile marker 102.Drive this dirt road to the fee box ($2/person) then continue about a quarter mile to the trailhead for Mule Canyon. The mile to House on Fire trail is mostly flat, but it crisscrosses a sandy and rocky wash and is mostly exposed; hike with care and be sure to carry plenty of water. The ruin itself is not marked, so keep your head up and watch for the distinctive rock dwelling on the right. (Additional ruins exist further up the canyon.) When visiting ancient ruins, always practice Respect and Protect principles. Do not climb in or on ruins. Do not move rocks or anything else. While they have lasted for hundreds of years, they are fragile. Instead, notice the ancient thumb prints in the adobe mortar and the assembly of stones and imagine eeking out a life in this remote territory in a sea of canyons in the heart of the Colorado Plateau.​​House on Fire Ruin – South Fork of Mule Canyon | Utah's Canyon Country BlogDirections Take Utah state Route 95 to the junction with County Road 263/Texas Flat Road. This junction lies halfway between Blanding and Natural Bridges National Monument near Highway 95 mile marker 102. Travel north on 263, and you'll immediately see the kiosk to pay for your backcountry permit to hike to House on Fire. The permit costs $2 per person for the day or $5 per person for the week. There is a sign for Mule Canyon, but this is not the trailhead. Rather, it’s a BLM exhibit with a kiva, interpretive signing, and a pit toilet. From the kiosk, continue traveling approximately 0.3 miles to the parking area on the right. (The trailhead is on the left.)",
         ],
         bannerImg: "/hiking/house-on-fire.JPG",
         //  bannerImgPosition:"center 48% !important",
@@ -389,7 +389,7 @@ export const localActivities = [
         desc: [
           "Three miles of hiking in the desert of Southern Utah often culminates in imaginative formations and sweeping panoramas. The big reveal of the Lower Calf Creek Falls hike is so stunning and so unexpected, it has become one of the most-visited stops between The Mighty 5 national parks: It’s a 126-foot waterfall and plunge pool oasis in the desert. But the pictures don’t do it justice, nor do they reveal the lush, riparian trail of colorful sands, switchback slickrock and a well-marked interpretive trail experience.",
           "Named for its use as a natural pen for calves back in the late 1800’s and early 1900’s, the creek remained relatively unknown as a tourist destination until the formation of the Grand Staircase-Escalante National Monument, under the Clinton administration. Walking between mineral-streaked cliffs of Navajo Sandstone, hikers pass beaver ponds and pre-historic rock art sites en route to the paradisiacal pools.",
-          "Back at the truck, Alan and I consult the Falcon Guide we brought along, Hiking Grand Staircase-Escalante & the Glen Canyon Region, for the hike’s particulars and directions to the trail. The Lower Calf Creek Falls trailhead is a 15-mile-drive east from Escalante on scenic Byway 12 to Cave Creek Recreation area. If you’re coming from the Boulder Mountain area, the trailhead is about 8 miles west on Highway 12. At the turn off to Cave Creek Recreation area, Alan negotiates a fairly steep road down into a parking area  and campground—RV’ers should check for length requirements before attempting this road.",
+          "Back at the truck, Alan and I consult the Falcon Guide we brought along, Hiking Grand Staircase-Escalante & the Glen Canyon Region, for the hike’s particulars and directions to the trail. The Lower Calf Creek Falls trailhead is a 15-mile-drive east from Escalante on scenic Byway 12 to Cave Creek Recreation area. If you’re coming from the Boulder Mountain area, the trailhead is about 8 miles west on Highway 12.At the turn off to Cave Creek Recreation area, Alan negotiates a fairly steep road down into a parking area  and campground—RV’ers should check for length requirements before attempting this road.",
         ],
         bannerImg: "/hiking/lower-calf-creek.JPG",
         // bannerImgPosition:"center 38% !important",
@@ -537,7 +537,7 @@ export const localActivities = [
         name: "Jacob Hamblin Home",
         phone: "435-673-2161",
         desc: [
-          "During the 1800`s Mormon pioneers arrived in Southern Utah. Jacob Hamblin was a missionary and known to help keep peace among the Mormons and the Indians. Hamblin was among the first to settle in Utah in 1847. In the year 1853, Jacob Hamblin was having a skirmish with an Indian. Hamblin pulled out his pistol to shoot the Indian down, but the pistol didn`t fire.",
+          "During the 1800`s Mormon pioneers arrived in Southern Utah. Jacob Hamblin was a missionary and known to help keep peace among the Mormons and the Indians. Hamblin was among the first to settle in Utah in 1847. In the year 1853, Jacob Hamblin was having a skirmish with an Indian. Hamblin pulled out his pistol to shoot the Indian down, but the pistol didn`t fire. ",
           "This is when he realized that they should not be fighting with the Indians, but instead, they should live in peace with them. Jacob Hamblin helped to build a fort in Santa Clara, Utah. Santa Clara is only five minutes away from the beautiful St. George Utah real estate of Tenaya Sands. During the time of the Mormon settlers St. George, Utah was a difficult place to settle due to the hot, dry climate. The Jacob Hamblin home was finished in 1863 and is one of the few pioneer homes still standing in the St. George, Utah area.",
         ],
         location: "3325 Hamblin Dr, Santa Clara, UT 84765",
