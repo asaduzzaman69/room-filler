@@ -4,74 +4,74 @@ export const amenities = [
     name: "Private Pool/Always heated",
     value: "private-Pool",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "An outdoor pool is kept nice and toasty for your stay.",
   },
   {
     name: "Luxury Spa",
     value: "luxury-spa",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Available luxurious spa area for ultimate relaxation.",
   },
   {
     name: "Brand new gym area",
     value: "gym",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Get your pump on and shed some calories in the gym.",
   },
   {
     name: "Spacious clubhouse with pool table and social area",
     value: "clubhouse",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Great for hanging out with friends during your trip.",
   },
   {
     name:
       "Centrally located near dozens of hikes and numerous state and national parks",
     value: "hikes-national-parks",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Many beginner to advanced scenic hikes nearby.",
   },
   {
     name: "Grill area",
     value: "grill-area",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Cook out some BBQ and enjoy the breeze.",
   },
   {
     name: "Lazy river",
     value: "lazy-river",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "",
   },
   {
     name: "Outdoor lounge area",
     value: "outdoor-lounge-area",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "",
   },
   {
     name: "Water slide",
     value: "water-slide",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "",
   },
   {
     name: "Splash Pad",
     value: "splash-pad",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "",
   },
   {
     name: "Firepit",
     value: "firepit",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "",
   },
   {
     name: "Indoor firepit",
     value: "indoor-firepit",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "",
   },
 ];
 
@@ -190,7 +190,7 @@ export const localEateries = [
     phone: "435-327-2503",
     image: "/local-eats/pizza-wagon.jpg",
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute",
+      "Old-school, wood-lined venue with red booths for slices with creative toppings & Sicilian pies.",
     openingHours: [],
     price: '$'
   },

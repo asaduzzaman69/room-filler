@@ -53,7 +53,8 @@ export default function CustomNavbar({ setHash }) {
             <Nav className="m-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link
-                href="/activities/amenities-to-rent"
+                href="/#amenities"
+                onClick={() => setHash("#amenities")}
               >
                 Amenities
               </Nav.Link>

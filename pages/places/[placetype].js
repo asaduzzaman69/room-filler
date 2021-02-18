@@ -10,7 +10,7 @@ import {
   emergencyLocations,
 } from "../../public/constants/config";
 
-const PlaceType = ({ places }) => {
+const PlaceType = ({ places, secondPlaces }) => {
   const [hash, setHash] = useState("");
   return (
     <Layout setHash={setHash}>
@@ -23,7 +23,12 @@ const PlaceType = ({ places }) => {
         <Col md={{span:10, offset:1}}>
 
           {
-            places && places.length && places.length>0?
+            places && places.length && places.length > 0 &&
+              <h3 className="font-weight-bold ml-3"><u>Local Eateries</u></h3>
+          }
+
+          {
+            places && places.length ?
             places.map((item, index)=>{return(
               <div key={`places_${index}`} className='col-12 d-flex mb-3 flex-column flex-md-row justify-content-between'>
                 <div className="pt-5 pr-5">
@@ -55,7 +60,48 @@ const PlaceType = ({ places }) => {
               </div>
             )})
            
-            :null
+            : null
+          }
+
+          {
+            secondPlaces && secondPlaces.length && secondPlaces.length > 0 &&
+             <h3 className="font-weight-bold ml-3 mt-5 pt-5"><u>Quick Eats</u></h3>
+          }
+
+          {
+            secondPlaces && secondPlaces.length ?
+                secondPlaces.map((item, index)=>{return(
+                    <div key={`places_${index}`} className='col-12 d-flex mb-3 flex-column flex-md-row justify-content-between'>
+                      <div className="pt-5 pr-5">
+                        <h3 className="my-4">{item.name ? item.name : ""}</h3>
+                        {item.address1 ? <><h4>Location: <span>{item.address1}{item.address2?`, ${item.address2}`:""}</span></h4> </>  : null}
+                        {item.location ? <><h4>Location: <span>{item.location}</span></h4> </>  : null}
+                        {item.phone ? <><h4>Phone: <span>{item.phone}</span></h4> </>  : null}
+                        {item.price ? <><h4>Price: <span>{item.price}</span></h4> </>  : null}
+                        {item.stars ? <><h4>Rating: <span>{item.stars} Stars</span></h4> </>  : null}
+                        {item.openingHours && item.openingHours.length && item.openingHours.length > 0 ?
+                            <div>
+                              <h4>Opening Hours: </h4>
+                              {item.openingHours.map((day, index)=>{
+                                return(
+                                    <div key={`opening_hours_${index}`}><h4>{day.day}: <span>{day.open && day.close ? day.open==="00:00" && day.close==="00:00"? 'Open 24 hours' :`${day.open} - ${day.close}`: "Closed"}</span></h4> </div>
+                                )
+                              }) }
+                            </div>:null
+                        }
+                        {/*{item.desc?<p>{item.desc}</p>:null} */}
+                      </div>
+
+                      {
+                        item.image ? (<div> <Image
+                            src={`/images${item.image}`}
+                            className="activity-imgs"
+                        /> </div>)  : null
+                      }
+                    </div>
+                )})
+
+                : null
           }
       {/* <h3>{activity.name ? activity.name : ""}</h3>
           {activity.type ? <><h4>Trail Type: <span>{activity.type}</span></h4> </>  : null}
@@ -132,16 +178,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   let places = [];
-  if (params.placetype === "quick-eats") {
-    places=quickEats;
-  } else if (params.placetype === "local-eats") {
-    places=localEateries;
+  let secondPlaces = null;
+  if (params.placetype === "quick-eats" || params.placetype === "local-eats") {
+    places = localEateries;
+    secondPlaces = quickEats;
   } else {
-    places=emergencyLocations;
+    places = emergencyLocations;
   }
   return {
     props: {
       places,
+      secondPlaces
     },
   };
 }
