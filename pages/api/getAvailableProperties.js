@@ -3,6 +3,19 @@ import {
   getPropertyFutureCalendar
 } from "../../services/properties";
 
+
+
+const getFormattedDate = (unix) => {
+  const newDateObj = new Date(parseInt(unix));
+
+  const year = newDateObj.getFullYear();
+  const month = newDateObj.getMonth();
+  const date = newDateObj.getDate();
+
+  return `${year}/${month + 1}/${date}`
+}
+
+
 export default async (req, res) => {
   const propertiesRes = await getAllProperties();
   const properties = [];
@@ -17,15 +30,15 @@ export default async (req, res) => {
   ) {
     return res.json(properties);
   }
-  const startDate = new Date(parseInt(req.query.startDate))
-    .toISOString()
-    .slice(0, 10)
-    .replace(/-/g, "/");
-  const endDate = new Date(parseInt(req.query.endDate))
-    .toISOString()
-    .slice(0, 10)
-    .replace(/-/g, "/");
+
+  const startDate = getFormattedDate(parseInt(req.query.startDate))
+  const endDate = getFormattedDate(parseInt(req.query.endDate));
+
+  console.log(startDate)
+
   const available = {};
+
+
 
   const promises = [];
   for (var x = 0; x < properties.length; ) {
@@ -64,3 +77,9 @@ export default async (req, res) => {
     res.json(properties.filter(property => available[property.id]));
   });
 };
+
+/* 
+  SEPT 1 - 7
+  PROPERTY 2 - 6
+  IF startdate is less then property endDate and also startDate is Greater then property startDate || endDate is greater then startDate and endDate is less then property end Date
+*/
