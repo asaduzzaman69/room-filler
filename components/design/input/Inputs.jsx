@@ -23,7 +23,7 @@ const Inputs = ({ placeholder, type, primaryStyles, change, sx, value }) => {
     fontSize: isFocused ? '14px' : '17px',
     fontWeight: 'medium',
     position: 'relative',
-    top: isFocused ? '-55px' : '-40px',
+    top: (!!value || isFocused) ? '-55px' : '-40px',
     textTransform: 'capitalize',
 
     bottom: '10px',
