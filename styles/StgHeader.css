@@ -1,0 +1,33 @@
+.stg-header-list {
+    margin-left:60px;
+    position: relative;
+}
+
+.stg-header-list:last-child {
+    margin-right:60px;
+} 
+
+.stg-header-list > a {
+    color: #313131;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 16px;
+    cursor: pointer;
+}
+.stg-header-list-text-active::after {
+    content: "";
+    width: 30px;
+    height: 2px;
+    background: #272d38;
+    position: absolute;
+    bottom: -4px;
+    left: 20%;
+}
+.stg-header-list-text-active-2::after {
+    left: 38% !important;
+}
+.stg-header-list-text-active  > a {
+    display: inline-block;
+    padding: 5px;
+    
+} 

@@ -11,6 +11,10 @@ import LocalEatsCarousel from "../components/localEatsCarousel";
 import LocalActivities from "../components/localActivities";
 import EmergencyLocations from "../components/emergencyLocations";
 import Layout from "../components/layout";
+import ChooseYourStay from "../components/ChooseYourStay";
+import { Box, Container as ChakraContainer } from "@chakra-ui/react";
+import NotSureStg from "../components/NotSureStg";
+import StgBanner from "../components/StgBanner";
 const random = (mn, mx) => {
   const result = Math.random() * (mx - 0) + mn;
   return result;
@@ -133,6 +137,8 @@ const Home = (props) => {
     );
   };
 
+  console.log(props)
+
   return (
     <div>
       <Head>
@@ -140,8 +146,7 @@ const Home = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout setHash={setHash}>
-        <Banner properties={props} />
-        <div>
+        <StgBanner />      {/*   <div>
           <Container className="col-12 col-lg-10 offset-lg-1 mt-5 mb-3">
             <Row>{getProperties(props)}</Row>
             <Row className="text-center">
@@ -178,7 +183,13 @@ const Home = (props) => {
           <Container className="col-12 col-lg-10 offset-lg-1 pb-2">
             <EmergencyLocations />
           </Container>
-        </div>
+        </div> */}
+        <ChakraContainer maxW='1289px' >
+
+          <ChooseYourStay properties={props} />
+          {/*           <NotSureStg />
+ */}        </ChakraContainer>
+
       </Layout>
 
       <style jsx global>{``}</style>

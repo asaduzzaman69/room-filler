@@ -6,8 +6,7 @@ import {
 
 
 const getFormattedDate = (unix) => {
-  const newDateObj = new Date(parseInt(unix));
-
+  const newDateObj = new Date(unix);
   const year = newDateObj.getFullYear();
   const month = newDateObj.getMonth();
   const date = newDateObj.getDate();
@@ -33,8 +32,6 @@ export default async (req, res) => {
 
   const startDate = getFormattedDate(parseInt(req.query.startDate))
   const endDate = getFormattedDate(parseInt(req.query.endDate));
-
-  console.log(startDate)
 
   const available = {};
 

@@ -9,26 +9,34 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "@chakra-ui/icons": "^1.1.5",
+    "@chakra-ui/react": "^1.8.1",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@fortawesome/fontawesome-pro": "^5.15.1",
     "bootstrap": "^4.5.2",
-    "firebase": "^7.22.0",
+    "firebase": "^7.24.0",
+    "framer-motion": "^4.1.17",
     "ics-to-json": "^1.0.0",
     "moment": "^2.18.1",
     "next": "9.5.3",
     "react": "^16.14.0",
     "react-bootstrap": "^1.3.0",
+    "react-data-table-component": "^7.4.7",
+    "react-datepicker": "^4.6.0",
     "react-dates": "^21.8.0",
     "react-debounce-input": "^3.2.3",
     "react-dom": "^16.14.0",
     "react-firebaseui": "^4.1.0",
     "react-google-places-autocomplete": "^3.0.0",
+    "react-icons": "^4.3.1",
     "react-places-autocomplete": "^7.3.0",
     "react-responsive-carousel": "^3.2.11",
     "react-slick": "^0.27.14",
     "react-with-direction": "^1.3.1",
     "simple-react-lightbox": "^3.5.5",
     "slick-carousel": "^1.8.1",
-    "sortablejs": "^1.12.0"
-  },
-  "devDependencies": {}
+    "sortablejs": "^1.12.0",
+    "styled-components": "^5.3.3"
+  }
 }
